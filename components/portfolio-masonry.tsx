@@ -54,7 +54,7 @@ const cardVariants = {
     scale: 1, 
     transition: { type: "spring", stiffness: 60, damping: 15 }
   }
-};
+} as const;
 
 export const PortfolioMasonry = () => {
   return (
