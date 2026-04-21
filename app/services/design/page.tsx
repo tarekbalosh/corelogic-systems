@@ -10,7 +10,6 @@ import {
   Smartphone, 
   Layers, 
   MousePointer2, 
-  Figma, 
   Eye, 
   TrendingUp, 
   Heart, 
