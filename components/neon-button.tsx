@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface NeonButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface NeonButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onAnimationStart' | 'onDrag' | 'onDragEnd' | 'onDragStart'> {
   variant?: "primary" | "secondary" | "outline";
   size?: "sm" | "md" | "lg";
 }
