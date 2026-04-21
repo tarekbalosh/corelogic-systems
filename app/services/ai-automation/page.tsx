@@ -68,11 +68,8 @@ export default function AiSolutionsPage() {
                             Transform your business with intelligent automation and bespoke AI-powered systems. Achieve unparalleled operational speed and accuracy.
                         </motion.p>
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
-                            <Link href="/contact">
-                                <NeonButton size="lg" variant="primary">Start Your AI Journey</NeonButton>
-                            </Link>
-                            <Link href="/contact">
-                                <NeonButton size="lg" variant="outline">Consult an Expert</NeonButton>
+                            <Link href="/contact" className="w-full sm:w-auto">
+                                <NeonButton size="lg" variant="primary" className="w-full">Start Your AI Journey</NeonButton>
                             </Link>
                         </motion.div>
                     </motion.div>

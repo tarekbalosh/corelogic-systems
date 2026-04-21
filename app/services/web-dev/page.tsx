@@ -60,8 +60,9 @@ export default function WebDevServicePage() {
                             We engineer fast, scalable, and secure web applications built on state-of-the-art infrastructure to accelerate your digital transformation.
                         </motion.p>
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
-                            <NeonButton size="lg" variant="primary">Request a Quote</NeonButton>
-                            <NeonButton size="lg" variant="outline">View Portfolio</NeonButton>
+                            <Link href="/contact" className="w-full sm:w-auto">
+                                <NeonButton size="lg" variant="primary" className="w-full">Request a Quote</NeonButton>
+                            </Link>
                         </motion.div>
                     </motion.div>
 

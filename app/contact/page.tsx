@@ -66,15 +66,46 @@ const reasons = [
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: ""
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate API call
+
+    // Format message for WhatsApp
+    const whatsappMessage = encodeURIComponent(
+      `*New Inquiry from CoreLogic Systems*\n\n` +
+      `👤 *Name:* ${formData.fullName}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `📱 *Phone:* ${formData.phone || "Not provided"}\n` +
+      `🛠️ *Service:* ${formData.service}\n\n` +
+      `📝 *Message:* ${formData.message || "No message provided"}`
+    );
+
+    const whatsappUrl = `https://wa.me/601169397149?text=${whatsappMessage}`;
+
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, "_blank");
+
+    // Simulate completion
     setTimeout(() => {
       setLoading(false);
       setIsSubmitted(true);
-    }, 1500);
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: ""
+      });
+    }, 1000);
   };
 
   return (
@@ -129,6 +160,8 @@ export default function ContactPage() {
                           required
                           type="text" 
                           placeholder="John Doe"
+                          value={formData.fullName}
+                          onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                           className="w-full bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:border-brand-orange/50 transition-colors text-white"
                         />
                       </div>
@@ -138,6 +171,8 @@ export default function ContactPage() {
                           required
                           type="email" 
                           placeholder="john@example.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className="w-full bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:border-brand-orange/50 transition-colors text-white"
                         />
                       </div>
@@ -149,6 +184,8 @@ export default function ContactPage() {
                         <input 
                           type="tel" 
                           placeholder="+60..."
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className="w-full bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:border-brand-orange/50 transition-colors text-white"
                         />
                       </div>
@@ -156,6 +193,8 @@ export default function ContactPage() {
                         <label className="text-sm font-bold uppercase tracking-wider text-white/50">Service</label>
                         <select 
                           required
+                          value={formData.service}
+                          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                           className="w-full bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:border-brand-orange/50 transition-colors text-white appearance-none"
                         >
                           <option value="" className="bg-navy">Select a service</option>
@@ -165,11 +204,12 @@ export default function ContactPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase tracking-wider text-white/50">Message</label>
+                      <label className="text-sm font-bold uppercase tracking-wider text-white/50">Message (Optional)</label>
                       <textarea 
-                        required
                         rows={5}
                         placeholder="Tell us about your project goals..."
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className="w-full bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:border-brand-orange/50 transition-colors text-white resize-none"
                       />
                     </div>
@@ -268,30 +308,41 @@ export default function ContactPage() {
               </div>
             </motion.div>
 
-            {/* Map Placeholder */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               className="aspect-video bg-white/5 border border-white/10 relative overflow-hidden group"
             >
-              <div className="absolute inset-0 grayscale opacity-40 group-hover:opacity-60 transition-opacity">
-                {/* Visual Placeholder for Map */}
-                <div className="w-full h-full bg-[radial-gradient(circle_at_2px_2px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-[length:24px_24px]" />
+              <div className="absolute inset-0 grayscale opacity-40 group-hover:opacity-80 transition-all duration-700">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.804961555546!2d101.7183646765792!3d3.1415514968340176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc37004f1a5bb5%3A0x633e7922d56a2267!2sMenara%20IQ!5e0!3m2!1sen!2smy!4v1713686915302!5m2!1sen!2smy" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
+                ></iframe>
               </div>
-              <div className="absolute inset-0 flex items-center justify-center flex-col gap-3 p-8 text-center bg-navy/40 backdrop-blur-sm">
+              <div className="absolute inset-0 hidden lg:flex items-center justify-center flex-col gap-3 p-8 text-center bg-navy/60 backdrop-blur-[2px] group-hover:opacity-0 transition-opacity duration-500 pointer-events-none">
                 <MapPin className="text-brand-orange mb-2" size={32} />
                 <p className="font-bold text-sm leading-relaxed max-w-[200px]">
                   Lot C7, Menara IQ, Tun Razak Exchange, Kuala Lumpur
                 </p>
-                <a 
-                  href="https://goo.gl/maps/example" 
-                  target="_blank"
-                  className="text-[10px] font-black uppercase tracking-widest text-brand-orange hover:text-white transition-colors"
-                >
-                  Open in Google Maps
-                </a>
+                <div className="text-[10px] font-black uppercase tracking-widest text-brand-orange">
+                  Use two fingers to move the map
+                </div>
               </div>
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=Menara+IQ+Tun+Razak+Exchange+Kuala+Lumpur" 
+                target="_blank"
+                className="absolute bottom-4 right-4 z-20 px-6 py-3 bg-brand-orange text-navy text-[11px] font-black uppercase tracking-widest hover:bg-white transition-all shadow-2xl flex items-center gap-2"
+              >
+                <span>View on Maps</span>
+                <ArrowRight size={14} />
+              </a>
             </motion.div>
           </div>
         </div>

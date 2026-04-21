@@ -81,9 +81,9 @@ export const ServicesGrid = () => {
                   </p>
                 </div>
 
-                <div className="pt-4 mt-auto">
-                  <button className="flex items-center gap-2 text-sm font-bold text-white group-hover:text-secondary group-hover:translate-x-2 transition-all duration-300">
-                    Learn More <ArrowRight size={16} />
+                <div className="pt-6 mt-auto border-t border-white/5 lg:border-none">
+                  <button className="w-full lg:w-auto flex items-center justify-center lg:justify-start gap-2 text-sm font-bold text-white bg-white/5 lg:bg-transparent py-4 lg:py-0 rounded-full lg:rounded-none hover:bg-white/10 lg:hover:bg-transparent lg:group-hover:text-secondary lg:group-hover:translate-x-2 transition-all duration-300">
+                    Learn More <ArrowRight size={16} className="text-primary lg:text-inherit" />
                   </button>
                 </div>
               </div>

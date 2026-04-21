@@ -101,23 +101,23 @@ export const PortfolioMasonry = () => {
                     />
                     
                     {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent p-8 flex flex-col justify-end">
-                        <div className="space-y-4 translate-y-12 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent p-6 md:p-8 flex flex-col justify-end">
+                        <div className="space-y-4 translate-y-0 lg:translate-y-12 lg:group-hover:translate-y-0 transition-transform duration-500 ease-out">
                             <div className="space-y-2">
-                                <span className="text-xs font-black text-primary uppercase tracking-widest bg-primary/10 px-2 py-1 rounded inline-block">
+                                <span className="text-[10px] md:text-xs font-black text-primary uppercase tracking-widest bg-primary/10 px-2 py-1 rounded inline-block">
                                   {project.category}
                                 </span>
-                                <h3 className="text-2xl font-black font-heading text-white drop-shadow-md">{project.title}</h3>
+                                <h3 className="text-xl md:text-2xl font-black font-heading text-white drop-shadow-md leading-tight">{project.title}</h3>
                             </div>
                             <div className="flex flex-wrap gap-2">
                                 {project.tags.map(tag => (
-                                    <span key={tag} className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-white/70 backdrop-blur-sm">
+                                    <span key={tag} className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-bold text-white/70 backdrop-blur-sm">
                                       #{tag}
                                     </span>
                                 ))}
                             </div>
-                            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-2">
-                                <NeonButton size="sm" variant="outline">View Case Study</NeonButton>
+                            <div className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pt-2">
+                                <NeonButton size="sm" variant="outline" className="w-full sm:w-auto">View Case Study</NeonButton>
                             </div>
                         </div>
                     </div>

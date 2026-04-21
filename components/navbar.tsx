@@ -129,9 +129,9 @@ export const Navbar = () => {
           {/* Hamburger Button */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden w-10 h-10 flex items-center justify-end text-brand-teal hover:text-brand-orange transition-colors"
+            className="md:hidden w-12 h-12 flex items-center justify-end text-brand-teal hover:text-brand-orange transition-colors active:scale-95"
           >
-            <Menu size={28} />
+            <Menu size={32} />
           </button>
         </div>
       </div>
@@ -177,7 +177,7 @@ export const Navbar = () => {
                       <Link
                         href={link.href}
                         className={cn(
-                          "text-2xl uppercase tracking-widest transition-all duration-300",
+                          "text-xl uppercase tracking-widest transition-all duration-300",
                           isActive ? "text-brand-orange font-black" : "text-brand-teal/70 hover:text-brand-orange font-bold"
                         )}
                       >
@@ -191,7 +191,7 @@ export const Navbar = () => {
                               key={s.name} 
                               href={s.href} 
                               className={cn(
-                                "text-lg transition-all duration-300",
+                                "text-[15px] transition-all duration-300 leading-tight",
                                 pathname === s.href ? "text-brand-orange font-black" : "text-brand-teal/60 hover:text-brand-orange font-bold"
                               )}
                             >

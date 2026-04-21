@@ -35,10 +35,11 @@ export const GlassCard: React.FC<GlassCardProps> = ({
     >
       {/* Background Glow */}
       <div className={cn(
-        "absolute inset-0 rounded-2xl transition-all duration-500 opacity-0 group-hover:opacity-100 blur-2xl -z-10",
-        glowColor === "purple" && "bg-purple-glow/10",
-        glowColor === "cyan" && "bg-cyan-glow/10",
-        glowColor === "amber" && "bg-accent/10"
+        "absolute inset-0 rounded-2xl transition-all duration-500 blur-2xl -z-10",
+        "opacity-20 lg:opacity-0 lg:group-hover:opacity-100",
+        glowColor === "purple" && "bg-purple-glow/30",
+        glowColor === "cyan" && "bg-cyan-glow/30",
+        glowColor === "amber" && "bg-accent/30"
       )} />
 
       <div className={cn(
