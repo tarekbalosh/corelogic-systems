@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  /* New Futuristic Palette */
+  --color-background: #050915;
+  --color-surface: #0d1526;
+  --color-primary: #7c3aed;
+  --color-secondary: #06b6d4;
+  --color-accent: #f59e0b;
+  
+  --color-brand-cream: #f5f2eb;
+  --color-brand-teal: #0c2b2b;
+  --color-brand-orange: #e59a35;
+  
+  --color-navy: #050915;
+  
+  --font-inter: var(--font-inter);
+  --font-space-grotesk: var(--font-space-grotesk);
+
+  /* Custom Animations */
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.5s ease-out forwards;
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.2); transform: scale(1); }
+    50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.4); transform: scale(1.02); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes slide-up {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+}
+
+:root {
+  --background: #050915;
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: #ffffff;
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-space-grotesk);
+}
+
+/* Glassmorphism utility */
+.glass-card {
+  background: rgba(13, 21, 38, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  background: rgba(13, 21, 38, 0.6);
+}
+
+.glass-dark {
+  background: rgba(5, 9, 21, 0.7);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Neon Glows */
+.neon-glow-primary {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+.neon-glow-secondary {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-hero-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.1) 0%, rgba(5, 9, 21, 0) 70%);
+}
