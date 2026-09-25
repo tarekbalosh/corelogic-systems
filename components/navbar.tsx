@@ -205,8 +205,8 @@ export const Navbar = () => {
                       <Link
                         href={link.href}
                         className={cn(
-                          "text-lg font-semibold tracking-wide transition-all duration-300",
-                          isActive ? "text-primary" : "text-foreground/80 hover:text-primary"
+                          "text-[16px] font-medium transition-all duration-300",
+                          isActive ? "text-primary font-semibold" : "text-foreground/70 hover:text-primary"
                         )}
                       >
                         {link.name}
