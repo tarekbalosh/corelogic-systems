@@ -19,8 +19,8 @@ export const GlassCard: React.FC<GlassCardProps> = ({
   delay = 0 
 }) => {
   const glowClasses = {
-    purple: "group-hover:shadow-[0_0_40px_rgba(124,58,237,0.2)] group-hover:border-purple-glow/30",
-    cyan: "group-hover:shadow-[0_0_40px_rgba(6,182,212,0.2)] group-hover:border-cyan-glow/30",
+    purple: "group-hover:shadow-[0_0_40px_rgba(79,70,229,0.2)] group-hover:border-purple-glow/30",
+    cyan: "group-hover:shadow-[0_0_40px_rgba(14,165,233,0.2)] group-hover:border-cyan-glow/30",
     amber: "group-hover:shadow-[0_0_40px_rgba(245,158,11,0.2)] group-hover:border-accent/30",
   };
 
@@ -44,8 +44,8 @@ export const GlassCard: React.FC<GlassCardProps> = ({
 
       <div className={cn(
         "relative rounded-2xl p-6 transition-all duration-300",
-        "bg-white/5 backdrop-blur-[20px]",
-        "border border-white/10",
+        "bg-foreground/70 backdrop-blur-[20px]",
+        "border border-foreground/10",
         glowClasses[glowColor],
         className
       )}>

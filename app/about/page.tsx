@@ -35,7 +35,7 @@ const reasons = [
 
 export default function AboutPage() {
   return (
-    <div className="relative min-h-screen bg-navy text-white selection:bg-primary/30">
+    <div className="relative min-h-screen bg-background text-foreground selection:bg-primary/30">
       <ParticleBackground />
 
       <div className="relative z-10 pt-40 pb-32">
@@ -53,11 +53,11 @@ export default function AboutPage() {
                   About Our <br />
                   <span className="text-gradient">Company</span>
                 </h1>
-                <p className="text-2xl text-white/60 font-medium">
+                <p className="text-2xl text-foreground/60 font-medium">
                   We build intelligent software solutions powered by AI.
                 </p>
               </motion.div>
-              <motion.p variants={fadeInUp} className="text-lg text-white/40 max-w-lg leading-relaxed">
+              <motion.p variants={fadeInUp} className="text-lg text-foreground/70 max-w-lg leading-relaxed">
                 CoreLogic Systems is a frontier technology firm dedicated to bridging the gap between raw compute and cognitive intelligence.
               </motion.p>
             </motion.div>
@@ -68,13 +68,13 @@ export default function AboutPage() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
+              <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full" />
               <Image 
                 src="/about_ai_dashboard.png"
                 alt="AI Dashboard Interface"
                 width={700}
                 height={700}
-                className="relative z-10 drop-shadow-[0_0_50px_rgba(124,58,237,0.3)] animate-float"
+                className="relative z-10 drop-shadow-[0_0_50px_rgba(124,58,237,0.15)] animate-float"
               />
             </motion.div>
           </div>
@@ -89,10 +89,10 @@ export default function AboutPage() {
                         <h2 className="text-4xl font-black font-heading tracking-tighter">Who We Are</h2>
                     </div>
                     <div className="lg:col-span-2 space-y-6">
-                        <p className="text-xl text-white/70 leading-relaxed font-light">
+                        <p className="text-xl text-foreground/70 leading-relaxed font-light">
                             Founded at the intersection of infrastructure and artificial intelligence, CoreLogic Systems operates as a high-performance lab for the future. We specialize in developing **Web Applications**, **Custom AI Architectures**, and **Enterprise Software Solutions** that prioritize speed, security, and scalability.
                         </p>
-                        <p className="text-xl text-white/70 leading-relaxed font-light">
+                        <p className="text-xl text-foreground/70 leading-relaxed font-light">
                             Our mission is to empower global industries through relentless **Innovation**, strategic **Automation**, and sustainable **Growth**.
                         </p>
                     </div>
@@ -106,22 +106,22 @@ export default function AboutPage() {
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                 <GlassCard glowColor="purple">
                     <div className="space-y-6">
-                        <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+                        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
                             <Target size={32} />
                         </div>
                         <h3 className="text-3xl font-bold font-heading">Our Mission</h3>
-                        <p className="text-white/50 text-lg leading-relaxed">
+                        <p className="text-foreground/70 text-lg leading-relaxed">
                             Deliver smart, scalable, and modern digital solutions that solve the most complex technical challenges of the 21st century.
                         </p>
                     </div>
                 </GlassCard>
                 <GlassCard glowColor="cyan">
                     <div className="space-y-6">
-                        <div className="w-14 h-14 rounded-2xl bg-secondary/20 flex items-center justify-center text-secondary">
+                        <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
                             <Eye size={32} />
                         </div>
                         <h3 className="text-3xl font-bold font-heading">Our Vision</h3>
-                        <p className="text-white/50 text-lg leading-relaxed">
+                        <p className="text-foreground/70 text-lg leading-relaxed">
                             Become a leading global AI provider, setting the standard for ethical intelligence and high-performance neural software.
                         </p>
                     </div>
@@ -137,9 +137,9 @@ export default function AboutPage() {
                     {values.map((v, i) => (
                         <GlassCard key={i} glowColor={v.glow} className="group hover:-translate-y-2 transition-transform duration-500">
                             <div className="space-y-4">
-                                <v.icon size={40} className="text-white group-hover:text-primary transition-colors" />
+                                <v.icon size={40} className="text-foreground/80 group-hover:text-primary transition-colors" />
                                 <h4 className="text-2xl font-bold font-heading">{v.title}</h4>
-                                <p className="text-white/40 text-sm leading-relaxed">{v.description}</p>
+                                <p className="text-foreground/60 text-sm leading-relaxed">{v.description}</p>
                             </div>
                         </GlassCard>
                     ))}
@@ -153,11 +153,11 @@ export default function AboutPage() {
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {reasons.map((r, i) => (
-                        <div key={i} className="p-8 flex items-start gap-6 border-l border-white/10 hover:border-secondary transition-colors group">
+                        <div key={i} className="p-8 flex items-start gap-6 border-l border-foreground/10 hover:border-secondary transition-colors group bg-white shadow-sm rounded-2xl">
                             <div className="text-secondary group-hover:scale-110 transition-transform"><r.icon size={48} /></div>
                             <div className="space-y-2">
                                 <h4 className="text-2xl font-bold font-heading">{r.title}</h4>
-                                <p className="text-white/40 leading-relaxed">{r.description}</p>
+                                <p className="text-foreground/60 leading-relaxed">{r.description}</p>
                             </div>
                         </div>
                     ))}
@@ -168,7 +168,7 @@ export default function AboutPage() {
         {/* 8. Call To Action */}
         <section className="px-6">
             <div className="max-w-5xl mx-auto">
-                <GlassCard className="text-center py-20 bg-gradient-to-br from-primary/20 via-background to-secondary/20 shadow-[0_0_100px_rgba(124,58,237,0.15)] overflow-hidden">
+                <GlassCard className="text-center py-20 bg-gradient-to-br from-primary/5 via-white to-secondary/5 shadow-[0_10px_40px_rgba(0,0,0,0.02)] overflow-hidden">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -180,7 +180,7 @@ export default function AboutPage() {
                             <span className="text-gradient">With Us</span>
                         </h2>
                         <div className="flex justify-center">
-                            <NeonButton size="lg">Contact Us</NeonButton>
+                            <NeonButton size="lg" variant="primary">Contact Us</NeonButton>
                         </div>
                     </motion.div>
                 </GlassCard>

@@ -53,7 +53,7 @@ const portfolioItems = [
 
 export default function UIDesignPage() {
   return (
-    <div className="bg-[#050915] min-h-screen text-white overflow-hidden">
+    <div className="bg-[#050915] min-h-screen text-foreground overflow-hidden">
       
       {/* 1. Hero Section */}
       <section className="relative pt-48 pb-32 px-6 min-h-[90vh] flex items-center justify-center">
@@ -78,12 +78,12 @@ export default function UIDesignPage() {
             <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl lg:text-8xl font-black font-heading tracking-tighter uppercase leading-[1.1]">
               UI/UX <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 drop-shadow-[0_0_20px_rgba(236,72,153,0.5)]">Design</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
+            <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-foreground/70 font-light max-w-3xl mx-auto leading-relaxed">
               We design beautiful, intuitive, and user-centered digital experiences that convert users into customers.
             </motion.p>
             <motion.div variants={fadeInUp} className="pt-8">
               <Link href="/contact">
-                <button className="group relative px-8 py-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white text-lg font-bold tracking-widest uppercase rounded-full overflow-hidden hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(236,72,153,0.4)]">
+                <button className="group relative px-8 py-4 bg-gradient-to-r from-pink-600 to-purple-600 text-foreground text-lg font-bold tracking-widest uppercase rounded-full overflow-hidden hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(236,72,153,0.4)]">
                   <span className="relative z-10">Start Your Design Project</span>
                   <div className="absolute inset-0 h-full w-0 bg-white transition-all duration-300 ease-out group-hover:w-full z-0 opacity-20" />
                 </button>
@@ -104,7 +104,7 @@ export default function UIDesignPage() {
             className="space-y-6"
           >
             <h2 className="text-4xl md:text-5xl font-black font-heading tracking-tighter">Design That Drives <span className="text-pink-500">Growth</span></h2>
-            <p className="text-white/60 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-light">
+            <p className="text-foreground/60 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-light">
               Great design is more than just making things look pretty. It’s about solving problems, leading users to their goals, and ultimately driving business success. We focus heavily on the psychology of user experience, ensuring that every button, color, and layout choice serves a clear, conversion-focused purpose.
             </p>
           </motion.div>
@@ -127,13 +127,13 @@ export default function UIDesignPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="glass-card p-10 space-y-6 group rounded-[2rem] border-white/5 hover:border-pink-500/30 transition-all duration-300"
+                className="glass-card p-10 space-y-6 group rounded-[2rem] border-foreground/5 hover:border-pink-500/30 transition-all duration-300"
               >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500/10 to-purple-500/10 flex items-center justify-center text-pink-400 group-hover:from-pink-500 group-hover:to-purple-500 group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-2 group-hover:shadow-[0_10px_20px_rgba(236,72,153,0.3)]">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500/10 to-purple-500/10 flex items-center justify-center text-pink-400 group-hover:from-pink-500 group-hover:to-purple-500 group-hover:text-foreground transition-all duration-500 transform group-hover:-translate-y-2 group-hover:shadow-[0_10px_20px_rgba(236,72,153,0.3)]">
                   <item.icon size={32} />
                 </div>
-                <h3 className="text-2xl font-black font-heading capitalize text-white">{item.title}</h3>
-                <p className="text-white/50 leading-relaxed font-light text-sm">
+                <h3 className="text-2xl font-black font-heading capitalize text-foreground">{item.title}</h3>
+                <p className="text-foreground/50 leading-relaxed font-light text-sm">
                   {item.desc}
                 </p>
               </motion.div>
@@ -143,7 +143,7 @@ export default function UIDesignPage() {
       </section>
 
       {/* 4. Design Process */}
-      <section className="py-24 px-6 bg-[#050915] relative border-y border-white/5">
+      <section className="py-24 px-6 bg-[#050915] relative border-y border-foreground/5">
         <div className="max-w-7xl mx-auto">
           <SectionTitle 
             title="Our Design Process" 
@@ -163,13 +163,13 @@ export default function UIDesignPage() {
                 transition={{ delay: idx * 0.1 }}
                 className="relative flex flex-col items-center text-center group"
               >
-                <div className="w-24 h-24 rounded-full bg-[#050915] border-2 border-white/10 flex items-center justify-center relative z-10 group-hover:border-pink-500 transition-colors shadow-2xl">
+                <div className="w-24 h-24 rounded-full bg-[#050915] border-2 border-foreground/10 flex items-center justify-center relative z-10 group-hover:border-pink-500 transition-colors shadow-2xl">
                   <span className="text-3xl font-black font-heading text-transparent bg-clip-text bg-gradient-to-br from-white to-white/30 group-hover:from-pink-400 group-hover:to-purple-500">
                     {step.num}
                   </span>
                 </div>
                 <h3 className="text-xl font-bold font-heading mt-6 mb-3 group-hover:text-pink-400 transition-colors">{step.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed font-light">{step.desc}</p>
+                <p className="text-foreground/50 text-sm leading-relaxed font-light">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -182,14 +182,14 @@ export default function UIDesignPage() {
           
           <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 order-2 lg:order-1">
             {benefits.map((benefit, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 hover:border-pink-500/40 transition-all duration-300 shadow-xl">
+              <div key={idx} className="bg-foreground/5 border border-foreground/10 p-8 rounded-3xl hover:bg-foreground/10 hover:border-pink-500/40 transition-all duration-300 shadow-xl">
                 <div className="flex items-start gap-5">
                   <div className="mt-1 text-pink-500">
                     <benefit.icon size={24} />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold font-heading mb-2 text-white">{benefit.title}</h4>
-                    <p className="text-white/50 text-sm leading-relaxed">{benefit.desc}</p>
+                    <h4 className="text-xl font-bold font-heading mb-2 text-foreground">{benefit.title}</h4>
+                    <p className="text-foreground/50 text-sm leading-relaxed">{benefit.desc}</p>
                   </div>
                 </div>
               </div>
@@ -199,14 +199,14 @@ export default function UIDesignPage() {
           <div className="lg:col-span-4 space-y-8 order-1 lg:order-2">
             <div className="space-y-4">
               <h2 className="text-4xl md:text-5xl font-black font-heading tracking-tighter">Why Choose <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">CoreLogic.</span></h2>
-              <p className="text-white/60 leading-relaxed font-light">
+              <p className="text-foreground/60 leading-relaxed font-light">
                 We blend creative visual arts with deep psychological research. Our team doesn't just create aesthetics—we design strategic tools aimed purely at achieving your business goals.
               </p>
             </div>
             
             <ul className="space-y-4">
               {["Creative & experienced designers", "Focus on business goals", "User-centered design approach", "Clean and modern aesthetics", "Fast delivery, high quality"].map((point, i) => (
-                <li key={i} className="flex items-center gap-3 text-white/80 font-medium tracking-wide">
+                <li key={i} className="flex items-center gap-3 text-foreground/80 font-medium tracking-wide">
                   <div className="w-6 h-6 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400">
                     <CheckCircle2 size={14} />
                   </div>
@@ -220,7 +220,7 @@ export default function UIDesignPage() {
       </section>
 
       {/* 7. Portfolio / Showcase Section */}
-      <section className="py-24 px-6 bg-[#050915] border-y border-white/5">
+      <section className="py-24 px-6 bg-[#050915] border-y border-foreground/5">
          <div className="max-w-7xl mx-auto">
           <SectionTitle 
             title="Design Showcase" 
@@ -238,7 +238,7 @@ export default function UIDesignPage() {
                  transition={{ duration: 0.4 }}
                  className="group cursor-pointer"
                >
-                 <div className="relative h-[300px] rounded-3xl overflow-hidden border border-white/10 group-hover:border-pink-500/50 group-hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-500">
+                 <div className="relative h-[300px] rounded-3xl overflow-hidden border border-foreground/10 group-hover:border-pink-500/50 group-hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all duration-500">
                     <Image 
                       src={item.image}
                       alt={item.title}
@@ -248,7 +248,7 @@ export default function UIDesignPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050915] via-[#050915]/60 to-transparent p-6 flex flex-col justify-end">
                       <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                          <span className="text-xs font-bold text-pink-400 uppercase tracking-widest">{item.category}</span>
-                         <h3 className="text-2xl font-black font-heading text-white">{item.title}</h3>
+                         <h3 className="text-2xl font-black font-heading text-foreground">{item.title}</h3>
                       </div>
                     </div>
                  </div>

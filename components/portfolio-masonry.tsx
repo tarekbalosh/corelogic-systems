@@ -62,7 +62,7 @@ const cardVariants = {
 
 export const PortfolioMasonry = () => {
   return (
-    <section id="portfolio" className="py-24 px-6 bg-surface/30">
+    <section id="portfolio" className="py-24 px-6 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto">
         <SectionTitle 
           title="Featured Projects" 

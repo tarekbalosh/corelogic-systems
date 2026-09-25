@@ -25,13 +25,13 @@ export const Hero = () => {
               Build the Future <br />
               <span className="text-gradient">with AI</span>
             </h1>
-            <div className="text-2xl md:text-3xl font-medium text-white/50 flex items-center gap-2">
+            <div className="text-2xl md:text-3xl font-medium text-foreground/70 flex items-center gap-2">
               <span>Empowered to</span>
               <Typewriter words={["Automate", "Analyze", "Accelerate"]} />
             </div>
           </motion.div>
 
-          <motion.p variants={fadeInUp} className="text-lg md:text-xl text-white/40 max-w-lg leading-relaxed">
+          <motion.p variants={fadeInUp} className="text-lg md:text-xl text-foreground/60 max-w-lg leading-relaxed">
             CoreLogic Systems provides high-performance infrastructure and neural architectures 
             for the next generation of industrial-scale compute.
           </motion.p>
@@ -82,7 +82,7 @@ export const Hero = () => {
                 rotate: { duration: 20, repeat: Infinity, ease: "linear" },
                 y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
             }}
-            className="absolute -top-10 -right-10 w-24 h-24 border border-white/5 rounded-lg opacity-20" 
+            className="absolute -top-10 -right-10 w-24 h-24 border border-foreground/10 rounded-lg opacity-20" 
           />
           <motion.div 
             animate={{ 
@@ -93,7 +93,7 @@ export const Hero = () => {
                 rotate: { duration: 25, repeat: Infinity, ease: "linear" },
                 y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
             }}
-            className="absolute -bottom-10 -left-10 w-32 h-32 border border-white/5 rounded-full opacity-20" 
+            className="absolute -bottom-10 -left-10 w-32 h-32 border border-foreground/10 rounded-full opacity-20" 
           />
         </motion.div>
       </div>

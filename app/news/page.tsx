@@ -34,7 +34,7 @@ const articles = [
 
 export default function NewsPage() {
   return (
-    <div className="bg-brand-cream min-h-screen text-brand-teal selection:bg-brand-orange/30">
+    <div className="bg-brand-cream min-h-screen text-secondary selection:bg-primary/30">
       <div className="pt-40 pb-32 max-w-7xl mx-auto px-6">
         <motion.div
            initial="hidden"
@@ -45,21 +45,21 @@ export default function NewsPage() {
           {/* Header */}
           <motion.div variants={fadeInUp} className="flex flex-col md:flex-row justify-between items-end gap-10">
             <div className="space-y-6">
-                <span className="text-brand-orange font-bold tracking-[0.3em] uppercase text-sm">Resources & News</span>
+                <span className="text-primary font-bold tracking-[0.3em] uppercase text-sm">Resources & News</span>
                 <h1 className="text-6xl md:text-8xl font-black font-heading tracking-tighter uppercase leading-none">
-                    Industrial <br /><span className="text-brand-orange">Insights</span>
+                    Industrial <br /><span className="text-primary">Insights</span>
                 </h1>
             </div>
             <div className="flex gap-4">
                 <div className="relative group">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-teal/30 group-focus-within:text-brand-orange transition-colors" size={18} />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-secondary/30 group-focus-within:text-primary transition-colors" size={18} />
                     <input 
                         type="text" 
                         placeholder="Search resources..." 
-                        className="pl-12 pr-6 py-4 bg-white border border-brand-teal/5 rounded-2xl w-64 focus:outline-none focus:border-brand-orange focus:shadow-lg transition-all text-sm"
+                        className="pl-12 pr-6 py-4 bg-white border border-brand-teal/5 rounded-2xl w-64 focus:outline-none focus:border-primary focus:shadow-lg transition-all text-sm"
                     />
                 </div>
-                <button className="p-4 bg-white border border-brand-teal/5 rounded-2xl hover:bg-brand-orange hover:text-white transition-all shadow-sm">
+                <button className="p-4 bg-white border border-brand-teal/5 rounded-2xl hover:bg-primary hover:text-foreground transition-all shadow-sm">
                     <Filter size={20} />
                 </button>
             </div>
@@ -76,22 +76,22 @@ export default function NewsPage() {
                     <div className="bg-white p-10 rounded-[2.5rem] border border-brand-teal/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 h-full flex flex-col justify-between space-y-8">
                         <div className="space-y-6">
                             <div className="flex justify-between items-center">
-                                <span className="px-4 py-1.5 rounded-full bg-brand-teal/5 text-[11px] font-black uppercase tracking-widest text-brand-orange border border-brand-orange/10">
+                                <span className="px-4 py-1.5 rounded-full bg-secondary/5 text-[11px] font-black uppercase tracking-widest text-primary border border-primary/10">
                                     {a.category}
                                 </span>
-                                <span className="text-[12px] font-bold text-brand-teal/30 tracking-wider">
+                                <span className="text-[12px] font-bold text-secondary/30 tracking-wider">
                                     {a.date}
                                 </span>
                             </div>
-                            <h2 className="text-3xl font-black font-heading tracking-tighter uppercase group-hover:text-brand-orange transition-colors duration-300">
+                            <h2 className="text-3xl font-black font-heading tracking-tighter uppercase group-hover:text-primary transition-colors duration-300">
                                 {a.title}
                             </h2>
-                            <p className="text-brand-teal/50 leading-relaxed font-light">
+                            <p className="text-secondary/50 leading-relaxed font-light">
                                 {a.excerpt}
                             </p>
                         </div>
-                        <div className="flex items-center gap-2 text-brand-teal font-black text-sm tracking-widest uppercase group-hover:gap-4 transition-all">
-                            Read Full Article <ArrowUpRight size={20} className="text-brand-orange" />
+                        <div className="flex items-center gap-2 text-secondary font-black text-sm tracking-widest uppercase group-hover:gap-4 transition-all">
+                            Read Full Article <ArrowUpRight size={20} className="text-primary" />
                         </div>
                     </div>
                 </motion.div>
@@ -99,14 +99,14 @@ export default function NewsPage() {
           </div>
 
           {/* CTA Footer for News */}
-          <motion.div variants={fadeInUp} className="bg-brand-teal rounded-[3rem] p-16 text-center text-white space-y-8">
+          <motion.div variants={fadeInUp} className="bg-secondary rounded-[3rem] p-16 text-center text-foreground space-y-8">
              <h2 className="text-4xl font-black font-heading tracking-tighter uppercase">Stay Ahead of the Curve</h2>
-             <p className="text-white/50 max-w-lg mx-auto leading-relaxed">
+             <p className="text-foreground/50 max-w-lg mx-auto leading-relaxed">
                  Subscribe to our monthly technical digest to receive the latest updates on industrial AI and modern software architecture.
              </p>
              <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-                 <input type="email" placeholder="Email address" className="bg-white/5 border border-white/10 px-8 py-4 rounded-full flex-1 focus:outline-none focus:border-brand-orange" />
-                 <button className="bg-brand-orange px-10 py-4 rounded-full font-black tracking-widest uppercase text-brand-teal text-sm hover:scale-105 transition-transform">Subscribe</button>
+                 <input type="email" placeholder="Email address" className="bg-foreground/5 border border-foreground/10 px-8 py-4 rounded-full flex-1 focus:outline-none focus:border-primary" />
+                 <button className="bg-primary px-10 py-4 rounded-full font-black tracking-widest uppercase text-secondary text-sm hover:scale-105 transition-transform">Subscribe</button>
              </div>
           </motion.div>
         </motion.div>

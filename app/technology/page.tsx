@@ -24,7 +24,7 @@ const techSpecs = [
 
 export default function TechnologyPage() {
   return (
-    <div className="bg-brand-cream min-h-screen text-brand-teal selection:bg-brand-orange/30">
+    <div className="bg-brand-cream min-h-screen text-secondary selection:bg-primary/30">
       {/* 1. Hero Section */}
       <section className="pt-48 pb-32 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -37,13 +37,13 @@ export default function TechnologyPage() {
                 <motion.div variants={fadeInUp} className="space-y-4">
                     <h1 className="text-6xl md:text-8xl font-black font-heading tracking-tighter uppercase leading-[0.9]">
                         CoreLogic <br />
-                        <span className="text-brand-orange">Technology</span>
+                        <span className="text-primary">Technology</span>
                     </h1>
-                    <p className="text-xl text-brand-teal/60 font-medium">
+                    <p className="text-xl text-secondary/60 font-medium">
                         The neural scaffolding for the next generation of industrial intelligence.
                     </p>
                 </motion.div>
-                <motion.p variants={fadeInUp} className="text-lg text-brand-teal/40 leading-relaxed max-w-lg">
+                <motion.p variants={fadeInUp} className="text-lg text-secondary/40 leading-relaxed max-w-lg">
                     Our infrastructure is defined by its resilience, its speed, and its ability to learn at scale. We combine the latest in high-performance compute with bespoke cognitive models.
                 </motion.p>
             </motion.div>
@@ -54,7 +54,7 @@ export default function TechnologyPage() {
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="relative"
             >
-                <div className="absolute inset-0 bg-brand-orange/10 blur-[120px] rounded-full" />
+                <div className="absolute inset-0 bg-primary/10 blur-[120px] rounded-full" />
                 <Image 
                     src="/technology_hero_visual.png"
                     alt="CoreLogic AI Infrastructure"
@@ -67,13 +67,13 @@ export default function TechnologyPage() {
       </section>
 
       {/* 2. Infrastructure Grid */}
-      <section className="py-32 bg-brand-teal text-white">
+      <section className="py-32 bg-secondary text-foreground">
         <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
                 <div className="space-y-4">
                     <h2 className="text-5xl font-black font-heading tracking-tighter uppercase">High-Performance <br />Infrastructure</h2>
                 </div>
-                <p className="max-w-md text-white/50 text-lg">
+                <p className="max-w-md text-foreground/50 text-lg">
                     We leverage NVIDIA H100 GPU clusters and custom silicon to power our most demanding neural operations.
                 </p>
             </div>
@@ -86,13 +86,13 @@ export default function TechnologyPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="p-10 border border-white/10 rounded-[2.5rem] hover:border-brand-orange/50 transition-colors group space-y-6"
+                        className="p-10 border border-foreground/10 rounded-[2.5rem] hover:border-primary/50 transition-colors group space-y-6"
                     >
-                        <div className="text-brand-orange group-hover:scale-110 transition-transform duration-500">
+                        <div className="text-primary group-hover:scale-110 transition-transform duration-500">
                             <s.icon size={48} />
                         </div>
                         <h3 className="text-2xl font-bold font-heading uppercase tracking-tight">{s.title}</h3>
-                        <p className="text-white/40 leading-relaxed text-sm">
+                        <p className="text-foreground/40 leading-relaxed text-sm">
                             {s.desc}
                         </p>
                     </motion.div>
@@ -105,15 +105,15 @@ export default function TechnologyPage() {
       <section className="py-32 max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
               <div className="lg:col-span-1 space-y-6">
-                  <span className="text-brand-orange font-bold tracking-[0.3em] uppercase text-sm">Our Stack</span>
+                  <span className="text-primary font-bold tracking-[0.3em] uppercase text-sm">Our Stack</span>
                   <h2 className="text-5xl font-black font-heading tracking-tighter uppercase">Built on the Best.</h2>
-                  <p className="text-brand-teal/50 leading-relaxed">
+                  <p className="text-secondary/50 leading-relaxed">
                       We utilize a modern, highly decoupled architecture that ensures maximum uptime and developer velocity.
                   </p>
               </div>
               <div className="lg:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-6">
                   {["Next.js", "React", "TypeScript", "Python", "PyTorch", "Terraform", "Docker", "Kubernetes", "Redis"].map((tech, i) => (
-                      <div key={i} className="bg-white p-6 rounded-2xl flex items-center justify-center font-black tracking-tight border border-brand-teal/5 shadow-sm text-brand-teal/80 hover:text-brand-orange hover:shadow-lg transition-all cursor-default">
+                      <div key={i} className="bg-white p-6 rounded-2xl flex items-center justify-center font-black tracking-tight border border-brand-teal/5 shadow-sm text-secondary/80 hover:text-primary hover:shadow-lg transition-all cursor-default">
                           {tech}
                       </div>
                   ))}

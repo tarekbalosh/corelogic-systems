@@ -35,7 +35,7 @@ export const StatsSection = () => {
   });
 
   return (
-    <section ref={ref} className="py-24 px-6 relative overflow-hidden">
+    <section ref={ref} className="py-24 px-6 relative overflow-hidden bg-white border-y border-gray-100">
       {/* Background radial glows */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-64 h-64 bg-primary/10 rounded-full blur-[120px]" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-64 h-64 bg-secondary/10 rounded-full blur-[120px]" />
@@ -54,23 +54,25 @@ export const StatsSection = () => {
               className="flex flex-col items-center text-center space-y-4"
             >
               <div className="relative">
-                <div className="text-6xl md:text-8xl font-black font-heading tracking-tighter tabular-nums flex items-baseline">
-                  {inView ? (
-                    <CountUp
-                      end={stat.value}
-                      duration={2.5}
-                      decimals={stat.decimals || 0}
-                      useEasing={true}
-                    />
-                  ) : (
-                    <span>0</span>
-                  )}
-                  <span className="text-primary text-4xl md:text-6xl">{stat.suffix}</span>
+                <div className="text-5xl md:text-7xl font-bold font-heading tracking-tight flex items-baseline justify-center">
+                  <span className="text-foreground">
+                    {inView ? (
+                      <CountUp
+                        end={stat.value}
+                        duration={2.5}
+                        decimals={stat.decimals || 0}
+                        useEasing={true}
+                      />
+                    ) : (
+                      <span>0</span>
+                    )}
+                  </span>
+                  <span className="text-primary text-3xl md:text-5xl ml-1">{stat.suffix}</span>
                 </div>
                 {/* Decorative line */}
-                <div className="h-1.5 w-1/2 bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto mt-2 rounded-full" />
+                <div className="h-1 w-1/3 bg-gradient-to-r from-transparent via-primary/20 to-transparent mx-auto mt-4 rounded-full" />
               </div>
-              <p className="text-lg font-bold text-white/50 tracking-widest uppercase">
+              <p className="text-sm md:text-base font-bold text-foreground/50 tracking-[0.2em] uppercase">
                 {stat.label}
               </p>
             </motion.div>

@@ -34,7 +34,7 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
         {title}
       </h2>
       {subtitle && (
-        <p className="max-w-2xl text-lg md:text-xl text-white/40 font-medium leading-relaxed mx-auto">
+        <p className="max-w-2xl text-lg md:text-xl text-foreground/60 font-medium leading-relaxed mx-auto">
           {subtitle}
         </p>
       )}

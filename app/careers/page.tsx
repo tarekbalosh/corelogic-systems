@@ -24,7 +24,7 @@ const jobs = [
 
 export default function CareersPage() {
   return (
-    <div className="bg-brand-cream min-h-screen text-brand-teal selection:bg-brand-orange/30">
+    <div className="bg-brand-cream min-h-screen text-secondary selection:bg-primary/30">
       {/* 1. Hero Portions */}
       <section className="pt-48 pb-32 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -35,17 +35,17 @@ export default function CareersPage() {
                 className="space-y-8"
             >
                 <motion.div variants={fadeInUp} className="space-y-4">
-                    <span className="text-brand-orange font-bold tracking-[0.3em] uppercase text-sm">Join the Collective</span>
+                    <span className="text-primary font-bold tracking-[0.3em] uppercase text-sm">Join the Collective</span>
                     <h1 className="text-6xl md:text-8xl font-black font-heading tracking-tighter uppercase leading-[0.9]">
                         Design the <br />
-                        <span className="text-brand-orange">Future.</span>
+                        <span className="text-primary">Future.</span>
                     </h1>
                 </motion.div>
-                <motion.p variants={fadeInUp} className="text-lg text-brand-teal/40 leading-relaxed max-w-lg">
+                <motion.p variants={fadeInUp} className="text-lg text-secondary/40 leading-relaxed max-w-lg">
                     CoreLogic Systems is a group of architects, engineers, and thinkers dedicated to bridging the gap between raw compute and cognitive intelligence. We are looking for extraordinary people to join our global missions.
                 </motion.p>
                 <motion.div variants={fadeInUp}>
-                    <button className="bg-brand-teal text-white px-10 py-5 rounded-full font-black tracking-widest uppercase text-sm hover:bg-brand-orange transition-all hover:scale-105 shadow-xl">
+                    <button className="bg-secondary text-foreground px-10 py-5 rounded-full font-black tracking-widest uppercase text-sm hover:bg-primary transition-all hover:scale-105 shadow-xl">
                         View Open Positions
                     </button>
                 </motion.div>
@@ -57,7 +57,7 @@ export default function CareersPage() {
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="relative"
             >
-                <div className="absolute inset-0 bg-brand-orange/10 blur-[120px] rounded-full" />
+                <div className="absolute inset-0 bg-primary/10 blur-[120px] rounded-full" />
                 <Image 
                     src="/careers_hero_visual.png"
                     alt="CoreLogic Collaborative Culture"
@@ -70,7 +70,7 @@ export default function CareersPage() {
       </section>
 
       {/* 2. Perks / Culture Section */}
-      <section className="py-32 bg-brand-teal text-white">
+      <section className="py-32 bg-secondary text-foreground">
         <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                 {[
@@ -78,10 +78,10 @@ export default function CareersPage() {
                    { title: "Health & Care", desc: "Comprehensive health, dental, and wellness support for you and your family.", icon: Heart },
                    { title: "Modern Setup", desc: "We provide the latest industrial hardware (NVIDIA workstations, Mac Studios) to power your work.", icon: Coffee }
                 ].map((p, i) => (
-                    <div key={i} className="space-y-6 p-10 bg-white/5 border border-white/5 rounded-[2.5rem] hover:bg-white/10 transition-colors">
-                        <div className="text-brand-orange"><p.icon size={32} /></div>
+                    <div key={i} className="space-y-6 p-10 bg-foreground/5 border border-foreground/5 rounded-[2.5rem] hover:bg-foreground/10 transition-colors">
+                        <div className="text-primary"><p.icon size={32} /></div>
                         <h3 className="text-2xl font-bold font-heading uppercase">{p.title}</h3>
-                        <p className="text-white/40 leading-relaxed font-light">{p.desc}</p>
+                        <p className="text-foreground/40 leading-relaxed font-light">{p.desc}</p>
                     </div>
                 ))}
             </div>
@@ -92,8 +92,8 @@ export default function CareersPage() {
       <section className="py-32 max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
               <h2 className="text-5xl font-black font-heading tracking-tighter uppercase">Active <br />Openings</h2>
-              <div className="flex items-center gap-4 text-brand-teal/40 font-bold uppercase text-xs tracking-widest">
-                  <span className="text-brand-orange">4</span> Total positions available
+              <div className="flex items-center gap-4 text-secondary/40 font-bold uppercase text-xs tracking-widest">
+                  <span className="text-primary">4</span> Total positions available
               </div>
           </div>
 
@@ -105,23 +105,23 @@ export default function CareersPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="group flex flex-col md:flex-row md:items-center justify-between p-10 bg-white border border-brand-teal/5 rounded-3xl hover:border-brand-orange hover:shadow-2xl transition-all duration-300 gap-8"
+                    className="group flex flex-col md:flex-row md:items-center justify-between p-10 bg-white border border-brand-teal/5 rounded-3xl hover:border-primary hover:shadow-2xl transition-all duration-300 gap-8"
                   >
                         <div className="space-y-4">
                             <div className="flex items-center gap-3">
-                                <span className="text-[10px] font-black uppercase tracking-widest text-brand-orange px-3 py-1 bg-brand-orange/10 rounded-full">
+                                <span className="text-[10px] font-black uppercase tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">
                                     {j.team}
                                 </span>
                             </div>
-                            <h3 className="text-3xl font-black font-heading tracking-tighter uppercase group-hover:text-brand-orange transition-colors">
+                            <h3 className="text-3xl font-black font-heading tracking-tighter uppercase group-hover:text-primary transition-colors">
                                 {j.title}
                             </h3>
                         </div>
                         
-                        <div className="flex flex-wrap items-center gap-8 text-brand-teal/40 font-bold text-xs tracking-widest uppercase">
-                            <div className="flex items-center gap-2"><MapPin size={16} className="text-brand-orange" /> {j.location}</div>
-                            <div className="flex items-center gap-2"><Clock size={16} className="text-brand-orange" /> {j.type}</div>
-                            <button className="w-12 h-12 rounded-full border border-brand-teal/10 flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white group-hover:border-brand-orange transition-all">
+                        <div className="flex flex-wrap items-center gap-8 text-secondary/40 font-bold text-xs tracking-widest uppercase">
+                            <div className="flex items-center gap-2"><MapPin size={16} className="text-primary" /> {j.location}</div>
+                            <div className="flex items-center gap-2"><Clock size={16} className="text-primary" /> {j.type}</div>
+                            <button className="w-12 h-12 rounded-full border border-brand-teal/10 flex items-center justify-center group-hover:bg-primary group-hover:text-foreground group-hover:border-primary transition-all">
                                 <ArrowRight size={20} />
                             </button>
                         </div>

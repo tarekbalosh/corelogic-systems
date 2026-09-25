@@ -15,8 +15,15 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "CoreLogic Systems | Futuristic AI Solutions",
-  description: "Advanced AI infrastructure and systems inspired by the future. High-performance, scalable, and secure.",
+  title: {
+    default: "CoreLogic Systems | B2B Software Development Malaysia",
+    template: "%s | CoreLogic Systems"
+  },
+  description: "CoreLogic Systems is a leading B2B software development company offering custom enterprise web development, AI automation solutions, and mobile apps.",
+  keywords: ["software development company Malaysia", "B2B AI automation services", "enterprise web development"],
+  alternates: {
+    canonical: "https://corelogic.my",
+  }
 };
 
 export default function RootLayout({
@@ -34,6 +41,27 @@ export default function RootLayout({
         className="antialiased bg-background text-foreground min-h-screen"
         suppressHydrationWarning
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "CoreLogic Systems",
+              "url": "https://corelogic.my",
+              "logo": "https://corelogic.my/logo.png",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+60-123-456-789",
+                "contactType": "customer service"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/corelogic-systems",
+                "https://twitter.com/corelogicsys"
+              ]
+            })
+          }}
+        />
         <div className="relative flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>

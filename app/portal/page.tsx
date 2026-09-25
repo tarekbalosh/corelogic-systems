@@ -16,7 +16,7 @@ export default function PortalPage() {
         className="w-full max-w-xl bg-white rounded-[3rem] p-12 md:p-16 shadow-[0_40px_100px_rgba(0,0,0,0.1)] border border-brand-teal/5 relative overflow-hidden"
       >
         {/* Background Decorative Item */}
-        <div className="absolute top-0 right-0 p-8 text-brand-orange opacity-10">
+        <div className="absolute top-0 right-0 p-8 text-primary opacity-10">
             <Triangle size={120} className="rotate-45" />
         </div>
 
@@ -25,57 +25,57 @@ export default function PortalPage() {
           <div className="text-center space-y-6">
             <div className="flex justify-center">
               <Link href="/" className="flex items-center gap-3 group">
-                <div className="w-12 h-12 flex items-center justify-center text-brand-orange group-hover:rotate-12 transition-transform">
+                <div className="w-12 h-12 flex items-center justify-center text-primary group-hover:rotate-12 transition-transform">
                   <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 4L28 26H4L16 4Z" fill="currentColor" />
                     <path d="M16 10L24 24H8L16 10Z" fill="white" />
                   </svg>
                 </div>
-                <span className="text-2xl font-black tracking-[0.2em] font-heading text-brand-teal uppercase">CORELOGIC</span>
+                <span className="text-2xl font-black tracking-[0.2em] font-heading text-secondary uppercase">CORELOGIC</span>
               </Link>
             </div>
             <div className="space-y-2">
                 <h1 className="text-4xl font-black font-heading tracking-tighter uppercase">Client Portal</h1>
-                <p className="text-brand-teal/40 font-bold uppercase text-xs tracking-widest">Authorized Access Only</p>
+                <p className="text-secondary/40 font-bold uppercase text-xs tracking-widest">Authorized Access Only</p>
             </div>
           </div>
 
           {/* Login Form */}
           <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
             <div className="space-y-2">
-              <label className="text-[11px] font-black uppercase tracking-widest text-brand-teal/60 ml-4">Identifier</label>
+              <label className="text-[11px] font-black uppercase tracking-widest text-secondary/60 ml-4">Identifier</label>
               <div className="relative group">
-                <User className="absolute left-6 top-1/2 -translate-y-1/2 text-brand-teal/20 group-focus-within:text-brand-orange transition-colors" size={20} />
+                <User className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20 group-focus-within:text-primary transition-colors" size={20} />
                 <input 
                   type="text" 
                   placeholder="Enter username or email" 
-                  className="w-full bg-brand-cream/50 border border-brand-teal/5 rounded-2xl py-5 pl-14 pr-6 focus:outline-none focus:border-brand-orange focus:bg-white transition-all text-sm font-medium"
+                  className="w-full bg-brand-cream/50 border border-brand-teal/5 rounded-2xl py-5 pl-14 pr-6 focus:outline-none focus:border-primary focus:bg-white transition-all text-sm font-medium"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-[11px] font-black uppercase tracking-widest text-brand-teal/60 ml-4">Passkey</label>
+              <label className="text-[11px] font-black uppercase tracking-widest text-secondary/60 ml-4">Passkey</label>
               <div className="relative group">
-                <Lock className="absolute left-6 top-1/2 -translate-y-1/2 text-brand-teal/20 group-focus-within:text-brand-orange transition-colors" size={20} />
+                <Lock className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20 group-focus-within:text-primary transition-colors" size={20} />
                 <input 
                   type="password" 
                   placeholder="••••••••••••" 
-                  className="w-full bg-brand-cream/50 border border-brand-teal/5 rounded-2xl py-5 pl-14 pr-6 focus:outline-none focus:border-brand-orange focus:bg-white transition-all text-sm font-medium uppercase tracking-widest"
+                  className="w-full bg-brand-cream/50 border border-brand-teal/5 rounded-2xl py-5 pl-14 pr-6 focus:outline-none focus:border-primary focus:bg-white transition-all text-sm font-medium uppercase tracking-widest"
                 />
               </div>
             </div>
 
-            <button className="w-full bg-brand-teal text-white py-6 rounded-2xl font-black tracking-widest uppercase text-sm hover:bg-brand-orange transition-all hover:shadow-[0_20px_40px_rgba(12,43,43,0.15)] flex items-center justify-center gap-3 overflow-hidden group">
+            <button className="w-full bg-secondary text-foreground py-6 rounded-2xl font-black tracking-widest uppercase text-sm hover:bg-primary transition-all hover:shadow-[0_20px_40px_rgba(12,43,43,0.15)] flex items-center justify-center gap-3 overflow-hidden group">
                 <span className="group-hover:translate-x-1 transition-transform">Initialize Access</span>
-                <ArrowRight size={18} className="text-brand-orange group-hover:translate-x-2 transition-transform" />
+                <ArrowRight size={18} className="text-primary group-hover:translate-x-2 transition-transform" />
             </button>
           </form>
 
           {/* Footer Links */}
-          <div className="flex justify-between items-center text-[11px] font-bold tracking-widest uppercase text-brand-teal/40">
-                <Link href="#" className="hover:text-brand-orange transition-colors">Emergency Protocol</Link>
-                <Link href="#" className="flex items-center gap-2 hover:text-brand-orange transition-colors border-b border-brand-orange/20 pb-1">
+          <div className="flex justify-between items-center text-[11px] font-bold tracking-widest uppercase text-secondary/40">
+                <Link href="#" className="hover:text-primary transition-colors">Emergency Protocol</Link>
+                <Link href="#" className="flex items-center gap-2 hover:text-primary transition-colors border-b border-primary/20 pb-1">
                     <ShieldCheck size={14} /> Recovery Systems
                 </Link>
           </div>

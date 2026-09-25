@@ -55,7 +55,7 @@ const coreServices = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-brand-cream min-h-screen text-brand-teal selection:bg-brand-orange/30">
+    <div className="bg-brand-cream min-h-screen text-secondary selection:bg-primary/30">
       <div className="pt-40 pb-32 max-w-7xl mx-auto px-6">
         <motion.div
            initial="hidden"
@@ -66,9 +66,9 @@ export default function ServicesPage() {
           {/* Hero Portion */}
           <motion.div variants={fadeInUp} className="text-center max-w-3xl mx-auto space-y-6">
             <h1 className="text-6xl md:text-8xl font-black font-heading tracking-tighter uppercase leading-none">
-              Our <span className="text-brand-orange">Services</span>
+              Our <span className="text-primary">Services</span>
             </h1>
-            <p className="text-xl text-brand-teal/60 font-medium">
+            <p className="text-xl text-secondary/60 font-medium">
               We deliver industrial-grade digital solutions powered by state-of-the-art AI.
             </p>
           </motion.div>
@@ -82,23 +82,23 @@ export default function ServicesPage() {
                 className="bg-white p-12 rounded-[2rem] border border-brand-teal/5 shadow-[0_20px_60px_rgba(0,0,0,0.05)] group hover:shadow-[0_20px_80px_rgba(229,154,53,0.1)] transition-all duration-500"
               >
                 <div className="flex flex-col md:flex-row gap-10">
-                    <div className="w-16 h-16 shrink-0 rounded-2xl bg-brand-teal/5 flex items-center justify-center text-brand-orange group-hover:bg-brand-orange group-hover:text-white transition-all duration-500">
+                    <div className="w-16 h-16 shrink-0 rounded-2xl bg-secondary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-foreground transition-all duration-500">
                         <s.icon size={32} />
                     </div>
                     <div className="space-y-6">
                         <h2 className="text-4xl font-black font-heading tracking-tighter uppercase">{s.title}</h2>
-                        <p className="text-lg text-brand-teal/50 leading-relaxed">
+                        <p className="text-lg text-secondary/50 leading-relaxed">
                             {s.description}
                         </p>
                         <ul className="flex flex-wrap gap-3">
                             {s.details.map((detail, idx) => (
-                                <li key={idx} className="px-4 py-1.5 rounded-full bg-brand-teal/5 text-[13px] font-bold tracking-wider uppercase text-brand-teal/60">
+                                <li key={idx} className="px-4 py-1.5 rounded-full bg-secondary/5 text-[13px] font-bold tracking-wider uppercase text-secondary/60">
                                     {detail}
                                 </li>
                             ))}
                         </ul>
                         <Link href="/contact">
-                          <button className="flex items-center gap-3 text-sm font-bold tracking-widest uppercase text-brand-orange mt-6 group/btn">
+                          <button className="flex items-center gap-3 text-sm font-bold tracking-widest uppercase text-primary mt-6 group/btn">
                              Project Inquiry <ArrowRight size={18} className="group-hover/btn:translate-x-2 transition-transform" />
                           </button>
                         </Link>

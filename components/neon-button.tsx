@@ -18,9 +18,9 @@ export const NeonButton = React.forwardRef<HTMLButtonElement, NeonButtonProps>(
     };
 
     const variantClasses = {
-      primary: "bg-gradient-to-r from-purple-glow to-cyan-glow text-white shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)]",
-      secondary: "bg-surface text-cyan-glow border border-cyan-glow/30 hover:border-cyan-glow shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:shadow-[0_0_25px_rgba(6,182,212,0.4)]",
-      outline: "bg-transparent text-white border border-white/10 hover:border-white/30 hover:bg-white/5",
+      primary: "bg-gradient-to-r from-purple-glow to-cyan-glow text-foreground shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)]",
+      secondary: "bg-surface text-cyan-glow border border-cyan-glow/30 hover:border-cyan-glow shadow-[0_0_15px_rgba(14,165,233,0.2)] hover:shadow-[0_0_25px_rgba(14,165,233,0.4)]",
+      outline: "bg-transparent text-foreground border border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5",
     };
 
     return (

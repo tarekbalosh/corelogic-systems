@@ -70,19 +70,19 @@ export const ServicesGrid = () => {
               className="h-full group"
             >
               <div className="flex flex-col h-full space-y-6">
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10 w-fit group-hover:bg-primary/20 transition-colors duration-500">
-                  <service.icon size={28} className="text-white group-hover:text-primary transition-colors" />
+                <div className="p-3 rounded-xl bg-foreground/5 border border-foreground/10 w-fit group-hover:bg-primary/20 transition-colors duration-500">
+                  <service.icon size={28} className="text-foreground group-hover:text-primary transition-colors" />
                 </div>
                 
                 <div className="space-y-3 flex-1">
                   <h3 className="text-2xl font-bold font-heading">{service.title}</h3>
-                  <p className="text-white/50 text-base leading-relaxed">
+                  <p className="text-foreground/70 text-base leading-relaxed">
                     {service.description}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-auto border-t border-white/5 lg:border-none">
-                  <button className="w-full lg:w-auto flex items-center justify-center lg:justify-start gap-2 text-sm font-bold text-white bg-white/5 lg:bg-transparent py-4 lg:py-0 rounded-full lg:rounded-none hover:bg-white/10 lg:hover:bg-transparent lg:group-hover:text-secondary lg:group-hover:translate-x-2 transition-all duration-300">
+                <div className="pt-6 mt-auto border-t border-foreground/10 lg:border-none">
+                  <button className="w-full lg:w-auto flex items-center justify-center lg:justify-start gap-2 text-sm font-bold text-foreground bg-foreground/5 lg:bg-transparent py-4 lg:py-0 rounded-full lg:rounded-none hover:bg-foreground/10 lg:hover:bg-transparent lg:group-hover:text-secondary lg:group-hover:translate-x-2 transition-all duration-300">
                     Learn More <ArrowRight size={16} className="text-primary lg:text-inherit" />
                   </button>
                 </div>

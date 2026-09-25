@@ -61,11 +61,11 @@ export default function AiSolutionsPage() {
                     
                     <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="space-y-8">
                         <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-black font-heading tracking-tighter leading-[1.1]">
-                            AI Solutions <br />
-                            <span className="text-gradient">& Automation</span>
+                            Intelligent <br />
+                            <span className="text-gradient">AI Automation Services</span>
                         </motion.h1>
-                        <motion.p variants={fadeInUp} className="text-lg md:text-xl text-white/50 max-w-lg leading-relaxed font-medium">
-                            Transform your business with intelligent automation and bespoke AI-powered systems. Achieve unparalleled operational speed and accuracy.
+                        <motion.p variants={fadeInUp} className="text-lg md:text-xl text-foreground/50 max-w-lg leading-relaxed font-medium">
+                            Unlock unprecedented efficiency with our advanced <strong>AI automation services</strong>. We partner with B2B enterprises globally to integrate intelligent workflows. Transform your business and achieve unparalleled operational speed.
                         </motion.p>
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
                             <Link href="/contact" className="w-full sm:w-auto">
@@ -102,7 +102,7 @@ export default function AiSolutionsPage() {
             </section>
 
             {/* 2. About the Service */}
-            <section className="py-24 px-6 relative border-y border-white/5 bg-white/[0.02]">
+            <section className="py-24 px-6 relative border-y border-foreground/5 bg-white/[0.02]">
                 <div className="max-w-5xl mx-auto text-center space-y-8">
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
                         <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-secondary mb-4">Value Proposition</h2>
@@ -110,7 +110,7 @@ export default function AiSolutionsPage() {
                             Cut Costs. <span className="text-gradient">Accelerate Growth.</span>
                         </h3>
                     </motion.div>
-                    <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-lg md:text-xl text-white/60 leading-relaxed max-w-4xl mx-auto">
+                    <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-lg md:text-xl text-foreground/60 leading-relaxed max-w-4xl mx-auto">
                         Integrating Artificial Intelligence isn’t about replacing humans; it’s about elevating them. By intelligently automating repetitive manual workflows and deploying rapid data analysis, we allow your core team to pivot away from administrative drudgery and squarely onto high-impact strategic initiatives.
                     </motion.p>
                 </div>
@@ -122,7 +122,7 @@ export default function AiSolutionsPage() {
                 <div className="max-w-7xl mx-auto space-y-16 relative z-10">
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center">
                         <h2 className="text-4xl md:text-5xl font-black font-heading tracking-tighter">Our AI <span className="text-gradient">Services</span></h2>
-                        <p className="text-white/50 mt-4 text-lg">Sophisticated architectures converted into practical business tools.</p>
+                        <p className="text-foreground/50 mt-4 text-lg">Sophisticated architectures converted into practical business tools.</p>
                     </motion.div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -135,11 +135,11 @@ export default function AiSolutionsPage() {
                                 variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } } }}
                                 className="glass-card p-8 rounded-[2rem] group hover:border-secondary/30 transition-all duration-300"
                             >
-                                <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-300 mb-6 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+                                <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-foreground transition-all duration-300 mb-6 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
                                     <sol.icon size={28} />
                                 </div>
                                 <h3 className="text-xl font-bold font-heading tracking-tight mb-4 group-hover:text-secondary transition-colors">{sol.title}</h3>
-                                <p className="text-white/60 leading-relaxed text-sm">{sol.desc}</p>
+                                <p className="text-foreground/60 leading-relaxed text-sm">{sol.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -147,7 +147,7 @@ export default function AiSolutionsPage() {
             </section>
 
             {/* 4. Key Benefits & 5. Use Cases Combined Layout */}
-            <section className="py-32 px-6 bg-surface border-y border-white/5 relative">
+            <section className="py-32 px-6 bg-surface border-y border-foreground/5 relative">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
                    
                    {/* Left: Benefits */}
@@ -166,12 +166,12 @@ export default function AiSolutionsPage() {
                                     variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { delay: i * 0.1 } } }}
                                     className="flex gap-4 items-start group"
                                 >
-                                    <div className="shrink-0 p-3 rounded-xl bg-white/5 text-primary group-hover:text-secondary transition-colors">
+                                    <div className="shrink-0 p-3 rounded-xl bg-foreground/5 text-primary group-hover:text-secondary transition-colors">
                                         <feat.icon size={24} />
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-bold font-heading mb-1">{feat.title}</h3>
-                                        <p className="text-white/50 text-sm leading-relaxed">{feat.desc}</p>
+                                        <p className="text-foreground/50 text-sm leading-relaxed">{feat.desc}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -181,8 +181,8 @@ export default function AiSolutionsPage() {
                     {/* Right: Use Cases */}
                     <div className="space-y-12">
                          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-                            <h2 className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-white">Targeted <span className="text-primary">Use Cases</span></h2>
-                            <p className="text-white/50 mt-4">We deliver pre-trained foundational success across multiple domains.</p>
+                            <h2 className="text-3xl md:text-4xl font-black font-heading tracking-tighter text-foreground">Targeted <span className="text-primary">Use Cases</span></h2>
+                            <p className="text-foreground/50 mt-4">We deliver pre-trained foundational success across multiple domains.</p>
                         </motion.div>
                         
                         <div className="flex flex-wrap gap-4">
@@ -193,7 +193,7 @@ export default function AiSolutionsPage() {
                                      whileInView="visible"
                                      viewport={{ once: true }}
                                      variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1, transition: { delay: i * 0.05 } } }}
-                                     className="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-semibold tracking-wide flex items-center gap-2 hover:bg-white/10 hover:border-white/30 transition-all cursor-default"
+                                     className="px-6 py-3 rounded-full border border-foreground/10 bg-foreground/5 text-sm font-semibold tracking-wide flex items-center gap-2 hover:bg-foreground/10 hover:border-foreground/30 transition-all cursor-default"
                                 >
                                     <CheckCircle2 size={16} className="text-secondary" />
                                     {industry}
@@ -209,10 +209,10 @@ export default function AiSolutionsPage() {
             <section className="py-32 px-6 max-w-7xl mx-auto lg:px-8">
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-24">
                     <h2 className="text-4xl md:text-5xl font-black font-heading tracking-tighter">How It <span className="text-gradient">Works</span></h2>
-                    <p className="text-white/50 mt-4 text-lg">A zero-friction integration strategy.</p>
+                    <p className="text-foreground/50 mt-4 text-lg">A zero-friction integration strategy.</p>
                 </motion.div>
 
-                <div className="relative border-l-2 border-white/10 ml-6 md:ml-12 pl-10 md:pl-16 space-y-20">
+                <div className="relative border-l-2 border-foreground/10 ml-6 md:ml-12 pl-10 md:pl-16 space-y-20">
                     {processSteps.map((step, i) => (
                          <motion.div 
                             key={i}
@@ -223,16 +223,16 @@ export default function AiSolutionsPage() {
                             className="relative group"
                          >
                             <div className="absolute -left-[45px] md:-left-[71px] top-1 w-6 h-6 rounded-full bg-background border-2 border-secondary group-hover:bg-secondary group-hover:shadow-[0_0_15px_rgba(6,182,212,0.6)] transition-all duration-300 z-10" />
-                            <div className="hidden md:block absolute -left-[56px] top-4 w-10 h-0.5 bg-white/10 group-hover:bg-secondary/50 transition-colors" />
+                            <div className="hidden md:block absolute -left-[56px] top-4 w-10 h-0.5 bg-foreground/10 group-hover:bg-secondary/50 transition-colors" />
                             
-                            <div className="glass-card p-8 rounded-2xl border-white/5 hover:border-secondary/20 transition-colors duration-300">
+                            <div className="glass-card p-8 rounded-2xl border-foreground/5 hover:border-secondary/20 transition-colors duration-300">
                                 <div className="flex items-center gap-4 mb-4">
-                                     <div className="p-3 rounded-lg bg-white/5 text-secondary">
+                                     <div className="p-3 rounded-lg bg-foreground/5 text-secondary">
                                         <step.icon size={24} />
                                      </div>
-                                     <h3 className="text-2xl font-bold font-heading tracking-tight text-white/90">{step.title}</h3>
+                                     <h3 className="text-2xl font-bold font-heading tracking-tight text-foreground/90">{step.title}</h3>
                                 </div>
-                                <p className="text-white/60 leading-relaxed">{step.desc}</p>
+                                <p className="text-foreground/60 leading-relaxed">{step.desc}</p>
                             </div>
                          </motion.div>
                     ))}
@@ -240,7 +240,7 @@ export default function AiSolutionsPage() {
             </section>
 
             {/* 7. Why Choose Us */}
-            <section className="py-24 px-6 bg-surface border-t border-white/5">
+            <section className="py-24 px-6 bg-surface border-t border-foreground/5">
                  <div className="max-w-7xl mx-auto">
                     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-black font-heading tracking-tighter">Why Choose <span className="text-primary">CoreLogic</span></h2>
@@ -260,7 +260,7 @@ export default function AiSolutionsPage() {
                                     <reason.icon size={24} />
                                 </div>
                                 <h4 className="font-bold font-heading text-[15px] mb-2">{reason.title}</h4>
-                                <p className="text-white/50 text-[13px]">{reason.desc}</p>
+                                <p className="text-foreground/50 text-[13px]">{reason.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -275,13 +275,13 @@ export default function AiSolutionsPage() {
                         whileInView="visible" 
                         viewport={{ once: true }} 
                         variants={fadeInUp}
-                        className="glass-dark p-12 md:p-20 rounded-[3rem] text-center relative overflow-hidden border border-white/10 shadow-[0_0_60px_rgba(6,182,212,0.1)]"
+                        className="glass-dark p-12 md:p-20 rounded-[3rem] text-center relative overflow-hidden border border-foreground/10 shadow-[0_0_60px_rgba(6,182,212,0.1)]"
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-transparent to-primary/20 opacity-50" />
                         
                         <div className="relative z-10 space-y-8">
-                            <h2 className="text-4xl md:text-6xl font-black font-heading tracking-tighter text-white">Ready to <span className="text-gradient">Automate?</span></h2>
-                            <p className="text-xl text-white/70 max-w-2xl mx-auto font-medium">
+                            <h2 className="text-4xl md:text-6xl font-black font-heading tracking-tighter text-foreground">Ready to <span className="text-gradient">Automate?</span></h2>
+                            <p className="text-xl text-foreground/70 max-w-2xl mx-auto font-medium">
                                 Leap ahead of the competition by unleashing the full power of Artificial Intelligence within your organization today.
                             </p>
                             <div className="pt-6 flex justify-center">

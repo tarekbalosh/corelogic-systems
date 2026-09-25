@@ -9,7 +9,7 @@ import { PortfolioMasonry } from "@/components/portfolio-masonry";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-navy text-white selection:bg-primary/30">
+    <div className="relative min-h-screen bg-background text-foreground selection:bg-primary/30">
       {/* Immersive Particle Background (Fixed) */}
       <ParticleBackground />
 

@@ -57,7 +57,7 @@ const industries = [
 
 export default function CustomSoftwareDevelopmentPage() {
   return (
-    <div className="bg-[#050915] min-h-screen text-white overflow-hidden">
+    <div className="bg-[#050915] min-h-screen text-foreground overflow-hidden">
       
       {/* 1. Hero Section */}
       <section className="relative pt-48 pb-32 px-6 min-h-[90vh] flex items-center justify-center">
@@ -80,12 +80,12 @@ export default function CustomSoftwareDevelopmentPage() {
               Custom Software <br />
               <span className="text-gradient drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">Development</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-white/70 font-light max-w-2xl mx-auto leading-relaxed">
+            <motion.p variants={fadeInUp} className="text-lg md:text-2xl text-foreground/70 font-light max-w-2xl mx-auto leading-relaxed">
               We build tailor-made software solutions designed specifically for your business needs.
             </motion.p>
             <motion.div variants={fadeInUp} className="pt-8">
               <Link href="/contact">
-                <button className="group relative px-8 py-4 bg-secondary text-white text-lg font-bold tracking-widest uppercase rounded-full overflow-hidden hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.4)]">
+                <button className="group relative px-8 py-4 bg-secondary text-foreground text-lg font-bold tracking-widest uppercase rounded-full overflow-hidden hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.4)]">
                   <span className="relative z-10">Request a Free Consultation</span>
                   <div className="absolute inset-0 h-full w-0 bg-primary transition-all duration-300 ease-out group-hover:w-full z-0" />
                 </button>
@@ -109,7 +109,7 @@ export default function CustomSoftwareDevelopmentPage() {
               Not Another Template
             </div>
             <h2 className="text-4xl md:text-5xl font-black font-heading tracking-tighter">Your Business Is Unique. <br/>Your Software Should Be Too.</h2>
-            <p className="text-white/60 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-light">
+            <p className="text-foreground/60 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-light">
               Generic software comes with limits. At CoreLogic, we don't believe in forcing your workflow into pre-built templates. 
               We engineer custom enterprise-grade software from the ground up, designed to solve your exact business problems, automate your redundant tasks, and drastically improve your operational efficiency. Let us build the digital backbone your business deserves.
             </p>
@@ -132,13 +132,13 @@ export default function CustomSoftwareDevelopmentPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="glass-card p-10 space-y-6 group rounded-[2rem] border-white/5 hover:border-secondary/30"
+                className="glass-card p-10 space-y-6 group rounded-[2rem] border-foreground/5 hover:border-secondary/30"
               >
-                <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-2 group-hover:shadow-[0_10px_20px_rgba(6,182,212,0.3)]">
+                <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-foreground transition-all duration-500 transform group-hover:-translate-y-2 group-hover:shadow-[0_10px_20px_rgba(6,182,212,0.3)]">
                   <item.icon size={32} />
                 </div>
-                <h3 className="text-2xl font-black font-heading capitalize text-white">{item.title}</h3>
-                <p className="text-white/50 leading-relaxed font-light text-sm">
+                <h3 className="text-2xl font-black font-heading capitalize text-foreground">{item.title}</h3>
+                <p className="text-foreground/50 leading-relaxed font-light text-sm">
                   {item.desc}
                 </p>
               </motion.div>
@@ -156,14 +156,14 @@ export default function CustomSoftwareDevelopmentPage() {
           
           <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6 order-2 lg:order-1">
             {features.map((feature, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 hover:border-secondary/40 transition-all duration-300 shadow-xl">
+              <div key={idx} className="bg-foreground/5 border border-foreground/10 p-8 rounded-3xl hover:bg-foreground/10 hover:border-secondary/40 transition-all duration-300 shadow-xl">
                 <div className="flex items-start gap-5">
                   <div className="mt-1 text-secondary">
                     <feature.icon size={24} />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold font-heading mb-2 text-white">{feature.title}</h4>
-                    <p className="text-white/50 text-sm leading-relaxed">{feature.desc}</p>
+                    <h4 className="text-xl font-bold font-heading mb-2 text-foreground">{feature.title}</h4>
+                    <p className="text-foreground/50 text-sm leading-relaxed">{feature.desc}</p>
                   </div>
                 </div>
               </div>
@@ -173,14 +173,14 @@ export default function CustomSoftwareDevelopmentPage() {
           <div className="lg:col-span-4 space-y-8 order-1 lg:order-2">
             <div className="space-y-4">
               <h2 className="text-4xl md:text-5xl font-black font-heading tracking-tighter">Why Choose <br/><span className="text-gradient">CoreLogic.</span></h2>
-              <p className="text-white/60 leading-relaxed font-light">
+              <p className="text-foreground/60 leading-relaxed font-light">
                 We are partners in your digitalization journey. Our approach focuses entirely on your business goals, resulting in highly scalable systems that grow with you.
               </p>
             </div>
             
             <ul className="space-y-4">
               {["Fully tailored solutions", "Focus on business goals", "Scalable architecture", "Long-term maintenance", "Fast & efficient delivery"].map((point, i) => (
-                <li key={i} className="flex items-center gap-3 text-white/80 font-medium tracking-wide">
+                <li key={i} className="flex items-center gap-3 text-foreground/80 font-medium tracking-wide">
                   <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                     <ShieldCheck size={14} />
                   </div>
@@ -194,7 +194,7 @@ export default function CustomSoftwareDevelopmentPage() {
       </section>
 
       {/* 5. Development Process */}
-      <section className="py-24 px-6 bg-[#02040a] relative border-y border-white/5">
+      <section className="py-24 px-6 bg-[#02040a] relative border-y border-foreground/5">
         <div className="max-w-7xl mx-auto">
           <SectionTitle 
             title="Our Strategy" 
@@ -214,13 +214,13 @@ export default function CustomSoftwareDevelopmentPage() {
                 transition={{ delay: idx * 0.1 }}
                 className="relative flex flex-col items-center text-center group"
               >
-                <div className="w-24 h-24 rounded-full bg-[#050915] border-2 border-white/10 flex items-center justify-center relative z-10 group-hover:border-secondary transition-colors shadow-2xl">
+                <div className="w-24 h-24 rounded-full bg-[#050915] border-2 border-foreground/10 flex items-center justify-center relative z-10 group-hover:border-secondary transition-colors shadow-2xl">
                   <span className="text-3xl font-black font-heading text-transparent bg-clip-text bg-gradient-to-br from-white to-white/30 group-hover:from-secondary group-hover:to-primary">
                     {step.num}
                   </span>
                 </div>
                 <h3 className="text-xl font-bold font-heading mt-6 mb-3 group-hover:text-secondary transition-colors">{step.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed font-light">{step.desc}</p>
+                <p className="text-foreground/50 text-sm leading-relaxed font-light">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -233,7 +233,7 @@ export default function CustomSoftwareDevelopmentPage() {
           <h2 className="text-3xl md:text-4xl font-black font-heading tracking-tighter">Industries We Empower</h2>
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
             {industries.map((ind, i) => (
-              <div key={i} className="flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 text-white/70 hover:text-white hover:bg-white/10 hover:border-primary/50 transition-all font-medium text-sm cursor-default">
+              <div key={i} className="flex items-center gap-3 px-6 py-3 rounded-full border border-foreground/10 bg-foreground/5 text-foreground/70 hover:text-foreground hover:bg-foreground/10 hover:border-primary/50 transition-all font-medium text-sm cursor-default">
                 <ind.icon size={16} className="text-primary" />
                 {ind.name}
               </div>
