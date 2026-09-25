@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Triangle, Menu, X, ArrowRight } from "lucide-react";
+import { ChevronDown, Triangle, Menu, X, ArrowRight, Globe, Bot, Smartphone, Code2, PenTool } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { NeonButton } from "./neon-button";
@@ -15,11 +15,11 @@ const navLinks = [
 ];
 
 const services = [
-  { name: "Web Application Development", href: "/services/web-dev" },
-  { name: "AI Solutions & Automation", href: "/services/ai-automation" },
-  { name: "Mobile App Development", href: "/services/mobile-dev" },
-  { name: "Custom Software Development", href: "/services/software-dev" },
-  { name: "UI/UX Design", href: "/services/design" },
+  { name: "Web Application Development", description: "Modern, responsive, and scalable web apps.", href: "/services/web-dev", icon: Globe },
+  { name: "AI Solutions & Automation", description: "Smart AI integration for your workflows.", href: "/services/ai-automation", icon: Bot },
+  { name: "Mobile App Development", description: "Native and cross-platform mobile experiences.", href: "/services/mobile-dev", icon: Smartphone },
+  { name: "Custom Software Development", description: "Tailored software built for your business needs.", href: "/services/software-dev", icon: Code2 },
+  { name: "UI/UX Design", description: "Beautiful, user-centric interface design.", href: "/services/design", icon: PenTool },
 ];
 
 export const Navbar = () => {
@@ -99,20 +99,38 @@ export const Navbar = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-[40px] left-1/2 -translate-x-1/2 w-72 bg-foreground/95 backdrop-blur-xl border border-foreground/5 shadow-[0_20px_40px_rgba(0,0,0,0.08)] z-[100] rounded-2xl overflow-hidden p-2"
+                        className="absolute top-[50px] left-1/2 -translate-x-1/2 w-[420px] bg-background/90 backdrop-blur-2xl border border-foreground/10 shadow-[0_40px_80px_rgba(0,0,0,0.15)] z-[100] rounded-3xl overflow-hidden p-3"
                       >
-                        <div className="flex flex-col">
+                        <div className="flex flex-col gap-1">
                           {services.map((service) => (
                             <Link
                               key={service.name}
                               href={service.href}
                               className={cn(
-                                "px-4 py-3 text-[13px] font-medium transition-all duration-300 rounded-xl flex items-center justify-between group/item",
-                                pathname === service.href ? "bg-primary/5 text-primary" : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
+                                "p-3 text-[14px] font-medium transition-all duration-300 rounded-2xl flex items-start gap-4 group/item relative overflow-hidden",
+                                pathname === service.href ? "bg-primary/10 text-primary" : "hover:bg-foreground/5"
                               )}
                             >
-                              {service.name}
-                              <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-primary" />
+                              <div className={cn(
+                                "p-2.5 rounded-xl shrink-0 transition-all duration-300 relative z-10",
+                                pathname === service.href ? "bg-primary text-primary-foreground" : "bg-foreground/5 text-foreground/60 group-hover/item:bg-primary group-hover/item:text-primary-foreground group-hover/item:shadow-lg group-hover/item:shadow-primary/30 group-hover/item:scale-110"
+                              )}>
+                                <service.icon size={22} strokeWidth={1.5} />
+                              </div>
+                              <div className="flex flex-col gap-0.5 relative z-10">
+                                <span className={cn(
+                                  "font-bold transition-colors duration-300 text-[15px]",
+                                  pathname === service.href ? "text-primary" : "text-foreground group-hover/item:text-primary"
+                                )}>
+                                  {service.name}
+                                </span>
+                                <span className="text-[13px] text-foreground/60 font-medium leading-relaxed group-hover/item:text-foreground/80 transition-colors duration-300">
+                                  {service.description}
+                                </span>
+                              </div>
+                              
+                              {/* Hover background effect */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 z-0" />
                             </Link>
                           ))}
                         </div>
