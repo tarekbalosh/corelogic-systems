@@ -184,7 +184,7 @@ export const Navbar = () => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: "100%", opacity: 0 }}
               transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
-              className="fixed top-0 right-0 h-screen w-[85vw] max-w-[400px] bg-white shadow-2xl z-[100] md:hidden flex flex-col rounded-l-3xl"
+              className="fixed top-0 right-0 h-screen w-[85vw] max-w-[400px] bg-background/95 backdrop-blur-3xl shadow-2xl z-[100] md:hidden flex flex-col rounded-l-[2rem] border-l border-foreground/10"
             >
               {/* Close Button Header */}
               <div className="flex justify-end items-center px-6 h-[80px] border-b border-foreground/5">
@@ -197,15 +197,15 @@ export const Navbar = () => {
               </div>
 
               {/* Menu Links */}
-              <div className="flex-1 overflow-y-auto px-8 py-10 flex flex-col gap-8">
+              <div className="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-6">
                 {navLinks.map((link) => {
                   const isActive = pathname === link.href;
                   return (
-                    <div key={link.name} className="flex flex-col gap-4">
+                    <div key={link.name} className="flex flex-col gap-3">
                       <Link
                         href={link.href}
                         className={cn(
-                          "text-xl font-bold tracking-wide transition-all duration-300",
+                          "text-lg font-semibold tracking-wide transition-all duration-300",
                           isActive ? "text-primary" : "text-foreground/80 hover:text-primary"
                         )}
                       >
@@ -213,17 +213,25 @@ export const Navbar = () => {
                       </Link>
                       
                       {link.hasDropdown && (
-                        <div className="pl-4 flex flex-col gap-4 border-l-2 border-foreground/10 ml-2">
+                        <div className="flex flex-col gap-2 mt-2">
                           {services.map(s => (
                             <Link 
                               key={s.name} 
                               href={s.href} 
                               className={cn(
-                                "text-[15px] font-medium transition-all duration-300 leading-tight",
-                                pathname === s.href ? "text-primary" : "text-foreground/60 hover:text-primary"
+                                "flex items-center gap-3 p-3 rounded-2xl transition-all duration-300",
+                                pathname === s.href ? "bg-primary/10 text-primary" : "bg-foreground/5 text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
                               )}
                             >
-                              {s.name}
+                              <div className={cn(
+                                "p-2 rounded-xl shrink-0 transition-colors",
+                                pathname === s.href ? "bg-primary text-primary-foreground" : "bg-foreground/10 text-foreground/60"
+                              )}>
+                                <s.icon size={18} strokeWidth={1.5} />
+                              </div>
+                              <span className="text-[14px] font-medium leading-tight">
+                                {s.name}
+                              </span>
                             </Link>
                           ))}
                         </div>
@@ -234,14 +242,15 @@ export const Navbar = () => {
               </div>
 
               {/* Bottom CTA */}
-              <div className="p-8 border-t border-foreground/5 bg-background/50">
+              <div className="p-6 border-t border-foreground/5 bg-background/50 backdrop-blur-xl">
                 <Link
                   href="/contact"
                   className="block w-full"
                 >
-                  <NeonButton size="lg" variant="primary" className="w-full">
+                  <button className="w-full py-4 bg-primary text-primary-foreground rounded-2xl font-semibold hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all text-sm flex items-center justify-center gap-2">
                     Contact Us
-                  </NeonButton>
+                    <ArrowRight size={16} />
+                  </button>
                 </Link>
               </div>
             </motion.div>
