@@ -87,47 +87,38 @@ export const PortfolioMasonry = () => {
               className={project.span}
             >
               <Link href={project.link || "#"} className="block h-full w-full">
-                <Tilt
-                  tiltMaxAngleX={8}
-                  tiltMaxAngleY={8}
-                  perspective={1000}
-                  glareEnable={true}
-                  glareMaxOpacity={0.3}
-                  glareColor="#ffffff"
-                  glarePosition="all"
-                  className="h-full w-full rounded-2xl overflow-hidden cursor-pointer group"
-                >
-                  <div className="relative h-full w-full bg-navy border border-white/5 group-hover:border-primary/40 group-hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] transition-all duration-500 rounded-2xl">
-                      <Image 
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover opacity-40 saturate-50 group-hover:opacity-100 group-hover:saturate-100 group-hover:scale-110 transition-all duration-700"
-                      />
-                      
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent p-6 md:p-8 flex flex-col justify-end">
-                          <div className="space-y-4 translate-y-0 lg:translate-y-12 lg:group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                              <div className="space-y-2">
-                                  <span className="text-[10px] md:text-xs font-black text-primary uppercase tracking-widest bg-primary/10 px-2 py-1 rounded inline-block">
-                                    {project.category}
-                                  </span>
-                                  <h3 className="text-xl md:text-2xl font-black font-heading text-white drop-shadow-md leading-tight">{project.title}</h3>
-                              </div>
-                              <div className="flex flex-wrap gap-2">
-                                  {project.tags.map(tag => (
-                                      <span key={tag} className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-bold text-white/70 backdrop-blur-sm">
-                                        #{tag}
-                                      </span>
-                                  ))}
-                              </div>
-                              <div className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pt-2">
-                                  <NeonButton size="sm" variant="outline" className="w-full sm:w-auto">View Case Study</NeonButton>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                </Tilt>
+                <div className="relative h-full w-full bg-background rounded-3xl border border-foreground/10 group-hover:border-primary/30 group-hover:shadow-2xl transition-all duration-500 overflow-hidden">
+                    <Image 
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-100"
+                    />
+                    
+                    {/* Dark Gradient Overlay for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 md:p-8 flex flex-col justify-end opacity-90 group-hover:opacity-100 transition-opacity">
+                        <div className="space-y-4 translate-y-0 lg:translate-y-8 lg:group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                            <div className="space-y-2">
+                                <span className="text-[11px] md:text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 backdrop-blur-md border border-primary/20 px-3 py-1 rounded-full inline-block shadow-sm">
+                                  {project.category}
+                                </span>
+                                <h3 className="text-xl md:text-2xl font-bold text-white drop-shadow-md leading-tight">{project.title}</h3>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {project.tags.map(tag => (
+                                    <span key={tag} className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-medium text-white/90 backdrop-blur-md">
+                                      {tag}
+                                    </span>
+                                ))}
+                            </div>
+                            <div className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pt-3">
+                                <button className="w-full sm:w-auto px-6 py-2.5 bg-white text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-md text-sm">
+                                  View Case Study
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
               </Link>
             </motion.div>
           ))}
