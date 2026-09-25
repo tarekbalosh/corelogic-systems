@@ -51,7 +51,7 @@ export const Navbar = () => {
       )}>
         {/* Logo - left side */}
         <div className="flex items-center shrink-0 h-full">
-          <Link href="/" className="relative h-full w-48 md:w-64 flex items-center group">
+          <Link href="/" className="relative h-full w-52 md:w-72 flex items-center group">
             <Image
               src="/corelogic_logo.png"
               alt="CoreLogic Systems Logo"
@@ -149,9 +149,9 @@ export const Navbar = () => {
             href="/contact"
             className="hidden md:block"
           >
-            <NeonButton size="sm" variant="primary">
+            <button className="px-7 py-2.5 bg-primary text-white font-bold rounded-full shadow-md hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all text-[15px] tracking-wide">
               Contact Us
-            </NeonButton>
+            </button>
           </Link>
 
           {/* Hamburger Button */}
