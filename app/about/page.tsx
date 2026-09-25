@@ -130,18 +130,23 @@ export default function AboutPage() {
         </section>
 
         {/* 4. Our Values */}
-        <section className="px-6 mb-40">
-           <div className="max-w-7xl mx-auto">
-                <SectionTitle title="Our Core Values" subtitle="The principles that drive our engineering and creative processes." />
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+        <section className="px-6 mb-32 relative">
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+           <div className="max-w-7xl mx-auto relative z-10">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Our Core Values</h2>
+                    <p className="text-foreground/60 max-w-2xl mx-auto text-lg">The principles that drive our engineering and creative processes.</p>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
                     {values.map((v, i) => (
-                        <GlassCard key={i} glowColor={v.glow} className="group hover:-translate-y-2 transition-transform duration-500">
-                            <div className="space-y-4">
-                                <v.icon size={40} className="text-foreground/80 group-hover:text-primary transition-colors" />
-                                <h4 className="text-2xl font-bold font-heading">{v.title}</h4>
-                                <p className="text-foreground/60 text-sm leading-relaxed">{v.description}</p>
+                        <div key={i} className="bg-background/80 backdrop-blur-xl p-8 rounded-[2rem] border border-slate-200/60 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 group">
+                            <div className="w-14 h-14 rounded-2xl bg-foreground/5 flex items-center justify-center text-primary mb-6 group-hover:bg-primary/10 transition-colors shadow-sm">
+                                <v.icon size={26} strokeWidth={1.5} />
                             </div>
-                        </GlassCard>
+                            <h4 className="text-xl font-bold mb-3">{v.title}</h4>
+                            <p className="text-foreground/60 text-sm leading-relaxed">{v.description}</p>
+                        </div>
                     ))}
                 </div>
            </div>
@@ -149,15 +154,26 @@ export default function AboutPage() {
 
 
         {/* 7. Why Choose Us */}
-        <section className="px-6 mb-40">
+        <section className="px-6 mb-40 relative">
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Why Choose Us</h2>
+                    <p className="text-foreground/60 max-w-2xl mx-auto text-lg">We deliver intelligent solutions that push your business forward.</p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {reasons.map((r, i) => (
-                        <div key={i} className="p-8 flex items-start gap-6 border-l border-foreground/10 hover:border-secondary transition-colors group bg-white shadow-sm rounded-2xl">
-                            <div className="text-secondary group-hover:scale-110 transition-transform"><r.icon size={48} /></div>
-                            <div className="space-y-2">
-                                <h4 className="text-2xl font-bold font-heading">{r.title}</h4>
-                                <p className="text-foreground/60 leading-relaxed">{r.description}</p>
+                        <div key={i} className="relative p-10 bg-gradient-to-br from-white to-slate-50 border border-slate-100 rounded-[2.5rem] overflow-hidden group hover:shadow-[0_8px_30px_rgba(124,58,237,0.08)] transition-all duration-500">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
+                            
+                            <div className="flex items-start gap-6 relative z-10">
+                                <div className="w-16 h-16 shrink-0 rounded-2xl bg-white border border-slate-100 shadow-sm flex items-center justify-center text-secondary group-hover:scale-110 transition-transform duration-500">
+                                    <r.icon size={28} strokeWidth={1.5} />
+                                </div>
+                                <div className="space-y-3 pt-2">
+                                    <h4 className="text-2xl font-bold tracking-tight">{r.title}</h4>
+                                    <p className="text-foreground/60 leading-relaxed text-sm">{r.description}</p>
+                                </div>
                             </div>
                         </div>
                     ))}
