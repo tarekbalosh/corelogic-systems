@@ -61,11 +61,11 @@ export default function AiSolutionsPage() {
                     
                     <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="space-y-8">
                         <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl font-black font-heading tracking-tighter leading-[1.1]">
-                            Intelligent <br />
-                            <span className="text-gradient">AI Automation Services</span>
+                            Enterprise <br />
+                            <span className="text-gradient">AI Solutions & Workflow Automation</span>
                         </motion.h1>
                         <motion.p variants={fadeInUp} className="text-lg md:text-xl text-foreground/50 max-w-lg leading-relaxed font-medium">
-                            Unlock unprecedented efficiency with our advanced <strong>AI automation services</strong>. We partner with B2B enterprises globally to integrate intelligent workflows. Transform your business and achieve unparalleled operational speed.
+                            In today's rapidly evolving digital landscape, relying on manual processes is a barrier to growth. At Corelogic Systems, we specialize in delivering cutting-edge <strong>AI automation solutions</strong> designed to streamline operations, enhance decision-making, and significantly reduce operational costs. Whether you are a startup looking to scale or an established enterprise needing to optimize complex workflows, our custom artificial intelligence services are tailored to fit your unique business architecture. From intelligent chatbots to predictive analytics and automated data entry, our team of expert AI developers builds scalable systems that work around the clock. Partner with us to integrate state-of-the-art AI into your existing software infrastructure and stay ahead of the global competition.
                         </motion.p>
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
                             <Link href="/contact" className="w-full sm:w-auto">

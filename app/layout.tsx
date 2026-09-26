@@ -16,13 +16,18 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "CoreLogic Systems | B2B Software Development Malaysia",
-    template: "%s | CoreLogic Systems"
+    default: "Corelogic Systems | B2B Software Development & AI Solutions",
+    template: "%s | Corelogic Systems"
   },
-  description: "CoreLogic Systems is a leading B2B software development company offering custom enterprise web development, AI automation solutions, and mobile apps.",
-  keywords: ["software development company Malaysia", "B2B AI automation services", "enterprise web development"],
+  description: "Corelogic Systems is a leading software development company offering custom enterprise web development, AI automation solutions, and mobile apps globally and in the Middle East.",
+  keywords: ["custom enterprise software development company", "AI automation agency", "top mobile app developers", "شركات برمجة", "تطوير تطبيقات"],
   alternates: {
-    canonical: "https://corelogic.my",
+    canonical: "https://www.corelogic-system.my",
+    languages: {
+      "en": "https://www.corelogic-system.my",
+      "ar": "https://www.corelogic-system.my/ar",
+      "en-x-default": "https://www.corelogic-system.my"
+    }
   }
 };
 

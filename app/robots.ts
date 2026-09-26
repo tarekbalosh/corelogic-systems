@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/portal/', '/api/', '/_next/'],
     },
-    sitemap: 'https://corelogic.my/sitemap.xml',
+    sitemap: 'https://www.corelogic-system.my/sitemap.xml',
   }
 }
