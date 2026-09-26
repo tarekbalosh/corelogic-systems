@@ -28,6 +28,9 @@ export const metadata: Metadata = {
       "ar": "https://www.corelogic-system.my/ar",
       "en-x-default": "https://www.corelogic-system.my"
     }
+  },
+  verification: {
+    google: "-e6ABi1a2blC15Up04wIeE4IS9tD1DybkrAXJJpoRD0",
   }
 };
 
