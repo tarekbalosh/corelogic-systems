@@ -22,8 +22,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email Us",
-    value: "tarekba850@gmail.com",
-    href: "mailto:tarekba850@gmail.com",
+    value: "contact@corelogic-system.my",
+    href: "mailto:contact@corelogic-system.my",
     color: "text-blue-500"
   },
   {

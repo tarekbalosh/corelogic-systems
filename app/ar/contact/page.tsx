@@ -18,7 +18,7 @@ import { ParticleBackground } from "@/components/particle-background";
 import { cn } from "@/lib/utils";
 
 const contactInfo = [
-  { icon: Mail, label: "راسلنا", value: "tarekba850@gmail.com", href: "mailto:tarekba850@gmail.com", color: "text-blue-500" },
+  { icon: Mail, label: "راسلنا", value: "contact@corelogic-system.my", href: "mailto:contact@corelogic-system.my", color: "text-blue-500" },
   { icon: Phone, label: "اتصل بنا", value: "+601169397149", href: "tel:+601169397149", color: "text-emerald-500" },
   { icon: MapPin, label: "موقعنا", value: "لوت C7، TRX، كوالالمبور", href: "https://goo.gl/maps/example", color: "text-purple-500" },
   { icon: Clock, label: "ساعات العمل", value: "الاثنين - الجمعة: 9:00 ص - 6:00 م", href: null, color: "text-primary" },

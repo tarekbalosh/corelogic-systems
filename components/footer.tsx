@@ -90,7 +90,7 @@ export const Footer = () => {
 
               {/* Social Icons */}
               <div className="flex gap-4 pt-2">
-                <a href="mailto:tarekba850@gmail.com" className="w-12 h-12 rounded-2xl bg-white border border-foreground/5 shadow-sm flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/30 hover:shadow-[0_8px_20px_rgba(79,70,229,0.15)] hover:-translate-y-1 transition-all duration-300">
+                <a href="mailto:contact@corelogic-system.my" className="w-12 h-12 rounded-2xl bg-white border border-foreground/5 shadow-sm flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/30 hover:shadow-[0_8px_20px_rgba(79,70,229,0.15)] hover:-translate-y-1 transition-all duration-300">
                   <Mail size={20} />
                 </a>
                 <a href="https://wa.me/601169397149" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl bg-white border border-foreground/5 shadow-sm flex items-center justify-center text-foreground/60 hover:text-[#25D366] hover:border-[#25D366]/30 hover:shadow-[0_8px_20px_rgba(37,211,102,0.15)] hover:-translate-y-1 transition-all duration-300">
@@ -119,14 +119,14 @@ export const Footer = () => {
                   </span>
                 </a>
                 <a
-                  href="mailto:tarekba850@gmail.com"
+                  href="mailto:contact@corelogic-system.my"
                   className="group flex items-center gap-4 p-4 rounded-2xl bg-foreground/50 border border-foreground/60 shadow-sm hover:shadow-md hover:bg-white transition-all duration-300"
                 >
                   <div className="w-10 h-10 shrink-0 rounded-full bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
                     <Mail size={18} />
                   </div>
                   <span className="text-sm text-foreground/70 font-medium group-hover:text-foreground transition-colors">
-                    tarekba850@gmail.com
+                    contact@corelogic-system.my
                   </span>
                 </a>
               </div>
