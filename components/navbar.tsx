@@ -3,10 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Triangle, Menu, X, ArrowRight, ArrowLeft, Globe, Bot, Smartphone, Code2, PenTool } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight, ArrowLeft, Globe, Bot, Smartphone, Code2, PenTool, Rocket } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { NeonButton } from "./neon-button";
 import { LanguageSwitcher } from "./language-switcher";
 
 const navLinksEn = [
@@ -41,7 +40,6 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   const isArabic = pathname.startsWith("/ar");
@@ -49,7 +47,6 @@ export const Navbar = () => {
   const services = isArabic ? servicesAr : servicesEn;
   const contactHref = isArabic ? "/ar/contact" : "/contact";
   const contactLabel = isArabic ? "تواصل معنا" : "Contact Us";
-  const ArrowIcon = isArabic ? ArrowLeft : ArrowRight;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -63,140 +60,139 @@ export const Navbar = () => {
   }, [pathname]);
 
   return (
-    <nav className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-500",
-      scrolled ? "bg-foreground/80 backdrop-blur-xl border-b border-foreground/5 shadow-sm py-2" : "bg-transparent py-4"
-    )}>
-      <div className={cn(
-        "w-full max-w-7xl mx-auto flex items-center justify-between px-6 relative transition-all duration-500",
-        scrolled ? "h-[60px]" : "h-[70px]",
-        isArabic && "flex-row-reverse"
-      )}>
-        {/* Logo - left side (or right in RTL) */}
-        <div className="flex items-center shrink-0 h-full">
-          <Link href={isArabic ? "/ar" : "/"} className="relative h-full w-52 md:w-72 flex items-center group">
-            <Image
-              src="/corelogic_logo.png"
-              alt="CoreLogic Systems Logo"
-              fill
-              className={cn(
-                "object-contain group-hover:scale-105 transition-transform duration-500",
-                isArabic ? "object-right" : "object-left"
-              )}
-              priority
-            />
-          </Link>
-        </div>
-
-        {/* Desktop Links */}
-        <div className={cn("hidden md:flex items-center gap-8", isArabic && "flex-row-reverse")}>
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <div
-                key={link.name}
-                className="relative flex flex-col items-center py-2 h-full justify-center"
-                onMouseEnter={() => link.hasDropdown && setIsDropdownOpen(true)}
-                onMouseLeave={() => link.hasDropdown && setIsDropdownOpen(false)}
-              >
-                <Link
-                  href={link.href}
+    <>
+      <div 
+        className="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none"
+        dir={isArabic ? "rtl" : "ltr"}
+      >
+        <nav className={cn(
+          "pointer-events-auto flex items-center justify-center transition-all duration-500 bg-white/95 backdrop-blur-xl border-b border-slate-100 w-full shadow-[0_8px_30px_rgba(0,0,0,0.04)]",
+          scrolled ? "h-[65px]" : "h-[80px]"
+        )}>
+          <div className="w-full max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-full">
+            {/* Logo */}
+            <div className="flex items-center shrink-0 h-full">
+              <Link href={isArabic ? "/ar" : "/"} className="relative h-14 w-52 md:h-[72px] md:w-[280px] flex items-center group">
+                <Image
+                  src="/corelogic_logo.png"
+                  alt="CoreLogic Systems Logo"
+                  fill
                   className={cn(
-                    "flex items-center gap-1.5 text-[14px] tracking-wide font-semibold transition-all duration-300 group",
-                    isActive ? "text-primary" : "text-foreground/70 hover:text-primary"
+                    "object-contain group-hover:scale-105 transition-transform duration-500",
+                    isArabic ? "object-right" : "object-left"
                   )}
+                  priority
+                />
+              </Link>
+            </div>
+
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-8 h-full">
+            {navLinks.map((link) => {
+              // Active link logic
+              const isActive = pathname === link.href || (link.href !== (isArabic ? "/ar" : "/") && pathname.startsWith(link.href));
+              
+              return (
+                <div
+                  key={link.name}
+                  className="relative flex flex-col items-center justify-center h-full group/nav"
+                  onMouseEnter={() => link.hasDropdown && setIsDropdownOpen(true)}
+                  onMouseLeave={() => link.hasDropdown && setIsDropdownOpen(false)}
                 >
-                  {link.name}
-                  {link.hasDropdown && <ChevronDown size={14} className={cn("transition-transform duration-300 text-foreground/40 group-hover:text-primary", isDropdownOpen && "rotate-180")} />}
-                  
-                  {/* Underline indicator */}
-                  <span className={cn(
-                    "absolute -bottom-2 left-0 w-full h-[2px] rounded-full bg-primary transition-all duration-300",
-                    isActive ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100"
-                  )} />
-                </Link>
-
-                {/* Dropdown Menu */}
-                {link.hasDropdown && (
-                  <AnimatePresence>
-                    {isDropdownOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 15, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                        className={cn(
-                          "absolute top-[50px] left-1/2 -translate-x-1/2 w-[420px] bg-background/90 backdrop-blur-2xl border border-foreground/10 shadow-[0_40px_80px_rgba(0,0,0,0.15)] z-[100] rounded-3xl overflow-hidden p-3",
-                          isArabic && "text-right"
-                        )}
-                      >
-                        <div className="flex flex-col gap-1">
-                          {services.map((service) => (
-                            <Link
-                              key={service.name}
-                              href={service.href}
-                              className={cn(
-                                "p-3 text-[14px] font-medium transition-all duration-300 rounded-2xl flex items-start gap-4 group/item relative overflow-hidden",
-                                isArabic && "flex-row-reverse",
-                                pathname === service.href ? "bg-primary/10 text-primary" : "hover:bg-foreground/5"
-                              )}
-                            >
-                              <div className={cn(
-                                "p-2.5 rounded-xl shrink-0 transition-all duration-300 relative z-10",
-                                pathname === service.href ? "bg-primary text-primary-foreground" : "bg-foreground/5 text-foreground/60 group-hover/item:bg-primary group-hover/item:text-primary-foreground group-hover/item:shadow-lg group-hover/item:shadow-primary/30 group-hover/item:scale-110"
-                              )}>
-                                <service.icon size={22} strokeWidth={1.5} />
-                              </div>
-                              <div className="flex flex-col gap-0.5 relative z-10">
-                                <span className={cn(
-                                  "font-bold transition-colors duration-300 text-[15px]",
-                                  pathname === service.href ? "text-primary" : "text-foreground group-hover/item:text-primary"
-                                )}>
-                                  {service.name}
-                                </span>
-                                <span className="text-[13px] text-foreground/60 font-medium leading-relaxed group-hover/item:text-foreground/80 transition-colors duration-300">
-                                  {service.description}
-                                </span>
-                              </div>
-                              
-                              {/* Hover background effect */}
-                              <div className={cn(
-                                "absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 z-0",
-                                isArabic ? "bg-gradient-to-l from-primary/5 to-transparent" : "bg-gradient-to-r from-primary/5 to-transparent"
-                              )} />
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "relative flex items-center gap-1.5 text-[15px] transition-all duration-300 font-bold",
+                      isActive ? "text-primary" : "text-slate-700 hover:text-primary"
                     )}
-                  </AnimatePresence>
-                )}
-              </div>
-            );
-          })}
-        </div>
+                  >
+                    {link.name}
+                    {link.hasDropdown && <ChevronDown size={14} className={cn("transition-transform duration-300 text-slate-400 group-hover/nav:text-primary", isDropdownOpen && "rotate-180")} />}
+                    
+                    {/* Underline indicator */}
+                    <span className={cn(
+                      "absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-primary transition-all duration-300 mx-auto",
+                      isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover/nav:w-full group-hover/nav:opacity-100"
+                    )} />
+                  </Link>
 
-        {/* Right Section: Lang Switcher, CTA & Hamburger */}
-        <div className={cn("flex items-center gap-3", isArabic && "flex-row-reverse")}>
-          <LanguageSwitcher currentLocale={isArabic ? "ar" : "en"} className="hidden md:inline-flex" />
+                  {/* Dropdown Menu */}
+                  {link.hasDropdown && (
+                    <AnimatePresence>
+                      {isDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          className={cn(
+                            "absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 w-[420px] bg-white border border-slate-100 shadow-[0_40px_80px_rgba(0,0,0,0.1)] z-[100] rounded-3xl overflow-hidden p-3",
+                            isArabic && "text-right"
+                          )}
+                        >
+                          <div className="flex flex-col gap-1">
+                            {services.map((service) => (
+                              <Link
+                                key={service.name}
+                                href={service.href}
+                                className={cn(
+                                  "p-3 text-[14px] font-medium transition-all duration-300 rounded-2xl flex items-start gap-4 group/item relative overflow-hidden",
+                                  pathname === service.href ? "bg-primary/5 text-primary" : "hover:bg-slate-50"
+                                )}
+                              >
+                                <div className={cn(
+                                  "p-2.5 rounded-xl shrink-0 transition-all duration-300 relative z-10",
+                                  pathname === service.href ? "bg-primary text-white shadow-md shadow-primary/20" : "bg-slate-100 text-slate-500 group-hover/item:bg-primary group-hover/item:text-white group-hover/item:shadow-lg group-hover/item:shadow-primary/30 group-hover/item:scale-110"
+                                )}>
+                                  <service.icon size={22} strokeWidth={1.5} />
+                                </div>
+                                <div className="flex flex-col gap-0.5 relative z-10">
+                                  <span className={cn(
+                                    "font-bold transition-colors duration-300 text-[15px]",
+                                    pathname === service.href ? "text-primary" : "text-slate-900 group-hover/item:text-primary"
+                                  )}>
+                                    {service.name}
+                                  </span>
+                                  <span className="text-[13px] text-slate-500 font-medium leading-relaxed group-hover/item:text-slate-600 transition-colors duration-300">
+                                    {service.description}
+                                  </span>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
+              );
+            })}
+          </div>
 
-          <Link
-            href={contactHref}
-            className="hidden md:block"
-          >
-            <button className="px-7 py-2.5 bg-primary text-white font-bold rounded-full shadow-md hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all text-[15px] tracking-wide">
-              {contactLabel}
+          {/* Right Section: Lang Switcher, CTA & Hamburger */}
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher currentLocale={isArabic ? "ar" : "en"} className="hidden md:inline-flex" />
+
+            <Link
+              href={contactHref}
+              className="hidden md:block"
+            >
+              <button className="px-6 py-2.5 bg-primary text-white font-bold rounded-full shadow-[0_4px_15px_rgba(79,70,229,0.3)] hover:shadow-[0_8px_25px_rgba(79,70,229,0.4)] hover:-translate-y-0.5 transition-all text-[14px] tracking-wide flex items-center gap-2">
+                <Rocket size={16} />
+                {contactLabel}
+              </button>
+            </Link>
+
+            {/* Hamburger Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="md:hidden w-10 h-10 flex items-center justify-center text-slate-700 hover:text-primary transition-colors active:scale-95 bg-slate-50 border border-slate-100 rounded-full shadow-sm"
+            >
+              <Menu size={20} />
             </button>
-          </Link>
-
-          {/* Hamburger Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden w-10 h-10 flex items-center justify-center text-foreground hover:text-primary transition-colors active:scale-95 bg-foreground/50 border border-foreground/5 rounded-full shadow-sm"
-          >
-            <Menu size={20} />
-          </button>
-        </div>
+          </div>
+          </div>
+        </nav>
       </div>
 
       {/* Mobile Menu Sidebar */}
@@ -210,7 +206,7 @@ export const Navbar = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-foreground/20 backdrop-blur-sm z-[90] md:hidden"
+              className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[90] md:hidden"
             />
 
             {/* Slide-in Menu */}
@@ -220,18 +216,18 @@ export const Navbar = () => {
               exit={{ x: isArabic ? "-100%" : "100%", opacity: 0 }}
               transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
               className={cn(
-                "fixed top-0 h-screen w-[85vw] max-w-[400px] bg-background/95 backdrop-blur-3xl shadow-2xl z-[100] md:hidden flex flex-col border-foreground/10",
+                "fixed top-0 h-screen w-[85vw] max-w-[400px] bg-white shadow-2xl z-[100] md:hidden flex flex-col border-slate-100",
                 isArabic ? "left-0 rounded-r-[2rem] border-r" : "right-0 rounded-l-[2rem] border-l"
               )}
             >
               {/* Close Button Header */}
               <div className={cn(
-                "flex items-center px-6 h-[80px] border-b border-foreground/5",
+                "flex items-center px-6 h-[80px] border-b border-slate-100",
                 isArabic ? "justify-start" : "justify-end"
               )}>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-10 h-10 flex items-center justify-center text-foreground/60 hover:text-primary hover:bg-foreground/5 rounded-full transition-colors"
+                  className="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-primary hover:bg-slate-50 rounded-full transition-colors"
                 >
                   <X size={24} />
                 </button>
@@ -240,14 +236,14 @@ export const Navbar = () => {
               {/* Menu Links */}
               <div className={cn("flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-6", isArabic && "text-right")}>
                 {navLinks.map((link) => {
-                  const isActive = pathname === link.href;
+                  const isActive = pathname === link.href || (link.href !== (isArabic ? "/ar" : "/") && pathname.startsWith(link.href));
                   return (
                     <div key={link.name} className="flex flex-col gap-3">
                       <Link
                         href={link.href}
                         className={cn(
-                          "text-[16px] font-medium transition-all duration-300",
-                          isActive ? "text-primary font-semibold" : "text-foreground/70 hover:text-primary"
+                          "text-[16px] transition-all duration-300",
+                          isActive ? "text-primary font-bold" : "text-slate-700 font-medium hover:text-primary"
                         )}
                       >
                         {link.name}
@@ -261,17 +257,16 @@ export const Navbar = () => {
                               href={s.href} 
                               className={cn(
                                 "flex items-center gap-3 p-3 rounded-2xl transition-all duration-300",
-                                isArabic && "flex-row-reverse",
-                                pathname === s.href ? "bg-primary/10 text-primary" : "bg-foreground/5 text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
+                                pathname === s.href ? "bg-primary/5 text-primary" : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                               )}
                             >
                               <div className={cn(
                                 "p-2 rounded-xl shrink-0 transition-colors",
-                                pathname === s.href ? "bg-primary text-primary-foreground" : "bg-foreground/10 text-foreground/60"
+                                pathname === s.href ? "bg-primary text-white" : "bg-white border border-slate-100 text-slate-500"
                               )}>
                                 <s.icon size={18} strokeWidth={1.5} />
                               </div>
-                              <span className="text-[14px] font-medium leading-tight">
+                              <span className="text-[14px] font-bold leading-tight">
                                 {s.name}
                               </span>
                             </Link>
@@ -283,20 +278,20 @@ export const Navbar = () => {
                 })}
 
                 {/* Mobile Language Switcher */}
-                <div className="pt-4 border-t border-foreground/5 mt-2">
+                <div className="pt-4 border-t border-slate-100 mt-2">
                   <LanguageSwitcher currentLocale={isArabic ? "ar" : "en"} className="w-full justify-center" />
                 </div>
               </div>
 
               {/* Bottom CTA */}
-              <div className="p-6 border-t border-foreground/5 bg-background/50 backdrop-blur-xl">
+              <div className="p-6 border-t border-slate-100 bg-slate-50/50 backdrop-blur-xl">
                 <Link
                   href={contactHref}
                   className="block w-full"
                 >
-                  <button className="w-full py-4 bg-primary text-primary-foreground rounded-2xl font-semibold hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all text-sm flex items-center justify-center gap-2">
+                  <button className="w-full py-4 bg-primary text-white rounded-2xl font-bold hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all text-[15px] flex items-center justify-center gap-2">
+                    <Rocket size={18} />
                     {contactLabel}
-                    <ArrowIcon size={16} />
                   </button>
                 </Link>
               </div>
@@ -304,6 +299,6 @@ export const Navbar = () => {
           </>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
