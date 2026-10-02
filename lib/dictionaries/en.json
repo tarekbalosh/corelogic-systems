@@ -1,0 +1,200 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Our Services",
+    "contact": "Contact Us",
+    "switchLang": "العربية"
+  },
+  "hero": {
+    "title1": "Build the Future",
+    "title2": "with AI",
+    "subtitle": "Empowered to",
+    "words": ["Automate", "Analyze", "Accelerate"],
+    "description": "CoreLogic Systems provides high-performance infrastructure and neural architectures for the next generation of industrial-scale compute.",
+    "cta": "Get Started Now"
+  },
+  "stats": {
+    "clients": "Active Clients",
+    "uptime": "Target Uptime",
+    "api": "API Calls/sec"
+  },
+  "services": {
+    "sectionTitle": "Intelligent Services",
+    "sectionSubtitle": "Empowering your enterprise with state-of-the-art AI infrastructure and cognitive architectures.",
+    "learnMore": "Learn More",
+    "items": [
+      {
+        "title": "AI Analytics",
+        "description": "Deep-dive predictive modeling and real-time data stream analysis for enterprise agility."
+      },
+      {
+        "title": "Machine Learning",
+        "description": "Custom neural network architectures trained on industrial-scale datasets for high precision."
+      },
+      {
+        "title": "NLP Processing",
+        "description": "Advanced semantic understanding and multi-lingual processing for human-like intelligence."
+      },
+      {
+        "title": "Computer Vision",
+        "description": "Object detection, spatial analysis, and sensory perception for autonomous robotics."
+      },
+      {
+        "title": "IA Automation",
+        "description": "Intelligent agent orchestration to streamline complex cross-departmental workflows."
+      },
+      {
+        "title": "Data Intelligence",
+        "description": "Secure data lake integration with automated governance and ethical AI guardrails."
+      }
+    ]
+  },
+  "portfolio": {
+    "sectionTitle": "Featured Projects",
+    "sectionSubtitle": "A showcase of high-impact AI systems developed for our global enterprise partners.",
+    "viewCase": "View Case Study",
+    "items": [
+      {
+        "title": "Accounting Pro",
+        "category": "Financial System"
+      },
+      {
+        "title": "POS System project",
+        "category": "Restaurant POS"
+      },
+      {
+        "title": "Management Student Systems",
+        "category": "Education"
+      }
+    ]
+  },
+  "footer": {
+    "description": "Empowering global industries with advanced multi-modal AI tools to improve automation, insight, and strategic growth outcomes.",
+    "contactUs": "Contact Us",
+    "siteMap": "Site Map",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms of Services",
+    "backToTop": "Back to Top",
+    "copyright": "Copyright",
+    "designedWith": "Designed with",
+    "allRights": "All Rights Reserved."
+  },
+  "about": {
+    "heroTitle1": "About Our",
+    "heroTitle2": "Company",
+    "heroSubtitle": "We build intelligent software solutions powered by AI.",
+    "heroDescription": "CoreLogic Systems is a frontier technology firm dedicated to bridging the gap between raw compute and cognitive intelligence.",
+    "whoWeAre": "Who We Are",
+    "whoWeAreP1": "Founded at the intersection of infrastructure and artificial intelligence, CoreLogic Systems operates as a high-performance lab for the future. We specialize in developing **Web Applications**, **Custom AI Architectures**, and **Enterprise Software Solutions** that prioritize speed, security, and scalability.",
+    "whoWeAreP2": "Our mission is to empower global industries through relentless **Innovation**, strategic **Automation**, and sustainable **Growth**.",
+    "mission": "Our Mission",
+    "missionDesc": "Deliver smart, scalable, and modern digital solutions that solve the most complex technical challenges of the 21st century.",
+    "vision": "Our Vision",
+    "visionDesc": "Become a leading global AI provider, setting the standard for ethical intelligence and high-performance neural software.",
+    "coreValues": "Our Core Values",
+    "coreValuesSubtitle": "The principles that drive our engineering and creative processes.",
+    "values": [
+      { "title": "Innovation", "description": "Pushing the boundaries of what's possible with neural architectures." },
+      { "title": "Quality", "description": "Uncompromising engineering standards for industrial-grade systems." },
+      { "title": "Performance", "description": "Ultra-low latency and massive throughput optimized for scale." },
+      { "title": "Client Success", "description": "Dedicated to driving growth and automation for our global partners." }
+    ],
+    "whyChooseUs": "Why Choose Us",
+    "whyChooseUsSubtitle": "We deliver intelligent solutions that push your business forward.",
+    "reasons": [
+      { "title": "Fast Delivery", "description": "Rapid deployment cycles powered by automated CI/CD pipelines." },
+      { "title": "Scalable Systems", "description": "Architectures designed to grow dynamically with your data needs." },
+      { "title": "AI-Powered", "description": "Intelligence-first approach to solving complex business problems." }
+    ],
+    "ctaTitle1": "Start Your Project",
+    "ctaTitle2": "With Us",
+    "ctaButton": "Contact Us"
+  },
+  "contact": {
+    "badge": "Get in Touch",
+    "heroTitle1": "Let's Discuss Your Next",
+    "heroTitle2": "Big Project",
+    "heroSubtitle": "Whether you have a specific project in mind or just want to explore the possibilities of AI and modern software, our experts are ready to guide you.",
+    "formTitle": "Send us a Message",
+    "formSubtitle": "Fill out the form below and we'll get back to you shortly.",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "optional": "Optional",
+    "service": "Service of Interest",
+    "selectService": "Select a service",
+    "message": "Message",
+    "messagePlaceholder": "Tell us a little bit about your project goals...",
+    "sendMessage": "Send Message",
+    "processing": "Processing...",
+    "successTitle": "Message Sent!",
+    "successMessage": "Thank you for reaching out. A specialist from CoreLogic Systems will contact you within 24 hours.",
+    "sendAnother": "Send Another Message",
+    "emailUs": "Email Us",
+    "callUs": "Call Us",
+    "location": "Our Location",
+    "locationValue": "Lot C7, TRX, Kuala Lumpur",
+    "workingHours": "Working Hours",
+    "workingHoursValue": "Mon - Fri: 9:00 AM - 6:00 PM",
+    "instantConnect": "Instant Connect",
+    "whatsapp": "WhatsApp",
+    "callDirect": "Call Direct",
+    "openInMaps": "Open in Maps",
+    "whyPartner": "Why Partner With Us?",
+    "whyPartnerSubtitle": "We make the collaboration process seamless and completely transparent.",
+    "partnerReasons": [
+      { "title": "Fast Response Time", "description": "Receive a response within 24 business hours from our technical team." },
+      { "title": "Professional Consultation", "description": "Direct access to senior developers and AI architects for your queries." },
+      { "title": "Free Initial Discussion", "description": "Start with a 15-minute discovery call to explore your project's potential." }
+    ],
+    "ctaTitle": "Ready to start your project?",
+    "ctaSubtitle": "Stop waiting for the right moment. Let's start the conversation today and build something extraordinary together.",
+    "ctaButton": "Get Your Free Consultation",
+    "servicesList": [
+      "Web Application Development",
+      "AI Solutions & Automation",
+      "Mobile App Development",
+      "Custom Software Development",
+      "UI/UX Design"
+    ]
+  },
+  "servicesPage": {
+    "badge": "What We Do",
+    "heroTitle1": "Our",
+    "heroTitle2": "Services",
+    "heroSubtitle": "We deliver industrial-grade digital solutions powered by state-of-the-art AI, crafted with precision to elevate your business.",
+    "projectInquiry": "Project Inquiry",
+    "ctaTitle": "Not sure which service you need?",
+    "ctaSubtitle": "Book a free consultation with our experts to discuss your requirements and find the perfect technological fit for your business.",
+    "ctaButton": "Schedule a Consultation",
+    "items": [
+      {
+        "title": "Web Application Development",
+        "description": "High-performance, scalable web systems built with modern frameworks and robust cloud architectures.",
+        "details": ["Progressive Web Apps", "E-commerce Solutions", "Enterprise Dashboards"]
+      },
+      {
+        "title": "AI Solutions & Automation",
+        "description": "Intelligent agent orchestration and custom neural models designed for industrial efficiency.",
+        "details": ["Predictive Analytics", "Process Automation", "Neural Search"]
+      },
+      {
+        "title": "Mobile App Development",
+        "description": "Native-quality cross-platform mobile experiences for iOS and Android.",
+        "details": ["iOS & Android", "Real-time Sync", "Offline-first Apps"]
+      },
+      {
+        "title": "Custom Software Development",
+        "description": "Tailored software ecosystems that solve unique business challenges with precision code.",
+        "details": ["Legacy Migration", "API Integration", "Microservices"]
+      },
+      {
+        "title": "UI/UX Design",
+        "description": "Cinematic, user-centric interfaces designed for modern engagement and conversion.",
+        "details": ["Interactive Mockups", "Design Systems", "User Research"]
+      }
+    ]
+  }
+}

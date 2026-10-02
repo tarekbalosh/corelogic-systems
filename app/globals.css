@@ -95,3 +95,56 @@ h1, h2, h3, h4, .font-heading {
 .bg-hero-glow {
   background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.05) 0%, rgba(248, 250, 252, 0) 70%);
 }
+
+/* ===== Arabic / RTL Support ===== */
+
+/* Arabic font class */
+.font-arabic,
+.rtl {
+  font-family: var(--font-arabic), var(--font-inter), system-ui, sans-serif;
+}
+
+.rtl h1,
+.rtl h2,
+.rtl h3,
+.rtl h4,
+.rtl .font-heading {
+  font-family: var(--font-arabic), var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+/* RTL text alignment */
+.rtl {
+  text-align: right;
+}
+
+.rtl .text-center {
+  text-align: center;
+}
+
+/* RTL spacing adjustments */
+.rtl .ml-1 {
+  margin-left: 0;
+  margin-right: 0.25rem;
+}
+
+/* RTL gradient direction fix */
+.rtl .text-gradient {
+  background: linear-gradient(135deg, #0ea5e9 0%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Fix input direction for email/phone in RTL */
+.rtl input[type="email"],
+.rtl input[type="tel"],
+.rtl input[type="url"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* RTL select arrow positioning */
+.rtl select {
+  background-position: left 1rem center;
+  padding-left: 2.5rem;
+  padding-right: 1.25rem;
+}

@@ -3,22 +3,55 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { ArrowUp, ChevronUp, Globe, Mail, Send, Share2, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const siteMap = [
+const siteMapEn = [
   { name: "Home", href: "/" },
   { name: "About us", href: "/about" },
   { name: "Our Services", href: "/services" },
   { name: "Contact Us", href: "/contact" },
 ];
 
-const legalLinks = [
+const siteMapAr = [
+  { name: "الرئيسية", href: "/ar" },
+  { name: "من نحن", href: "/ar/about" },
+  { name: "خدماتنا", href: "/ar/services" },
+  { name: "تواصل معنا", href: "/ar/contact" },
+];
+
+const legalLinksEn = [
   { name: "Privacy Policy", href: "/privacy" },
   { name: "Terms of Services", href: "/terms" },
 ];
 
+const legalLinksAr = [
+  { name: "سياسة الخصوصية", href: "/privacy" },
+  { name: "شروط الخدمة", href: "/terms" },
+];
+
 export const Footer = () => {
+  const pathname = usePathname();
+  const isArabic = pathname.startsWith("/ar");
+
+  const siteMap = isArabic ? siteMapAr : siteMapEn;
+  const legalLinks = isArabic ? legalLinksAr : legalLinksEn;
+
+  const t = {
+    description: isArabic
+      ? "تمكين الصناعات العالمية عبر أدوات الذكاء الاصطناعي المتقدمة لتحسين الأتمتة، واستخراج الرؤى، وتحقيق أهداف النمو الاستراتيجية."
+      : "Empowering global industries with advanced multi-modal AI tools to improve automation, insight, and strategic growth outcomes.",
+    contactUs: isArabic ? "تواصل معنا" : "Contact Us",
+    siteMapTitle: isArabic ? "خريطة الموقع" : "Site Map",
+    legal: isArabic ? "روابط قانونية" : "Legal",
+    backToTop: isArabic ? "العودة للأعلى" : "Back to Top",
+    address: isArabic
+      ? "لوت C7، منارة IQ، تون رازاك إكستشينج، 55188 كوالالمبور، ماليزيا."
+      : "Lot C7, Menara IQ, Tun Razak Exchange, 55188 Kuala Lumpur, Malaysia.",
+    designedWith: isArabic ? "صُمم بواسطة" : "Designed with",
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -32,24 +65,27 @@ export const Footer = () => {
 
       {/* Glassy Overlay for the entire footer */}
       <div className="relative z-10 bg-foreground/40 backdrop-blur-3xl border-t border-foreground/60">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+        <div className={cn("max-w-7xl mx-auto px-6 lg:px-10 py-24", isArabic && "text-right")}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
 
             {/* Column 1: Brand & Description (spans 5 cols) */}
             <div className="lg:col-span-5 space-y-8">
-              <Link href="/" className="inline-block">
+              <Link href={isArabic ? "/ar" : "/"} className="inline-block">
                 <div className="relative w-56 h-16 md:w-72 md:h-20 flex items-center justify-start">
                   <Image
                     src="/corelogic_logo.png"
                     alt="CoreLogic Systems Logo"
                     fill
-                    className="object-contain object-left brightness-0 opacity-80 hover:opacity-100 transition-opacity"
+                    className={cn(
+                      "object-contain brightness-0 opacity-80 hover:opacity-100 transition-opacity",
+                      isArabic ? "object-right" : "object-left"
+                    )}
                   />
                 </div>
               </Link>
 
               <p className="text-foreground/70 text-base md:text-lg leading-relaxed max-w-sm font-medium">
-                Empowering global industries with advanced multi-modal AI tools to improve automation, insight, and strategic growth outcomes.
+                {t.description}
               </p>
 
               {/* Social Icons */}
@@ -67,7 +103,7 @@ export const Footer = () => {
 
             {/* Column 2: Contact Info (spans 3 cols) */}
             <div className="lg:col-span-3 space-y-6">
-              <h4 className="text-sm font-black text-foreground tracking-widest uppercase mb-6">Contact Us</h4>
+              <h4 className="text-sm font-black text-foreground tracking-widest uppercase mb-6">{t.contactUs}</h4>
               <div className="space-y-4">
                 <a
                   href="https://www.google.com/maps"
@@ -79,7 +115,7 @@ export const Footer = () => {
                     <MapPin size={18} />
                   </div>
                   <span className="text-sm text-foreground/70 font-medium leading-relaxed group-hover:text-foreground transition-colors">
-                    Lot C7, Menara IQ, Tun Razak Exchange, 55188 Kuala Lumpur, Malaysia.
+                    {t.address}
                   </span>
                 </a>
                 <a
@@ -97,8 +133,8 @@ export const Footer = () => {
             </div>
 
             {/* Column 3: Site Map (spans 2 cols) */}
-            <div className="lg:col-span-2 space-y-6 lg:pl-8">
-              <h4 className="text-sm font-black text-foreground tracking-widest uppercase mb-6">Site Map</h4>
+            <div className="lg:col-span-2 space-y-6 lg:ltr:pl-8">
+              <h4 className="text-sm font-black text-foreground tracking-widest uppercase mb-6">{t.siteMapTitle}</h4>
               <ul className="space-y-3">
                 {siteMap.map((link) => (
                   <li key={link.name}>
@@ -106,7 +142,12 @@ export const Footer = () => {
                       href={link.href} 
                       className="group inline-flex items-center text-foreground/60 hover:text-primary transition-all duration-300 text-[15px] font-semibold"
                     >
-                      <span className="w-0 h-[2px] bg-primary mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300 rounded-full" />
+                      <span className={cn(
+                        "w-0 h-[2px] bg-primary transition-all duration-300 rounded-full",
+                        isArabic
+                          ? "ml-0 group-hover:w-3 group-hover:ml-2"
+                          : "mr-0 group-hover:w-3 group-hover:mr-2"
+                      )} />
                       {link.name}
                     </Link>
                   </li>
@@ -116,7 +157,7 @@ export const Footer = () => {
 
             {/* Column 4: Legal & Back to Top (spans 2 cols) */}
             <div className="lg:col-span-2 space-y-6">
-              <h4 className="text-sm font-black text-foreground tracking-widest uppercase mb-6">Legal</h4>
+              <h4 className="text-sm font-black text-foreground tracking-widest uppercase mb-6">{t.legal}</h4>
               <ul className="space-y-3">
                 {legalLinks.map((link) => (
                   <li key={link.name}>
@@ -124,7 +165,12 @@ export const Footer = () => {
                       href={link.href} 
                       className="group inline-flex items-center text-foreground/60 hover:text-primary transition-all duration-300 text-[15px] font-semibold"
                     >
-                      <span className="w-0 h-[2px] bg-primary mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300 rounded-full" />
+                      <span className={cn(
+                        "w-0 h-[2px] bg-primary transition-all duration-300 rounded-full",
+                        isArabic
+                          ? "ml-0 group-hover:w-3 group-hover:ml-2"
+                          : "mr-0 group-hover:w-3 group-hover:mr-2"
+                      )} />
                       {link.name}
                     </Link>
                   </li>
@@ -138,7 +184,7 @@ export const Footer = () => {
                 >
                   <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <ChevronUp size={18} className="relative z-10 group-hover:-translate-y-1 transition-transform duration-300" />
-                  <span className="relative z-10">Back to Top</span>
+                  <span className="relative z-10">{t.backToTop}</span>
                 </button>
               </div>
             </div>
@@ -148,12 +194,12 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-foreground/5 bg-foreground/50 backdrop-blur-md py-6">
-          <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-start">
             <p className="text-foreground/50 text-[11px] font-bold tracking-widest uppercase">
               Copyright © {new Date().getFullYear()}, CoreLogic Systems Inc. All Rights Reserved.
             </p>
             <p className="text-foreground/50 text-[11px] font-bold tracking-widest uppercase">
-              Designed with <span className="text-primary font-black ml-1">Corelogic Systems</span>
+              {t.designedWith} <span className="text-primary font-black ml-1">Corelogic Systems</span>
             </p>
           </div>
         </div>

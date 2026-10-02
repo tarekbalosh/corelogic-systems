@@ -3,23 +3,38 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Triangle, Menu, X, ArrowRight, Globe, Bot, Smartphone, Code2, PenTool } from "lucide-react";
+import { ChevronDown, Triangle, Menu, X, ArrowRight, ArrowLeft, Globe, Bot, Smartphone, Code2, PenTool } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { NeonButton } from "./neon-button";
+import { LanguageSwitcher } from "./language-switcher";
 
-const navLinks = [
+const navLinksEn = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Our Services", href: "/services", hasDropdown: true },
 ];
 
-const services = [
+const navLinksAr = [
+  { name: "الرئيسية", href: "/ar" },
+  { name: "من نحن", href: "/ar/about" },
+  { name: "خدماتنا", href: "/ar/services", hasDropdown: true },
+];
+
+const servicesEn = [
   { name: "Web Application Development", description: "Modern, responsive, and scalable web apps.", href: "/services/web-dev", icon: Globe },
   { name: "AI Solutions & Automation", description: "Smart AI integration for your workflows.", href: "/services/ai-automation", icon: Bot },
   { name: "Mobile App Development", description: "Native and cross-platform mobile experiences.", href: "/services/mobile-dev", icon: Smartphone },
   { name: "Custom Software Development", description: "Tailored software built for your business needs.", href: "/services/software-dev", icon: Code2 },
   { name: "UI/UX Design", description: "Beautiful, user-centric interface design.", href: "/services/design", icon: PenTool },
+];
+
+const servicesAr = [
+  { name: "تطوير تطبيقات الويب", description: "تطبيقات ويب حديثة ومتجاوبة وقابلة للتوسع.", href: "/ar/services/web-dev", icon: Globe },
+  { name: "حلول الذكاء الاصطناعي والأتمتة", description: "تكامل ذكي للذكاء الاصطناعي في سير عملك.", href: "/ar/services/ai-automation", icon: Bot },
+  { name: "تطوير تطبيقات الجوال", description: "تجارب جوال أصلية ومتعددة المنصات.", href: "/ar/services/mobile-dev", icon: Smartphone },
+  { name: "تطوير البرمجيات المخصصة", description: "برمجيات مصممة خصيصاً لاحتياجات أعمالك.", href: "/ar/services/software-dev", icon: Code2 },
+  { name: "تصميم واجهة المستخدم", description: "تصميم واجهات جميلة تركز على المستخدم.", href: "/ar/services/design", icon: PenTool },
 ];
 
 export const Navbar = () => {
@@ -28,6 +43,13 @@ export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
+  const isArabic = pathname.startsWith("/ar");
+  const navLinks = isArabic ? navLinksAr : navLinksEn;
+  const services = isArabic ? servicesAr : servicesEn;
+  const contactHref = isArabic ? "/ar/contact" : "/contact";
+  const contactLabel = isArabic ? "تواصل معنا" : "Contact Us";
+  const ArrowIcon = isArabic ? ArrowLeft : ArrowRight;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -47,23 +69,27 @@ export const Navbar = () => {
     )}>
       <div className={cn(
         "w-full max-w-7xl mx-auto flex items-center justify-between px-6 relative transition-all duration-500",
-        scrolled ? "h-[60px]" : "h-[70px]"
+        scrolled ? "h-[60px]" : "h-[70px]",
+        isArabic && "flex-row-reverse"
       )}>
-        {/* Logo - left side */}
+        {/* Logo - left side (or right in RTL) */}
         <div className="flex items-center shrink-0 h-full">
-          <Link href="/" className="relative h-full w-52 md:w-72 flex items-center group">
+          <Link href={isArabic ? "/ar" : "/"} className="relative h-full w-52 md:w-72 flex items-center group">
             <Image
               src="/corelogic_logo.png"
               alt="CoreLogic Systems Logo"
               fill
-              className="object-contain object-left group-hover:scale-105 transition-transform duration-500"
+              className={cn(
+                "object-contain group-hover:scale-105 transition-transform duration-500",
+                isArabic ? "object-right" : "object-left"
+              )}
               priority
             />
           </Link>
         </div>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className={cn("hidden md:flex items-center gap-8", isArabic && "flex-row-reverse")}>
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -99,7 +125,10 @@ export const Navbar = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-[50px] left-1/2 -translate-x-1/2 w-[420px] bg-background/90 backdrop-blur-2xl border border-foreground/10 shadow-[0_40px_80px_rgba(0,0,0,0.15)] z-[100] rounded-3xl overflow-hidden p-3"
+                        className={cn(
+                          "absolute top-[50px] left-1/2 -translate-x-1/2 w-[420px] bg-background/90 backdrop-blur-2xl border border-foreground/10 shadow-[0_40px_80px_rgba(0,0,0,0.15)] z-[100] rounded-3xl overflow-hidden p-3",
+                          isArabic && "text-right"
+                        )}
                       >
                         <div className="flex flex-col gap-1">
                           {services.map((service) => (
@@ -108,6 +137,7 @@ export const Navbar = () => {
                               href={service.href}
                               className={cn(
                                 "p-3 text-[14px] font-medium transition-all duration-300 rounded-2xl flex items-start gap-4 group/item relative overflow-hidden",
+                                isArabic && "flex-row-reverse",
                                 pathname === service.href ? "bg-primary/10 text-primary" : "hover:bg-foreground/5"
                               )}
                             >
@@ -130,7 +160,10 @@ export const Navbar = () => {
                               </div>
                               
                               {/* Hover background effect */}
-                              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 z-0" />
+                              <div className={cn(
+                                "absolute inset-0 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 z-0",
+                                isArabic ? "bg-gradient-to-l from-primary/5 to-transparent" : "bg-gradient-to-r from-primary/5 to-transparent"
+                              )} />
                             </Link>
                           ))}
                         </div>
@@ -143,14 +176,16 @@ export const Navbar = () => {
           })}
         </div>
 
-        {/* Right Section: CTA & Hamburger */}
-        <div className="flex items-center gap-4">
+        {/* Right Section: Lang Switcher, CTA & Hamburger */}
+        <div className={cn("flex items-center gap-3", isArabic && "flex-row-reverse")}>
+          <LanguageSwitcher currentLocale={isArabic ? "ar" : "en"} className="hidden md:inline-flex" />
+
           <Link
-            href="/contact"
+            href={contactHref}
             className="hidden md:block"
           >
             <button className="px-7 py-2.5 bg-primary text-white font-bold rounded-full shadow-md hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all text-[15px] tracking-wide">
-              Contact Us
+              {contactLabel}
             </button>
           </Link>
 
@@ -180,14 +215,20 @@ export const Navbar = () => {
 
             {/* Slide-in Menu */}
             <motion.div
-              initial={{ x: "100%", opacity: 0 }}
+              initial={{ x: isArabic ? "-100%" : "100%", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: "100%", opacity: 0 }}
+              exit={{ x: isArabic ? "-100%" : "100%", opacity: 0 }}
               transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
-              className="fixed top-0 right-0 h-screen w-[85vw] max-w-[400px] bg-background/95 backdrop-blur-3xl shadow-2xl z-[100] md:hidden flex flex-col rounded-l-[2rem] border-l border-foreground/10"
+              className={cn(
+                "fixed top-0 h-screen w-[85vw] max-w-[400px] bg-background/95 backdrop-blur-3xl shadow-2xl z-[100] md:hidden flex flex-col border-foreground/10",
+                isArabic ? "left-0 rounded-r-[2rem] border-r" : "right-0 rounded-l-[2rem] border-l"
+              )}
             >
               {/* Close Button Header */}
-              <div className="flex justify-end items-center px-6 h-[80px] border-b border-foreground/5">
+              <div className={cn(
+                "flex items-center px-6 h-[80px] border-b border-foreground/5",
+                isArabic ? "justify-start" : "justify-end"
+              )}>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="w-10 h-10 flex items-center justify-center text-foreground/60 hover:text-primary hover:bg-foreground/5 rounded-full transition-colors"
@@ -197,7 +238,7 @@ export const Navbar = () => {
               </div>
 
               {/* Menu Links */}
-              <div className="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-6">
+              <div className={cn("flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-6", isArabic && "text-right")}>
                 {navLinks.map((link) => {
                   const isActive = pathname === link.href;
                   return (
@@ -220,6 +261,7 @@ export const Navbar = () => {
                               href={s.href} 
                               className={cn(
                                 "flex items-center gap-3 p-3 rounded-2xl transition-all duration-300",
+                                isArabic && "flex-row-reverse",
                                 pathname === s.href ? "bg-primary/10 text-primary" : "bg-foreground/5 text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
                               )}
                             >
@@ -239,17 +281,22 @@ export const Navbar = () => {
                     </div>
                   );
                 })}
+
+                {/* Mobile Language Switcher */}
+                <div className="pt-4 border-t border-foreground/5 mt-2">
+                  <LanguageSwitcher currentLocale={isArabic ? "ar" : "en"} className="w-full justify-center" />
+                </div>
               </div>
 
               {/* Bottom CTA */}
               <div className="p-6 border-t border-foreground/5 bg-background/50 backdrop-blur-xl">
                 <Link
-                  href="/contact"
+                  href={contactHref}
                   className="block w-full"
                 >
                   <button className="w-full py-4 bg-primary text-primary-foreground rounded-2xl font-semibold hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all text-sm flex items-center justify-center gap-2">
-                    Contact Us
-                    <ArrowRight size={16} />
+                    {contactLabel}
+                    <ArrowIcon size={16} />
                   </button>
                 </Link>
               </div>

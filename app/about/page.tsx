@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { 
   Target, 
@@ -196,7 +197,9 @@ export default function AboutPage() {
                             <span className="text-gradient">With Us</span>
                         </h2>
                         <div className="flex justify-center">
-                            <NeonButton size="lg" variant="primary">Contact Us</NeonButton>
+                            <Link href="/contact">
+                                <NeonButton size="lg" variant="primary">Contact Us</NeonButton>
+                            </Link>
                         </div>
                     </motion.div>
                 </GlassCard>

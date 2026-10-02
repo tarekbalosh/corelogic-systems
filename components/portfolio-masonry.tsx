@@ -34,20 +34,6 @@ const projects = [
     link: "https://management-students.vercel.app/dashboard",
     span: "col-span-2 md:col-span-1",
   },
-  {
-    title: "Quantum Inference",
-    category: "Intelligence",
-    image: "/quantum_ml_dashboard.png",
-    tags: ["ML", "Speed"],
-    span: "col-span-1 md:col-span-1",
-  },
-  {
-    title: "Omega Protocol",
-    category: "Blockchain",
-    image: "/blockchain_ledger_dashboard.png",
-    tags: ["Distributed", "Ledger"],
-    span: "col-span-1 md:col-span-1",
-  },
 ];
 
 const cardVariants = {
