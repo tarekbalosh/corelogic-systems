@@ -36,13 +36,13 @@ const reasons = [
 
 export default function AboutPage() {
   return (
-    <div className="relative min-h-screen bg-background text-foreground selection:bg-primary/30">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-background text-foreground selection:bg-primary/30">
       <ParticleBackground />
 
-      <div className="relative z-10 pt-40 pb-32">
+      <div className="relative z-10 pt-32 md:pt-40 pb-32">
         {/* 1. Hero Section */}
         <section className="px-6 mb-32">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="max-w-7xl mx-auto w-full min-w-0 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial="hidden"
               animate="visible"
@@ -50,11 +50,11 @@ export default function AboutPage() {
               className="space-y-8"
             >
               <motion.div variants={fadeInUp} className="space-y-4">
-                <h1 className="text-6xl md:text-8xl font-black tracking-tighter font-heading leading-tight">
+                <h1 className="text-4xl sm:text-6xl md:text-8xl break-words font-black tracking-tighter font-heading leading-tight">
                   About Our <br />
                   <span className="text-gradient">Company</span>
                 </h1>
-                <p className="text-2xl text-foreground/60 font-medium">
+                <p className="text-xl md:text-2xl text-foreground/60 font-medium">
                   We build intelligent software solutions powered by AI.
                 </p>
               </motion.div>
@@ -67,7 +67,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="relative"
+              className="relative w-full max-w-full min-w-0"
             >
               <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full" />
               <Image 
@@ -75,7 +75,7 @@ export default function AboutPage() {
                 alt="AI Dashboard Interface"
                 width={700}
                 height={700}
-                className="relative z-10 drop-shadow-[0_0_50px_rgba(124,58,237,0.15)] animate-float"
+                className="relative z-10 w-full h-auto drop-shadow-[0_0_50px_rgba(124,58,237,0.15)] animate-float"
               />
             </motion.div>
           </div>
@@ -84,7 +84,7 @@ export default function AboutPage() {
         {/* 2. Company Overview */}
         <section className="px-6 mb-40">
           <div className="max-w-7xl mx-auto">
-             <GlassCard className="p-12 md:p-20 border-primary/20 bg-primary/5">
+             <GlassCard className="p-6 sm:p-12 md:p-20 border-primary/20 bg-primary/5">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
                     <div className="lg:col-span-1">
                         <h2 className="text-4xl font-black font-heading tracking-tighter">Who We Are</h2>
@@ -132,7 +132,7 @@ export default function AboutPage() {
 
         {/* 4. Our Values */}
         <section className="px-6 mb-32 relative">
-           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
            <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Our Core Values</h2>
@@ -164,7 +164,7 @@ export default function AboutPage() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {reasons.map((r, i) => (
-                        <div key={i} className="relative p-10 bg-gradient-to-br from-white to-slate-50 border border-slate-100 rounded-[2.5rem] overflow-hidden group hover:shadow-[0_8px_30px_rgba(124,58,237,0.08)] transition-all duration-500">
+                        <div key={i} className="relative p-6 sm:p-10 bg-gradient-to-br from-white to-slate-50 border border-slate-100 rounded-[2.5rem] overflow-hidden group hover:shadow-[0_8px_30px_rgba(124,58,237,0.08)] transition-all duration-500">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
                             
                             <div className="flex items-start gap-6 relative z-10">
@@ -192,7 +192,7 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="space-y-10"
                     >
-                        <h2 className="text-5xl md:text-7xl font-black font-heading tracking-tighter">
+                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black font-heading tracking-tighter">
                             Start Your Project <br />
                             <span className="text-gradient">With Us</span>
                         </h2>
