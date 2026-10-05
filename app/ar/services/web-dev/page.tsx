@@ -329,12 +329,10 @@ export default function WebDevelopmentPage() {
                 لا تدع منافسيك يسبقونك. تواصل معنا اليوم لتحويل رؤيتك الرقمية إلى منصة ويب قوية ومتطورة.
               </p>
               <div className="pt-4 flex justify-center">
-                <Link href="/ar/contact">
-                  <button className="px-10 py-5 bg-gradient-to-l from-cyan-600 to-blue-600 text-white rounded-full font-semibold hover:opacity-90 shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-0.5 transition-all text-lg flex items-center gap-2">
-                    احصل على استشارة مجانية
-                    <ArrowLeft size={20} />
-                  </button>
-                </Link>
+                <a href="https://wa.me/601169397149" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-gradient-to-l from-cyan-600 to-blue-600 text-white rounded-full font-semibold hover:opacity-90 shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-0.5 transition-all text-lg flex items-center gap-2">
+                  احصل على استشارة مجانية
+                  <ArrowLeft size={20} />
+                </a>
               </div>
             </div>
           </motion.div>

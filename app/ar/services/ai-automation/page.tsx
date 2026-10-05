@@ -287,12 +287,12 @@ export default function AiSolutionsPage() {
                                 اسبق منافسيك بخطوات من خلال إطلاق العنان للقوة الكاملة للذكاء الاصطناعي داخل مؤسستك اليوم.
                             </p>
                             <div className="pt-6 flex justify-center">
-                                <Link href="/ar/contact">
+                                <a href="https://wa.me/601169397149" target="_blank" rel="noopener noreferrer">
                                     <NeonButton size="lg" variant="primary" className="pl-6 group px-10">
                                         احصل على استشارة مجانية
                                         <ArrowLeft size={20} className="mr-2 inline-block group-hover:-translate-x-1 transition-transform" />
                                     </NeonButton>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </motion.div>

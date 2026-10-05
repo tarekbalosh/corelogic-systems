@@ -327,12 +327,10 @@ export default function MobileAppDevelopmentPage() {
                 هل أنت مستعد لنقل عملك إلى المستوى التالي؟ ابدأ المحادثة اليوم ودعنا نبني تطبيقاً سيحبه مستخدموك.
               </p>
               <div className="pt-4 flex justify-center">
-                <Link href="/ar/contact">
-                  <button className="px-10 py-5 bg-gradient-to-l from-violet-600 to-indigo-600 text-white rounded-full font-semibold hover:opacity-90 shadow-lg hover:shadow-violet-500/20 hover:-translate-y-0.5 transition-all text-lg flex items-center gap-2">
-                    احصل على استشارة مجانية
-                    <ArrowLeft size={20} />
-                  </button>
-                </Link>
+                <a href="https://wa.me/601169397149" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-gradient-to-l from-violet-600 to-indigo-600 text-white rounded-full font-semibold hover:opacity-90 shadow-lg hover:shadow-violet-500/20 hover:-translate-y-0.5 transition-all text-lg flex items-center gap-2">
+                  احصل على استشارة مجانية
+                  <ArrowLeft size={20} />
+                </a>
               </div>
             </div>
           </motion.div>

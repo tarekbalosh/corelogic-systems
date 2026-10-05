@@ -343,12 +343,10 @@ export default function UIDesignPage() {
                 لا ترضى بتصميم عادي. ابدأ المحادثة اليوم ودعنا نصوغ هوية بصرية متميزة لبرمجياتك.
               </p>
               <div className="pt-4 flex justify-center">
-                <Link href="/ar/contact">
-                  <button className="px-10 py-5 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all text-lg flex items-center gap-2">
-                    احصل على استشارة مجانية
-                    <ArrowLeft size={20} />
-                  </button>
-                </Link>
+                <a href="https://wa.me/601169397149" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all text-lg flex items-center gap-2">
+                  احصل على استشارة مجانية
+                  <ArrowLeft size={20} />
+                </a>
               </div>
             </div>
           </motion.div>

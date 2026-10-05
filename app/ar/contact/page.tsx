@@ -355,9 +355,9 @@ export default function ArabicContactPage() {
               لا تنتظر اللحظة المناسبة. لنبدأ الحوار اليوم ونبني شيئاً استثنائياً معاً.
             </p>
             <div className="pt-4">
-              <button className="px-10 py-5 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-1 transition-all text-lg">
+              <a href="https://wa.me/601169397149" target="_blank" rel="noopener noreferrer" className="inline-block px-10 py-5 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-1 transition-all text-lg">
                 احصل على استشارة مجانية
-              </button>
+              </a>
             </div>
           </div>
         </motion.div>
