@@ -18,8 +18,8 @@ import { ParticleBackground } from "@/components/particle-background";
 import { cn } from "@/lib/utils";
 
 const contactInfo = [
-  { icon: Mail, label: "راسلنا", value: "contact@corelogic-system.my", href: "mailto:contact@corelogic-system.my", color: "text-blue-500" },
-  { icon: Phone, label: "اتصل بنا", value: "+601169397149", href: "tel:+601169397149", color: "text-emerald-500" },
+  { icon: Mail, label: "راسلنا", value: "contact@corelogic-system.my", href: "mailto:contact@corelogic-system.my", color: "text-blue-500", isLtr: true },
+  { icon: Phone, label: "اتصل بنا", value: "+601169397149", href: "tel:+601169397149", color: "text-emerald-500", isLtr: true },
   { icon: MapPin, label: "موقعنا", value: "لوت C7، TRX، كوالالمبور", href: "https://goo.gl/maps/example", color: "text-purple-500" },
   { icon: Clock, label: "ساعات العمل", value: "الاثنين - الجمعة: 9:00 ص - 6:00 م", href: null, color: "text-primary" },
 ];
@@ -233,19 +233,21 @@ export default function ArabicContactPage() {
               {contactInfo.map((info) => (
                 <div
                   key={info.label}
-                  className="p-5 bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl hover:border-primary/30 transition-all flex items-center gap-5 group shadow-sm hover:shadow-md flex-row-reverse"
+                  className="p-5 bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl hover:border-primary/30 transition-all flex items-center gap-5 group shadow-sm hover:shadow-md"
                 >
                   <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center bg-foreground/5 shrink-0 transition-colors group-hover:bg-primary/10", info.color)}>
                     <info.icon size={22} className="group-hover:scale-110 transition-transform" />
                   </div>
-                  <div className="text-right">
+                  <div className="text-right flex-1">
                     <p className="text-[13px] font-medium text-foreground/50 mb-1">{info.label}</p>
                     {info.href ? (
                       <a href={info.href} className="text-base font-semibold text-foreground hover:text-primary transition-colors">
-                        {info.value}
+                        {info.isLtr ? <span dir="ltr" className="inline-block">{info.value}</span> : info.value}
                       </a>
                     ) : (
-                      <p className="text-base font-semibold text-foreground">{info.value}</p>
+                      <p className="text-base font-semibold text-foreground">
+                        {info.isLtr ? <span dir="ltr" className="inline-block">{info.value}</span> : info.value}
+                      </p>
                     )}
                   </div>
                 </div>
