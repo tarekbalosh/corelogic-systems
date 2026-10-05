@@ -2,46 +2,46 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Cpu, Zap, MessageSquare, Camera, Settings, Database, ArrowRight } from "lucide-react";
+import { ArrowRight, Monitor, Globe, Smartphone, Bot, LineChart, Wrench } from "lucide-react";
 import { GlassCard } from "./glass-card";
 import { SectionTitle } from "./section-title";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 
 const services = [
   {
-    title: "AI Analytics",
-    description: "Deep-dive predictive modeling and real-time data stream analysis for enterprise agility.",
-    icon: Cpu,
+    title: "Custom business software",
+    description: "ERP, accounting, POS, inventory, and custom dashboards tailored to your needs.",
+    icon: Monitor,
     glow: "purple" as const,
   },
   {
-    title: "Machine Learning",
-    description: "Custom neural network architectures trained on industrial-scale datasets for high precision.",
-    icon: Zap,
+    title: "Web development",
+    description: "Company sites, portals, and scalable e-commerce platforms.",
+    icon: Globe,
     glow: "cyan" as const,
   },
   {
-    title: "NLP Processing",
-    description: "Advanced semantic understanding and multi-lingual processing for human-like intelligence.",
-    icon: MessageSquare,
-    glow: "purple" as const,
-  },
-  {
-    title: "Computer Vision",
-    description: "Object detection, spatial analysis, and sensory perception for autonomous robotics.",
-    icon: Camera,
+    title: "Mobile apps",
+    description: "Native and cross-platform mobile applications for iOS and Android.",
+    icon: Smartphone,
     glow: "amber" as const,
   },
   {
-    title: "IA Automation",
-    description: "Intelligent agent orchestration to streamline complex cross-departmental workflows.",
-    icon: Settings,
+    title: "AI Automation",
+    description: "Workflow automation, intelligent chatbots, and document processing.",
+    icon: Bot,
+    glow: "purple" as const,
+  },
+  {
+    title: "Data and analytics",
+    description: "Custom dashboards, reporting systems, and data integrations.",
+    icon: LineChart,
     glow: "cyan" as const,
   },
   {
-    title: "Data Intelligence",
-    description: "Secure data lake integration with automated governance and ethical AI guardrails.",
-    icon: Database,
+    title: "Maintenance and technical support",
+    description: "Ongoing support, updates, and maintenance for your digital assets.",
+    icon: Wrench,
     glow: "amber" as const,
   },
 ];
@@ -51,8 +51,8 @@ export const ServicesGrid = () => {
     <section id="services" className="py-24 px-6 relative">
       <div className="max-w-7xl mx-auto">
         <SectionTitle 
-          title="Intelligent Services" 
-          subtitle="Empowering your enterprise with state-of-the-art AI infrastructure and cognitive architectures."
+          title="Our Services" 
+          subtitle="Comprehensive solutions for your business needs."
         />
 
         <motion.div

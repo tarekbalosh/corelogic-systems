@@ -4,9 +4,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import CountUp from "react-countup";
-import { useInView } from "react-intersection-observer";
-import { Cpu, Zap, MessageSquare, Camera, Settings, Database, ArrowLeft } from "lucide-react";
+import { ArrowLeft, Monitor, Globe, Smartphone, Bot, LineChart, Wrench } from "lucide-react";
 import { ParticleBackground } from "@/components/particle-background";
 import { Typewriter } from "@/components/typewriter";
 import { NeonButton } from "@/components/neon-button";
@@ -14,19 +12,13 @@ import { GlassCard } from "@/components/glass-card";
 import { SectionTitle } from "@/components/section-title";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
-const stats = [
-  { value: 12, suffix: "+", label: "عملاء نشطون", color: "purple" },
-  { value: 99.9, suffix: "%", label: "وقت التشغيل المستهدف", color: "cyan", decimals: 1 },
-  { value: 10, suffix: "K+", label: "طلبات API/ثانية", color: "amber" },
-];
-
 const services = [
-  { title: "تحليلات الذكاء الاصطناعي", description: "نمذجة تنبؤية متعمقة وتحليل بيانات فوري لمرونة المؤسسات.", icon: Cpu, glow: "purple" as const },
-  { title: "التعلم الآلي", description: "بنيات شبكات عصبية مخصصة مدربة على مجموعات بيانات صناعية لدقة عالية.", icon: Zap, glow: "cyan" as const },
-  { title: "معالجة اللغات الطبيعية", description: "فهم دلالي متقدم ومعالجة متعددة اللغات لذكاء شبيه بالبشر.", icon: MessageSquare, glow: "purple" as const },
-  { title: "الرؤية الحاسوبية", description: "كشف الأجسام والتحليل المكاني والإدراك الحسي للروبوتات المستقلة.", icon: Camera, glow: "amber" as const },
-  { title: "الأتمتة الذكية", description: "تنسيق الوكلاء الأذكياء لتبسيط سير العمل المعقد عبر الأقسام.", icon: Settings, glow: "cyan" as const },
-  { title: "ذكاء البيانات", description: "تكامل آمن لبحيرات البيانات مع حوكمة آلية وحواجز أخلاقية للذكاء الاصطناعي.", icon: Database, glow: "amber" as const },
+  { title: "برمجيات الأعمال المخصصة", description: "تخطيط موارد المؤسسات، المحاسبة، نقاط البيع، المخزون، ولوحات التحكم المخصصة.", icon: Monitor, glow: "purple" as const },
+  { title: "تطوير الويب", description: "مواقع الشركات، البوابات الإلكترونية، ومنصات التجارة الإلكترونية القابلة للتوسع.", icon: Globe, glow: "cyan" as const },
+  { title: "تطبيقات الجوال", description: "تطبيقات جوال أصلية ومتعددة المنصات لنظامي iOS و Android.", icon: Smartphone, glow: "amber" as const },
+  { title: "الأتمتة بالذكاء الاصطناعي", description: "أتمتة سير العمل، روبوتات المحادثة الذكية، ومعالجة المستندات.", icon: Bot, glow: "purple" as const },
+  { title: "البيانات والتحليلات", description: "لوحات تحكم مخصصة، أنظمة تقارير، وتكامل البيانات.", icon: LineChart, glow: "cyan" as const },
+  { title: "الصيانة والدعم الفني", description: "دعم مستمر، تحديثات، وصيانة لأصولك الرقمية.", icon: Wrench, glow: "amber" as const },
 ];
 
 const projects = [
@@ -35,7 +27,7 @@ const projects = [
     category: "نظام مالي",
     image: "/accounting_pro_dashboard.png",
     tags: ["محاسبة", "مطاعم", "مالي"],
-    link: "https://account-systems.vercel.app/login",
+    link: "/ar/work/accounting-pro",
     span: "col-span-2 md:col-span-2",
   },
   {
@@ -43,7 +35,7 @@ const projects = [
     category: "نقاط بيع المطاعم",
     image: "/pos_system_dashboard.png",
     tags: ["نقاط البيع", "مطاعم"],
-    link: "https://system-pos-resturant.vercel.app/pos",
+    link: "/ar/work/pos-system",
     span: "col-span-2 md:col-span-1",
   },
   {
@@ -51,7 +43,7 @@ const projects = [
     category: "تعليم",
     image: "/student_management_dashboard.png",
     tags: ["طلاب", "إدارة"],
-    link: "https://management-students.vercel.app/dashboard",
+    link: "/ar/work/student-management",
     span: "col-span-2 md:col-span-1",
   },
 ];
@@ -66,45 +58,7 @@ const cardVariants = {
   },
 } as const;
 
-function StatsSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
 
-  return (
-    <section ref={ref} className="py-24 px-6 relative overflow-hidden bg-white border-y border-gray-100">
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-64 h-64 bg-primary/10 rounded-full blur-[120px]" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-64 h-64 bg-secondary/10 rounded-full blur-[120px]" />
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-3 gap-12"
-        >
-          {stats.map((stat, idx) => (
-            <motion.div key={idx} variants={fadeInUp} className="flex flex-col items-center text-center space-y-4">
-              <div className="relative">
-                <div className="text-5xl md:text-7xl font-bold font-heading tracking-tight flex items-baseline justify-center">
-                  <span className="text-foreground">
-                    {inView ? (
-                      <CountUp end={stat.value} duration={2.5} decimals={stat.decimals || 0} useEasing={true} />
-                    ) : (
-                      <span>0</span>
-                    )}
-                  </span>
-                  <span className="text-primary text-3xl md:text-5xl mr-1">{stat.suffix}</span>
-                </div>
-                <div className="h-1 w-1/3 bg-gradient-to-r from-transparent via-primary/20 to-transparent mx-auto mt-4 rounded-full" />
-              </div>
-              <p className="text-sm md:text-base font-bold text-foreground/50 tracking-[0.2em] uppercase">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
 
 export default function ArabicHome() {
   return (
@@ -123,23 +77,21 @@ export default function ArabicHome() {
               className="space-y-10 z-10"
             >
               <motion.div variants={fadeInUp} className="space-y-4">
-                <h1 className="text-6xl md:text-8xl font-black tracking-tighter font-heading leading-none">
-                  ابنِ المستقبل <br />
-                  <span className="text-gradient">بالذكاء الاصطناعي</span>
+                <h1 className="text-5xl md:text-7xl font-black tracking-tighter font-heading leading-tight">
+                  برمجيات مخصصة وأتمتة <br className="hidden md:block" />
+                  <span className="text-gradient">بالذكاء الاصطناعي</span> للأعمال النامية
                 </h1>
-                <div className="text-2xl md:text-3xl font-medium text-foreground/70 flex items-center gap-2">
-                  <span>مُمَكَّنون لـ</span>
-                  <Typewriter words={["الأتمتة", "التحليل", "التسريع"]} />
+                <div className="text-xl md:text-2xl font-medium text-foreground/70">
+                  نصمم ونبني أنظمة الأعمال وتطبيقات الويب والجوال وحلول الأتمتة بالذكاء الاصطناعي، من الفكرة حتى التشغيل والدعم.
                 </div>
               </motion.div>
 
-              <motion.p variants={fadeInUp} className="text-lg md:text-xl text-foreground/60 max-w-lg leading-relaxed">
-                كورلوجيك سيستمز توفر بنية تحتية عالية الأداء وهندسة عصبية متقدمة للجيل القادم من الحوسبة على المستوى الصناعي.
-              </motion.p>
-
-              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6">
+              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
                 <Link href="/ar/contact">
-                  <NeonButton size="lg" variant="primary">ابدأ الآن</NeonButton>
+                  <NeonButton size="lg" variant="primary">احجز استشارة مجانية</NeonButton>
+                </Link>
+                <Link href="#portfolio" className="flex items-center justify-center font-semibold hover:text-primary transition-colors px-6 py-3">
+                  شاهد أعمالنا
                 </Link>
               </motion.div>
             </motion.div>
@@ -157,15 +109,24 @@ export default function ArabicHome() {
                 <div className="absolute w-[80%] h-[80%] border-t-2 border-primary/40 rounded-full animate-[spin_6s_linear_infinite] [transform-style:preserve-3d] [transform:rotateX(30deg)]" />
               </div>
               <div className="absolute w-64 h-64 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
-              <div className="animate-float" style={{ mixBlendMode: "screen" }}>
-                <Image
-                  src="/ai_brain_hologram_1776488427249.png"
-                  alt="دماغ ذكاء اصطناعي هولوغرامي"
-                  width={600}
-                  height={600}
-                  className="drop-shadow-[0_0_50px_rgba(124,58,237,0.5)]"
-                  priority
-                />
+              
+              {/* Floating Symbol SVG */}
+              <div className="animate-float flex items-center justify-center p-12 w-full h-full relative z-10" style={{ mixBlendMode: "screen" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" className="w-full max-w-[400px] h-auto drop-shadow-[0_0_50px_rgba(124,58,237,0.5)]">
+                  <g transform="translate(14 14) scale(1)">
+                    <path d="M46 18L72.6 28.5L79.1 52.2L60.8 71.2L31.2 71.2L12.9 52.2L19.4 28.5Z" fill="none" stroke="currentColor" className="text-primary/80" strokeWidth="3" strokeLinejoin="round"/>
+                    <path d="M46 38L46 18M52.7 41.6L72.6 28.5M53.9 47.5L79.1 52.2M50.1 52.9L60.8 71.2M41.9 52.9L31.2 71.2M38.1 47.5L12.9 52.2M39.3 41.6L19.4 28.5" fill="none" stroke="currentColor" className="text-primary/60" strokeWidth="3" strokeLinecap="round"/>
+                    <circle cx="46" cy="18" r="4.5" fill="currentColor" className="text-primary"/>
+                    <circle cx="79.1" cy="52.2" r="4.5" fill="currentColor" className="text-primary"/>
+                    <circle cx="60.8" cy="71.2" r="4.5" fill="currentColor" className="text-primary"/>
+                    <circle cx="31.2" cy="71.2" r="4.5" fill="currentColor" className="text-primary"/>
+                    <circle cx="12.9" cy="52.2" r="4.5" fill="currentColor" className="text-primary"/>
+                    <circle cx="19.4" cy="28.5" r="4.5" fill="currentColor" className="text-primary"/>
+                    <circle cx="72.6" cy="28.5" r="5.5" fill="currentColor" className="text-secondary"/>
+                    <circle cx="46" cy="46" r="8" fill="none" stroke="currentColor" className="text-primary" strokeWidth="3"/>
+                    <circle cx="46" cy="46" r="3" fill="currentColor" className="text-secondary"/>
+                  </g>
+                </svg>
               </div>
               <motion.div
                 animate={{ rotate: 360, y: [0, -20, 0] }}
@@ -181,15 +142,12 @@ export default function ArabicHome() {
           </div>
         </section>
 
-        {/* Stats */}
-        <StatsSection />
-
         {/* Services */}
         <section id="services" className="py-24 px-6 relative">
           <div className="max-w-7xl mx-auto">
             <SectionTitle
-              title="خدمات ذكية"
-              subtitle="تمكين مؤسستك ببنية تحتية متطورة للذكاء الاصطناعي وهندسة معرفية حديثة."
+              title="خدماتنا"
+              subtitle="حلول متكاملة تلبي كافة احتياجات أعمالك الرقمية."
             />
             <motion.div
               initial="hidden"
@@ -225,7 +183,7 @@ export default function ArabicHome() {
           <div className="max-w-7xl mx-auto">
             <SectionTitle
               title="مشاريع مميزة"
-              subtitle="عرض لأنظمة ذكاء اصطناعي عالية التأثير تم تطويرها لشركائنا العالميين."
+              subtitle="مجموعة من الأنظمة والتطبيقات المخصصة التي طورناها لعملائنا."
             />
             <motion.div
               initial="hidden"

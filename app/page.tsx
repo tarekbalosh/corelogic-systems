@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Hero } from "@/components/hero";
 import { ParticleBackground } from "@/components/particle-background";
-import { StatsSection } from "@/components/stats-section";
 import { ServicesGrid } from "@/components/services-grid";
 import { PortfolioMasonry } from "@/components/portfolio-masonry";
 
@@ -18,9 +17,6 @@ export default function Home() {
         
         {/* Cinematic Hero Region */}
         <Hero />
-
-        {/* Global Performance Statistics */}
-        <StatsSection />
 
         {/* Core AI Intelligence Services */}
         <ServicesGrid />

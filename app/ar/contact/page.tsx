@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { ParticleBackground } from "@/components/particle-background";
 import { cn } from "@/lib/utils";
+import { sendContactEmail } from "@/app/actions";
 
 const contactInfo = [
   { icon: Mail, label: "راسلنا", value: "contact@corelogic-system.my", href: "mailto:contact@corelogic-system.my", color: "text-blue-500", isLtr: true },
@@ -49,27 +50,28 @@ export default function ArabicContactPage() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    const whatsappMessage = encodeURIComponent(
-      `*استفسار جديد من كورلوجيك سيستمز*\n\n` +
-      `👤 *الاسم:* ${formData.fullName}\n` +
-      `📧 *البريد:* ${formData.email}\n` +
-      `📱 *الهاتف:* ${formData.phone || "غير متوفر"}\n` +
-      `🛠️ *الخدمة:* ${formData.service}\n\n` +
-      `📝 *الرسالة:* ${formData.message || "لم يتم تقديم رسالة"}`
-    );
+    const formDataObj = new FormData();
+    formDataObj.append("fullName", formData.fullName);
+    formDataObj.append("email", formData.email);
+    formDataObj.append("phone", formData.phone);
+    formDataObj.append("service", formData.service);
+    formDataObj.append("message", formData.message);
+    
+    // Honeypot field check is handled via the form element below
 
-    const whatsappUrl = `https://wa.me/601169397149?text=${whatsappMessage}`;
-    window.open(whatsappUrl, "_blank");
+    const result = await sendContactEmail(formDataObj);
 
-    setTimeout(() => {
-      setLoading(false);
+    setLoading(false);
+    if (result.success) {
       setIsSubmitted(true);
       setFormData({ fullName: "", email: "", phone: "", service: "", message: "" });
-    }, 1000);
+    } else {
+      alert("حدث خطأ أثناء إرسال الرسالة: " + result.error);
+    }
   };
 
   return (
@@ -119,6 +121,7 @@ export default function ArabicContactPage() {
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                    <input type="text" name="website_url" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2.5">
                         <label className="text-sm font-medium text-foreground/80">الاسم الكامل</label>

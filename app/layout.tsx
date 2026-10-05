@@ -22,11 +22,10 @@ const notoKufiArabic = Noto_Kufi_Arabic({
 
 export const metadata: Metadata = {
   title: {
-    default: "Corelogic Systems | B2B Software Development & AI Solutions",
-    template: "%s | Corelogic Systems"
+    default: "CoreLogic Systems | Custom Software & AI Automation",
+    template: "%s | CoreLogic Systems"
   },
-  description: "Corelogic Systems is a leading software development company offering custom enterprise web development, AI automation solutions, and mobile apps globally and in the Middle East.",
-  keywords: ["custom enterprise software development company", "AI automation agency", "top mobile app developers", "شركات برمجة", "تطوير تطبيقات"],
+  description: "We design and build custom business systems, web and mobile apps, and AI-powered automation for growing businesses.",
   alternates: {
     canonical: "https://www.corelogic-system.my",
     languages: {
@@ -62,12 +61,13 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "CoreLogic Systems",
-              "url": "https://corelogic.my",
-              "logo": "https://corelogic.my/logo.png",
+              "url": "https://www.corelogic-system.my",
+              "logo": "https://www.corelogic-system.my/brand/corelogic-symbol-color.svg",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+60-123-456-789",
-                "contactType": "customer service"
+                "telephone": "+601169397149",
+                "contactType": "customer service",
+                "email": "contact@corelogic-system.my"
               },
               "sameAs": [
                 "https://www.linkedin.com/company/corelogic-systems",

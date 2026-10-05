@@ -21,24 +21,21 @@ export const Hero = () => {
           className="space-y-10 z-10"
         >
           <motion.div variants={fadeInUp} className="space-y-4">
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter font-heading leading-none">
-              Build the Future <br />
-              <span className="text-gradient">with AI</span>
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter font-heading leading-tight">
+              Custom software and <br className="hidden md:block" />
+              <span className="text-gradient">AI automation</span> for growing businesses
             </h1>
-            <div className="text-2xl md:text-3xl font-medium text-foreground/70 flex items-center gap-2">
-              <span>Empowered to</span>
-              <Typewriter words={["Automate", "Analyze", "Accelerate"]} />
+            <div className="text-xl md:text-2xl font-medium text-foreground/70">
+              We design and build business systems, web and mobile apps, and AI-powered automation, from first idea to production support.
             </div>
           </motion.div>
 
-          <motion.p variants={fadeInUp} className="text-lg md:text-xl text-foreground/60 max-w-lg leading-relaxed">
-            CoreLogic Systems provides high-performance infrastructure and neural architectures 
-            for the next generation of industrial-scale compute.
-          </motion.p>
-
-          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6">
+          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
             <Link href="/contact">
-              <NeonButton size="lg" variant="primary">Get Started Now</NeonButton>
+              <NeonButton size="lg" variant="primary">Book a free consultation</NeonButton>
+            </Link>
+            <Link href="#portfolio" className="flex items-center justify-center font-semibold hover:text-primary transition-colors px-6 py-3">
+              View our work
             </Link>
           </motion.div>
         </motion.div>
@@ -60,16 +57,23 @@ export const Hero = () => {
           {/* Hologram Pulse Effect */}
           <div className="absolute w-64 h-64 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
 
-          {/* Floating Brain Image */}
-          <div className="animate-float" style={{ mixBlendMode: "screen" }}>
-            <Image
-              src="/ai_brain_hologram_1776488427249.png"
-              alt="AI Neural Brain Hologram"
-              width={600}
-              height={600}
-              className="drop-shadow-[0_0_50px_rgba(124,58,237,0.5)]"
-              priority
-            />
+          {/* Floating Symbol SVG */}
+          <div className="animate-float flex items-center justify-center p-12 w-full h-full relative z-10" style={{ mixBlendMode: "screen" }}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" className="w-full max-w-[400px] h-auto drop-shadow-[0_0_50px_rgba(124,58,237,0.5)]">
+              <g transform="translate(14 14) scale(1)">
+                <path d="M46 18L72.6 28.5L79.1 52.2L60.8 71.2L31.2 71.2L12.9 52.2L19.4 28.5Z" fill="none" stroke="currentColor" className="text-primary/80" strokeWidth="3" strokeLinejoin="round"/>
+                <path d="M46 38L46 18M52.7 41.6L72.6 28.5M53.9 47.5L79.1 52.2M50.1 52.9L60.8 71.2M41.9 52.9L31.2 71.2M38.1 47.5L12.9 52.2M39.3 41.6L19.4 28.5" fill="none" stroke="currentColor" className="text-primary/60" strokeWidth="3" strokeLinecap="round"/>
+                <circle cx="46" cy="18" r="4.5" fill="currentColor" className="text-primary"/>
+                <circle cx="79.1" cy="52.2" r="4.5" fill="currentColor" className="text-primary"/>
+                <circle cx="60.8" cy="71.2" r="4.5" fill="currentColor" className="text-primary"/>
+                <circle cx="31.2" cy="71.2" r="4.5" fill="currentColor" className="text-primary"/>
+                <circle cx="12.9" cy="52.2" r="4.5" fill="currentColor" className="text-primary"/>
+                <circle cx="19.4" cy="28.5" r="4.5" fill="currentColor" className="text-primary"/>
+                <circle cx="72.6" cy="28.5" r="5.5" fill="currentColor" className="text-secondary"/>
+                <circle cx="46" cy="46" r="8" fill="none" stroke="currentColor" className="text-primary" strokeWidth="3"/>
+                <circle cx="46" cy="46" r="3" fill="currentColor" className="text-secondary"/>
+              </g>
+            </svg>
           </div>
 
           {/* Background Geometric Shapes */}

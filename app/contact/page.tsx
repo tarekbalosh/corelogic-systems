@@ -17,6 +17,7 @@ import {
 import { ParticleBackground } from "@/components/particle-background";
 import { SectionTitle } from "@/components/section-title";
 import { cn } from "@/lib/utils";
+import { sendContactEmail } from "@/app/actions";
 
 const contactInfo = [
   {
@@ -74,24 +75,23 @@ export default function ContactPage() {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    const whatsappMessage = encodeURIComponent(
-      `*New Inquiry from CoreLogic Systems*\n\n` +
-      `👤 *Name:* ${formData.fullName}\n` +
-      `📧 *Email:* ${formData.email}\n` +
-      `📱 *Phone:* ${formData.phone || "Not provided"}\n` +
-      `🛠️ *Service:* ${formData.service}\n\n` +
-      `📝 *Message:* ${formData.message || "No message provided"}`
-    );
+    const formDataObj = new FormData();
+    formDataObj.append("fullName", formData.fullName);
+    formDataObj.append("email", formData.email);
+    formDataObj.append("phone", formData.phone);
+    formDataObj.append("service", formData.service);
+    formDataObj.append("message", formData.message);
+    
+    // Honeypot field check is handled via the form element below
 
-    const whatsappUrl = `https://wa.me/601169397149?text=${whatsappMessage}`;
-    window.open(whatsappUrl, "_blank");
+    const result = await sendContactEmail(formDataObj);
 
-    setTimeout(() => {
-      setLoading(false);
+    setLoading(false);
+    if (result.success) {
       setIsSubmitted(true);
       setFormData({
         fullName: "",
@@ -100,7 +100,9 @@ export default function ContactPage() {
         service: "",
         message: ""
       });
-    }, 1000);
+    } else {
+      alert("Error sending message: " + result.error);
+    }
   };
 
   return (
@@ -152,6 +154,7 @@ export default function ContactPage() {
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                    <input type="text" name="website_url" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2.5">
                         <label className="text-sm font-medium text-foreground/80">Full Name</label>

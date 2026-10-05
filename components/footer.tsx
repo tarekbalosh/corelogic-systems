@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ArrowUp, ChevronUp, Globe, Mail, Send, Share2, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/config/site";
 
 const siteMapEn = [
   { name: "Home", href: "/" },
@@ -73,11 +74,11 @@ export const Footer = () => {
               <Link href={isArabic ? "/ar" : "/"} className="inline-block">
                 <div className="relative w-56 h-16 md:w-72 md:h-20 flex items-center justify-start">
                   <Image
-                    src="/corelogic_logo.png"
+                    src="/brand/corelogic-logo-horizontal-reversed.svg"
                     alt="CoreLogic Systems Logo"
                     fill
                     className={cn(
-                      "object-contain brightness-0 opacity-80 hover:opacity-100 transition-opacity",
+                      "object-contain opacity-80 hover:opacity-100 transition-opacity",
                       isArabic ? "object-right" : "object-left"
                     )}
                   />
@@ -106,9 +107,10 @@ export const Footer = () => {
               <h4 className="text-sm font-black text-foreground tracking-widest uppercase mb-6">{t.contactUs}</h4>
               <div className="space-y-4">
                 <a
-                  href="https://www.google.com/maps"
+                  href="https://www.google.com/maps/search/?api=1&query=Menara+IQ,+Tun+Razak+Exchange,+Kuala+Lumpur"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="TODO: confirm the address is accurate"
                   className="group flex items-start gap-4 p-4 rounded-2xl bg-foreground/50 border border-foreground/60 shadow-sm hover:shadow-md hover:bg-white transition-all duration-300"
                 >
                   <div className="w-10 h-10 shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
@@ -196,7 +198,7 @@ export const Footer = () => {
         <div className="border-t border-foreground/5 bg-foreground/50 backdrop-blur-md py-6">
           <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-start">
             <p className="text-foreground/50 text-[11px] font-bold tracking-widest uppercase">
-              Copyright © {new Date().getFullYear()}, CoreLogic Systems Inc. All Rights Reserved.
+              Copyright © {new Date().getFullYear()}, {siteConfig.legalName}. All Rights Reserved.
             </p>
             <p className="text-foreground/50 text-[11px] font-bold tracking-widest uppercase">
               {t.designedWith} <span className="text-primary font-black ml-1">Corelogic Systems</span>

@@ -12,12 +12,14 @@ const navLinksEn = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Our Services", href: "/services", hasDropdown: true },
+  { name: "Our Projects", href: "/work" },
 ];
 
 const navLinksAr = [
   { name: "الرئيسية", href: "/ar" },
   { name: "من نحن", href: "/ar/about" },
   { name: "خدماتنا", href: "/ar/services", hasDropdown: true },
+  { name: "مشاريعنا", href: "/ar/work" },
 ];
 
 const servicesEn = [
@@ -74,7 +76,7 @@ export const Navbar = () => {
             <div className="flex items-center shrink-0 h-full">
               <Link href={isArabic ? "/ar" : "/"} className="relative h-14 w-52 md:h-[72px] md:w-[280px] flex items-center group">
                 <Image
-                  src="/corelogic_logo.png"
+                  src="/brand/corelogic-logo-horizontal-color.svg"
                   alt="CoreLogic Systems Logo"
                   fill
                   className={cn(

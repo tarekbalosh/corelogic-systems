@@ -15,7 +15,7 @@ const projects = [
     category: "Financial System",
     image: "/accounting_pro_dashboard.png",
     tags: ["Accounting", "Restaurant", "Financial"],
-    link: "https://account-systems.vercel.app/login",
+    link: "/work/accounting-pro",
     span: "col-span-2 md:col-span-2",
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     category: "Restaurant POS",
     image: "/pos_system_dashboard.png",
     tags: ["POS", "Restaurant"],
-    link: "https://system-pos-resturant.vercel.app/pos",
+    link: "/work/pos-system",
     span: "col-span-2 md:col-span-1",
   },
   {
@@ -31,7 +31,7 @@ const projects = [
     category: "Education",
     image: "/student_management_dashboard.png",
     tags: ["Students", "Management"],
-    link: "https://management-students.vercel.app/dashboard",
+    link: "/work/student-management",
     span: "col-span-2 md:col-span-1",
   },
 ];
@@ -52,7 +52,7 @@ export const PortfolioMasonry = () => {
       <div className="max-w-7xl mx-auto">
         <SectionTitle 
           title="Featured Projects" 
-          subtitle="A showcase of high-impact AI systems developed for our global enterprise partners."
+          subtitle="A showcase of custom software and systems we've built for our clients."
         />
 
         <motion.div
