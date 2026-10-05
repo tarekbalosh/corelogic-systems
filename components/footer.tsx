@@ -27,8 +27,8 @@ const legalLinksEn = [
 ];
 
 const legalLinksAr = [
-  { name: "سياسة الخصوصية", href: "/privacy" },
-  { name: "شروط الخدمة", href: "/terms" },
+  { name: "سياسة الخصوصية", href: "/ar/privacy" },
+  { name: "شروط الخدمة", href: "/ar/terms" },
 ];
 
 export const Footer = () => {
