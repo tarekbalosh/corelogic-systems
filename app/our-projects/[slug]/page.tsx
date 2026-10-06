@@ -29,7 +29,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       <ParticleBackground />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 pt-32 pb-24">
-        <Link href="/work" className="inline-flex items-center gap-2 text-foreground/60 hover:text-primary transition-colors mb-12">
+        <Link href="/our-projects" className="inline-flex items-center gap-2 text-foreground/60 hover:text-primary transition-colors mb-12">
           <ArrowLeft size={16} /> Back to all work
         </Link>
 

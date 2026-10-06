@@ -15,7 +15,7 @@ const projects = [
     category: "Financial System",
     image: "/accounting_pro_dashboard.png",
     tags: ["Accounting", "Restaurant", "Financial"],
-    link: "/work/accounting-pro",
+    link: "https://account-systems.vercel.app/",
     span: "col-span-2 md:col-span-2",
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     category: "Restaurant POS",
     image: "/pos_system_dashboard.png",
     tags: ["POS", "Restaurant"],
-    link: "/work/pos-system",
+    link: "https://system-pos-resturant.vercel.app/login",
     span: "col-span-2 md:col-span-1",
   },
   {
@@ -31,8 +31,16 @@ const projects = [
     category: "Education",
     image: "/student_management_dashboard.png",
     tags: ["Students", "Management"],
-    link: "/work/student-management",
+    link: "https://management-students.vercel.app/login",
     span: "col-span-2 md:col-span-1",
+  },
+  {
+    title: "BookEase Platform",
+    category: "Scheduling Platform",
+    image: "/bookease_dashboard.png",
+    tags: ["Scheduling", "Appointments", "SaaS"],
+    link: "https://book-ease-red.vercel.app/",
+    span: "col-span-2 md:col-span-1 lg:col-span-2",
   },
 ];
 
@@ -72,7 +80,7 @@ export const PortfolioMasonry = () => {
               whileHover={{ y: -10 }}
               className={project.span}
             >
-              <Link href={project.link || "#"} className="block h-full w-full">
+              <a href={project.link || "#"} target="_blank" rel="noopener noreferrer" className="block h-full w-full group">
                 <div className="relative h-full w-full bg-background rounded-3xl border border-foreground/10 group-hover:border-primary/30 group-hover:shadow-2xl transition-all duration-500 overflow-hidden">
                     <Image 
                         src={project.image}
@@ -99,13 +107,13 @@ export const PortfolioMasonry = () => {
                             </div>
                             <div className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pt-3">
                                 <button className="w-full sm:w-auto px-6 py-2.5 bg-white text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-md text-sm">
-                                  View Case Study
+                                  Live Demo
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-              </Link>
+              </a>
             </motion.div>
           ))}
         </motion.div>

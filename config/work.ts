@@ -42,7 +42,7 @@ export const projectsData: Project[] = [
       en: "TODO: metrics such as time saved or error reduction",
       ar: "TODO: مقاييس مثل الوقت الموفر أو تقليل الأخطاء",
     },
-    demoLink: "https://account-systems.vercel.app/login",
+    demoLink: "https://account-systems.vercel.app/",
     demoNote: {
       en: "TODO: Provide demo credentials to access",
       ar: "TODO: توفير بيانات الاعتماد للوصول التجريبي",
@@ -82,24 +82,24 @@ export const projectsData: Project[] = [
   },
   {
     slug: "student-management",
-    title: { en: "Management Student Systems", ar: "نظام إدارة الطلاب" },
-    category: { en: "Education", ar: "تعليم" },
+    title: { en: "Student Visa Management", ar: "نظام إدارة الطلاب والتأشيرات" },
+    category: { en: "Travel & Education Agencies", ar: "مكاتب سياحية وخدمات طلابية" },
     image: "/student_management_dashboard.png",
     tags: {
-      en: ["Students", "Management"],
-      ar: ["طلاب", "إدارة"],
+      en: ["Visas", "Students", "Agencies"],
+      ar: ["تأشيرات", "طلاب", "مكاتب سياحية"],
     },
     problem: {
-      en: "Educational institutions relied on fragmented systems for attendance, grades, and communication.",
-      ar: "اعتمدت المؤسسات التعليمية على أنظمة مجزأة للحضور والدرجات والتواصل.",
+      en: "Agencies struggled with tracking student visa applications, managing paperwork, and communicating with embassies and universities abroad.",
+      ar: "صعوبة تتبع طلبات التأشيرات للطلاب وإدارة أوراقهم وتواصل المكاتب السياحية مع السفارات والجامعات في الخارج.",
     },
     solution: {
-      en: "A unified portal for students, teachers, and parents to access educational records and communicate seamlessly.",
-      ar: "بوابة موحدة للطلاب والمعلمين وأولياء الأمور للوصول إلى السجلات التعليمية والتواصل بسلاسة.",
+      en: "An integrated system for agencies to manage student visa applications, track study visa statuses, and streamline travel and study abroad procedures.",
+      ar: "نظام متكامل للمكاتب السياحية لإدارة طلبات تأشيرات الطلاب وتتبع حالة الفيز الدراسية وتسهيل إجراءات السفر والدراسة بالخارج.",
     },
     features: {
-      en: ["Gradebook", "Attendance tracking", "Parent portal"],
-      ar: ["سجل الدرجات", "تتبع الحضور", "بوابة أولياء الأمور"],
+      en: ["Visa application management", "Study visa status tracking", "Student documents archiving"],
+      ar: ["إدارة طلبات التأشيرات", "تتبع حالة الفيز الدراسية", "أرشفة أوراق ومستندات الطلاب"],
     },
     technologies: ["Vue.js", "Express", "MongoDB"],
     result: {
@@ -111,5 +111,33 @@ export const projectsData: Project[] = [
       en: "TODO: Provide demo credentials to access",
       ar: "TODO: توفير بيانات الاعتماد للوصول التجريبي",
     },
+  },
+  {
+    slug: "book-ease",
+    title: { en: "BookEase", ar: "نظام حجوزات بوك إيز" },
+    category: { en: "Scheduling Platform", ar: "منصة حجوزات" },
+    image: "/bookease_dashboard.png",
+    tags: {
+      en: ["Scheduling", "Appointments", "SaaS"],
+      ar: ["حجوزات", "مواعيد", "نظام سحابي"],
+    },
+    problem: {
+      en: "Service-based businesses struggled with chaotic booking processes and managing staff schedules.",
+      ar: "عانت الشركات الخدمية من عمليات الحجز الفوضوية وإدارة جداول الموظفين.",
+    },
+    solution: {
+      en: "An all-in-one platform to automate bookings, manage staff, and grow revenue with a seamless experience.",
+      ar: "منصة شاملة لأتمتة الحجوزات، إدارة الموظفين، وزيادة الإيرادات بتجربة سلسة.",
+    },
+    features: {
+      en: ["Automated scheduling", "Staff management", "Analytics dashboard"],
+      ar: ["جدولة آلية", "إدارة الموظفين", "لوحة تحكم تحليلية"],
+    },
+    technologies: ["React", "Next.js", "Tailwind CSS"],
+    result: {
+      en: "Helped 500+ businesses grow with seamless booking automation.",
+      ar: "ساعدنا أكثر من 500 شركة على النمو من خلال أتمتة الحجوزات بسلاسة.",
+    },
+    demoLink: "https://book-ease-red.vercel.app/",
   },
 ];

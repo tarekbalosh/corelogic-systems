@@ -13,12 +13,12 @@ import { SectionTitle } from "@/components/section-title";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 const services = [
-  { title: "برمجيات الأعمال المخصصة", description: "تخطيط موارد المؤسسات، المحاسبة، نقاط البيع، المخزون، ولوحات التحكم المخصصة.", icon: Monitor, glow: "purple" as const },
-  { title: "تطوير الويب", description: "مواقع الشركات، البوابات الإلكترونية، ومنصات التجارة الإلكترونية القابلة للتوسع.", icon: Globe, glow: "cyan" as const },
-  { title: "تطبيقات الجوال", description: "تطبيقات جوال أصلية ومتعددة المنصات لنظامي iOS و Android.", icon: Smartphone, glow: "amber" as const },
-  { title: "الأتمتة بالذكاء الاصطناعي", description: "أتمتة سير العمل، روبوتات المحادثة الذكية، ومعالجة المستندات.", icon: Bot, glow: "purple" as const },
-  { title: "البيانات والتحليلات", description: "لوحات تحكم مخصصة، أنظمة تقارير، وتكامل البيانات.", icon: LineChart, glow: "cyan" as const },
-  { title: "الصيانة والدعم الفني", description: "دعم مستمر، تحديثات، وصيانة لأصولك الرقمية.", icon: Wrench, glow: "amber" as const },
+  { title: "برمجيات الأعمال المخصصة", description: "تخطيط موارد المؤسسات، المحاسبة، نقاط البيع، المخزون، ولوحات التحكم المخصصة.", icon: Monitor, glow: "purple" as const, href: "/ar/services/software-dev" },
+  { title: "تطوير الويب", description: "مواقع الشركات، البوابات الإلكترونية، ومنصات التجارة الإلكترونية القابلة للتوسع.", icon: Globe, glow: "cyan" as const, href: "/ar/services/web-dev" },
+  { title: "تطبيقات الجوال", description: "تطبيقات جوال أصلية ومتعددة المنصات لنظامي iOS و Android.", icon: Smartphone, glow: "purple" as const, href: "/ar/services/mobile-dev" },
+  { title: "الأتمتة بالذكاء الاصطناعي", description: "أتمتة سير العمل، روبوتات المحادثة الذكية، ومعالجة المستندات.", icon: Bot, glow: "cyan" as const, href: "/ar/services/ai-automation" },
+  { title: "البيانات والتحليلات", description: "لوحات تحكم مخصصة، أنظمة تقارير، وتكامل البيانات.", icon: LineChart, glow: "purple" as const, href: "/ar/services/ai-automation" },
+  { title: "الصيانة والدعم الفني", description: "دعم مستمر، تحديثات، وصيانة لأصولك الرقمية.", icon: Wrench, glow: "cyan" as const, href: "/ar/contact" },
 ];
 
 const projects = [
@@ -27,7 +27,7 @@ const projects = [
     category: "نظام مالي",
     image: "/accounting_pro_dashboard.png",
     tags: ["محاسبة", "مطاعم", "مالي"],
-    link: "/ar/work/accounting-pro",
+    link: "https://account-systems.vercel.app/",
     span: "col-span-2 md:col-span-2",
   },
   {
@@ -35,7 +35,7 @@ const projects = [
     category: "نقاط بيع المطاعم",
     image: "/pos_system_dashboard.png",
     tags: ["نقاط البيع", "مطاعم"],
-    link: "/ar/work/pos-system",
+    link: "https://system-pos-resturant.vercel.app/login",
     span: "col-span-2 md:col-span-1",
   },
   {
@@ -43,8 +43,16 @@ const projects = [
     category: "تعليم",
     image: "/student_management_dashboard.png",
     tags: ["طلاب", "إدارة"],
-    link: "/ar/work/student-management",
+    link: "https://management-students.vercel.app/login",
     span: "col-span-2 md:col-span-1",
+  },
+  {
+    title: "نظام حجوزات بوك إيز",
+    category: "منصة حجوزات",
+    image: "/bookease_dashboard.png",
+    tags: ["حجوزات", "مواعيد", "نظام سحابي"],
+    link: "https://book-ease-red.vercel.app/",
+    span: "col-span-2 md:col-span-1 lg:col-span-2",
   },
 ];
 
@@ -157,22 +165,24 @@ export default function ArabicHome() {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {services.map((service, idx) => (
-                <GlassCard key={idx} glowColor={service.glow} delay={idx * 0.1} className="h-full group">
-                  <div className="flex flex-col h-full space-y-6">
-                    <div className="p-3 rounded-xl bg-foreground/5 border border-foreground/10 w-fit group-hover:bg-primary/20 transition-colors duration-500">
-                      <service.icon size={28} className="text-foreground group-hover:text-primary transition-colors" />
+                <Link href={service.href} key={idx} className="block h-full">
+                  <GlassCard glowColor={service.glow} delay={idx * 0.1} className="h-full group cursor-pointer">
+                    <div className="flex flex-col h-full space-y-6">
+                      <div className="p-3 rounded-xl bg-foreground/5 border border-foreground/10 w-fit group-hover:bg-primary/20 transition-colors duration-500">
+                        <service.icon size={28} className="text-foreground group-hover:text-primary transition-colors" />
+                      </div>
+                      <div className="space-y-3 flex-1">
+                        <h3 className="text-2xl font-bold font-heading">{service.title}</h3>
+                        <p className="text-foreground/70 text-base leading-relaxed">{service.description}</p>
+                      </div>
+                      <div className="pt-6 mt-auto border-t border-foreground/10 lg:border-none">
+                        <div className="w-full lg:w-auto flex items-center justify-center lg:justify-start gap-2 text-sm font-bold text-foreground bg-foreground/5 lg:bg-transparent py-4 lg:py-0 rounded-full lg:rounded-none group-hover:bg-foreground/10 lg:group-hover:bg-transparent lg:group-hover:text-secondary lg:group-hover:-translate-x-2 transition-all duration-300">
+                          اعرف المزيد <ArrowLeft size={16} className="text-primary lg:text-inherit" />
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-3 flex-1">
-                      <h3 className="text-2xl font-bold font-heading">{service.title}</h3>
-                      <p className="text-foreground/70 text-base leading-relaxed">{service.description}</p>
-                    </div>
-                    <div className="pt-6 mt-auto border-t border-foreground/10 lg:border-none">
-                      <button className="w-full lg:w-auto flex items-center justify-center lg:justify-start gap-2 text-sm font-bold text-foreground bg-foreground/5 lg:bg-transparent py-4 lg:py-0 rounded-full lg:rounded-none hover:bg-foreground/10 lg:hover:bg-transparent lg:group-hover:text-secondary lg:group-hover:-translate-x-2 transition-all duration-300">
-                        اعرف المزيد <ArrowLeft size={16} className="text-primary lg:text-inherit" />
-                      </button>
-                    </div>
-                  </div>
-                </GlassCard>
+                  </GlassCard>
+                </Link>
               ))}
             </motion.div>
           </div>
@@ -194,7 +204,7 @@ export default function ArabicHome() {
             >
               {projects.map((project, idx) => (
                 <motion.div key={idx} variants={cardVariants} whileHover={{ y: -10 }} className={project.span}>
-                  <Link href={project.link || "#"} className="block h-full w-full">
+                  <a href={project.link || "#"} target="_blank" rel="noopener noreferrer" className="block h-full w-full group">
                     <div className="relative h-full w-full bg-background rounded-3xl border border-foreground/10 group-hover:border-primary/30 group-hover:shadow-2xl transition-all duration-500 overflow-hidden">
                       <Image
                         src={project.image}
@@ -219,13 +229,13 @@ export default function ArabicHome() {
                           </div>
                           <div className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pt-3">
                             <button className="w-full sm:w-auto px-6 py-2.5 bg-white text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-md text-sm">
-                              عرض دراسة الحالة
+                              عرض النظام
                             </button>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
             </motion.div>

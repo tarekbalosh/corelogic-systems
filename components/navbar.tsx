@@ -12,14 +12,14 @@ const navLinksEn = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Our Services", href: "/services", hasDropdown: true },
-  { name: "Our Projects", href: "/work" },
+  { name: "Our Projects", href: "/our-projects" },
 ];
 
 const navLinksAr = [
   { name: "الرئيسية", href: "/ar" },
   { name: "من نحن", href: "/ar/about" },
   { name: "خدماتنا", href: "/ar/services", hasDropdown: true },
-  { name: "مشاريعنا", href: "/ar/work" },
+  { name: "مشاريعنا", href: "/ar/our-projects" },
 ];
 
 const servicesEn = [

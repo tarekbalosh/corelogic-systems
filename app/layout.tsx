@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, Noto_Kufi_Arabic } from "next/font/google";
+import { Inter, Space_Grotesk, Cairo } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -14,7 +14,7 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
 });
 
-const notoKufiArabic = Noto_Kufi_Arabic({
+const arabicFont = Cairo({
   variable: "--font-arabic",
   subsets: ["arabic"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <html 
       lang="en" 
-      className={`dark scroll-smooth ${inter.variable} ${spaceGrotesk.variable} ${notoKufiArabic.variable}`}
+      className={`dark scroll-smooth ${inter.variable} ${spaceGrotesk.variable} ${arabicFont.variable}`}
       suppressHydrationWarning
     >
       <body
