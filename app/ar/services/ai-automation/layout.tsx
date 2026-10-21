@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbJsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "شركة حلول الأتمتة بالذكاء الاصطناعي للأعمال",
-  description: "طوّر أعمالك مع خدمات الأتمتة بالذكاء الاصطناعي. نساعد الشركات في ماليزيا والخليج على تقليل التكاليف وتسريع العمليات. تواصل معنا لاستشارة مجانية!",
-  alternates: {
-    canonical: "https://www.corelogic-system.my/ar/services/ai-automation",
-    languages: {
-      "en": "https://www.corelogic-system.my/services/ai-automation",
-      "ar": "https://www.corelogic-system.my/ar/services/ai-automation",
-      "en-x-default": "https://www.corelogic-system.my/services/ai-automation"
-    }
-  }
-};
+const title = "أتمتة الأعمال بالذكاء الاصطناعي";
+const description = "أتمتة المهام المتكررة بالذكاء الاصطناعي: سير العمل وروبوتات المحادثة ومعالجة المستندات، بما يناسب طريقة عمل شركتك. احصل على استشارة مجانية.";
 
-export default function ArabicAiAutomationLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+export const metadata: Metadata = pageMetadata({ path: "/services/ai-automation", locale: "ar", title, description });
+
+export default function ArabicServicesAiAutomationLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{"name": "الرئيسية", "path": "/ar"}, {"name": "الخدمات", "path": "/ar/services"}, {"name": "أتمتة الأعمال بالذكاء الاصطناعي", "path": "/ar/services/ai-automation"}])} />
+      <JsonLd data={serviceJsonLd({ name: "أتمتة الأعمال بالذكاء الاصطناعي", description: description, path: "/ar/services/ai-automation", locale: "ar" })} />
+      {children}
+    </>
+  );
 }

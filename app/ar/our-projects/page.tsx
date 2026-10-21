@@ -4,6 +4,14 @@ import { ParticleBackground } from "@/components/particle-background";
 import { projectsData } from "@/config/work";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  path: "/our-projects",
+  locale: "ar",
+  title: "مشاريعنا ودراسات الحالة",
+  description: "أمثلة على البرمجيات المخصصة التي بنيناها: المحاسبة، نقاط بيع المطاعم، إدارة الطلاب والتأشيرات، وأنظمة الحجوزات.",
+});
 
 export default function ArabicWorkPage() {
   return (
@@ -20,11 +28,9 @@ export default function ArabicWorkPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project) => (
-            <a 
+            <Link 
               key={project.slug} 
-              href={project.demoLink || `/ar/our-projects/${project.slug}`}
-              target={project.demoLink ? "_blank" : undefined}
-              rel={project.demoLink ? "noopener noreferrer" : undefined}
+              href={`/ar/our-projects/${project.slug}`}
               className="group rounded-3xl overflow-hidden border border-foreground/10 bg-background hover:border-primary/50 transition-all duration-500 flex flex-col shadow-sm hover:shadow-2xl hover:-translate-y-2"
             >
               {/* صورة المنتج */}
@@ -33,6 +39,7 @@ export default function ArabicWorkPage() {
                   src={project.image} 
                   alt={project.title.ar} 
                   fill 
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -68,14 +75,14 @@ export default function ArabicWorkPage() {
                 {/* زر الإجراء */}
                 <div className="mt-auto pt-5 border-t border-foreground/10 flex items-center justify-between">
                   <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
-                    {project.demoLink ? "عرض النظام الحي" : "دراسة الحالة"}
+                    دراسة الحالة
                   </span>
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                     <ArrowLeft size={18} className="transform group-hover:-translate-x-1 transition-transform" />
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

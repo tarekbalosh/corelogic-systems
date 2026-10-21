@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Tech Blog & Insights | CoreLogic Systems",
-  description: "Read the latest insights on enterprise web development, AI automation, and custom mobile app solutions from CoreLogic Systems experts.",
-};
+// Blog index. Individual articles set their own metadata.
+export const metadata: Metadata = pageMetadata({
+  path: "/blog",
+  locale: "en",
+  hasTranslation: false,
+  title: "Tech Blog & Insights",
+  description: "Insights on custom software, web and mobile development, and AI automation for businesses from the CoreLogic Systems team.",
+});
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
   return (

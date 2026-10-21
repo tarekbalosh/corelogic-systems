@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbJsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "شركة تطوير وبرمجة مواقع ويب للشركات",
-  description: "ابحث عن أفضل شركة لتطوير مواقع الويب المخصصة للشركات في ماليزيا والخليج. نقدم حلولاً آمنة وقابلة للتوسع. تواصل معنا الآن!",
-  alternates: {
-    canonical: "https://www.corelogic-system.my/ar/services/web-dev",
-    languages: {
-      "en": "https://www.corelogic-system.my/services/web-dev",
-      "ar": "https://www.corelogic-system.my/ar/services/web-dev",
-      "en-x-default": "https://www.corelogic-system.my/services/web-dev"
-    }
-  }
-};
+const title = "تطوير تطبيقات الويب المخصصة للشركات";
+const description = "نبني تطبيقات ويب مخصصة ومنصات SaaS ولوحات تحكم وتكاملات API للشركات. اطلب استشارة مجانية وعرض سعر.";
 
-export default function ArabicWebDevLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+export const metadata: Metadata = pageMetadata({ path: "/services/web-dev", locale: "ar", title, description });
+
+export default function ArabicServicesWebDevLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{"name": "الرئيسية", "path": "/ar"}, {"name": "الخدمات", "path": "/ar/services"}, {"name": "تطوير تطبيقات الويب المخصصة للشركات", "path": "/ar/services/web-dev"}])} />
+      <JsonLd data={serviceJsonLd({ name: "تطوير تطبيقات الويب المخصصة للشركات", description: description, path: "/ar/services/web-dev", locale: "ar" })} />
+      {children}
+    </>
+  );
 }

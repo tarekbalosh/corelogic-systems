@@ -1,10 +1,17 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Hero } from "@/components/hero";
 import { ParticleBackground } from "@/components/particle-background";
 import { ServicesGrid } from "@/components/services-grid";
 import { PortfolioMasonry } from "@/components/portfolio-masonry";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  path: "/",
+  locale: "en",
+  absoluteTitle: true,
+  title: "CoreLogic Systems | Custom Software, Web & Mobile Apps, AI Automation",
+  description:
+    "We design and build custom business systems, web and mobile apps, and AI-powered automation for growing businesses. Book a free consultation.",
+});
 
 export default function Home() {
   return (

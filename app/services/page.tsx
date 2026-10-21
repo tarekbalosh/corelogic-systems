@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 const coreServices = [
   {
     title: "Web Application Development",
-    description: "High-performance, scalable web systems built with modern frameworks and robust cloud architectures.",
+    description: "Custom web applications, portals and dashboards built with modern frameworks.",
     icon: Code2,
     details: ["Progressive Web Apps", "E-commerce Solutions", "Enterprise Dashboards"],
     gradient: "from-blue-500/20 to-cyan-500/20",
@@ -27,7 +27,7 @@ const coreServices = [
   },
   {
     title: "AI Solutions & Automation",
-    description: "Intelligent agent orchestration and custom neural models designed for industrial efficiency.",
+    description: "Workflow automation, chatbots and document processing that remove repetitive manual work.",
     icon: Bot,
     details: ["Predictive Analytics", "Process Automation", "Neural Search"],
     gradient: "from-purple-500/20 to-pink-500/20",
@@ -43,7 +43,7 @@ const coreServices = [
   },
   {
     title: "Custom Software Development",
-    description: "Tailored software ecosystems that solve unique business challenges with precision code.",
+    description: "Business software such as ERP, accounting, POS and inventory, built around your processes.",
     icon: Terminal,
     details: ["Legacy Migration", "API Integration", "Microservices"],
     gradient: "from-orange-500/20 to-red-500/20",
@@ -81,7 +81,7 @@ export default function ServicesPage() {
               Our <span className="text-primary">Services</span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed">
-              We deliver industrial-grade digital solutions powered by state-of-the-art AI, crafted with precision to elevate your business.
+              Custom business software, web and mobile apps, AI automation and UI/UX design, built around how your business works.
             </p>
           </motion.div>
 

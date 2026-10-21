@@ -135,8 +135,8 @@ export const projectsData: Project[] = [
     },
     technologies: ["React", "Next.js", "Tailwind CSS"],
     result: {
-      en: "Helped 500+ businesses grow with seamless booking automation.",
-      ar: "ساعدنا أكثر من 500 شركة على النمو من خلال أتمتة الحجوزات بسلاسة.",
+      en: "TODO: verified results (metrics to be provided)",
+      ar: "TODO: نتائج موثقة (المقاييس قيد التوفير)",
     },
     demoLink: "https://book-ease-red.vercel.app/",
   },

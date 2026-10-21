@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbJsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "AI Automation Services & Solutions Company",
-  description: "Transform your business with custom AI automation solutions. Corelogic Systems helps global enterprises streamline workflows and reduce costs. Get a free consultation!",
-  alternates: {
-    canonical: "https://www.corelogic-system.my/services/ai-automation",
-    languages: {
-      "en": "https://www.corelogic-system.my/services/ai-automation",
-      "ar": "https://www.corelogic-system.my/ar/services/ai-automation",
-      "en-x-default": "https://www.corelogic-system.my/services/ai-automation"
-    }
-  }
-};
+const title = "AI Automation for Business Workflows";
+const description = "Automate repetitive work with AI: workflow automation, chatbots and document processing, built around how your business actually runs. Get a free consultation.";
 
-export default function AiAutomationLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+export const metadata: Metadata = pageMetadata({ path: "/services/ai-automation", locale: "en", title, description });
+
+export default function ServicesAiAutomationLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{"name": "Home", "path": "/"}, {"name": "Services", "path": "/services"}, {"name": "AI Automation for Business Workflows", "path": "/services/ai-automation"}])} />
+      <JsonLd data={serviceJsonLd({ name: "AI Automation for Business Workflows", description: description, path: "/services/ai-automation", locale: "en" })} />
+      {children}
+    </>
+  );
 }

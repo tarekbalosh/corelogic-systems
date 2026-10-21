@@ -40,7 +40,7 @@ const processSteps = [
     { title: "AI Model Development", icon: Cpu, desc: "Training bespoke neural networks and deploying robust backend orchestration." },
     { title: "System Integration", icon: Blocks, desc: "Embedding our intelligent solutions natively into your preferred operational ecosystem." },
     { title: "Testing & Optimization", icon: TestTubes, desc: "Rigorous staging validation ensuring precision and hallucination-free outputs." },
-    { title: "Ongoing Support", icon: LifeBuoy, desc: "Continuous model refinement and 24/7 technical monitoring." }
+    { title: "Ongoing Support", icon: LifeBuoy, desc: "Ongoing model refinement and technical monitoring after launch." }
 ];
 
 const whyUs = [

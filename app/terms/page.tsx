@@ -1,5 +1,13 @@
 import React from "react";
 import { ParticleBackground } from "@/components/particle-background";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  path: "/terms",
+  locale: "en",
+  title: "Terms of Service",
+  description: "The terms that apply when you use the CoreLogic Systems website and engage us for software development and related services.",
+});
 
 export default function TermsOfService() {
   return (

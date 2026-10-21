@@ -54,11 +54,11 @@ export default function ArabicAboutPage() {
                   <span className="text-gradient">شركتنا</span>
                 </h1>
                 <p className="text-2xl text-foreground/60 font-medium">
-                  نبني حلولاً برمجية ذكية مدعومة بالذكاء الاصطناعي.
+                  نبني برمجيات أعمال مخصصة وحلول أتمتة بالذكاء الاصطناعي.
                 </p>
               </motion.div>
               <motion.p variants={fadeInUp} className="text-lg text-foreground/70 max-w-lg leading-relaxed">
-                كورلوجيك سيستمز هي شركة تقنية رائدة مكرّسة لسد الفجوة بين الحوسبة الخام والذكاء المعرفي.
+                كورلوجيك سيستمز شركة برمجيات مقرها كوالالمبور في ماليزيا. نصمم ونبني أنظمة الأعمال وتطبيقات الويب والجوال وحلول الأتمتة بالذكاء الاصطناعي للأعمال النامية.
               </motion.p>
             </motion.div>
 
@@ -72,6 +72,8 @@ export default function ArabicAboutPage() {
               <Image
                 src="/about_ai_dashboard.png"
                 alt="واجهة لوحة تحكم الذكاء الاصطناعي"
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 width={700}
                 height={700}
                 className="relative z-10 drop-shadow-[0_0_50px_rgba(124,58,237,0.15)] animate-float"
@@ -90,7 +92,7 @@ export default function ArabicAboutPage() {
                 </div>
                 <div className="lg:col-span-2 space-y-6">
                   <p className="text-xl text-foreground/70 leading-relaxed font-light">
-                    تأسست عند تقاطع البنية التحتية والذكاء الاصطناعي. كورلوجيك سيستمز تعمل كمختبر عالي الأداء للمستقبل. نحن متخصصون في تطوير <strong>تطبيقات الويب</strong> و<strong>هندسة الذكاء الاصطناعي المخصصة</strong> و<strong>حلول البرمجيات المؤسسية</strong> التي تعطي الأولوية للسرعة والأمان وقابلية التوسع.
+                    نحن متخصصون في تطوير <strong>تطبيقات الويب</strong> و<strong>برمجيات الأعمال المخصصة</strong> و<strong>تطبيقات الجوال</strong> و<strong>حلول الأتمتة بالذكاء الاصطناعي</strong> التي تعطي الأولوية للسرعة والأمان وقابلية التوسع، ونبقى معك بعد الإطلاق للدعم والصيانة.
                   </p>
                   <p className="text-xl text-foreground/70 leading-relaxed font-light">
                     مهمتنا هي تمكين الصناعات العالمية من خلال <strong>الابتكار</strong> المستمر و<strong>الأتمتة</strong> الاستراتيجية و<strong>النمو</strong> المستدام.
@@ -122,7 +124,7 @@ export default function ArabicAboutPage() {
                 </div>
                 <h3 className="text-3xl font-bold font-heading">رؤيتنا</h3>
                 <p className="text-foreground/70 text-lg leading-relaxed">
-                  أن نصبح مزوداً عالمياً رائداً للذكاء الاصطناعي، ونضع معايير الذكاء الأخلاقي والبرمجيات العصبية عالية الأداء.
+                  أن نكون شريكاً برمجياً موثوقاً للأعمال النامية، معروفاً بالتسليم الملتزم والتواصل الصريح والاستخدام المسؤول للذكاء الاصطناعي.
                 </p>
               </div>
             </GlassCard>

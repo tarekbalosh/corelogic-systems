@@ -1,13 +1,15 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/blog/the-ultimate-guide-to-ai-automation-for-b2b-enterprises",
+  locale: "en",
+  hasTranslation: false,
+  ogType: "article",
   title: "The Ultimate Guide to AI Automation for B2B Enterprises",
   description: "Learn how artificial intelligence is transforming B2B workflows, reducing costs, and increasing operational efficiency in 2026. A complete guide.",
-  alternates: {
-    canonical: "https://corelogic.my/blog/the-ultimate-guide-to-ai-automation-for-b2b-enterprises",
-  }
-};
+});
 
 export default function BlogPost() {
   return (

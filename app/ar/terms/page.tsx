@@ -1,5 +1,13 @@
 import React from "react";
 import { ParticleBackground } from "@/components/particle-background";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  path: "/terms",
+  locale: "ar",
+  title: "شروط الخدمة",
+  description: "الشروط التي تسري عند استخدام موقع كورلوجيك سيستمز أو التعاقد معنا على تطوير البرمجيات والخدمات ذات الصلة.",
+});
 
 export default function TermsOfServiceArabic() {
   return (

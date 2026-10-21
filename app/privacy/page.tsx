@@ -1,5 +1,13 @@
 import React from "react";
 import { ParticleBackground } from "@/components/particle-background";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  path: "/privacy",
+  locale: "en",
+  title: "Privacy Policy",
+  description: "How CoreLogic Systems collects, uses and protects the personal information you share when you visit our website or contact us.",
+});
 
 export default function PrivacyPolicy() {
   return (

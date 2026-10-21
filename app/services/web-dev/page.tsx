@@ -20,8 +20,8 @@ const solutions = [
 ];
 
 const features = [
-    { title: "High Performance", icon: Zap, desc: "Lightning-fast load times and optimized resource delivery ensure your application handles spikes with zero downtime." },
-    { title: "Security & Data Protection", icon: Shield, desc: "Enterprise-grade encryption, secure authentication architectures, and strict compliance with global data privacy standards." },
+    { title: "High Performance", icon: Zap, desc: "Optimized assets and efficient code keep your application fast and responsive, including at busy times." },
+    { title: "Security & Data Protection", icon: Shield, desc: "Encrypted connections, secure authentication and careful handling of user data, built in from the start." },
     { title: "Fully Responsive Design", icon: Smartphone, desc: "Flawless user experiences that adapt dynamically to any screen—from ultra-wide monitors down to mobile devices." },
     { title: "Scalable Architecture", icon: Database, desc: "Future-proof databases and serverless architectures structured to grow effortlessly alongside your user base." },
     { title: "User-Friendly Interface", icon: Users, desc: "Cinematic, intuitive UI/UX built on deep psychological research to boost engagement and user retention." }
@@ -31,15 +31,15 @@ const processSteps = [
     { title: "Planning & Analysis", icon: Search, desc: "Deep diving into your business needs to establish accurate technical requirements and architectural roadmaps." },
     { title: "UI/UX Design", icon: PenTool, desc: "Crafting wireframes, interactive prototypes, and a sleek visual identity to align perfectly with your brand aesthetic." },
     { title: "Development", icon: Code2, desc: "Writing clean, robust code across front-end frameworks and back-end services utilizing modern agile methodologies." },
-    { title: "Testing", icon: CheckCircle, desc: "Rigorous automated and manual QA testing to ensure zero critical bugs and optimal performance prior to launch." },
+    { title: "Testing", icon: CheckCircle, desc: "Automated and manual QA testing to catch bugs and performance issues before launch." },
     { title: "Deployment", icon: Rocket, desc: "Smooth provisioning of cloud infrastructure to deliver your application safely to the live production environment." },
     { title: "Support & Maintenance", icon: HeartHandshake, desc: "Continuous monitoring, proactive updates, and instant technical support to keep your app running perfectly." }
 ];
 
 const whyUs = [
-    { title: "Experienced Team", icon: Star, desc: "Industry veterans pushing the boundaries of what's possible." },
+    { title: "Experienced Team", icon: Star, desc: "Engineers who build, ship and maintain production software." },
     { title: "Fast Delivery", icon: Timer, desc: "Rapid iterative cycles without ever sacrificing code quality." },
-    { title: "Ongoing Support", icon: Headphones, desc: "24/7 technical assistance to safeguard your investment." },
+    { title: "Ongoing Support", icon: Headphones, desc: "Maintenance, updates and technical support after launch." },
     { title: "Client Focused", icon: Smile, desc: "Dedicated partnerships aligning tech with business goals." }
 ];
 
@@ -57,7 +57,7 @@ export default function WebDevServicePage() {
                             <span className="text-gradient">Services for Enterprise Growth</span>
                         </motion.h1>
                         <motion.p variants={fadeInUp} className="text-lg md:text-xl text-foreground/50 max-w-lg leading-relaxed font-medium">
-                            In today's digital landscape, a robust online presence is non-negotiable. At CoreLogic Systems, a leading <strong>enterprise web development company</strong>, we specialize in crafting custom, scalable, and secure web applications. We engineer state-of-the-art solutions tailored to accelerate your B2B digital transformation.
+                            CoreLogic Systems is a <strong>custom web development company</strong> in Kuala Lumpur. We build web applications, SaaS platforms, admin dashboards and business portals that fit how your company works, from the first requirements workshop to launch and ongoing support.
                         </motion.p>
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
                             <Link href="/contact" className="w-full sm:w-auto">

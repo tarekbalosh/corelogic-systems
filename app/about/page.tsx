@@ -55,11 +55,11 @@ export default function AboutPage() {
                   <span className="text-gradient">Company</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-foreground/60 font-medium">
-                  We build intelligent software solutions powered by AI.
+                  We build custom business software and AI automation.
                 </p>
               </motion.div>
               <motion.p variants={fadeInUp} className="text-lg text-foreground/70 max-w-lg leading-relaxed">
-                CoreLogic Systems is a frontier technology firm dedicated to bridging the gap between raw compute and cognitive intelligence.
+                CoreLogic Systems is a software company based in Kuala Lumpur, Malaysia. We design and build business systems, web and mobile apps, and AI-powered automation for growing businesses.
               </motion.p>
             </motion.div>
 
@@ -73,6 +73,8 @@ export default function AboutPage() {
               <Image 
                 src="/about_ai_dashboard.png"
                 alt="AI Dashboard Interface"
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 width={700}
                 height={700}
                 className="relative z-10 w-full h-auto drop-shadow-[0_0_50px_rgba(124,58,237,0.15)] animate-float"
@@ -91,10 +93,10 @@ export default function AboutPage() {
                     </div>
                     <div className="lg:col-span-2 space-y-6">
                         <p className="text-xl text-foreground/70 leading-relaxed font-light">
-                            Founded at the intersection of infrastructure and artificial intelligence, CoreLogic Systems operates as a high-performance lab for the future. We specialize in developing **Web Applications**, **Custom AI Architectures**, and **Enterprise Software Solutions** that prioritize speed, security, and scalability.
+                            We specialize in developing web applications, custom business software, mobile apps and AI automation that prioritize speed, security, and scalability, and we stay with you after launch for support and maintenance.
                         </p>
                         <p className="text-xl text-foreground/70 leading-relaxed font-light">
-                            Our mission is to empower global industries through relentless **Innovation**, strategic **Automation**, and sustainable **Growth**.
+                            Our mission is to help businesses work faster and grow through well-built software and practical automation.
                         </p>
                     </div>
                 </div>
@@ -112,7 +114,7 @@ export default function AboutPage() {
                         </div>
                         <h3 className="text-3xl font-bold font-heading">Our Mission</h3>
                         <p className="text-foreground/70 text-lg leading-relaxed">
-                            Deliver smart, scalable, and modern digital solutions that solve the most complex technical challenges of the 21st century.
+                            Deliver smart, scalable, and modern digital solutions that solve real business problems.
                         </p>
                     </div>
                 </GlassCard>
@@ -123,7 +125,7 @@ export default function AboutPage() {
                         </div>
                         <h3 className="text-3xl font-bold font-heading">Our Vision</h3>
                         <p className="text-foreground/70 text-lg leading-relaxed">
-                            Become a leading global AI provider, setting the standard for ethical intelligence and high-performance neural software.
+                            Become a trusted software partner for growing businesses, known for dependable delivery, honest communication and responsible use of AI.
                         </p>
                     </div>
                 </GlassCard>

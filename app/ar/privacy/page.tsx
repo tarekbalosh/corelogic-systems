@@ -1,5 +1,13 @@
 import React from "react";
 import { ParticleBackground } from "@/components/particle-background";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  path: "/privacy",
+  locale: "ar",
+  title: "سياسة الخصوصية",
+  description: "كيف تجمع كورلوجيك سيستمز المعلومات الشخصية التي تشاركها معنا عند زيارة موقعنا أو التواصل معنا، وكيف نستخدمها ونحميها.",
+});
 
 export default function PrivacyPolicyArabic() {
   return (

@@ -15,7 +15,7 @@ const projects = [
     category: "Financial System",
     image: "/accounting_pro_dashboard.png",
     tags: ["Accounting", "Restaurant", "Financial"],
-    link: "https://account-systems.vercel.app/",
+    link: "/our-projects/accounting-pro",
     span: "col-span-2 md:col-span-2",
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     category: "Restaurant POS",
     image: "/pos_system_dashboard.png",
     tags: ["POS", "Restaurant"],
-    link: "https://system-pos-resturant.vercel.app/login",
+    link: "/our-projects/pos-system",
     span: "col-span-2 md:col-span-1",
   },
   {
@@ -31,7 +31,7 @@ const projects = [
     category: "Education",
     image: "/student_management_dashboard.png",
     tags: ["Students", "Management"],
-    link: "https://management-students.vercel.app/login",
+    link: "/our-projects/student-management",
     span: "col-span-2 md:col-span-1",
   },
   {
@@ -39,7 +39,7 @@ const projects = [
     category: "Scheduling Platform",
     image: "/bookease_dashboard.png",
     tags: ["Scheduling", "Appointments", "SaaS"],
-    link: "https://book-ease-red.vercel.app/",
+    link: "/our-projects/book-ease",
     span: "col-span-2 md:col-span-1 lg:col-span-2",
   },
 ];
@@ -80,12 +80,13 @@ export const PortfolioMasonry = () => {
               whileHover={{ y: -10 }}
               className={project.span}
             >
-              <a href={project.link || "#"} target="_blank" rel="noopener noreferrer" className="block h-full w-full group">
+              <Link href={project.link} className="block h-full w-full group">
                 <div className="relative h-full w-full bg-background rounded-3xl border border-foreground/10 group-hover:border-primary/30 group-hover:shadow-2xl transition-all duration-500 overflow-hidden">
                     <Image 
                         src={project.image}
                         alt={project.title}
                         fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                         className="object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-100"
                     />
                     
@@ -113,7 +114,7 @@ export const PortfolioMasonry = () => {
                         </div>
                     </div>
                 </div>
-              </a>
+              </Link>
             </motion.div>
           ))}
         </motion.div>

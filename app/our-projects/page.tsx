@@ -4,6 +4,14 @@ import { ParticleBackground } from "@/components/particle-background";
 import { projectsData } from "@/config/work";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  path: "/our-projects",
+  locale: "en",
+  title: "Our Projects & Case Studies",
+  description: "Examples of custom software we have built: accounting, restaurant POS, student and visa management, and booking systems.",
+});
 
 export default function WorkPage() {
   return (
@@ -20,11 +28,9 @@ export default function WorkPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map((project) => (
-            <a 
+            <Link 
               key={project.slug} 
-              href={project.demoLink || `/our-projects/${project.slug}`}
-              target={project.demoLink ? "_blank" : undefined}
-              rel={project.demoLink ? "noopener noreferrer" : undefined}
+              href={`/our-projects/${project.slug}`}
               className="group rounded-3xl overflow-hidden border border-foreground/10 bg-background hover:border-primary/50 transition-all duration-500 flex flex-col shadow-sm hover:shadow-2xl hover:-translate-y-2"
             >
               {/* Image Section */}
@@ -33,6 +39,7 @@ export default function WorkPage() {
                   src={project.image} 
                   alt={project.title.en} 
                   fill 
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -68,14 +75,14 @@ export default function WorkPage() {
                 {/* Action Footer */}
                 <div className="mt-auto pt-5 border-t border-foreground/10 flex items-center justify-between">
                   <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
-                    {project.demoLink ? "Live Demo" : "View Case Study"}
+                    View Case Study
                   </span>
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                     <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

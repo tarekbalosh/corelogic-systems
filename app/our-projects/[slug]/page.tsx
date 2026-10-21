@@ -6,19 +6,30 @@ import { projectsData } from "@/config/work";
 import { ParticleBackground } from "@/components/particle-background";
 import { ArrowLeft, ExternalLink, CheckCircle } from "lucide-react";
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const project = projectsData.find(p => p.slug === params.slug);
-  if (!project) return { title: "Project Not Found" };
-  
-  return {
-    title: `${project.title.en} | Case Study`,
-    description: project.problem.en,
-  };
+type PageProps = { params: Promise<{ slug: string }> };
+
+export function generateStaticParams() {
+  return projectsData.map((p) => ({ slug: p.slug }));
 }
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const project = projectsData.find(p => p.slug === params.slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projectsData.find((p) => p.slug === slug);
+  if (!project) return { title: "Project Not Found", robots: { index: false } };
+
+  return pageMetadata({
+    path: `/our-projects/${project.slug}`,
+    locale: "en",
+    title: `${project.title.en} | Case Study`,
+    description: project.problem.en,
+  });
+}
+
+export default async function CaseStudyPage({ params }: PageProps) {
+  const { slug } = await params;
+  const project = projectsData.find((p) => p.slug === slug);
   
   if (!project) {
     notFound();
@@ -53,6 +64,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               src={project.image} 
               alt={project.title.en} 
               fill 
+              priority
+              sizes="(min-width: 896px) 896px, 100vw"
               className="object-cover" 
             />
           </div>

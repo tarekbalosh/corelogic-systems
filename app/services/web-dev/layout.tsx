@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbJsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Custom Enterprise Web Development Company",
-  description: "Looking for secure, scalable web development services? CoreLogic Systems builds custom web apps for global B2B enterprises. Get a free consultation today.",
-  alternates: {
-    canonical: "https://www.corelogic-system.my/services/web-dev",
-    languages: {
-      "en": "https://www.corelogic-system.my/services/web-dev",
-      "ar": "https://www.corelogic-system.my/ar/services/web-dev",
-      "en-x-default": "https://www.corelogic-system.my/services/web-dev"
-    }
-  }
-};
+const title = "Custom Web Application Development";
+const description = "We build custom web applications, SaaS platforms, admin dashboards and API integrations for businesses. Request a free consultation and quote.";
 
-export default function WebDevLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+export const metadata: Metadata = pageMetadata({ path: "/services/web-dev", locale: "en", title, description });
+
+export default function ServicesWebDevLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{"name": "Home", "path": "/"}, {"name": "Services", "path": "/services"}, {"name": "Custom Web Application Development", "path": "/services/web-dev"}])} />
+      <JsonLd data={serviceJsonLd({ name: "Custom Web Application Development", description: description, path: "/services/web-dev", locale: "en" })} />
+      {children}
+    </>
+  );
 }
