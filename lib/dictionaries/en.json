@@ -66,6 +66,14 @@
       {
         "title": "Management Student Systems",
         "category": "Education"
+      },
+      {
+        "title": "BookEase Platform",
+        "category": "Scheduling Platform"
+      },
+      {
+        "title": "Hospital Management System",
+        "category": "Healthcare"
       }
     ]
   },

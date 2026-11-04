@@ -28,7 +28,7 @@ const projects = [
     image: "/accounting_pro_dashboard.png",
     tags: ["محاسبة", "مطاعم", "مالي"],
     link: "/ar/our-projects/accounting-pro",
-    span: "col-span-2 md:col-span-2",
+    span: "col-span-2 md:col-span-2 lg:col-span-2",
   },
   {
     title: "نظام نقاط البيع",
@@ -36,7 +36,7 @@ const projects = [
     image: "/pos_system_dashboard.png",
     tags: ["نقاط البيع", "مطاعم"],
     link: "/ar/our-projects/pos-system",
-    span: "col-span-2 md:col-span-1",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
   {
     title: "نظام إدارة الطلاب",
@@ -44,7 +44,7 @@ const projects = [
     image: "/student_management_dashboard.png",
     tags: ["طلاب", "إدارة"],
     link: "/ar/our-projects/student-management",
-    span: "col-span-2 md:col-span-1",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
   {
     title: "نظام حجوزات بوك إيز",
@@ -52,7 +52,15 @@ const projects = [
     image: "/bookease_dashboard.png",
     tags: ["حجوزات", "مواعيد", "نظام سحابي"],
     link: "/ar/our-projects/book-ease",
-    span: "col-span-2 md:col-span-1 lg:col-span-2",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
+  },
+  {
+    title: "نظام إدارة المستشفيات",
+    category: "رعاية صحية",
+    image: "/hospital-management.jpg",
+    tags: ["رعاية صحية", "إدارة", "نظام سحابي", "فول ستاك"],
+    link: "/ar/our-projects/hospital-management",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
 ];
 

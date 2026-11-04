@@ -16,7 +16,7 @@ const projects = [
     image: "/accounting_pro_dashboard.png",
     tags: ["Accounting", "Restaurant", "Financial"],
     link: "/our-projects/accounting-pro",
-    span: "col-span-2 md:col-span-2",
+    span: "col-span-2 md:col-span-2 lg:col-span-2",
   },
   {
     title: "POS System project",
@@ -24,7 +24,7 @@ const projects = [
     image: "/pos_system_dashboard.png",
     tags: ["POS", "Restaurant"],
     link: "/our-projects/pos-system",
-    span: "col-span-2 md:col-span-1",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
   {
     title: "Management Student Systems",
@@ -32,7 +32,7 @@ const projects = [
     image: "/student_management_dashboard.png",
     tags: ["Students", "Management"],
     link: "/our-projects/student-management",
-    span: "col-span-2 md:col-span-1",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
   {
     title: "BookEase Platform",
@@ -40,7 +40,17 @@ const projects = [
     image: "/bookease_dashboard.png",
     tags: ["Scheduling", "Appointments", "SaaS"],
     link: "/our-projects/book-ease",
-    span: "col-span-2 md:col-span-1 lg:col-span-2",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
+  },
+  {
+    title: "Hospital Management System",
+    category: "Healthcare",
+    description: "A comprehensive full-stack healthcare management platform with dynamic dashboards, appointment scheduling, and patient records.",
+    image: "/hospital-management.jpg",
+    tags: ["Healthcare", "Management", "SaaS", "Full-Stack"],
+    link: "/our-projects/hospital-management",
+    demoLink: "https://hospital-management-nine-delta.vercel.app/",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
 ];
 

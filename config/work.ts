@@ -140,4 +140,46 @@ export const projectsData: Project[] = [
     },
     demoLink: "https://book-ease-red.vercel.app/",
   },
+  {
+    slug: "hospital-management",
+    title: { en: "Hospital Management System", ar: "نظام إدارة المستشفيات" },
+    category: { en: "Healthcare", ar: "رعاية صحية" },
+    image: "/hospital-management.jpg",
+    tags: {
+      en: ["Healthcare", "Management", "SaaS", "Full-Stack"],
+      ar: ["رعاية صحية", "إدارة", "نظام سحابي", "فول ستاك"],
+    },
+    problem: {
+      en: "Healthcare facilities faced challenges with fragmented patient records, inefficient appointment scheduling, and disconnected hospital departments.",
+      ar: "واجهت المنشآت الطبية تحديات تشتت سجلات المرضى وعدم كفاءة جدولة المواعيد وغياب الترابط بين أقسام المستشفى.",
+    },
+    solution: {
+      en: "A comprehensive full-stack healthcare management platform with dynamic dashboards, appointment scheduling, and patient records.",
+      ar: "منصة شاملة لإدارة الرعاية الصحية متكاملة مع لوحات تحكم تفاعلية، جدولة المواعيد، وسجلات المرضى.",
+    },
+    features: {
+      en: [
+        "Dynamic analytics and operational dashboards",
+        "Patient records & electronic health data",
+        "Appointment scheduling & doctor calendars",
+        "Billing, pharmacy, and inventory tracking",
+      ],
+      ar: [
+        "لوحات تحكم تحليلية وعملياتية تفاعلية",
+        "سجلات المرضى والبيانات الصحية الإلكترونية",
+        "جدولة المواعيد وتقويم الأطباء",
+        "تتبع الفواتير والصيدلية والمخزون الطبي",
+      ],
+    },
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL"],
+    result: {
+      en: "TODO: metrics such as reduction in patient wait time or scheduling efficiency",
+      ar: "TODO: مقاييس مثل تقليل وقت انتظار المرضى أو كفاءة الجدولة",
+    },
+    demoLink: "https://hospital-management-nine-delta.vercel.app/",
+    demoNote: {
+      en: "Live interactive healthcare portal with real-time metrics and multilingual support",
+      ar: "بوابة رعاية صحية تفاعلية مباشرة مع مؤشرات فورية ودعم متعدد اللغات",
+    },
+  },
 ];
