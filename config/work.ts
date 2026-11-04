@@ -182,4 +182,46 @@ export const projectsData: Project[] = [
       ar: "بوابة رعاية صحية تفاعلية مباشرة مع مؤشرات فورية ودعم متعدد اللغات",
     },
   },
+  {
+    slug: "car-rental-platform",
+    title: { en: "Car Rental Platform", ar: "منصة تأجير السيارات" },
+    category: { en: "Automotive", ar: "تأجير السيارات" },
+    image: "/car-rental-platform.jpg",
+    tags: {
+      en: ["Automotive", "E-commerce", "UI/UX", "Full-Stack"],
+      ar: ["سيارات", "تجارة إلكترونية", "واجهة المستخدم", "فول ستاك"],
+    },
+    problem: {
+      en: "Car rental businesses in Malaysia needed a modern, high-converting digital storefront with fast vehicle filtering and frictionless online booking.",
+      ar: "احتاجت شركات تأجير السيارات في ماليزيا إلى واجهة رقمية حديثة وعالية التحويل مع فلترة سريعة للمركبات وحجز إلكتروني سلس.",
+    },
+    solution: {
+      en: "A modern, high-performance car rental platform built for the Malaysian market, featuring an elegant UI/UX, advanced filtering, and seamless booking capabilities.",
+      ar: "منصة حديثة وعالية الأداء لتأجير السيارات مصممة للسوق الماليزي، تتميز بواجهة مستخدم أنيقة وفلاتر بحث متقدمة ونظام حجز سلس.",
+    },
+    features: {
+      en: [
+        "Advanced vehicle search and category filtering",
+        "Transparent MYR daily pricing and specifications",
+        "Seamless multi-language booking experience",
+        "Responsive luxury automotive UI/UX design",
+      ],
+      ar: [
+        "بحث متقدم عن المركبات وفلترة حسب الفئة والمواصفات",
+        "عرض شفاف للأسعار اليومية والمواصفات الفنية",
+        "تجربة حجز سلسة تدعم تعدد اللغات",
+        "تصميم واجهة مستخدم عصري ومتجاوب",
+      ],
+    },
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    result: {
+      en: "TODO: metrics such as booking conversion rate or page load speed",
+      ar: "TODO: مقاييس مثل معدل تحويل الحجوزات أو سرعة تحميل الصفحة",
+    },
+    demoLink: "https://cars-alrayees.vercel.app/en",
+    demoNote: {
+      en: "Live interactive car rental platform with fleet browsing and filtering",
+      ar: "منصة تأجير سيارات تفاعلية مباشرة مع استعراض الأسطول والفلترة الفورية",
+    },
+  },
 ];

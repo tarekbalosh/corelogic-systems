@@ -28,7 +28,7 @@ const projects = [
     image: "/accounting_pro_dashboard.png",
     tags: ["محاسبة", "مطاعم", "مالي"],
     link: "/ar/our-projects/accounting-pro",
-    span: "col-span-2 md:col-span-2 lg:col-span-2",
+    span: "col-span-2 md:col-span-1 lg:col-span-2",
   },
   {
     title: "نظام نقاط البيع",
@@ -52,7 +52,7 @@ const projects = [
     image: "/bookease_dashboard.png",
     tags: ["حجوزات", "مواعيد", "نظام سحابي"],
     link: "/ar/our-projects/book-ease",
-    span: "col-span-2 md:col-span-1 lg:col-span-1",
+    span: "col-span-2 md:col-span-1 lg:col-span-2",
   },
   {
     title: "نظام إدارة المستشفيات",
@@ -60,6 +60,14 @@ const projects = [
     image: "/hospital-management.jpg",
     tags: ["رعاية صحية", "إدارة", "نظام سحابي", "فول ستاك"],
     link: "/ar/our-projects/hospital-management",
+    span: "col-span-2 md:col-span-1 lg:col-span-2",
+  },
+  {
+    title: "منصة تأجير السيارات",
+    category: "تأجير السيارات",
+    image: "/car-rental-platform.jpg",
+    tags: ["سيارات", "تجارة إلكترونية", "واجهة المستخدم", "فول ستاك"],
+    link: "/ar/our-projects/car-rental-platform",
     span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
 ];

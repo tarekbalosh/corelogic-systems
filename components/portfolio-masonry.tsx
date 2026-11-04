@@ -16,7 +16,7 @@ const projects = [
     image: "/accounting_pro_dashboard.png",
     tags: ["Accounting", "Restaurant", "Financial"],
     link: "/our-projects/accounting-pro",
-    span: "col-span-2 md:col-span-2 lg:col-span-2",
+    span: "col-span-2 md:col-span-1 lg:col-span-2",
   },
   {
     title: "POS System project",
@@ -40,7 +40,7 @@ const projects = [
     image: "/bookease_dashboard.png",
     tags: ["Scheduling", "Appointments", "SaaS"],
     link: "/our-projects/book-ease",
-    span: "col-span-2 md:col-span-1 lg:col-span-1",
+    span: "col-span-2 md:col-span-1 lg:col-span-2",
   },
   {
     title: "Hospital Management System",
@@ -50,6 +50,16 @@ const projects = [
     tags: ["Healthcare", "Management", "SaaS", "Full-Stack"],
     link: "/our-projects/hospital-management",
     demoLink: "https://hospital-management-nine-delta.vercel.app/",
+    span: "col-span-2 md:col-span-1 lg:col-span-2",
+  },
+  {
+    title: "Car Rental Platform",
+    category: "Automotive",
+    description: "A modern, high-performance car rental platform built for the Malaysian market, featuring an elegant UI/UX, advanced filtering, and seamless booking capabilities.",
+    image: "/car-rental-platform.jpg",
+    tags: ["Automotive", "E-commerce", "UI/UX", "Full-Stack"],
+    link: "/our-projects/car-rental-platform",
+    demoLink: "https://cars-alrayees.vercel.app/en",
     span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
 ];
