@@ -5,6 +5,7 @@ export type Project = {
   title: { en: string; ar: string };
   category: { en: string; ar: string };
   image: string;
+  secondaryImages?: { src: string; alt: { en: string; ar: string } }[];
   tags: { en: string[]; ar: string[] };
   problem: { en: string; ar: string };
   solution: { en: string; ar: string };
@@ -142,44 +143,47 @@ export const projectsData: Project[] = [
   },
   {
     slug: "hospital-management",
-    title: { en: "Hospital Management System", ar: "نظام إدارة المستشفيات" },
-    category: { en: "Healthcare", ar: "رعاية صحية" },
-    image: "/hospital-management.jpg",
+    title: {
+      en: "Hospital Management System",
+      ar: "نظام إدارة المستشفيات والعيادات",
+    },
+    category: { en: "Healthcare", ar: "الرعاية الصحية" },
+    image: "/projects/hospital-management.jpg",
     tags: {
       en: ["Healthcare", "Management", "SaaS", "Full-Stack"],
-      ar: ["رعاية صحية", "إدارة", "نظام سحابي", "فول ستاك"],
+      ar: ["الرعاية الصحية", "إدارة المستشفيات", "نظام سحابي", "فول ستاك"],
     },
     problem: {
-      en: "Healthcare facilities faced challenges with fragmented patient records, inefficient appointment scheduling, and disconnected hospital departments.",
-      ar: "واجهت المنشآت الطبية تحديات تشتت سجلات المرضى وعدم كفاءة جدولة المواعيد وغياب الترابط بين أقسام المستشفى.",
+      en: "Healthcare facilities faced challenges with fragmented patient records, inefficient appointment scheduling, manual pharmacy stock tracking, and disconnected hospital departments.",
+      ar: "واجهت المنشآت الطبية تحديات تشتت سجلات المرضى وعدم كفاءة جدولة المواعيد وتتبع مخزون الصيدلية يدويًا وغياب الترابط بين أقسام المستشفى.",
     },
     solution: {
-      en: "A comprehensive full-stack healthcare management platform with dynamic dashboards, appointment scheduling, and patient records.",
-      ar: "منصة شاملة لإدارة الرعاية الصحية متكاملة مع لوحات تحكم تفاعلية، جدولة المواعيد، وسجلات المرضى.",
+      en: "A comprehensive full-stack healthcare management platform featuring real-time operational analytics, patient & doctor records, pharmacy inventory alerts, and billing.",
+      ar: "منصة سحابية متكاملة لإدارة المستشفيات والمراكز الطبية، تضم لوحة تحكم تحليلية فورية، إدارة المرضى والأطباء، الوصفات الطبية، الصيدلية، والفواتير.",
     },
     features: {
       en: [
-        "Dynamic analytics and operational dashboards",
-        "Patient records & electronic health data",
-        "Appointment scheduling & doctor calendars",
-        "Billing, pharmacy, and inventory tracking",
+        "Dynamic analytics, monthly revenue & appointment status dashboards",
+        "Patient records, medical prescriptions, doctor shifts & scheduling",
+        "Pharmacy medication inventory tracking with low-stock alerts & billing",
+        "Executive Dashboard, Patients & Doctors Management, Staff Shifts, Appointments & Prescriptions, Pharmacy & Warehouse Inventory Alerts, and Billing & Notifications",
       ],
       ar: [
-        "لوحات تحكم تحليلية وعملياتية تفاعلية",
-        "سجلات المرضى والبيانات الصحية الإلكترونية",
-        "جدولة المواعيد وتقويم الأطباء",
-        "تتبع الفواتير والصيدلية والمخزون الطبي",
+        "لوحة تحكم تفاعلية للإحصائيات، الإيرادات الشهرية، وحالات المواعيد",
+        "إدارة شاملة لسجلات المرضى، الوصفات الطبية، ومناوبات الأطباء",
+        "تتبع مخزون الأدوية والصيدلية مع تنبيهات نقص المخزون والفوترة",
+        "لوحة التحكم التنفيذية، إدارة المرضى والأطباء، مناوبات الموظفين، المواعيد والوصفات الطبية، تنبيهات الصيدلية والمستودع، والفواتير والإشعارات",
       ],
     },
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL"],
+    technologies: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Prisma"],
     result: {
-      en: "TODO: metrics such as reduction in patient wait time or scheduling efficiency",
-      ar: "TODO: مقاييس مثل تقليل وقت انتظار المرضى أو كفاءة الجدولة",
+      en: "Built by CoreLogic Systems as an end-to-end digital hospital administration suite (مستشفى الرعاية) covering clinical workflows, staff shifts, pharmacy stock, and financial invoicing with role-based access control across key modules: Executive Dashboard, Patients & Doctors Management, Staff Shifts, Appointments & Prescriptions, Pharmacy & Warehouse Inventory Alerts, and Billing & Notifications.",
+      ar: "تم تطويره بواسطة CoreLogic Systems كمنظومة رقمية متكاملة لإدارة المستشفيات (مستشفى الرعاية) تغطي المسارات السريرية، ومناوبات الموظفين، ومخزون الصيدلية، والفوترة المالية مع نظام صلاحيات متعدد الأدوار عبر وحدات رئيسية تشمل: لوحة التحكم التنفيذية، إدارة المرضى والأطباء، مناوبات الموظفين، المواعيد والوصفات الطبية، تنبيهات مخزون الصيدلية والمستودع، والفواتير والإشعارات.",
     },
-    demoLink: "https://hospital-management-nine-delta.vercel.app/",
+    demoLink: "https://hospital-management-nine-delta.vercel.app/login",
     demoNote: {
-      en: "Live interactive healthcare portal with real-time metrics and multilingual support",
-      ar: "بوابة رعاية صحية تفاعلية مباشرة مع مؤشرات فورية ودعم متعدد اللغات",
+      en: "Live interactive healthcare administration suite with role-based access and real-time hospital analytics",
+      ar: "معاينة حية لمنظومة إدارة المستشفيات (مستشفى الرعاية) مع صلاحيات متعددة الأدوار وتحليلات فورية",
     },
   },
   {
@@ -222,6 +226,195 @@ export const projectsData: Project[] = [
     demoNote: {
       en: "Live interactive car rental platform with fleet browsing and filtering",
       ar: "منصة تأجير سيارات تفاعلية مباشرة مع استعراض الأسطول والفلترة الفورية",
+    },
+  },
+  {
+    slug: "corelogic-crm",
+    title: {
+      en: "Corelogic CRM",
+      ar: "نظام Corelogic لإدارة علاقات العملاء (CRM)",
+    },
+    category: { en: "Enterprise SaaS", ar: "برمجيات الأعمال" },
+    image: "/projects/corelogic-crm.png",
+    tags: {
+      en: ["Enterprise SaaS", "CRM", "Sales Pipeline", "Analytics"],
+      ar: ["برمجيات الأعمال", "إدارة علاقات العملاء", "مسار المبيعات", "تحليلات"],
+    },
+    problem: {
+      en: "Growing businesses struggled to centralize customer data, monitor conversion rates, and manage deals across scattered spreadsheets and disconnected tools.",
+      ar: "عانت الشركات النامية من صعوبة توحيد بيانات العملاء ومراقبة معدلات التحويل وإدارة الصفقات عبر جداول البيانات المبعثرة والأدوات غير المترابطة.",
+    },
+    solution: {
+      en: "An all-in-one Customer Relationship Management platform designed to streamline sales pipelines, track leads, and automate daily team tasks.",
+      ar: "منصة متكاملة لإدارة علاقات العملاء مصممة لتنظيم مراحل المبيعات، تتبع العملاء المحتملين، وأتمتة مهام الفريق اليومية.",
+    },
+    features: {
+      en: [
+        "Interactive sales pipeline & deal stage tracking",
+        "Real-time revenue analytics & lead source reports",
+        "Automated task reminders & contact management",
+        "Dashboard KPIs, leads & contacts directory, and conversion rate monitoring",
+      ],
+      ar: [
+        "تتبع تفاعلي لمراحل الصفقات ومسار المبيعات (Pipeline)",
+        "تقارير فورية لتحليل الإيرادات ومصادر العملاء",
+        "إدارة جهات الاتصال والتذكير الذكي بالمهام اليومية",
+        "لوحة مؤشرات الأداء الرئيسية ودليل العملاء ومراقبة معدلات التحويل",
+      ],
+    },
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    result: {
+      en: "Built by CoreLogic Systems to help growing businesses centralize customer data, monitor conversion rates, and eliminate scattered spreadsheets across key modules: Dashboard KPIs, Leads & Contacts Directory, Deals & Visual Sales Pipeline, Task Management with Due-Date Reminders, and Analytical Reports.",
+      ar: "تم تطويره بواسطة CoreLogic Systems لمساعدة الشركات النامية على توحيد بيانات العملاء، ومراقبة معدلات التحويل، والتخلص من جداول البيانات المبعثرة عبر وحدات متكاملة تشمل: لوحة مؤشرات الأداء، دليل العملاء وجهات الاتصال، إدارة الصفقات ومسار المبيعات المرئي، إدارة المهام مع التذكيرات، والتقارير التحليلية.",
+    },
+    demoLink: "https://corelogic-crm.vercel.app/",
+    demoNote: {
+      en: "Live interactive CRM dashboard with sample leads, visual deal pipeline, and revenue analytics",
+      ar: "معاينة حية تفاعلية للوحة تحكم CRM مع بيانات تجريبية للعملاء ومسار الصفقات وتحليلات الإيرادات",
+    },
+  },
+  {
+    slug: "alrayees-trading",
+    title: {
+      en: "Al Rayees Trading Platform",
+      ar: "منصة الريس للتجارة الدولية",
+    },
+    category: { en: "Global Trading", ar: "التجارة الدولية" },
+    image: "/projects/alrayees-trading.jpg",
+    tags: {
+      en: ["Global Trading", "B2B", "Commodities", "PWA"],
+      ar: ["التجارة الدولية", "أعمال لأعمال", "سلع أساسية", "تطبيق ويب تقدمي"],
+    },
+    problem: {
+      en: "Al Rayees SDN BHD needed a world-class corporate digital presence to showcase 200+ commodity product lines across 50+ international markets and streamline B2B quote inquiries.",
+      ar: "احتاجت شركة Al Rayees SDN BHD إلى حضور رقمي مؤسسي عالمي المستوى لاستعراض أكثر من 200 خط إنتاج من السلع الأساسية عبر أكثر من 50 سوقًا دوليًا وتسهيل طلبات عروض الأسعار للشركات.",
+    },
+    solution: {
+      en: "A corporate global commodity trading platform for Al Rayees SDN BHD, showcasing agricultural products, vegetable oils, and international quote workflows.",
+      ar: "منصة رقمية متكاملة لشركة Al Rayees SDN BHD للتجارة العالمية، تستعرض السلع الزراعية والزيوت النباتية ونظام طلب عروض الأسعار للشركات.",
+    },
+    features: {
+      en: [
+        "Interactive global commodity & product catalog",
+        "Streamlined B2B Request-a-Quote (RFQ) workflow",
+        "High-performance responsive design & PWA capabilities",
+        "Product lines showcase (Cotton, Rice, Palm Oil, Raw Sugar), corporate trust metrics & instant WhatsApp integration",
+      ],
+      ar: [
+        "كتالوج تفاعلي متكامل للمنتجات والسلع الدولية",
+        "نظام مبسط وسريع لطلب عروض الأسعار (RFQ) للشركات",
+        "تصميم متجاوب عالي الأداء يدعم تقنيات تطبيقات الويب التقدمية (PWA)",
+        "عرض خطوط المنتجات (القطن، الأرز، زيت النخيل، السكر الخام) ومؤشرات الموثوقية والتواصل الفوري عبر واتساب",
+      ],
+    },
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PWA"],
+    result: {
+      en: "Designed and developed by CoreLogic Systems for Malaysia-based global trading corporation Al Rayees SDN BHD to establish a world-class digital presence across 50+ international markets, featuring a Product Lines Showcase (Cotton, Rice, Palm Oil, Raw Sugar), B2B Quote Request System, Corporate Trust Metrics, and Instant WhatsApp/Contact Integration.",
+      ar: "تم تصميمها وتطويرها بواسطة CoreLogic Systems لشركة التجارة العالمية الماليزية Al Rayees SDN BHD لتأسيس حضور رقمي عالمي المستوى يخدم أكثر من 50 سوقًا دوليًا، مع استعراض شامل لخطوط المنتجات (القطن، الأرز، زيت النخيل، السكر الخام)، ونظام طلب عروض الأسعار للشركات (B2B)، ومؤشرات الثقة المؤسسية، والتكامل الفوري مع واتساب.",
+    },
+    demoLink: "https://alrayees.vercel.app/",
+    demoNote: {
+      en: "Explore the live Al Rayees SDN BHD global commodity trading platform, interactive product catalog, and B2B RFQ system",
+      ar: "معاينة حية لمنصة الريس للتجارة الدولية واستعراض كتالوج السلع الأساسية ونظام طلب عروض الأسعار للشركات",
+    },
+  },
+  {
+    slug: "consultation-booking",
+    title: {
+      en: "Consultation Booking Platform",
+      ar: "منصة حجز الاستشارات وإدارة المواعيد",
+    },
+    category: { en: "Booking & Scheduling", ar: "أنظمة الحجز والمواعيد" },
+    image: "/projects/consultation-booking.jpg",
+    secondaryImages: [
+      {
+        src: "/projects/consultation-booking-admin.png",
+        alt: {
+          en: "Admin Overview & Analytics Dashboard",
+          ar: "لوحة تحكم الإدارة والتحليلات الشاملة",
+        },
+      },
+    ],
+    tags: {
+      en: ["Booking & Scheduling", "Consultations", "Bilingual", "Full-Stack"],
+      ar: ["أنظمة الحجز والمواعيد", "استشارات", "ثنائي اللغة", "فول ستاك"],
+    },
+    problem: {
+      en: "Consultancies and advisory firms needed a bilingual booking system with temporary slot holds, manual admin approval gates, and multi-channel session delivery without double-bookings.",
+      ar: "احتاجت مكاتب الاستشارات إلى نظام حجز ثنائي اللغة يدعم حجز المواعيد المؤقت، واعتماد الإدارة اليدوي للطلبات، وتعدد قنوات التواصل دون تضارب في المواعيد.",
+    },
+    solution: {
+      en: "A bilingual consultation booking and scheduling system featuring a 3-step client booking flow, admin approval workflows, and WhatsApp/Google Meet integration.",
+      ar: "نظام ثنائي اللغة لحجز وإدارة الاستشارات، يتميز بخطوات حجز سلسة للعملاء، لوحة تحكم إدارية لاعتماد المواعيد، وتكامل مع واتساب و Google Meet.",
+    },
+    features: {
+      en: [
+        "3-step consultation booking with dynamic pricing (MYR)",
+        "Admin dashboard with calendar, availability & approval controls",
+        "Instant WhatsApp & Email notifications with booking status tracking",
+        "3-Step Client Booking Wizard, Order Summary & Live Booking Status Tracker, Admin Overview Analytics, Availability & Service Manager, and Audit/Booking Logs",
+      ],
+      ar: [
+        "مسار حجز من 3 خطوات مع تسعير مرن ومواعيد بتوقيت كوالالمبور",
+        "لوحة تحكم إدارية شاملة لإدارة التوفر، التقويم، واعتماد الطلبات",
+        "إشعارات فورية عبر واتساب والبريد الإلكتروني مع تتبع حالة الطلب",
+        "معالج حجز للعملاء من 3 خطوات، ملخص الطلب وتتبع الحالة الفوري، تحليلات الإدارة الشاملة، إدارة الخدمات والتوفر، وسجلات التدقيق والحجوزات",
+      ],
+    },
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Prisma"],
+    result: {
+      en: "Engineered by CoreLogic Systems as a complete end-to-end appointment and consultation management solution supporting multiple consultation modes (Google Meet, WhatsApp Audio, Direct Call) and manual admin verification workflows across key modules: 3-Step Client Booking Wizard, Order Summary & Live Booking Status Tracker, Admin Overview Analytics, Availability & Service Manager, and Audit/Booking Logs.",
+      ar: "تم تطويره بواسطة CoreLogic Systems كحل متكامل لإدارة المواعيد والاستشارات يدعم قنوات استشارة متعددة (Google Meet، مكالمة واتساب الصوتية، اتصال مباشر) ومسارات التحقق والاعتماد اليدوي من الإدارة عبر وحدات رئيسية تشمل: معالج حجز العملاء من 3 خطوات، ملخص الطلب وتتبع الحالة الفوري، تحليلات الإدارة الشاملة، إدارة التوفر والخدمات، وسجلات التدقيق والحجوزات.",
+    },
+    demoLink: "https://booking-systembro.vercel.app/en",
+    demoNote: {
+      en: "Explore the live bilingual consultation booking wizard, status tracker, and scheduling flow",
+      ar: "معاينة حية لمعالج حجز الاستشارات ثنائي اللغة وتتبع حالة الحجز وجدولة المواعيد",
+    },
+  },
+  {
+    slug: "shoplink-storefront",
+    title: {
+      en: "ShopLink WhatsApp Storefront",
+      ar: "منصة ShopLink للمتاجر والطلب عبر واتساب",
+    },
+    category: { en: "E-Commerce", ar: "التجارة الإلكترونية" },
+    image: "/projects/shoplink-storefront.jpg",
+    tags: {
+      en: ["E-Commerce", "WhatsApp Ordering", "Digital Catalog", "Retail"],
+      ar: ["التجارة الإلكترونية", "الطلب عبر واتساب", "كتالوج رقمي", "تجزئة"],
+    },
+    problem: {
+      en: "Local shops, cafes, and bakeries struggled with manual order taking over chat and costly third-party delivery commissions, needing a fast digital storefront that sends structured orders straight to WhatsApp.",
+      ar: "عانت المتاجر المحلية والمقاهي والمخابز من استقبال الطلبات يدويًا عبر المحادثات وارتفاع عمولات تطبيقات التوصيل، مما استدعى واجهة متجر رقمية سريعة ترسل طلبات منظمة مباشرة إلى واتساب.",
+    },
+    solution: {
+      en: "A modern digital product catalog and ordering storefront that lets local shops and bakeries showcase menus, manage carts, and receive instant orders directly via WhatsApp.",
+      ar: "متجر إلكتروني وكتالوج منتجات رقمي عصري يتيح للمتاجر والمخابز عرض قوائمها وإدارة سلة المشتريات واستقبال الطلبات مباشرة عبر واتساب.",
+    },
+    features: {
+      en: [
+        "Interactive category filtering & real-time product search",
+        "Slide-over shopping cart with automatic MYR subtotal calculation",
+        "One-click WhatsApp order checkout without payment gateway friction",
+        "Category Tabs (Breads, Pastries, Cakes, Drinks), Live Availability Indicators, Interactive Slide-Over Cart Drawer, and Direct WhatsApp Order Formatting",
+      ],
+      ar: [
+        "تصفية تفاعلية حسب الفئات وبحث فوري عن المنتجات",
+        "سلة تسوق جانبية ذكية مع حساب تلقائي للمجموع بالرينغيت الماليزي (MYR)",
+        "إتمام وإرسال الطلب بضغطة زر عبر واتساب دون تعقيدات الدفع",
+        "تبويبات الفئات (المخبوزات، المعجنات، الكيك، المشروبات)، مؤشرات التوفر الفوري، سلة التسوق الجانبية التفاعلية، وتنسيق الطلب المباشر عبر واتساب",
+      ],
+    },
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    result: {
+      en: "Built by CoreLogic Systems to empower retail shops, cafes, and bakeries with a fast, frictionless online catalog where customers browse items, adjust quantities, and send structured order summaries straight to the merchant's WhatsApp — featuring Category Tabs (Breads, Pastries, Cakes, Drinks), Live Availability Indicators, Interactive Slide-Over Cart Drawer, and Direct WhatsApp Order Formatting.",
+      ar: "تم تطويرها بواسطة CoreLogic Systems لتمكين المتاجر والمقاهي والمخابز من امتلاك كتالوج رقمي سريع وسلس يتيح للعملاء تصفح المنتجات وتعديل الكميات وإرسال ملخصات طلبات منظمة مباشرة إلى واتساب التاجر، مع تبويبات الفئات، ومؤشرات التوفر الفوري، وسلة التسوق الجانبية التفاعلية، وتنسيق الطلب المباشر.",
+    },
+    demoLink: "https://shope-link.vercel.app/",
+    demoNote: {
+      en: "Explore the live ShopLink Bakery storefront, interactive slide-over cart drawer, and one-click WhatsApp checkout",
+      ar: "معاينة حية لواجهة متجر ShopLink Bakery وسلة التسوق الجانبية التفاعلية وإرسال الطلب عبر واتساب",
     },
   },
 ];

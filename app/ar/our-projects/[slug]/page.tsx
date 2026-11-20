@@ -69,6 +69,27 @@ export default async function ArabicCaseStudyPage({ params }: PageProps) {
               className="object-cover" 
             />
           </div>
+
+          {project.secondaryImages && project.secondaryImages.length > 0 && (
+            <div className="mt-8 space-y-6">
+              {project.secondaryImages.map((img) => (
+                <div key={img.src} className="space-y-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-foreground/60 block">
+                    {img.alt.ar}
+                  </span>
+                  <div className="aspect-video relative rounded-3xl overflow-hidden border border-foreground/10 shadow-2xl">
+                    <Image
+                      src={img.src}
+                      alt={img.alt.ar}
+                      fill
+                      sizes="(min-width: 896px) 896px, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </header>
 
         <div className="space-y-16 text-lg text-foreground/80 leading-relaxed">

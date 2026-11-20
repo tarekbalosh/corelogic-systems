@@ -40,17 +40,17 @@ const projects = [
     image: "/bookease_dashboard.png",
     tags: ["Scheduling", "Appointments", "SaaS"],
     link: "/our-projects/book-ease",
-    span: "col-span-2 md:col-span-1 lg:col-span-2",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
   {
     title: "Hospital Management System",
     category: "Healthcare",
-    description: "A comprehensive full-stack healthcare management platform with dynamic dashboards, appointment scheduling, and patient records.",
-    image: "/hospital-management.jpg",
+    description: "A comprehensive full-stack healthcare management platform featuring real-time operational analytics, patient & doctor records, pharmacy inventory alerts, and billing.",
+    image: "/projects/hospital-management.jpg",
     tags: ["Healthcare", "Management", "SaaS", "Full-Stack"],
     link: "/our-projects/hospital-management",
-    demoLink: "https://hospital-management-nine-delta.vercel.app/",
-    span: "col-span-2 md:col-span-1 lg:col-span-2",
+    demoLink: "https://hospital-management-nine-delta.vercel.app/login",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
   {
     title: "Car Rental Platform",
@@ -62,14 +62,54 @@ const projects = [
     demoLink: "https://cars-alrayees.vercel.app/en",
     span: "col-span-2 md:col-span-1 lg:col-span-1",
   },
+  {
+    title: "Corelogic CRM",
+    category: "Enterprise SaaS",
+    description: "An all-in-one Customer Relationship Management platform designed to streamline sales pipelines, track leads, and automate daily team tasks.",
+    image: "/projects/corelogic-crm.png",
+    tags: ["Enterprise SaaS", "CRM", "Sales Pipeline", "Analytics"],
+    link: "/our-projects/corelogic-crm",
+    demoLink: "https://corelogic-crm.vercel.app/",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
+  },
+  {
+    title: "Al Rayees Trading Platform",
+    category: "Global Trading",
+    description: "A corporate global commodity trading platform for Al Rayees SDN BHD, showcasing agricultural products, vegetable oils, and international quote workflows.",
+    image: "/projects/alrayees-trading.jpg",
+    tags: ["Global Trading", "B2B", "Commodities", "PWA"],
+    link: "/our-projects/alrayees-trading",
+    demoLink: "https://alrayees.vercel.app/",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
+  },
+  {
+    title: "Consultation Booking Platform",
+    category: "Booking & Scheduling",
+    description: "A bilingual consultation booking and scheduling system featuring a 3-step client booking flow, admin approval workflows, and WhatsApp/Google Meet integration.",
+    image: "/projects/consultation-booking.jpg",
+    tags: ["Booking & Scheduling", "Consultations", "Bilingual", "Full-Stack"],
+    link: "/our-projects/consultation-booking",
+    demoLink: "https://booking-systembro.vercel.app/en",
+    span: "col-span-2 md:col-span-1 lg:col-span-1",
+  },
+  {
+    title: "ShopLink WhatsApp Storefront",
+    category: "E-Commerce",
+    description: "A modern digital product catalog and ordering storefront that lets local shops and bakeries showcase menus, manage carts, and receive instant orders directly via WhatsApp.",
+    image: "/projects/shoplink-storefront.jpg",
+    tags: ["E-Commerce", "WhatsApp Ordering", "Digital Catalog", "Retail"],
+    link: "/our-projects/shoplink-storefront",
+    demoLink: "https://shope-link.vercel.app/",
+    span: "col-span-2 md:col-span-1 lg:col-span-2",
+  },
 ];
 
 const cardVariants = {
   hidden: { opacity: 0, y: 80, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1, 
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
     transition: { type: "spring", stiffness: 60, damping: 15 }
   }
 } as const;
@@ -78,8 +118,8 @@ export const PortfolioMasonry = () => {
   return (
     <section id="portfolio" className="py-24 px-6 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto">
-        <SectionTitle 
-          title="Featured Projects" 
+        <SectionTitle
+          title="Featured Projects"
           subtitle="A showcase of custom software and systems we've built for our clients."
         />
 
@@ -102,37 +142,37 @@ export const PortfolioMasonry = () => {
             >
               <Link href={project.link} className="block h-full w-full group">
                 <div className="relative h-full w-full bg-background rounded-3xl border border-foreground/10 group-hover:border-primary/30 group-hover:shadow-2xl transition-all duration-500 overflow-hidden">
-                    <Image 
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                        className="object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-100"
-                    />
-                    
-                    {/* Dark Gradient Overlay for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 md:p-8 flex flex-col justify-end opacity-90 group-hover:opacity-100 transition-opacity">
-                        <div className="space-y-4 translate-y-0 lg:translate-y-8 lg:group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                            <div className="space-y-2">
-                                <span className="text-[11px] md:text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 backdrop-blur-md border border-primary/20 px-3 py-1 rounded-full inline-block shadow-sm">
-                                  {project.category}
-                                </span>
-                                <h3 className="text-xl md:text-2xl font-bold text-white drop-shadow-md leading-tight">{project.title}</h3>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                                {project.tags.map(tag => (
-                                    <span key={tag} className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-medium text-white/90 backdrop-blur-md">
-                                      {tag}
-                                    </span>
-                                ))}
-                            </div>
-                            <div className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pt-3">
-                                <button className="w-full sm:w-auto px-6 py-2.5 bg-white text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-md text-sm">
-                                  Live Demo
-                                </button>
-                            </div>
-                        </div>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-100"
+                  />
+
+                  {/* Dark Gradient Overlay for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 md:p-8 flex flex-col justify-end opacity-90 group-hover:opacity-100 transition-opacity">
+                    <div className="space-y-4 translate-y-0 lg:translate-y-8 lg:group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                      <div className="space-y-2">
+                        <span className="text-[11px] md:text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 backdrop-blur-md border border-primary/20 px-3 py-1 rounded-full inline-block shadow-sm">
+                          {project.category}
+                        </span>
+                        <h3 className="text-xl md:text-2xl font-bold text-white drop-shadow-md leading-tight">{project.title}</h3>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map(tag => (
+                          <span key={tag} className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-medium text-white/90 backdrop-blur-md">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pt-3">
+                        <button className="w-full sm:w-auto px-6 py-2.5 bg-white text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-md text-sm">
+                          Live Demo
+                        </button>
+                      </div>
                     </div>
+                  </div>
                 </div>
               </Link>
             </motion.div>

@@ -78,6 +78,22 @@
       {
         "title": "Car Rental Platform",
         "category": "Automotive"
+      },
+      {
+        "title": "Corelogic CRM",
+        "category": "Enterprise SaaS"
+      },
+      {
+        "title": "Al Rayees Trading Platform",
+        "category": "Global Trading"
+      },
+      {
+        "title": "Consultation Booking Platform",
+        "category": "Booking & Scheduling"
+      },
+      {
+        "title": "ShopLink WhatsApp Storefront",
+        "category": "E-Commerce"
       }
     ]
   },
