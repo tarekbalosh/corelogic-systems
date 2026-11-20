@@ -20,6 +20,7 @@ import {
   ArrowLeft
 } from "lucide-react";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { buttonVariants } from "@/components/neon-button";
 import { cn } from "@/lib/utils";
 
 const solutions = [
@@ -91,16 +92,18 @@ export default function MobileAppDevelopmentPage() {
             </motion.p>
             
             <motion.div variants={fadeInUp} className="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Link href="/ar/contact">
-                <button className="px-8 py-4 bg-gradient-to-l from-violet-600 to-indigo-600 text-white rounded-2xl font-semibold hover:opacity-90 shadow-[0_8px_30px_rgba(124,58,237,0.2)] hover:shadow-[0_8px_40px_rgba(124,58,237,0.3)] hover:-translate-y-1 transition-all text-lg flex items-center gap-2">
-                  ابدأ مشروع تطبيقك
-                  <ArrowLeft size={20} />
-                </button>
+              <Link
+                href="/ar/contact"
+                className={buttonVariants({ variant: "primary", size: "lg" })}
+              >
+                <span>ابدأ مشروع تطبيقك</span>
+                <ArrowLeft size={20} className="shrink-0 transition-transform duration-250 group-hover:-translate-x-1" />
               </Link>
-              <Link href="#solutions">
-                <button className="px-8 py-4 bg-background/50 backdrop-blur-md text-foreground rounded-2xl font-semibold hover:bg-foreground/5 border border-foreground/10 hover:border-foreground/20 transition-all text-lg shadow-sm">
-                  استعرض الحلول
-                </button>
+              <Link
+                href="#solutions"
+                className={buttonVariants({ variant: "secondary", size: "lg" })}
+              >
+                <span>استعرض الحلول</span>
               </Link>
             </motion.div>
           </motion.div>
@@ -327,9 +330,14 @@ export default function MobileAppDevelopmentPage() {
                 هل أنت مستعد لنقل عملك إلى المستوى التالي؟ ابدأ المحادثة اليوم ودعنا نبني تطبيقاً سيحبه مستخدموك.
               </p>
               <div className="pt-4 flex justify-center">
-                <a href="https://wa.me/601169397149" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-gradient-to-l from-violet-600 to-indigo-600 text-white rounded-full font-semibold hover:opacity-90 shadow-lg hover:shadow-violet-500/20 hover:-translate-y-0.5 transition-all text-lg flex items-center gap-2">
-                  احصل على استشارة مجانية
-                  <ArrowLeft size={20} />
+                <a
+                  href="https://wa.me/601169397149"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonVariants({ variant: "primary", size: "lg" })}
+                >
+                  <span>احصل على استشارة مجانية</span>
+                  <ArrowLeft size={20} className="shrink-0 transition-transform duration-250 group-hover:-translate-x-1" />
                 </a>
               </div>
             </div>

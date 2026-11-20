@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { NeonButton } from "@/components/neon-button";
+import { NeonButton, buttonVariants } from "@/components/neon-button";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { 
     LayoutDashboard, Cloud, Cpu, Layers, Link, 
@@ -60,8 +60,12 @@ export default function WebDevServicePage() {
                             CoreLogic Systems is a <strong>custom web development company</strong> in Kuala Lumpur. We build web applications, SaaS platforms, admin dashboards and business portals that fit how your company works, from the first requirements workshop to launch and ongoing support.
                         </motion.p>
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
-                            <Link href="/contact" className="w-full sm:w-auto">
-                                <NeonButton size="lg" variant="primary" className="w-full">Request a Quote</NeonButton>
+                            <Link
+                                href="/contact"
+                                className={buttonVariants({ variant: "primary", size: "lg", className: "w-full sm:w-auto" })}
+                            >
+                                <span>Request a Quote</span>
+                                <ArrowRight size={20} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
                             </Link>
                         </motion.div>
                     </motion.div>
@@ -263,10 +267,13 @@ export default function WebDevServicePage() {
                                 Partner with our elite engineering team to architect web applications that don't just exist—they lead markets.
                             </p>
                             <div className="pt-6 flex justify-center">
-                                <NeonButton size="lg" variant="primary" className="pl-6 group">
-                                    Start Your Project 
-                                    <ArrowRight size={20} className="ml-2 inline-block group-hover:translate-x-1 transition-transform" />
-                                </NeonButton>
+                                <Link
+                                    href="/contact"
+                                    className={buttonVariants({ variant: "primary", size: "lg" })}
+                                >
+                                    <span>Start Your Project</span>
+                                    <ArrowRight size={20} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
+                                </Link>
                             </div>
                         </div>
                     </motion.div>

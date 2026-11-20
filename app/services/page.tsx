@@ -13,6 +13,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { ParticleBackground } from "@/components/particle-background";
+import { buttonVariants } from "@/components/neon-button";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
@@ -125,11 +126,16 @@ export default function ServicesPage() {
                         ))}
                     </ul>
                     
-                    <Link href="/contact" className="inline-block w-full sm:w-auto">
-                      <button className="flex items-center justify-center sm:justify-start w-full gap-2 px-6 py-3.5 bg-foreground/5 hover:bg-primary hover:text-primary-foreground text-foreground rounded-2xl font-semibold transition-all group/btn shadow-sm">
-                          Project Inquiry 
-                          <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-                      </button>
+                    <Link
+                      href="/contact"
+                      className={buttonVariants({
+                        variant: "secondary",
+                        size: "md",
+                        className: "w-full sm:w-auto",
+                      })}
+                    >
+                      <span>Project Inquiry</span>
+                      <ArrowRight size={18} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
                     </Link>
                   </div>
                 </div>
@@ -143,10 +149,16 @@ export default function ServicesPage() {
                 <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-full pointer-events-none -translate-y-1/2" />
                 <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 relative z-10">Not sure which service you need?</h3>
                 <p className="text-foreground/70 mb-8 max-w-xl mx-auto relative z-10">Book a free consultation with our experts to discuss your requirements and find the perfect technological fit for your business.</p>
-                <Link href="/contact" className="relative z-10 inline-block">
-                  <button className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all">
-                    Schedule a Consultation
-                  </button>
+                <Link
+                  href="/contact"
+                  className={buttonVariants({
+                    variant: "primary",
+                    size: "lg",
+                    className: "relative z-10",
+                  })}
+                >
+                  <span>Schedule a Consultation</span>
+                  <ArrowRight size={18} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
                 </Link>
              </div>
           </motion.div>

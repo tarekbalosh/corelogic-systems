@@ -7,7 +7,8 @@ import Link from "next/link";
 import Tilt from "react-parallax-tilt";
 import { SectionTitle } from "./section-title";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
-import { NeonButton } from "./neon-button";
+import { ArrowUpRight } from "lucide-react";
+import { buttonVariants } from "./neon-button";
 
 const projects = [
   {
@@ -167,9 +168,16 @@ export const PortfolioMasonry = () => {
                         ))}
                       </div>
                       <div className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pt-3">
-                        <button className="w-full sm:w-auto px-6 py-2.5 bg-white text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-md text-sm">
-                          Live Demo
-                        </button>
+                        <span
+                          className={buttonVariants({
+                            variant: "primary",
+                            size: "sm",
+                            className: "w-full sm:w-auto",
+                          })}
+                        >
+                          <span>Live Demo</span>
+                          <ArrowUpRight size={16} className="shrink-0 transition-transform duration-250 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </span>
                       </div>
                     </div>
                   </div>

@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { ParticleBackground } from "@/components/particle-background";
 import { SectionTitle } from "@/components/section-title";
+import { NeonButton, buttonVariants } from "@/components/neon-button";
 import { cn } from "@/lib/utils";
 import { sendContactEmail } from "@/app/actions";
 
@@ -216,17 +217,16 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    <button 
+                    <NeonButton
                       type="submit"
-                      disabled={loading}
-                      className={cn(
-                        "w-full py-4 bg-primary text-primary-foreground rounded-2xl font-semibold flex items-center justify-center gap-2 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-[0.98] mt-4",
-                        loading && "opacity-70 cursor-not-allowed"
-                      )}
+                      variant="primary"
+                      size="lg"
+                      loading={loading}
+                      className="w-full mt-4"
                     >
-                      {loading ? "Processing..." : "Send Message"}
-                      {!loading && <Send size={18} className="ml-1" />}
-                    </button>
+                      <span>{loading ? "Processing..." : "Send Message"}</span>
+                      {!loading && <Send size={18} className="shrink-0 transition-transform duration-250 group-hover:translate-x-0.5" />}
+                    </NeonButton>
                   </form>
                 </motion.div>
               ) : (
@@ -243,12 +243,16 @@ export default function ContactPage() {
                   <p className="text-foreground/60 text-lg max-w-md mx-auto">
                     Thank you for reaching out. A specialist from CoreLogic Systems will contact you within 24 hours.
                   </p>
-                  <button 
+                  <NeonButton
+                    type="button"
+                    variant="secondary"
+                    size="md"
                     onClick={() => setIsSubmitted(false)}
-                    className="mt-6 px-8 py-3 bg-foreground/5 hover:bg-foreground/10 rounded-full text-foreground font-medium transition-colors flex items-center gap-2 border border-foreground/10"
+                    className="mt-6"
                   >
-                    Send Another Message <ArrowRight size={16} />
-                  </button>
+                    <span>Send Another Message</span>
+                    <ArrowRight size={16} className="shrink-0 transition-transform duration-250 group-hover:translate-x-0.5" />
+                  </NeonButton>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -295,16 +299,19 @@ export default function ContactPage() {
               <div className="grid grid-cols-2 gap-4">
                 <a 
                   href="https://wa.me/601169397149" 
-                  target="_blank" 
-                  className="px-4 py-4 bg-[#25D366]/10 border border-[#25D366]/20 rounded-2xl hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all flex items-center justify-center gap-2 font-medium text-sm text-foreground shadow-sm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonVariants({ variant: "secondary", size: "md", className: "w-full" })}
                 >
-                  <MessageSquare size={18} /> WhatsApp
+                  <MessageSquare size={18} className="shrink-0 text-emerald-600" />
+                  <span>WhatsApp</span>
                 </a>
                 <a 
                   href="tel:+601169397149" 
-                  className="px-4 py-4 bg-primary/10 border border-primary/20 rounded-2xl hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all flex items-center justify-center gap-2 font-medium text-sm text-foreground shadow-sm"
+                  className={buttonVariants({ variant: "outline", size: "md", className: "w-full" })}
                 >
-                  <Phone size={18} /> Call Direct
+                  <Phone size={18} className="shrink-0 text-primary" />
+                  <span>Call Direct</span>
                 </a>
               </div>
             </motion.div>
@@ -388,9 +395,15 @@ export default function ContactPage() {
               Stop waiting for the right moment. Let's start the conversation today and build something extraordinary together.
             </p>
             <div className="pt-4">
-              <button className="px-10 py-5 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-1 transition-all text-lg">
-                Get Your Free Consultation
-              </button>
+              <a
+                href="https://wa.me/601169397149"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonVariants({ variant: "primary", size: "lg" })}
+              >
+                <span>Get Your Free Consultation</span>
+                <ArrowRight size={18} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
+              </a>
             </div>
           </div>
         </motion.div>

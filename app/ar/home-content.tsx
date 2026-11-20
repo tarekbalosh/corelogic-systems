@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Monitor, Globe, Smartphone, Bot, LineChart, Wrench } from "lucide-react";
+import { ArrowLeft, ArrowUpLeft, Monitor, Globe, Smartphone, Bot, LineChart, Wrench } from "lucide-react";
 import { ParticleBackground } from "@/components/particle-background";
 import { Typewriter } from "@/components/typewriter";
-import { NeonButton } from "@/components/neon-button";
+import { buttonVariants } from "@/components/neon-button";
 import { GlassCard } from "@/components/glass-card";
 import { SectionTitle } from "@/components/section-title";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -142,12 +142,19 @@ export function ArabicHomeContent() {
                 </div>
               </motion.div>
 
-              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
-                <Link href="/ar/contact">
-                  <NeonButton size="lg" variant="primary">احجز استشارة مجانية</NeonButton>
+              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 sm:gap-5 pt-4">
+                <Link
+                  href="/ar/contact"
+                  className={buttonVariants({ variant: "primary", size: "lg" })}
+                >
+                  <span>احجز استشارة مجانية</span>
+                  <ArrowLeft size={18} className="shrink-0 transition-transform duration-250 group-hover:-translate-x-1" />
                 </Link>
-                <Link href="#portfolio" className="flex items-center justify-center font-semibold hover:text-primary transition-colors px-6 py-3">
-                  شاهد أعمالنا
+                <Link
+                  href="#portfolio"
+                  className={buttonVariants({ variant: "secondary", size: "lg" })}
+                >
+                  <span>شاهد أعمالنا</span>
                 </Link>
               </motion.div>
             </motion.div>
@@ -276,9 +283,16 @@ export function ArabicHomeContent() {
                             ))}
                           </div>
                           <div className="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 pt-3">
-                            <button className="w-full sm:w-auto px-6 py-2.5 bg-white text-black font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 shadow-md text-sm">
-                              عرض النظام
-                            </button>
+                            <span
+                              className={buttonVariants({
+                                variant: "primary",
+                                size: "sm",
+                                className: "w-full sm:w-auto",
+                              })}
+                            >
+                              <span>عرض النظام</span>
+                              <ArrowUpLeft size={16} className="shrink-0 transition-transform duration-250 group-hover:-translate-x-0.5 group-hover:-translate-y-0.5" />
+                            </span>
                           </div>
                         </div>
                       </div>

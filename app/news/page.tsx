@@ -59,7 +59,11 @@ export default function NewsPage() {
                         className="pl-12 pr-6 py-4 bg-white border border-brand-teal/5 rounded-2xl w-64 focus:outline-none focus:border-primary focus:shadow-lg transition-all text-sm"
                     />
                 </div>
-                <button className="p-4 bg-white border border-brand-teal/5 rounded-2xl hover:bg-primary hover:text-foreground transition-all shadow-sm">
+                <button
+                  type="button"
+                  aria-label="Filter insights"
+                  className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:bg-gradient-to-br hover:from-indigo-600 hover:to-violet-600 hover:text-white hover:border-transparent hover:shadow-[0_8px_20px_-4px_rgba(79,70,229,0.45)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 cursor-pointer"
+                >
                     <Filter size={20} />
                 </button>
             </div>
@@ -106,7 +110,12 @@ export default function NewsPage() {
              </p>
              <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
                  <input type="email" placeholder="Email address" className="bg-foreground/5 border border-foreground/10 px-8 py-4 rounded-full flex-1 focus:outline-none focus:border-primary" />
-                 <button className="bg-primary px-10 py-4 rounded-full font-black tracking-widest uppercase text-secondary text-sm hover:scale-105 transition-transform">Subscribe</button>
+                 <button
+                   type="button"
+                   className="inline-flex items-center justify-center bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 bg-[length:200%_auto] hover:bg-right text-white border border-white/15 px-8 py-4 rounded-full font-semibold text-base shadow-[0_10px_25px_-5px_rgba(79,70,229,0.45),inset_0_1px_0_0_rgba(255,255,255,0.25)] hover:shadow-[0_18px_35px_-5px_rgba(79,70,229,0.6)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 cursor-pointer whitespace-nowrap"
+                 >
+                   Subscribe
+                 </button>
              </div>
           </motion.div>
         </motion.div>

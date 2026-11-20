@@ -5,6 +5,7 @@ import Link from "next/link";
 import { projectsData } from "@/config/work";
 import { ParticleBackground } from "@/components/particle-background";
 import { ArrowLeft, ExternalLink, CheckCircle } from "lucide-react";
+import { buttonVariants } from "@/components/neon-button";
 import { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 
@@ -40,8 +41,16 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <ParticleBackground />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 pt-32 pb-24">
-        <Link href="/our-projects" className="inline-flex items-center gap-2 text-foreground/60 hover:text-primary transition-colors mb-12">
-          <ArrowLeft size={16} /> Back to all work
+        <Link
+          href="/our-projects"
+          className={buttonVariants({
+            variant: "secondary",
+            size: "sm",
+            className: "mb-12",
+          })}
+        >
+          <ArrowLeft size={16} className="shrink-0 transition-transform duration-250 group-hover:-translate-x-0.5" />
+          <span>Back to all work</span>
         </Link>
 
         <header className="mb-16">
@@ -132,7 +141,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </section>
 
           {project.demoLink && (
-            <div className="pt-8 border-t border-foreground/10 flex flex-col sm:flex-row items-center gap-4 justify-between">
+            <div className="pt-8 border-t border-foreground/10 flex flex-col sm:flex-row items-center gap-6 justify-between">
               <div>
                 <h3 className="font-bold text-foreground">Live Demo Available</h3>
                 {project.demoNote && <p className="text-sm text-foreground/60">{project.demoNote.en}</p>}
@@ -141,9 +150,14 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 href={project.demoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-full hover:bg-primary/90 transition-colors flex items-center gap-2 w-full sm:w-auto justify-center"
+                className={buttonVariants({
+                  variant: "primary",
+                  size: "lg",
+                  className: "w-full sm:w-auto shrink-0",
+                })}
               >
-                View Live Demo <ExternalLink size={16} />
+                <span>View Live Demo</span>
+                <ExternalLink size={18} className="shrink-0 transition-transform duration-250 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
           )}

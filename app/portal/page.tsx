@@ -66,9 +66,12 @@ export default function PortalPage() {
               </div>
             </div>
 
-            <button className="w-full bg-secondary text-foreground py-6 rounded-2xl font-black tracking-widest uppercase text-sm hover:bg-primary transition-all hover:shadow-[0_20px_40px_rgba(12,43,43,0.15)] flex items-center justify-center gap-3 overflow-hidden group">
-                <span className="group-hover:translate-x-1 transition-transform">Initialize Access</span>
-                <ArrowRight size={18} className="text-primary group-hover:translate-x-2 transition-transform" />
+            <button
+              type="submit"
+              className="group relative inline-flex items-center justify-center gap-3 w-full py-5 px-8 bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 bg-[length:200%_auto] hover:bg-right text-white border border-white/15 rounded-full font-semibold tracking-wide text-base shadow-[0_10px_25px_-5px_rgba(79,70,229,0.45),inset_0_1px_0_0_rgba(255,255,255,0.25)] hover:shadow-[0_18px_35px_-5px_rgba(79,70,229,0.6)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <span>Initialize Access</span>
+              <ArrowRight size={18} className="shrink-0 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </form>
 

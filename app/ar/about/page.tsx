@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { GlassCard } from "@/components/glass-card";
 import { SectionTitle } from "@/components/section-title";
-import { NeonButton } from "@/components/neon-button";
+import { buttonVariants } from "@/components/neon-button";
 import { ParticleBackground } from "@/components/particle-background";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
@@ -207,11 +207,12 @@ export default function ArabicAboutPage() {
                   دعنا نناقش كيف يمكن لخبراتنا في البرمجيات والذكاء الاصطناعي تسريع نمو أعمالك وتحقيق أهدافك الاستراتيجية.
                 </p>
                 <div className="flex justify-center pt-4">
-                  <Link href="/ar/contact">
-                    <button className="px-10 py-5 rounded-full bg-white text-slate-900 font-bold text-lg hover:bg-primary hover:text-white transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(124,58,237,0.4)] flex items-center gap-3 group">
-                      ابدأ مشروعك الآن
-                      <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-                    </button>
+                  <Link
+                    href="/ar/contact"
+                    className={buttonVariants({ variant: "primary", size: "lg" })}
+                  >
+                    <span>ابدأ مشروعك الآن</span>
+                    <ArrowLeft size={20} className="shrink-0 transition-transform duration-250 group-hover:-translate-x-1" />
                   </Link>
                 </div>
               </div>

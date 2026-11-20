@@ -17,7 +17,7 @@ import {
   BarChart,
   ShoppingCart
 } from "lucide-react";
-import { NeonButton } from "@/components/neon-button";
+import { buttonVariants } from "@/components/neon-button";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
@@ -89,16 +89,18 @@ export default function WebDevelopmentPage() {
             </motion.p>
             
             <motion.div variants={fadeInUp} className="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Link href="/ar/contact">
-                <button className="px-8 py-4 bg-gradient-to-l from-cyan-600 to-blue-600 text-white rounded-2xl font-semibold hover:opacity-90 shadow-[0_8px_30px_rgba(6,182,212,0.2)] hover:shadow-[0_8px_40px_rgba(6,182,212,0.3)] hover:-translate-y-1 transition-all text-lg flex items-center gap-2">
-                  ابدأ مشروع الويب
-                  <ArrowLeft size={20} />
-                </button>
+              <Link
+                href="/ar/contact"
+                className={buttonVariants({ variant: "primary", size: "lg" })}
+              >
+                <span>ابدأ مشروع الويب</span>
+                <ArrowLeft size={20} className="shrink-0 transition-transform duration-250 group-hover:-translate-x-1" />
               </Link>
-              <Link href="#solutions">
-                <button className="px-8 py-4 bg-background/50 backdrop-blur-md text-foreground rounded-2xl font-semibold hover:bg-foreground/5 border border-foreground/10 hover:border-foreground/20 transition-all text-lg shadow-sm">
-                  استكشف الحلول
-                </button>
+              <Link
+                href="#solutions"
+                className={buttonVariants({ variant: "secondary", size: "lg" })}
+              >
+                <span>استكشف الحلول</span>
               </Link>
             </motion.div>
           </motion.div>
@@ -329,9 +331,14 @@ export default function WebDevelopmentPage() {
                 لا تدع منافسيك يسبقونك. تواصل معنا اليوم لتحويل رؤيتك الرقمية إلى منصة ويب قوية ومتطورة.
               </p>
               <div className="pt-4 flex justify-center">
-                <a href="https://wa.me/601169397149" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-gradient-to-l from-cyan-600 to-blue-600 text-white rounded-full font-semibold hover:opacity-90 shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-0.5 transition-all text-lg flex items-center gap-2">
-                  احصل على استشارة مجانية
-                  <ArrowLeft size={20} />
+                <a
+                  href="https://wa.me/601169397149"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonVariants({ variant: "primary", size: "lg" })}
+                >
+                  <span>احصل على استشارة مجانية</span>
+                  <ArrowLeft size={20} className="shrink-0 transition-transform duration-250 group-hover:-translate-x-1" />
                 </a>
               </div>
             </div>

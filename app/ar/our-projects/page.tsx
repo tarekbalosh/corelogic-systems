@@ -77,8 +77,8 @@ export default function ArabicWorkPage() {
                   <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
                     دراسة الحالة
                   </span>
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                    <ArrowLeft size={18} className="transform group-hover:-translate-x-1 transition-transform" />
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-gradient-to-br group-hover:from-indigo-600 group-hover:to-violet-600 group-hover:text-white group-hover:shadow-[0_8px_20px_-4px_rgba(79,70,229,0.45)] transition-all duration-300">
+                    <ArrowLeft size={18} className="transform group-hover:-translate-x-0.5 transition-transform duration-300" />
                   </div>
                 </div>
               </div>

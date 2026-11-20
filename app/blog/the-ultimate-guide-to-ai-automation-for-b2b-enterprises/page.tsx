@@ -54,8 +54,11 @@ export default function BlogPost() {
       <div className="mt-16 p-10 bg-gradient-to-br from-primary/20 to-secondary/10 rounded-[2rem] border border-primary/30 text-center">
         <h3 className="text-3xl font-black mb-4 font-heading text-foreground">Ready to automate your workflows?</h3>
         <p className="mb-8 text-foreground/70 text-lg">CoreLogic Systems specializes in building custom AI architectures for B2B companies globally.</p>
-        <Link href="/contact" className="inline-block px-8 py-4 bg-primary text-foreground font-bold rounded-full hover:scale-105 transition-transform uppercase tracking-wider">
-          Get a Free Consultation
+        <Link
+          href="/contact"
+          className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 bg-[length:200%_auto] hover:bg-right text-white border border-white/15 font-semibold rounded-full shadow-[0_10px_25px_-5px_rgba(79,70,229,0.45),inset_0_1px_0_0_rgba(255,255,255,0.25)] hover:shadow-[0_18px_35px_-5px_rgba(79,70,229,0.6)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 whitespace-nowrap"
+        >
+          <span>Get a Free Consultation</span>
         </Link>
       </div>
     </article>

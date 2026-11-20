@@ -45,8 +45,12 @@ export default function CareersPage() {
                     CoreLogic Systems is a group of architects, engineers, and thinkers dedicated to bridging the gap between raw compute and cognitive intelligence. We are looking for extraordinary people to join our global missions.
                 </motion.p>
                 <motion.div variants={fadeInUp}>
-                    <button className="bg-secondary text-foreground px-10 py-5 rounded-full font-black tracking-widest uppercase text-sm hover:bg-primary transition-all hover:scale-105 shadow-xl">
-                        View Open Positions
+                    <button
+                      type="button"
+                      className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 bg-[length:200%_auto] hover:bg-right text-white border border-white/15 px-8 py-4 rounded-full font-semibold text-base shadow-[0_10px_25px_-5px_rgba(79,70,229,0.45),inset_0_1px_0_0_rgba(255,255,255,0.25)] hover:shadow-[0_18px_35px_-5px_rgba(79,70,229,0.6)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 cursor-pointer"
+                    >
+                        <span>View Open Positions</span>
+                        <ArrowRight size={18} />
                     </button>
                 </motion.div>
             </motion.div>
@@ -121,7 +125,11 @@ export default function CareersPage() {
                         <div className="flex flex-wrap items-center gap-8 text-secondary/40 font-bold text-xs tracking-widest uppercase">
                             <div className="flex items-center gap-2"><MapPin size={16} className="text-primary" /> {j.location}</div>
                             <div className="flex items-center gap-2"><Clock size={16} className="text-primary" /> {j.type}</div>
-                            <button className="w-12 h-12 rounded-full border border-brand-teal/10 flex items-center justify-center group-hover:bg-primary group-hover:text-foreground group-hover:border-primary transition-all">
+                            <button
+                              type="button"
+                              aria-label={`Apply for ${j.title}`}
+                              className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 group-hover:bg-gradient-to-br group-hover:from-indigo-600 group-hover:to-violet-600 group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_8px_20px_-4px_rgba(79,70,229,0.45)] transition-all duration-300 cursor-pointer"
+                            >
                                 <ArrowRight size={20} />
                             </button>
                         </div>

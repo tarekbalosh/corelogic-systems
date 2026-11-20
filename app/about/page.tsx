@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { GlassCard } from "@/components/glass-card";
 import { SectionTitle } from "@/components/section-title";
-import { NeonButton } from "@/components/neon-button";
+import { buttonVariants } from "@/components/neon-button";
 import { ParticleBackground } from "@/components/particle-background";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
@@ -199,8 +199,12 @@ export default function AboutPage() {
                             <span className="text-gradient">With Us</span>
                         </h2>
                         <div className="flex justify-center">
-                            <Link href="/contact">
-                                <NeonButton size="lg" variant="primary">Contact Us</NeonButton>
+                            <Link
+                                href="/contact"
+                                className={buttonVariants({ variant: "primary", size: "lg" })}
+                            >
+                                <span>Contact Us</span>
+                                <ArrowRight size={18} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
                             </Link>
                         </div>
                     </motion.div>

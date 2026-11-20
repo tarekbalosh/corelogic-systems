@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Typewriter } from "./typewriter";
-import { NeonButton } from "./neon-button";
+import { ArrowRight } from "lucide-react";
+import { buttonVariants } from "./neon-button";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 export const Hero = () => {
@@ -30,12 +31,19 @@ export const Hero = () => {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
-            <Link href="/contact">
-              <NeonButton size="lg" variant="primary">Book a free consultation</NeonButton>
+          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 sm:gap-5 pt-4">
+            <Link
+              href="/contact"
+              className={buttonVariants({ variant: "primary", size: "lg" })}
+            >
+              <span>Book a free consultation</span>
+              <ArrowRight size={18} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
             </Link>
-            <Link href="#portfolio" className="flex items-center justify-center font-semibold hover:text-primary transition-colors px-6 py-3">
-              View our work
+            <Link
+              href="#portfolio"
+              className={buttonVariants({ variant: "secondary", size: "lg" })}
+            >
+              <span>View our work</span>
             </Link>
           </motion.div>
         </motion.div>

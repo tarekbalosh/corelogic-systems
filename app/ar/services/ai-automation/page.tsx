@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { NeonButton } from "@/components/neon-button";
+import { buttonVariants } from "@/components/neon-button";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { 
     Bot, Workflow, LineChart, BrainCircuit, Network, Combine,
@@ -68,11 +68,12 @@ export default function AiSolutionsPage() {
                             في ظل التطور التقني المتسارع، لم يعد الاعتماد على العمليات اليدوية كافياً. في Corelogic، نقدم <strong>حلول الأتمتة بالذكاء الاصطناعي</strong> المصممة خصيصاً للارتقاء بكفاءة الشركات وأتمتة المهام الروتينية وتقليل التكاليف التشغيلية. من روبوتات المحادثة الذكية إلى التحليلات التنبؤية، يقوم فريقنا ببناء أنظمة قابلة للتوسع تعمل على مدار الساعة. ابدأ رحلة التحول الرقمي معنا اليوم لتعمل شركتك بكفاءة أعلى.
                         </motion.p>
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4 justify-center lg:justify-start">
-                            <Link href="/ar/contact" className="w-full sm:w-auto">
-                                <NeonButton size="lg" variant="primary" className="w-full pl-6 group">
-                                    ابدأ رحلة الذكاء الاصطناعي
-                                    <ArrowLeft size={20} className="mr-2 inline-block group-hover:-translate-x-1 transition-transform" />
-                                </NeonButton>
+                            <Link
+                                href="/ar/contact"
+                                className={buttonVariants({ variant: "primary", size: "lg", className: "w-full sm:w-auto" })}
+                            >
+                                <span>ابدأ رحلة الذكاء الاصطناعي</span>
+                                <ArrowLeft size={20} className="shrink-0 transition-transform duration-250 group-hover:-translate-x-1" />
                             </Link>
                         </motion.div>
                     </motion.div>
@@ -287,11 +288,14 @@ export default function AiSolutionsPage() {
                                 اسبق منافسيك بخطوات من خلال إطلاق العنان للقوة الكاملة للذكاء الاصطناعي داخل مؤسستك اليوم.
                             </p>
                             <div className="pt-6 flex justify-center">
-                                <a href="https://wa.me/601169397149" target="_blank" rel="noopener noreferrer">
-                                    <NeonButton size="lg" variant="primary" className="pl-6 group px-10">
-                                        احصل على استشارة مجانية
-                                        <ArrowLeft size={20} className="mr-2 inline-block group-hover:-translate-x-1 transition-transform" />
-                                    </NeonButton>
+                                <a
+                                    href="https://wa.me/601169397149"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={buttonVariants({ variant: "primary", size: "lg" })}
+                                >
+                                    <span>احصل على استشارة مجانية</span>
+                                    <ArrowLeft size={20} className="shrink-0 transition-transform duration-250 group-hover:-translate-x-1" />
                                 </a>
                             </div>
                         </div>

@@ -19,6 +19,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
+import { buttonVariants } from "@/components/neon-button";
 import { cn } from "@/lib/utils";
 
 const services = [
@@ -89,16 +90,18 @@ export default function UIDesignPage() {
             </motion.p>
             
             <motion.div variants={fadeInUp} className="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Link href="/contact">
-                <button className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-2xl font-semibold hover:opacity-90 shadow-[0_8px_30px_rgba(236,72,153,0.2)] hover:shadow-[0_8px_40px_rgba(236,72,153,0.3)] hover:-translate-y-1 transition-all text-lg flex items-center gap-2">
-                  Start Your Project
-                  <ArrowRight size={20} />
-                </button>
+              <Link
+                href="/contact"
+                className={buttonVariants({ variant: "primary", size: "lg" })}
+              >
+                <span>Start Your Project</span>
+                <ArrowRight size={20} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
               </Link>
-              <Link href="#portfolio">
-                <button className="px-8 py-4 bg-background/50 backdrop-blur-md text-foreground rounded-2xl font-semibold hover:bg-foreground/5 border border-foreground/10 hover:border-foreground/20 transition-all text-lg shadow-sm">
-                  View Portfolio
-                </button>
+              <Link
+                href="#portfolio"
+                className={buttonVariants({ variant: "secondary", size: "lg" })}
+              >
+                <span>View Portfolio</span>
               </Link>
             </motion.div>
           </motion.div>
@@ -348,11 +351,12 @@ export default function UIDesignPage() {
                 Don't settle for mediocre design. Start the conversation today and let us craft a premium visual identity for your software.
               </p>
               <div className="pt-4 flex justify-center">
-                <Link href="/contact">
-                  <button className="px-10 py-5 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all text-lg flex items-center gap-2">
-                    Get a Free UI/UX Consultation
-                    <ArrowRight size={20} />
-                  </button>
+                <Link
+                  href="/contact"
+                  className={buttonVariants({ variant: "primary", size: "lg" })}
+                >
+                  <span>Get a Free UI/UX Consultation</span>
+                  <ArrowRight size={20} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>

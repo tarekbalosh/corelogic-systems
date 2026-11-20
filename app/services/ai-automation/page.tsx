@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { NeonButton } from "@/components/neon-button";
+import { buttonVariants } from "@/components/neon-button";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import { 
     Bot, Workflow, LineChart, BrainCircuit, Network, Combine,
@@ -68,8 +68,12 @@ export default function AiSolutionsPage() {
                             In today's rapidly evolving digital landscape, relying on manual processes is a barrier to growth. At Corelogic Systems, we specialize in delivering cutting-edge <strong>AI automation solutions</strong> designed to streamline operations, enhance decision-making, and significantly reduce operational costs. Whether you are a startup looking to scale or an established enterprise needing to optimize complex workflows, our custom artificial intelligence services are tailored to fit your unique business architecture. From intelligent chatbots to predictive analytics and automated data entry, our team of expert AI developers builds scalable systems that work around the clock. Partner with us to integrate state-of-the-art AI into your existing software infrastructure and stay ahead of the global competition.
                         </motion.p>
                         <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-6 pt-4">
-                            <Link href="/contact" className="w-full sm:w-auto">
-                                <NeonButton size="lg" variant="primary" className="w-full">Start Your AI Journey</NeonButton>
+                            <Link
+                                href="/contact"
+                                className={buttonVariants({ variant: "primary", size: "lg", className: "w-full sm:w-auto" })}
+                            >
+                                <span>Start Your AI Journey</span>
+                                <ArrowRight size={20} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
                             </Link>
                         </motion.div>
                     </motion.div>
@@ -285,11 +289,12 @@ export default function AiSolutionsPage() {
                                 Leap ahead of the competition by unleashing the full power of Artificial Intelligence within your organization today.
                             </p>
                             <div className="pt-6 flex justify-center">
-                                <Link href="/contact">
-                                    <NeonButton size="lg" variant="primary" className="pl-6 group px-10">
-                                        Get Free Consultation 
-                                        <ArrowRight size={20} className="ml-2 inline-block group-hover:translate-x-1 transition-transform" />
-                                    </NeonButton>
+                                <Link
+                                    href="/contact"
+                                    className={buttonVariants({ variant: "primary", size: "lg" })}
+                                >
+                                    <span>Get Free Consultation</span>
+                                    <ArrowRight size={20} className="shrink-0 transition-transform duration-250 group-hover:translate-x-1" />
                                 </Link>
                             </div>
                         </div>
