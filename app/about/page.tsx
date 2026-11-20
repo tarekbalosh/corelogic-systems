@@ -107,24 +107,24 @@ export default function AboutPage() {
         {/* 3. Mission & Vision */}
         <section className="px-6 mb-40">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <GlassCard glowColor="purple">
+                <GlassCard glowColor="purple" className="h-full">
                     <div className="space-y-6">
-                        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                            <Target size={32} />
+                        <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center text-primary shadow-sm">
+                            <Target size={30} />
                         </div>
-                        <h3 className="text-3xl font-bold font-heading">Our Mission</h3>
-                        <p className="text-foreground/70 text-lg leading-relaxed">
+                        <h3 className="text-3xl font-bold font-heading text-slate-900">Our Mission</h3>
+                        <p className="text-slate-600 text-lg leading-relaxed">
                             Deliver smart, scalable, and modern digital solutions that solve real business problems.
                         </p>
                     </div>
                 </GlassCard>
-                <GlassCard glowColor="cyan">
+                <GlassCard glowColor="cyan" className="h-full">
                     <div className="space-y-6">
-                        <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
-                            <Eye size={32} />
+                        <div className="w-14 h-14 rounded-2xl bg-secondary/10 border border-secondary/15 flex items-center justify-center text-secondary shadow-sm">
+                            <Eye size={30} />
                         </div>
-                        <h3 className="text-3xl font-bold font-heading">Our Vision</h3>
-                        <p className="text-foreground/70 text-lg leading-relaxed">
+                        <h3 className="text-3xl font-bold font-heading text-slate-900">Our Vision</h3>
+                        <p className="text-slate-600 text-lg leading-relaxed">
                             Become a trusted software partner for growing businesses, known for dependable delivery, honest communication and responsible use of AI.
                         </p>
                     </div>

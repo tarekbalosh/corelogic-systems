@@ -77,20 +77,21 @@ export const ServicesGrid = () => {
                 className="h-full group cursor-pointer"
               >
                 <div className="flex flex-col h-full space-y-6">
-                  <div className="p-3 rounded-xl bg-foreground/5 border border-foreground/10 w-fit group-hover:bg-primary/20 transition-colors duration-500">
-                    <service.icon size={28} className="text-foreground group-hover:text-primary transition-colors" />
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110 transition-all duration-300 shadow-sm">
+                    <service.icon size={26} />
                   </div>
                   
                   <div className="space-y-3 flex-1">
-                    <h3 className="text-2xl font-bold font-heading">{service.title}</h3>
-                    <p className="text-foreground/70 text-base leading-relaxed">
+                    <h3 className="text-2xl font-bold font-heading text-slate-900 group-hover:text-primary transition-colors">{service.title}</h3>
+                    <p className="text-slate-600 text-base leading-relaxed">
                       {service.description}
                     </p>
                   </div>
 
-                  <div className="pt-6 mt-auto border-t border-foreground/10 lg:border-none">
-                    <div className="w-full lg:w-auto flex items-center justify-center lg:justify-start gap-2 text-sm font-bold text-foreground bg-foreground/5 lg:bg-transparent py-4 lg:py-0 rounded-full lg:rounded-none group-hover:bg-foreground/10 lg:group-hover:bg-transparent lg:group-hover:text-secondary lg:group-hover:translate-x-2 transition-all duration-300">
-                      Learn More <ArrowRight size={16} className="text-primary lg:text-inherit" />
+                  <div className="pt-4 mt-auto border-t border-slate-100">
+                    <div className="inline-flex items-center gap-2 text-sm font-bold text-primary group-hover:translate-x-1.5 transition-transform duration-300">
+                      <span>Learn More</span>
+                      <ArrowRight size={16} />
                     </div>
                   </div>
                 </div>

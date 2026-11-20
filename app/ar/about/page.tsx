@@ -106,24 +106,24 @@ export default function ArabicAboutPage() {
         {/* 3. Mission & Vision */}
         <section className="px-6 mb-40">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <GlassCard glowColor="purple">
+            <GlassCard glowColor="purple" className="h-full">
               <div className="space-y-6">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                  <Target size={32} />
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center text-primary shadow-sm">
+                  <Target size={30} />
                 </div>
-                <h3 className="text-3xl font-bold font-heading">مهمتنا</h3>
-                <p className="text-foreground/70 text-lg leading-relaxed">
+                <h3 className="text-3xl font-bold font-heading text-slate-900">مهمتنا</h3>
+                <p className="text-slate-600 text-lg leading-relaxed">
                   تقديم حلول رقمية ذكية وقابلة للتوسع وحديثة تحل أعقد التحديات التقنية في القرن الحادي والعشرين.
                 </p>
               </div>
             </GlassCard>
-            <GlassCard glowColor="cyan">
+            <GlassCard glowColor="cyan" className="h-full">
               <div className="space-y-6">
-                <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
-                  <Eye size={32} />
+                <div className="w-14 h-14 rounded-2xl bg-secondary/10 border border-secondary/15 flex items-center justify-center text-secondary shadow-sm">
+                  <Eye size={30} />
                 </div>
-                <h3 className="text-3xl font-bold font-heading">رؤيتنا</h3>
-                <p className="text-foreground/70 text-lg leading-relaxed">
+                <h3 className="text-3xl font-bold font-heading text-slate-900">رؤيتنا</h3>
+                <p className="text-slate-600 text-lg leading-relaxed">
                   أن نكون شريكاً برمجياً موثوقاً للأعمال النامية، معروفاً بالتسليم الملتزم والتواصل الصريح والاستخدام المسؤول للذكاء الاصطناعي.
                 </p>
               </div>
