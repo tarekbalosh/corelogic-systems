@@ -7,7 +7,8 @@ export const ADMIN_SESSION_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours
 
 function getAdminSecret(): string | null {
   const token = process.env.ADMIN_TOKEN?.trim();
-  return token && token.length >= 12 ? token : null;
+  const minLength = process.env.NODE_ENV === "production" ? 12 : 4;
+  return token && token.length >= minLength ? token : null;
 }
 
 /**
