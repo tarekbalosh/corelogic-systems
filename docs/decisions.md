@@ -59,3 +59,12 @@ This living document records every assumption, conflict resolution, and safety d
 
 1. **XML-Sectioned Composition & Dynamic MYT Timestamp**
    - **Reason**: Structured `buildSystemPrompt()` into `<role>`, `<language>`, `<knowledge>`, `<behavior>`, `<lead_collection>`, `<booking_flow>`, `<tools_usage>`, and `<safety>`, injecting the current `Asia/Kuala_Lumpur` timestamp at call time. Checked for conflicts between behavior rules and `knowledge/core-logic-knowledge.md`: none in `core-logic-knowledge.md` itself, though existing website pages outside the knowledge file still mention a "15-minute discovery call" (`lib/dictionaries/en.json`) vs `MEETING_DURATION_MINUTES=30` (documented for owner alignment).
+
+---
+
+## Step 6 — Agent Tools & Server Executors (`lib/agent/tools.ts`)
+
+1. **Strict E.164 Normalization Without Country Guessing**
+   - **Reason**: `normalizeWhatsAppNumber` converts Arabic-Indic digits, accepts `+` or `00` international prefixes, rejects local numbers missing a country code (`MISSING_COUNTRY_CODE`), and validates via `libphonenumber-js` (`parsePhoneNumberFromString`).
+2. **Idempotent Per-Conversation Lead Upsert & Single Owner Notification**
+   - **Reason**: `save_lead` looks up `Conversation.leadId`, updates existing leads in place without overwriting omitted optional fields, and uses an atomic conditional update (`where: { id, notifiedAt: null }`) so `notifyNewLead` fires at most once per lead, wrapped in `try/catch` so notification errors never fail the tool.
