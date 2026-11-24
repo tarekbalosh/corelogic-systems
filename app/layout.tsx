@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { JsonLd } from "@/components/json-ld";
+import { ChatWidgetMount } from "@/components/chat/chat-widget-mount";
 import { siteConfig } from "@/config/site";
 
 const inter = Inter({
@@ -88,6 +89,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+        <ChatWidgetMount />
       </body>
     </html>
   );
