@@ -77,3 +77,12 @@ This living document records every assumption, conflict resolution, and safety d
    - **Reason**: Centralized all 5 template names (`new_lead_alert`, `booking_request_alert`, `booking_confirmed_customer`, `booking_rejected_customer`, `escalation_alert`) and language codes in `lib/whatsapp/config.ts`, sanitized template text parameters to collapse newlines/tabs (preventing Meta error `#132018`), and gated outbound Graph API requests behind `WHATSAPP_ENABLED="true"` so local/Preview testing never sends unintended messages.
 2. **Constant-Time Raw-Body HMAC + Owner-Only + Atomic Idempotency**
    - **Reason**: `app/api/whatsapp/webhook/route.ts` reads `request.text()` first, verifies `X-Hub-Signature-256` with `crypto.timingSafeEqual`, checks `msg.from` against `OWNER_WHATSAPP_NUMBER` before writing state, deduplicates `wamid`s via `ProcessedWebhookEvent` primary-key inserts, and handles both `button.payload` (template quick replies) and `interactive.button_reply.id`.
+
+---
+
+## Step 8 — Streaming Chat Endpoint & Booking Status Route (`app/api/chat/route.ts`, `app/api/booking/[id]/status/route.ts`)
+
+1. **Node.js Runtime SSE Streaming with 6-Iteration Tool Loop Cap**
+   - **Reason**: Implemented `POST /api/chat` on the Node.js runtime (`maxDuration = 60`) with `ReadableStream` Server-Sent Events (`text`, `slots`, `booking`, `error`, `done`), loading only server-side conversation history (`MAX_HISTORY_MESSAGES = 20`), capping tool iterations at `6`, logging token usage per turn, and scrubbing output for internal tags/secrets.
+2. **Session-Authorized Booking Status Polling (`GET /api/booking/[id]/status`)**
+   - **Reason**: Requires `sessionId` UUID query param and verifies via Prisma that `booking.lead.conversations` includes `sessionId`, returning `{ status }` only or `404` to prevent booking-ID enumeration and PII exposure.
