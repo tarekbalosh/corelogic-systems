@@ -43,3 +43,12 @@ This living document records every assumption, conflict resolution, and safety d
    - **Reason**: Added `CREATE UNIQUE INDEX "agent_bookings_startsAt_active_key" ON "agent_bookings"("startsAt") WHERE "status" IN ('PENDING', 'CONFIRMED');` directly in `prisma/migrations/20261124000100_init_ai_agent/migration.sql` so rejected/cancelled bookings do not block re-booking the same time slot, while active (`PENDING` or `CONFIRMED`) bookings are race-proof at the PostgreSQL index level.
 4. **Migration Execution Deferred to Owner Dev/Branch DB**
    - **Reason**: `DATABASE_URL` is not configured in this local workspace. Generated and validated the complete SQL migration offline (`prisma migrate diff` + `prisma generate`) without touching any live database.
+
+---
+
+## Step 4 — Booking & Availability Business Logic (`lib/booking/`)
+
+1. **Timezone Library (`date-fns` + `date-fns-tz`)**
+   - **Reason**: Used `fromZonedTime` and `formatInTimeZone` from `date-fns-tz` so all `AvailabilityRule` hours (`10:00–12:30`, `14:00–18:00`) are interpreted in `BUSINESS_TIMEZONE` (`Asia/Kuala_Lumpur`, UTC+8) while storing/comparing all timestamps in UTC, with deterministic English and Arabic month/weekday names independent of host ICU locale packs.
+2. **Defense-in-Depth Against Double-Booking**
+   - **Reason**: `createPendingBooking` executes inside a `Serializable` Prisma transaction, re-validates schedule alignment + blocked dates + 2-hour lead time + overlapping active bookings, and catches PostgreSQL `P2002` (partial unique index violation) / `P2034` (serialization conflict) to throw a typed `SlotUnavailableError`.
