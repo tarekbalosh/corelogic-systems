@@ -3,6 +3,7 @@ import { formatSlotLabels } from "@/lib/booking/availability";
 import { siteConfig } from "@/config/site";
 import { maskPhone, safeLogInfo, safeLogWarn } from "@/lib/security/mask";
 import {
+  sendInteractiveButtons,
   sendTemplate,
   sendText,
   type WhatsAppClientOptions,
@@ -167,19 +168,44 @@ export async function notifyBookingRequest(
       clientOptions
     );
   } catch (err) {
-    safeLogWarn("whatsapp.notify_booking_request.template_fallback_to_text", {
+    safeLogWarn("whatsapp.notify_booking_request.template_fallback_to_interactive", {
       bookingId: booking.id,
       reason: err instanceof Error ? err.message : "template_failed",
     });
-    const fallbackText = [
+    const bodyText = [
       "📅 طلب حجز استشارة جديد (Core Logic Systems):",
       `• الاسم: ${booking.lead.name}`,
       `• الموعد: ${formattedTime}`,
       `• واتساب العميل: ${booking.lead.whatsappNumber}`,
-      `• رقم الحجز: ${booking.id}`,
-      "يمكنك تأكيد أو رفض الحجز من لوحة التحكم /admin/bookings",
-    ].join("\n");
-    await sendText({ to: ownerTo, body: fallbackText }, clientOptions);
+      booking.customerNote ? `• ملاحظة: ${booking.customerNote}` : null,
+      "",
+      "اختر أحد الأزرار أدناه لتأكيد أو رفض الحجز فوراً:",
+    ]
+      .filter((line): line is string => line !== null)
+      .join("\n");
+
+    try {
+      await sendInteractiveButtons(
+        {
+          to: ownerTo,
+          body: bodyText,
+          footer: "Core Logic Systems Booking",
+          buttons: [
+            {
+              id: `BOOKING_CONFIRM:${booking.id}`,
+              title: "✅ تأكيد الحجز",
+            },
+            {
+              id: `BOOKING_REJECT:${booking.id}`,
+              title: "❌ رفض الحجز",
+            },
+          ],
+        },
+        clientOptions
+      );
+    } catch {
+      await sendText({ to: ownerTo, body: bodyText }, clientOptions);
+    }
   }
 }
 
@@ -253,26 +279,47 @@ export async function notifyCustomerBookingDecision(
       : WHATSAPP_CONFIG.templates.bookingRejectedCustomer;
   const languageCode = isArabic ? tpl.languages.ar : tpl.languages.en;
 
-  await sendTemplate(
-    {
-      to: customerPhone,
-      name: tpl.name,
-      languageCode,
-      components: [
-        {
-          type: "body",
-          parameters: [
-            {
-              type: "text",
-              text: sanitizeTemplateParam(booking.lead.name, 120),
-            },
-            { type: "text", text: sanitizeTemplateParam(slotLabel, 220) },
-          ],
-        },
-      ],
-    },
-    clientOptions
-  );
+  try {
+    await sendTemplate(
+      {
+        to: customerPhone,
+        name: tpl.name,
+        languageCode,
+        components: [
+          {
+            type: "body",
+            parameters: [
+              {
+                type: "text",
+                text: sanitizeTemplateParam(booking.lead.name, 120),
+              },
+              { type: "text", text: sanitizeTemplateParam(slotLabel, 220) },
+            ],
+          },
+        ],
+      },
+      clientOptions
+    );
+  } catch (err) {
+    safeLogWarn(
+      "whatsapp.notify_customer_booking_decision.template_fallback_to_text",
+      {
+        bookingId: booking.id,
+        decision,
+        reason: err instanceof Error ? err.message : "template_failed",
+      }
+    );
+    const fallbackBody =
+      decision === "CONFIRM"
+        ? isArabic
+          ? `✅ مرحباً ${booking.lead.name}، تم تأكيد موعد استشارتك مع Core Logic Systems بنجاح!\n\n📅 الموعد: ${slotLabel}\n\nنتطلع للتحدث معك.`
+          : `✅ Hello ${booking.lead.name}, your consultation with Core Logic Systems has been confirmed!\n\n📅 Time: ${slotLabel}\n\nWe look forward to speaking with you.`
+        : isArabic
+          ? `نعتذر يا ${booking.lead.name}، الموعد المقترح (${slotLabel}) غير متاح حالياً.${booking.alternativeProposal ? `\n\nالموعد البديل المقترح: ${booking.alternativeProposal}` : ""}\n\nيمكنك الرد علينا هنا أو اختيار موعد آخر من الموقع.`
+          : `Hi ${booking.lead.name}, unfortunately the requested slot (${slotLabel}) is no longer available.${booking.alternativeProposal ? `\n\nProposed alternative: ${booking.alternativeProposal}` : ""}\n\nPlease reply here or choose another slot on our website.`;
+
+    await sendText({ to: customerPhone, body: fallbackBody }, clientOptions);
+  }
 
   safeLogInfo("whatsapp.notify_customer_booking_decision.sent", {
     bookingId: booking.id,

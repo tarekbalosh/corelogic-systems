@@ -34,6 +34,18 @@ export interface SendTextParams {
   body: string;
 }
 
+export interface WhatsAppInteractiveReplyButton {
+  id: string;
+  title: string; // Meta limit: max 20 characters
+}
+
+export interface SendInteractiveButtonsParams {
+  to: string;
+  body: string;
+  buttons: WhatsAppInteractiveReplyButton[];
+  footer?: string;
+}
+
 export interface WhatsAppClientOptions {
   fetchFn?: typeof fetch;
   phoneNumberId?: string;
@@ -243,6 +255,50 @@ export async function sendText(
       text: {
         preview_url: false,
         body: params.body.slice(0, 4096),
+      },
+    },
+    recipientDigits,
+    options
+  );
+}
+
+/**
+ * Sends a WhatsApp Interactive Reply Buttons message (works inside an active 24-hour
+ * session window without requiring template pre-approval; button clicks trigger
+ * `interactive.button_reply.id` on the webhook).
+ */
+export async function sendInteractiveButtons(
+  params: SendInteractiveButtonsParams,
+  options: WhatsAppClientOptions = {}
+): Promise<WhatsAppSendResult> {
+  const recipientDigits = normalizeDigitsOnlyPhone(params.to);
+  if (!recipientDigits) {
+    throw new WhatsAppApiError("Recipient WhatsApp number is empty.", 400);
+  }
+
+  return postGraphMessages(
+    {
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: recipientDigits,
+      type: "interactive",
+      interactive: {
+        type: "button",
+        body: {
+          text: params.body.slice(0, 1024),
+        },
+        ...(params.footer
+          ? { footer: { text: params.footer.slice(0, 60) } }
+          : {}),
+        action: {
+          buttons: params.buttons.slice(0, 3).map((btn) => ({
+            type: "reply",
+            reply: {
+              id: btn.id.slice(0, 256),
+              title: btn.title.slice(0, 20),
+            },
+          })),
+        },
       },
     },
     recipientDigits,
