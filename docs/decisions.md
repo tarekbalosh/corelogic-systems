@@ -30,3 +30,16 @@ This living document records every assumption, conflict resolution, and safety d
    - **Decision**: Created `knowledge/core-logic-knowledge.md` strictly from verified facts already published across the repository (`config/site.ts`, `config/work.ts`, `app/about/page.tsx`, `app/services/**`, `components/services-grid.tsx`, `app/contact/page.tsx`, `lib/dictionaries/{en,ar}.json`). Did **not** invent prices, clients, testimonials, or unverified metrics; marked indicative MYR price tiers with `[OWNER_TODO]` and safe escalation rules, then left the file completely unmodified in all later steps.
 2. **Serverless file bundling via `outputFileTracingIncludes`**
    - **Decision**: Configured `outputFileTracingIncludes: { "/api/chat": ["./knowledge/**/*"] }` in `next.config.ts` (verified against Next.js 16 bundled `output.md` docs) and cached the UTF-8 markdown string in module scope in `lib/agent/knowledge.ts`.
+
+---
+
+## Step 3 — Database Layer (Prisma + Neon PostgreSQL)
+
+1. **Prisma v6 (`prisma@^6`, `@prisma/client@^6`) and Vitest v3 (`vitest@^3`)**
+   - **Reason**: Prisma v6 supports standard `url = env("DATABASE_URL")` + `directUrl = env("DIRECT_URL")` in `prisma/schema.prisma` and `"prisma": { "seed": "tsx prisma/seed.ts" }` in `package.json` as specified in Step 3. Vitest v3 was chosen instead of Vitest v5 because `vitest@5` requires `@types/node@^22`, whereas the live site pins `@types/node@^20` (preserved per Live-Site Safety Rule #6: never upgrade existing package versions).
+2. **Table & Enum Prefixing (`agent_*`)**
+   - **Reason**: Even though no database existed previously in this repository, all 7 models and 4 enums are mapped with `@@map("agent_*")` (`agent_conversations`, `agent_messages`, `agent_leads`, `agent_bookings`, `agent_availability_rules`, `agent_blocked_dates`, `agent_processed_webhook_events`) to prevent any collision if the Neon database later hosts additional tables.
+3. **Partial Unique Index for Double-Booking Prevention**
+   - **Reason**: Added `CREATE UNIQUE INDEX "agent_bookings_startsAt_active_key" ON "agent_bookings"("startsAt") WHERE "status" IN ('PENDING', 'CONFIRMED');` directly in `prisma/migrations/20261124000100_init_ai_agent/migration.sql` so rejected/cancelled bookings do not block re-booking the same time slot, while active (`PENDING` or `CONFIRMED`) bookings are race-proof at the PostgreSQL index level.
+4. **Migration Execution Deferred to Owner Dev/Branch DB**
+   - **Reason**: `DATABASE_URL` is not configured in this local workspace. Generated and validated the complete SQL migration offline (`prisma migrate diff` + `prisma generate`) without touching any live database.
