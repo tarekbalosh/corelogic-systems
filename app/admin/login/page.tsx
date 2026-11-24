@@ -1,6 +1,7 @@
 import React from "react";
 import { redirect } from "next/navigation";
 import { KeyRound, ShieldAlert } from "lucide-react";
+import { AdminPasswordInput } from "@/components/admin/admin-password-input";
 import { loginAdminAction } from "@/lib/admin/actions";
 import { isAdminAuthenticated } from "@/lib/security/admin-auth";
 
@@ -61,15 +62,7 @@ export default async function AdminLoginPage({
             >
               Admin Token
             </label>
-            <input
-              id="admin-token-input"
-              name="token"
-              type="password"
-              required
-              autoComplete="current-password"
-              placeholder="Paste ADMIN_TOKEN…"
-              className="block w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
-            />
+            <AdminPasswordInput />
           </div>
 
           <button
