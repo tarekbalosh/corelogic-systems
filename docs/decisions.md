@@ -52,3 +52,10 @@ This living document records every assumption, conflict resolution, and safety d
    - **Reason**: Used `fromZonedTime` and `formatInTimeZone` from `date-fns-tz` so all `AvailabilityRule` hours (`10:00–12:30`, `14:00–18:00`) are interpreted in `BUSINESS_TIMEZONE` (`Asia/Kuala_Lumpur`, UTC+8) while storing/comparing all timestamps in UTC, with deterministic English and Arabic month/weekday names independent of host ICU locale packs.
 2. **Defense-in-Depth Against Double-Booking**
    - **Reason**: `createPendingBooking` executes inside a `Serializable` Prisma transaction, re-validates schedule alignment + blocked dates + 2-hour lead time + overlapping active bookings, and catches PostgreSQL `P2002` (partial unique index violation) / `P2034` (serialization conflict) to throw a typed `SlotUnavailableError`.
+
+---
+
+## Step 5 — Structured System Prompt (`lib/agent/system-prompt.ts`)
+
+1. **XML-Sectioned Composition & Dynamic MYT Timestamp**
+   - **Reason**: Structured `buildSystemPrompt()` into `<role>`, `<language>`, `<knowledge>`, `<behavior>`, `<lead_collection>`, `<booking_flow>`, `<tools_usage>`, and `<safety>`, injecting the current `Asia/Kuala_Lumpur` timestamp at call time. Checked for conflicts between behavior rules and `knowledge/core-logic-knowledge.md`: none in `core-logic-knowledge.md` itself, though existing website pages outside the knowledge file still mention a "15-minute discovery call" (`lib/dictionaries/en.json`) vs `MEETING_DURATION_MINUTES=30` (documented for owner alignment).
