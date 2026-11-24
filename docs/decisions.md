@@ -108,3 +108,12 @@ This living document records every assumption, conflict resolution, and safety d
    - **Reason**: Implemented hidden `website_url` honeypot active immediately plus optional Cloudflare Turnstile verification before the first message of a session (`BOT_PROTECTION_ENABLED="true"`).
 3. **Runtime Widget Kill-Switch (`agent_runtime_settings`) + Repeated-Error Alert**
    - **Reason**: Added `agent_runtime_settings` so the widget can be paused immediately without redeploying code (when `CHAT_WIDGET_ENABLED="true"`), and added a 30-minute cooldown WhatsApp alert when `/api/chat` experiences >= 3 unhandled errors in 10 minutes.
+
+---
+
+## Step 11 — Protected Admin Dashboard (`app/admin/`, `lib/security/admin-auth.ts`, `lib/admin/actions.ts`)
+
+1. **Constant-Time SHA-256 Digest Check & `httpOnly` `sameSite=strict` Signed Cookie**
+   - **Reason**: `verifyAdminTokenConstantTime` compares fixed 32-byte SHA-256 digests via `crypto.timingSafeEqual` (preventing length timing leaks), scopes `corelogic_admin_session` to `path: "/admin"` with `httpOnly`, `secure` (in prod), and `sameSite: "strict"`, rate-limits `/admin/login` (10 attempts / 15 min per hashed IP), and marks all `/admin` routes `noindex` via both metadata and `X-Robots-Tag`.
+2. **Unified Booking Decision Pipeline**
+   - **Reason**: `/admin/bookings` Confirm/Reject buttons invoke the exact same `decideBooking` + `notifyCustomerBookingDecision` pipeline as `/api/whatsapp/webhook` so results and customer notifications are identical regardless of channel.
