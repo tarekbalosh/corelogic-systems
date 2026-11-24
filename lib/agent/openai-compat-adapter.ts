@@ -61,7 +61,7 @@ export const GEMINI_OPENAI_BASE_URL =
   "https://generativelanguage.googleapis.com/v1beta/openai";
 export const GROQ_OPENAI_BASE_URL = "https://api.groq.com/openai/v1";
 
-export const DEFAULT_GEMINI_MODEL = "gemini-2.5-flash";
+export const DEFAULT_GEMINI_MODEL = "gemini-3.5-flash-lite";
 export const DEFAULT_GROQ_MODEL = "llama-3.3-70b-versatile";
 
 /**
