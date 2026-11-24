@@ -50,31 +50,51 @@ export async function notifyNewLead(
     lead.budgetRange ? `Budget: ${lead.budgetRange}` : null,
   ].filter(Boolean);
 
-  await sendTemplate(
-    {
-      to: ownerTo,
-      name: WHATSAPP_CONFIG.templates.newLeadAlert.name,
-      languageCode: WHATSAPP_CONFIG.templates.newLeadAlert.defaultLanguage,
-      components: [
-        {
-          type: "body",
-          parameters: [
-            { type: "text", text: sanitizeTemplateParam(lead.name, 120) },
-            { type: "text", text: sanitizeTemplateParam(lead.requestType, 40) },
-            {
-              type: "text",
-              text: sanitizeTemplateParam(lead.whatsappNumber, 40),
-            },
-            {
-              type: "text",
-              text: sanitizeTemplateParam(summaryParts.join(" — "), 380),
-            },
-          ],
-        },
-      ],
-    },
-    clientOptions
-  );
+  try {
+    await sendTemplate(
+      {
+        to: ownerTo,
+        name: WHATSAPP_CONFIG.templates.newLeadAlert.name,
+        languageCode: WHATSAPP_CONFIG.templates.newLeadAlert.defaultLanguage,
+        components: [
+          {
+            type: "body",
+            parameters: [
+              { type: "text", text: sanitizeTemplateParam(lead.name, 120) },
+              {
+                type: "text",
+                text: sanitizeTemplateParam(lead.requestType, 40),
+              },
+              {
+                type: "text",
+                text: sanitizeTemplateParam(lead.whatsappNumber, 40),
+              },
+              {
+                type: "text",
+                text: sanitizeTemplateParam(summaryParts.join(" — "), 380),
+              },
+            ],
+          },
+        ],
+      },
+      clientOptions
+    );
+  } catch (err) {
+    // Fallback to plain text if custom Meta template is not created/approved yet
+    // (delivers immediately within an open 24h session window on Meta Test/Business numbers).
+    safeLogWarn("whatsapp.notify_new_lead.template_fallback_to_text", {
+      leadId: lead.id,
+      reason: err instanceof Error ? err.message : "template_failed",
+    });
+    const fallbackText = [
+      "🔔 عميل جديد من المساعد الذكي (Core Logic Systems):",
+      `• الاسم: ${lead.name}`,
+      `• نوع الطلب: ${lead.requestType}`,
+      `• واتساب العميل: ${lead.whatsappNumber}`,
+      `• الملخص: ${summaryParts.join(" — ") || "-"}`,
+    ].join("\n");
+    await sendText({ to: ownerTo, body: fallbackText }, clientOptions);
+  }
 }
 
 /**
@@ -102,46 +122,65 @@ export async function notifyBookingRequest(
     ? labels.label_ar
     : labels.label_en;
 
-  await sendTemplate(
-    {
-      to: ownerTo,
-      name: WHATSAPP_CONFIG.templates.bookingRequestAlert.name,
-      languageCode: ownerLang,
-      components: [
-        {
-          type: "body",
-          parameters: [
-            {
-              type: "text",
-              text: sanitizeTemplateParam(booking.lead.name, 120),
-            },
-            { type: "text", text: sanitizeTemplateParam(formattedTime, 200) },
-            {
-              type: "text",
-              text: sanitizeTemplateParam(booking.lead.whatsappNumber, 40),
-            },
-          ],
-        },
-        {
-          type: "button",
-          sub_type: "quick_reply",
-          index: "0",
-          parameters: [
-            { type: "payload", payload: `BOOKING_CONFIRM:${booking.id}` },
-          ],
-        },
-        {
-          type: "button",
-          sub_type: "quick_reply",
-          index: "1",
-          parameters: [
-            { type: "payload", payload: `BOOKING_REJECT:${booking.id}` },
-          ],
-        },
-      ],
-    },
-    clientOptions
-  );
+  try {
+    await sendTemplate(
+      {
+        to: ownerTo,
+        name: WHATSAPP_CONFIG.templates.bookingRequestAlert.name,
+        languageCode: ownerLang,
+        components: [
+          {
+            type: "body",
+            parameters: [
+              {
+                type: "text",
+                text: sanitizeTemplateParam(booking.lead.name, 120),
+              },
+              {
+                type: "text",
+                text: sanitizeTemplateParam(formattedTime, 200),
+              },
+              {
+                type: "text",
+                text: sanitizeTemplateParam(booking.lead.whatsappNumber, 40),
+              },
+            ],
+          },
+          {
+            type: "button",
+            sub_type: "quick_reply",
+            index: "0",
+            parameters: [
+              { type: "payload", payload: `BOOKING_CONFIRM:${booking.id}` },
+            ],
+          },
+          {
+            type: "button",
+            sub_type: "quick_reply",
+            index: "1",
+            parameters: [
+              { type: "payload", payload: `BOOKING_REJECT:${booking.id}` },
+            ],
+          },
+        ],
+      },
+      clientOptions
+    );
+  } catch (err) {
+    safeLogWarn("whatsapp.notify_booking_request.template_fallback_to_text", {
+      bookingId: booking.id,
+      reason: err instanceof Error ? err.message : "template_failed",
+    });
+    const fallbackText = [
+      "📅 طلب حجز استشارة جديد (Core Logic Systems):",
+      `• الاسم: ${booking.lead.name}`,
+      `• الموعد: ${formattedTime}`,
+      `• واتساب العميل: ${booking.lead.whatsappNumber}`,
+      `• رقم الحجز: ${booking.id}`,
+      "يمكنك تأكيد أو رفض الحجز من لوحة التحكم /admin/bookings",
+    ].join("\n");
+    await sendText({ to: ownerTo, body: fallbackText }, clientOptions);
+  }
 }
 
 /**
