@@ -234,8 +234,8 @@ export async function createPendingBooking(
       },
       {
         isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
-        maxWait: 10_000,
-        timeout: 20_000,
+        maxWait: 25_000,
+        timeout: 30_000,
       }
     );
   } catch (error) {
@@ -335,6 +335,8 @@ export async function decideBooking(
     },
     {
       isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+      maxWait: 25_000,
+      timeout: 30_000,
     }
   );
 }
