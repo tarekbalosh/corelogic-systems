@@ -108,7 +108,11 @@ export interface BookingTxClient {
 export interface BookingDbClient extends BookingTxClient {
   $transaction<T>(
     fn: (tx: BookingTxClient) => Promise<T>,
-    options?: { isolationLevel?: Prisma.TransactionIsolationLevel }
+    options?: {
+      isolationLevel?: Prisma.TransactionIsolationLevel;
+      maxWait?: number;
+      timeout?: number;
+    }
   ): Promise<T>;
 }
 
@@ -230,6 +234,8 @@ export async function createPendingBooking(
       },
       {
         isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+        maxWait: 10_000,
+        timeout: 20_000,
       }
     );
   } catch (error) {
