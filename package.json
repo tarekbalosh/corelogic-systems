@@ -10,7 +10,10 @@
     "test": "vitest run",
     "db:generate": "prisma generate",
     "db:migrate:deploy": "prisma migrate deploy",
-    "db:seed": "prisma db seed"
+    "db:seed": "prisma db seed",
+    "smoke:test": "tsx scripts/smoke-test.ts",
+    "agent:retention": "tsx scripts/data-retention.ts",
+    "agent:review": "tsx scripts/generate-agent-review.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

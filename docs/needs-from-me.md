@@ -18,3 +18,8 @@ This living file tracks everything that requires manual owner action, external c
 - **Replace or merge your authoritative Knowledge Base text**: Because `knowledge/core-logic-knowledge.md` was not present in the repo before Step 2, a strictly factual baseline was generated from your live website pages with zero invented prices or claims. Before enabling the widget:
   1. Paste your full *Core Logic Systems — AI Agent Knowledge Base* (especially **indicative MYR price ranges** per service tier) into `knowledge/core-logic-knowledge.md`.
   2. Resolve the website inconsistencies noted in the final report (registered `Sdn. Bhd.` legal entity name in `config/site.ts`, exact TRX office unit confirmation, 9:00–18:00 office hours vs 10:00–12:30 & 14:00–18:00 consultation slots, and 15-min vs 30-min call duration).
+
+## 4. Deployment, Preview Verification & Post-Launch Actions
+- **Vercel Preview Test**: Push `feature/ai-agent` (`git push -u origin feature/ai-agent`), set Preview env vars (`CHAT_WIDGET_ENABLED="true"`, `WHATSAPP_ENABLED="false"` or test number), run `npx tsx scripts/smoke-test.ts --url <preview-url>`, and execute the manual checklist in `docs/test-scenarios.md`.
+- **Production Launch**: Follow `docs/deploy-checklist.md` in order (apply `prisma migrate deploy` + `prisma db seed` to Neon Production, merge PR with `CHAT_WIDGET_ENABLED="false"` in Production first, verify Meta webhook + approved templates, then set `CHAT_WIDGET_ENABLED="true"`).
+- **Post-Launch Review (1–2 weeks after launch)**: Run `npm run agent:review` to generate anonymized conversation & funnel metrics in `docs/agent-review.md`.

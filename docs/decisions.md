@@ -117,3 +117,19 @@ This living document records every assumption, conflict resolution, and safety d
    - **Reason**: `verifyAdminTokenConstantTime` compares fixed 32-byte SHA-256 digests via `crypto.timingSafeEqual` (preventing length timing leaks), scopes `corelogic_admin_session` to `path: "/admin"` with `httpOnly`, `secure` (in prod), and `sameSite: "strict"`, rate-limits `/admin/login` (10 attempts / 15 min per hashed IP), and marks all `/admin` routes `noindex` via both metadata and `X-Robots-Tag`.
 2. **Unified Booking Decision Pipeline**
    - **Reason**: `/admin/bookings` Confirm/Reject buttons invoke the exact same `decideBooking` + `notifyCustomerBookingDecision` pipeline as `/api/whatsapp/webhook` so results and customer notifications are identical regardless of channel.
+
+---
+
+## Step 12 — End-to-End Verification & Smoke Test (`docs/test-scenarios.md`, `tests/e2e-journey.test.ts`, `scripts/smoke-test.ts`)
+
+1. **Automated Full-Lifecycle E2E Suite + Safe Live Smoke Test**
+   - **Reason**: Built `tests/e2e-journey.test.ts` exercising the full lead -> slot selection -> pending booking -> double-booking rejection -> signed WhatsApp webhook Confirm -> Arabic customer confirmation & widget status update flow with mocked Anthropic & Meta endpoints. Added `scripts/smoke-test.ts` using clearly fake `"Test Lead (Automated Smoke Test)"` data and refusing to run with `WHATSAPP_ENABLED=true` unless `--send-whatsapp` is explicitly passed.
+
+---
+
+## Step 13 & Step 14 Setup — Vercel Deployment Config & Post-Launch Review (`vercel.json`, `docs/deploy-checklist.md`, `scripts/generate-agent-review.ts`)
+
+1. **Vercel Function Region (`sin1` — Singapore) & `maxDuration: 60`**
+   - **Reason**: Added `vercel.json` pinning dynamic serverless functions to `sin1` (Singapore, adjacent to Kuala Lumpur and matching Neon's `aws-ap-southeast-1` Singapore region) to minimize Prisma round-trip latency across the multi-turn tool loop while keeping static pages globally cached on Vercel's CDN.
+2. **Privacy-Safe Post-Launch Review Generator (`scripts/generate-agent-review.ts`)**
+   - **Reason**: Because production has 0 conversations pre-launch, set up Step 14's automated review script (`npm run agent:review`) which redacts phone numbers and emails before generating funnel metrics, stalled-lead diagnostics, and heuristic behavior-rule checks into `docs/agent-review.md`.
