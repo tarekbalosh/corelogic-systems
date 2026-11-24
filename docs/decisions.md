@@ -68,3 +68,12 @@ This living document records every assumption, conflict resolution, and safety d
    - **Reason**: `normalizeWhatsAppNumber` converts Arabic-Indic digits, accepts `+` or `00` international prefixes, rejects local numbers missing a country code (`MISSING_COUNTRY_CODE`), and validates via `libphonenumber-js` (`parsePhoneNumberFromString`).
 2. **Idempotent Per-Conversation Lead Upsert & Single Owner Notification**
    - **Reason**: `save_lead` looks up `Conversation.leadId`, updates existing leads in place without overwriting omitted optional fields, and uses an atomic conditional update (`where: { id, notifiedAt: null }`) so `notifyNewLead` fires at most once per lead, wrapped in `try/catch` so notification errors never fail the tool.
+
+---
+
+## Step 7 — WhatsApp Business Cloud API & Webhook (`lib/whatsapp/`, `app/api/whatsapp/webhook/route.ts`)
+
+1. **Centralized Template Names/Locales & `WHATSAPP_ENABLED` Guard**
+   - **Reason**: Centralized all 5 template names (`new_lead_alert`, `booking_request_alert`, `booking_confirmed_customer`, `booking_rejected_customer`, `escalation_alert`) and language codes in `lib/whatsapp/config.ts`, sanitized template text parameters to collapse newlines/tabs (preventing Meta error `#132018`), and gated outbound Graph API requests behind `WHATSAPP_ENABLED="true"` so local/Preview testing never sends unintended messages.
+2. **Constant-Time Raw-Body HMAC + Owner-Only + Atomic Idempotency**
+   - **Reason**: `app/api/whatsapp/webhook/route.ts` reads `request.text()` first, verifies `X-Hub-Signature-256` with `crypto.timingSafeEqual`, checks `msg.from` against `OWNER_WHATSAPP_NUMBER` before writing state, deduplicates `wamid`s via `ProcessedWebhookEvent` primary-key inserts, and handles both `button.payload` (template quick replies) and `interactive.button_reply.id`.
