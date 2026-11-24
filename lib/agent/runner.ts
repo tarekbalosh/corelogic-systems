@@ -2,6 +2,10 @@ import Anthropic from "@anthropic-ai/sdk";
 import type { MessageRole } from "@prisma/client";
 import { z } from "zod";
 import prisma from "@/lib/db";
+import {
+  createOpenAiCompatStreamClient,
+  resolveAiProviderConfig,
+} from "@/lib/agent/openai-compat-adapter";
 import { buildSystemPrompt } from "@/lib/agent/system-prompt";
 import {
   executeTool,
@@ -189,6 +193,8 @@ export function sanitizeAssistantOutput(text: string): string {
       ""
     )
     .replace(/sk-ant-[A-Za-z0-9_-]+/g, "[REDACTED]")
+    .replace(/AIza[A-Za-z0-9_-]{20,}/g, "[REDACTED]")
+    .replace(/gsk_[A-Za-z0-9_-]+/g, "[REDACTED]")
     .replace(/EAA[A-Za-z0-9]{12,}/g, "[REDACTED]");
 
   const ownerDigits = process.env.OWNER_WHATSAPP_NUMBER?.replace(/\D/g, "");
@@ -303,14 +309,30 @@ export async function runChatTurn(options: RunChatTurnOptions): Promise<void> {
     // Save the visible user message before calling the model
     await store.saveMessage(conversation.id, "user", cleanedUserText);
 
-    const model = (options.modelName ?? process.env.ANTHROPIC_MODEL ?? "").trim();
-    if (!model) {
-      throw new Error("ANTHROPIC_MODEL environment variable is not set.");
-    }
+    let model = (options.modelName ?? "").trim();
+    let client: AnthropicStreamClient;
 
-    const client =
-      options.anthropicClient ??
-      (getDefaultAnthropicClient() as unknown as AnthropicStreamClient);
+    if (options.anthropicClient) {
+      client = options.anthropicClient;
+      if (!model) {
+        model = (process.env.ANTHROPIC_MODEL ?? "").trim();
+      }
+      if (!model) {
+        throw new Error("ANTHROPIC_MODEL environment variable is not set.");
+      }
+    } else {
+      const resolved = resolveAiProviderConfig();
+      if (!model) {
+        model = resolved.model;
+      }
+      if (!model) {
+        throw new Error("ANTHROPIC_MODEL environment variable is not set.");
+      }
+      client =
+        resolved.provider === "anthropic"
+          ? (getDefaultAnthropicClient() as unknown as AnthropicStreamClient)
+          : createOpenAiCompatStreamClient(resolved.openAiCompat!);
+    }
 
     const historyWithCurrent = coalesceAlternatingHistory([
       ...priorMessages,
