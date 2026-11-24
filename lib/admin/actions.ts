@@ -52,7 +52,8 @@ async function getActionClientIp(): Promise<string> {
 
 export async function loginAdminAction(formData: FormData): Promise<void> {
   const configuredSecret = process.env.ADMIN_TOKEN?.trim();
-  if (!configuredSecret || configuredSecret.length < 12) {
+  const minLength = process.env.NODE_ENV === "production" ? 12 : 4;
+  if (!configuredSecret || configuredSecret.length < minLength) {
     redirect("/admin/login?error=not_configured");
   }
 
