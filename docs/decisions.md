@@ -86,3 +86,14 @@ This living document records every assumption, conflict resolution, and safety d
    - **Reason**: Implemented `POST /api/chat` on the Node.js runtime (`maxDuration = 60`) with `ReadableStream` Server-Sent Events (`text`, `slots`, `booking`, `error`, `done`), loading only server-side conversation history (`MAX_HISTORY_MESSAGES = 20`), capping tool iterations at `6`, logging token usage per turn, and scrubbing output for internal tags/secrets.
 2. **Session-Authorized Booking Status Polling (`GET /api/booking/[id]/status`)**
    - **Reason**: Requires `sessionId` UUID query param and verifies via Prisma that `booking.lead.conversations` includes `sessionId`, returning `{ status }` only or `404` to prevent booking-ID enumeration and PII exposure.
+
+---
+
+## Step 9 — Bilingual RTL/LTR Chat Widget UI (`components/chat/`, `app/layout.tsx`)
+
+1. **Lazy-Loaded Gate Keeping All 57 Site Pages Static**
+   - **Reason**: Mounted `<ChatWidgetMount />` as a single minimal addition in `app/layout.tsx`. `ChatWidgetLoader` uses `next/dynamic(..., { ssr: false })` and renders nothing unless `CHAT_WIDGET_ENABLED === "true"` (and also checks `/api/chat/config` on mount for runtime kill-switch support without opting marketing pages out of static prerendering). Hidden automatically on `/admin` and `/portal`.
+2. **Existing `/privacy` & `/ar/privacy` Reused**
+   - **Reason**: Both `/privacy` and `/ar/privacy` already exist in the repository, so no stub page was created (avoiding any modification to existing legal pages); flagged in `docs/needs-from-me.md` for legal counsel review before launch.
+3. **Scoped Turbopack File Tracing in `lib/agent/knowledge.ts`**
+   - **Reason**: Statically scoped the default `fs.readFileSync(path.join(process.cwd(), "knowledge", "core-logic-knowledge.md"))` branch and annotated the test-only custom path with `/* turbopackIgnore: true */` to eliminate Next.js 16 Turbopack's broad NFT warning.

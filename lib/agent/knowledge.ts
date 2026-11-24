@@ -9,26 +9,39 @@ let cachedKnowledge: string | null = null;
  * Loads the CoreLogic Systems knowledge base markdown file from disk and caches
  * it in module scope for subsequent invocations within the same serverless instance.
  *
- * Throws if the file is missing or empty so misconfigurations fail fast in tests/CI.
+ * Uses a statically scoped `path.join(process.cwd(), "knowledge", ...)` for production
+ * so Next.js / Turbopack output file tracing bundles only `knowledge/core-logic-knowledge.md`.
  */
 export function getKnowledgeBase(customFilePath?: string): string {
   if (!customFilePath && cachedKnowledge !== null) {
     return cachedKnowledge;
   }
 
-  const resolvedPath =
-    customFilePath ?? path.join(process.cwd(), KNOWLEDGE_FILE_RELATIVE_PATH);
-
-  if (!fs.existsSync(resolvedPath)) {
-    throw new Error(
-      `Knowledge base file is missing at: ${resolvedPath}. Ensure ${KNOWLEDGE_FILE_RELATIVE_PATH} exists and is traced in next.config.ts.`
+  let raw: string;
+  if (customFilePath) {
+    if (!fs.existsSync(/* turbopackIgnore: true */ customFilePath)) {
+      throw new Error(
+        `Knowledge base file is missing at: ${customFilePath}.`
+      );
+    }
+    raw = fs.readFileSync(/* turbopackIgnore: true */ customFilePath, "utf-8");
+  } else {
+    const defaultPath = path.join(
+      process.cwd(),
+      "knowledge",
+      "core-logic-knowledge.md"
     );
+    if (!fs.existsSync(defaultPath)) {
+      throw new Error(
+        `Knowledge base file is missing at: ${defaultPath}. Ensure ${KNOWLEDGE_FILE_RELATIVE_PATH} exists and is traced in next.config.ts.`
+      );
+    }
+    raw = fs.readFileSync(defaultPath, "utf-8");
   }
 
-  const raw = fs.readFileSync(resolvedPath, "utf-8");
   if (raw.trim().length === 0) {
     throw new Error(
-      `Knowledge base file at ${resolvedPath} is empty. Populate ${KNOWLEDGE_FILE_RELATIVE_PATH} before running the agent.`
+      `Knowledge base file is empty. Populate ${KNOWLEDGE_FILE_RELATIVE_PATH} before running the agent.`
     );
   }
 
