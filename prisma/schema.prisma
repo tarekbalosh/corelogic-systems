@@ -149,3 +149,21 @@ model ProcessedWebhookEvent {
   @@index([createdAt])
   @@map("agent_processed_webhook_events")
 }
+
+model RateLimitBucket {
+  key       String   @id
+  count     Int      @default(0)
+  expiresAt DateTime
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@index([expiresAt])
+  @@map("agent_rate_limits")
+}
+
+model AgentRuntimeSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@map("agent_runtime_settings")
+}

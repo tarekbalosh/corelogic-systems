@@ -97,3 +97,14 @@ This living document records every assumption, conflict resolution, and safety d
    - **Reason**: Both `/privacy` and `/ar/privacy` already exist in the repository, so no stub page was created (avoiding any modification to existing legal pages); flagged in `docs/needs-from-me.md` for legal counsel review before launch.
 3. **Scoped Turbopack File Tracing in `lib/agent/knowledge.ts`**
    - **Reason**: Statically scoped the default `fs.readFileSync(path.join(process.cwd(), "knowledge", "core-logic-knowledge.md"))` branch and annotated the test-only custom path with `/* turbopackIgnore: true */` to eliminate Next.js 16 Turbopack's broad NFT warning.
+
+---
+
+## Step 10 — Security & Abuse Hardening (`lib/security/`, `scripts/data-retention.ts`, `docs/security-checklist.md`)
+
+1. **Postgres-Backed Fixed-Window Rate Limiter Over Upstash Redis**
+   - **Reason**: Chose atomic PostgreSQL `INSERT ... ON CONFLICT DO UPDATE` buckets (`agent_rate_limits`) over `@upstash/ratelimit` so the owner does not need to provision or pay for a separate Redis service beyond Neon PostgreSQL, with zero extra npm dependencies and SHA-256 IP hashing so raw visitor IPs are never stored.
+2. **Cloudflare Turnstile Optional Flag (`BOT_PROTECTION_ENABLED="false"` default)**
+   - **Reason**: Implemented hidden `website_url` honeypot active immediately plus optional Cloudflare Turnstile verification before the first message of a session (`BOT_PROTECTION_ENABLED="true"`).
+3. **Runtime Widget Kill-Switch (`agent_runtime_settings`) + Repeated-Error Alert**
+   - **Reason**: Added `agent_runtime_settings` so the widget can be paused immediately without redeploying code (when `CHAT_WIDGET_ENABLED="true"`), and added a 30-minute cooldown WhatsApp alert when `/api/chat` experiences >= 3 unhandled errors in 10 minutes.
