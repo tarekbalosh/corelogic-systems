@@ -20,3 +20,13 @@ This living document records every assumption, conflict resolution, and safety d
 4. **Pre-existing ESLint issues in untouched legacy site files**
    - **Observation**: Running `npm run lint` on unmodified `main` reports 23 errors and 56 warnings in existing pages/components (e.g., unescaped quotes in `app/contact/page.tsx`, `app/ar/privacy/page.tsx`, `setState` in effect in `components/navbar.tsx`, `require()` in `remove_bg.js`).
    - **Decision**: Per Execution Rule #2 and Live-Site Safety Rule #2 ("Do not modify existing pages, components, styles, routes"), those pre-existing files were intentionally left untouched. Every new and touched file in this feature is verified with `npx eslint` at **zero errors and zero warnings**, alongside full-repo `npx tsc --noEmit`, `npm test` (Vitest), and `npm run build` (`next build`).
+
+---
+
+## Step 2 — Company Knowledge Base & Loader (`lib/agent/knowledge.ts`)
+
+1. **Synthesizing a zero-hallucination baseline `knowledge/core-logic-knowledge.md`**
+   - **Situation**: Step 2's manual pre-step (*"قبل الـ Prompt: احفظ نص قاعدة المعرفة التي أرسلتها في ملف باسم `knowledge/core-logic-knowledge.md` داخل المشروع"*) had not been completed prior to launching this autonomous build (`knowledge/` did not exist in the workspace).
+   - **Decision**: Created `knowledge/core-logic-knowledge.md` strictly from verified facts already published across the repository (`config/site.ts`, `config/work.ts`, `app/about/page.tsx`, `app/services/**`, `components/services-grid.tsx`, `app/contact/page.tsx`, `lib/dictionaries/{en,ar}.json`). Did **not** invent prices, clients, testimonials, or unverified metrics; marked indicative MYR price tiers with `[OWNER_TODO]` and safe escalation rules, then left the file completely unmodified in all later steps.
+2. **Serverless file bundling via `outputFileTracingIncludes`**
+   - **Decision**: Configured `outputFileTracingIncludes: { "/api/chat": ["./knowledge/**/*"] }` in `next.config.ts` (verified against Next.js 16 bundled `output.md` docs) and cached the UTF-8 markdown string in module scope in `lib/agent/knowledge.ts`.

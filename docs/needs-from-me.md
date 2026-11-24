@@ -13,3 +13,8 @@ This living file tracks everything that requires manual owner action, external c
 ## 2. Existing Live-Site Items Skipped Under Safety Rules
 - **Pre-existing ESLint warnings/errors in legacy site pages** (`app/contact/page.tsx`, `app/ar/privacy/page.tsx`, `components/navbar.tsx`, `remove_bg.js`, etc.): Skipped per Live-Site Safety Rules (no edits to existing pages/components). Safe to clean up in a separate maintenance PR later.
 - **Existing `/privacy` and `/ar/privacy` pages**: Left untouched per safety rules because both pages already exist. Before setting `CHAT_WIDGET_ENABLED="true"` in Production, have legal counsel review and update `/privacy` and `/ar/privacy` to explicitly disclose AI chat message processing (Anthropic API), consultation booking storage, and WhatsApp communication (Malaysia PDPA compliance).
+
+## 3. Knowledge Base Content (`knowledge/core-logic-knowledge.md`)
+- **Replace or merge your authoritative Knowledge Base text**: Because `knowledge/core-logic-knowledge.md` was not present in the repo before Step 2, a strictly factual baseline was generated from your live website pages with zero invented prices or claims. Before enabling the widget:
+  1. Paste your full *Core Logic Systems — AI Agent Knowledge Base* (especially **indicative MYR price ranges** per service tier) into `knowledge/core-logic-knowledge.md`.
+  2. Resolve the website inconsistencies noted in the final report (registered `Sdn. Bhd.` legal entity name in `config/site.ts`, exact TRX office unit confirmation, 9:00–18:00 office hours vs 10:00–12:30 & 14:00–18:00 consultation slots, and 15-min vs 30-min call duration).
