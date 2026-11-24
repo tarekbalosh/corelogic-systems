@@ -25,6 +25,7 @@ interface OpenAiMessage {
       name: string;
       arguments: string;
     };
+    extra_content?: Record<string, unknown>;
   }>;
 }
 
@@ -48,6 +49,7 @@ interface OpenAiStreamChunk {
           name?: string;
           arguments?: string;
         };
+        extra_content?: Record<string, unknown>;
       }>;
     };
   }>;
@@ -148,7 +150,8 @@ export function resolveAiProviderConfig(env: NodeJS.ProcessEnv = process.env): {
  * Converts Anthropic Messages API parameters into an OpenAI Chat Completions payload.
  */
 export function convertAnthropicParamsToOpenAi(
-  params: Anthropic.Messages.MessageCreateParamsStreaming
+  params: Anthropic.Messages.MessageCreateParamsStreaming,
+  toolCallExtraContentById?: Map<string, Record<string, unknown>>
 ): {
   model: string;
   max_tokens: number;
@@ -187,6 +190,7 @@ export function convertAnthropicParamsToOpenAi(
         if (blk.type === "text" && blk.text) {
           textParts.push(blk.text);
         } else if (blk.type === "tool_use") {
+          const extraContent = toolCallExtraContentById?.get(blk.id);
           toolCalls.push({
             id: blk.id,
             type: "function",
@@ -194,6 +198,7 @@ export function convertAnthropicParamsToOpenAi(
               name: blk.name,
               arguments: JSON.stringify(blk.input ?? {}),
             },
+            ...(extraContent ? { extra_content: extraContent } : {}),
           });
         }
       }
@@ -267,12 +272,19 @@ export function createOpenAiCompatStreamClient(
   config: OpenAiCompatConfig,
   fetchImpl: typeof fetch = fetch
 ): AnthropicStreamClient {
+  // Preserves provider-specific metadata (e.g. Gemini 3.x thought_signature)
+  // across tool-calling iterations within a chat turn.
+  const toolCallExtraContentById = new Map<string, Record<string, unknown>>();
+
   return {
     messages: {
       async create(
         params: Anthropic.Messages.MessageCreateParamsStreaming
       ): Promise<AsyncIterable<Anthropic.Messages.RawMessageStreamEvent>> {
-        const body = convertAnthropicParamsToOpenAi(params);
+        const body = convertAnthropicParamsToOpenAi(
+          params,
+          toolCallExtraContentById
+        );
         const endpoint = `${config.baseUrl.replace(/\/+$/, "")}/chat/completions`;
 
         const controller = new AbortController();
@@ -372,16 +384,25 @@ export function createOpenAiCompatStreamClient(
                     if (blockIdx === undefined) {
                       blockIdx = nextBlockIndex++;
                       startedToolBlocks.set(tcIdx, blockIdx);
+                      const toolCallId = tc.id || `call_${tcIdx}_${blockIdx}`;
+                      if (tc.extra_content) {
+                        toolCallExtraContentById.set(
+                          toolCallId,
+                          tc.extra_content
+                        );
+                      }
                       yield {
                         type: "content_block_start",
                         index: blockIdx,
                         content_block: {
                           type: "tool_use",
-                          id: tc.id || `call_${tcIdx}_${blockIdx}`,
+                          id: toolCallId,
                           name: tc.function?.name || "",
                           input: {},
                         },
                       } as Anthropic.Messages.RawMessageStreamEvent;
+                    } else if (tc.id && tc.extra_content) {
+                      toolCallExtraContentById.set(tc.id, tc.extra_content);
                     }
 
                     if (
