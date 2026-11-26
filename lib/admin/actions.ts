@@ -95,13 +95,72 @@ export async function updateLeadStatusAction(formData: FormData): Promise<void> 
   revalidatePath("/admin/leads");
 }
 
-export async function deleteLeadAdminAction(formData: FormData): Promise<void> {
+export interface DeleteLeadAdminResult {
+  ok: boolean;
+  blockedByInvoices?: boolean;
+  invoiceNumbers?: string[];
+  message?: string;
+}
+
+export async function deleteLeadAdminAction(
+  formData: FormData
+): Promise<DeleteLeadAdminResult> {
   await requireAdminSession();
 
   const leadId = String(formData.get("leadId") ?? "").trim();
-  if (!leadId) return;
+  if (!leadId) {
+    return { ok: false, message: "Lead ID is required." };
+  }
+
+  // GoBD / § 147 AO retention guard: NEVER delete a lead linked to issued invoices.
+  const linkedIssuedInvoices = await prisma.invoice
+    .findMany({
+      where: {
+        status: { not: "DRAFT" },
+        customer: { leadId },
+      },
+      select: { id: true, invoiceNumber: true },
+    })
+    .catch(() => []);
+
+  if (linkedIssuedInvoices.length > 0) {
+    const invoiceNumbers = linkedIssuedInvoices
+      .map((inv) => inv.invoiceNumber)
+      .filter((num): num is string => Boolean(num));
+
+    await prisma.invoiceAuditLog
+      .createMany({
+        data: linkedIssuedInvoices.map((inv) => ({
+          invoiceId: inv.id,
+          action: "LEAD_DELETION_BLOCKED" as const,
+          actor: "admin",
+          metadata: {
+            leadId,
+            reason:
+              "Statutory tax retention obligation (§ 147 AO / GoBD): Lead deletion blocked while linked to issued invoices.",
+          },
+        })),
+      })
+      .catch(() => undefined);
+
+    safeLogInfo("admin.lead.delete_blocked_gobd", {
+      leadId,
+      invoiceCount: linkedIssuedInvoices.length,
+    });
+
+    return {
+      ok: false,
+      blockedByInvoices: true,
+      invoiceNumbers,
+      message: `Deletion blocked (GoBD / § 147 AO retention): This lead is linked to issued invoice(s) ${invoiceNumbers.join(", ")}. Issued invoice records must be retained and cannot be deleted.`,
+    };
+  }
 
   await prisma.$transaction([
+    prisma.billingCustomer.updateMany({
+      where: { leadId },
+      data: { leadId: null },
+    }),
     prisma.conversation.deleteMany({ where: { leadId } }),
     prisma.booking.deleteMany({ where: { leadId } }),
     prisma.lead.deleteMany({ where: { id: leadId } }),

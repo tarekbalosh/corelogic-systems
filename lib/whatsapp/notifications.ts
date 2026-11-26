@@ -258,8 +258,9 @@ export async function notifyEscalation(
 
 /**
  * Sends `booking_confirmed_customer` or `booking_rejected_customer` to the customer's
- * WhatsApp number using the language stored on their conversation ("ar" or "en").
- * Variables: {{1}} Name, {{2}} Date & Time (MYT)
+ * WhatsApp number using the language stored on their conversation ("ar", "de", or "en").
+ * Template names and variable order are unchanged:
+ * Variables: {{1}} Name, {{2}} Date & Time (Europe/Berlin MEZ/MESZ for "de", MYT for "en"/"ar")
  */
 export async function notifyCustomerBookingDecision(
   booking: BookingNotificationRecord,
@@ -268,16 +269,22 @@ export async function notifyCustomerBookingDecision(
 ): Promise<void> {
   const customerPhone = booking.lead.whatsappNumber;
   const storedLang = booking.lead.conversations?.[0]?.language;
-  const isArabic = storedLang === "ar";
+  const customerLocale: "ar" | "de" | "en" =
+    storedLang === "ar" ? "ar" : storedLang === "de" ? "de" : "en";
 
   const labels = formatSlotLabels(booking.startsAt, booking.endsAt);
-  const slotLabel = isArabic ? labels.label_ar : labels.label_en;
+  const slotLabel =
+    customerLocale === "ar"
+      ? labels.label_ar
+      : customerLocale === "de"
+        ? labels.label_de
+        : labels.label_en;
 
   const tpl =
     decision === "CONFIRM"
       ? WHATSAPP_CONFIG.templates.bookingConfirmedCustomer
       : WHATSAPP_CONFIG.templates.bookingRejectedCustomer;
-  const languageCode = isArabic ? tpl.languages.ar : tpl.languages.en;
+  const languageCode = tpl.languages[customerLocale];
 
   try {
     await sendTemplate(
@@ -311,12 +318,16 @@ export async function notifyCustomerBookingDecision(
     );
     const fallbackBody =
       decision === "CONFIRM"
-        ? isArabic
+        ? customerLocale === "ar"
           ? `✅ مرحباً ${booking.lead.name}، تم تأكيد موعد استشارتك مع Core Logic Systems بنجاح!\n\n📅 الموعد: ${slotLabel}\n\nنتطلع للتحدث معك.`
-          : `✅ Hello ${booking.lead.name}, your consultation with Core Logic Systems has been confirmed!\n\n📅 Time: ${slotLabel}\n\nWe look forward to speaking with you.`
-        : isArabic
+          : customerLocale === "de"
+            ? `✅ Guten Tag ${booking.lead.name}, Ihr Beratungstermin bei CoreLogic Systems wurde bestätigt.\n\n📅 Termin: ${slotLabel}\n\nWir freuen uns auf das Gespräch mit Ihnen.`
+            : `✅ Hello ${booking.lead.name}, your consultation with Core Logic Systems has been confirmed!\n\n📅 Time: ${slotLabel}\n\nWe look forward to speaking with you.`
+        : customerLocale === "ar"
           ? `نعتذر يا ${booking.lead.name}، الموعد المقترح (${slotLabel}) غير متاح حالياً.${booking.alternativeProposal ? `\n\nالموعد البديل المقترح: ${booking.alternativeProposal}` : ""}\n\nيمكنك الرد علينا هنا أو اختيار موعد آخر من الموقع.`
-          : `Hi ${booking.lead.name}, unfortunately the requested slot (${slotLabel}) is no longer available.${booking.alternativeProposal ? `\n\nProposed alternative: ${booking.alternativeProposal}` : ""}\n\nPlease reply here or choose another slot on our website.`;
+          : customerLocale === "de"
+            ? `Guten Tag ${booking.lead.name}, der angefragte Beratungstermin (${slotLabel}) ist leider nicht mehr verfügbar.${booking.alternativeProposal ? `\n\nAlternativvorschlag: ${booking.alternativeProposal}` : ""}\n\nAntworten Sie uns gerne hier oder wählen Sie einen anderen Termin auf unserer Website.`
+            : `Hi ${booking.lead.name}, unfortunately the requested slot (${slotLabel}) is no longer available.${booking.alternativeProposal ? `\n\nProposed alternative: ${booking.alternativeProposal}` : ""}\n\nPlease reply here or choose another slot on our website.`;
 
     await sendText({ to: customerPhone, body: fallbackBody }, clientOptions);
   }

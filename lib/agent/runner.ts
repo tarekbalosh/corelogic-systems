@@ -26,10 +26,12 @@ export const MAX_HISTORY_MESSAGES = 20;
 export const MAX_TOOL_ITERATIONS = 6;
 export const DEFAULT_MAX_TOKENS = 1024;
 
+export type AgentLanguage = "ar" | "en" | "de";
+
 export const ChatRequestSchema = z.object({
   sessionId: z.string().uuid(),
   message: z.string().min(1).max(MAX_MESSAGE_CHARS),
-  clientLanguage: z.enum(["ar", "en"]).optional(),
+  clientLanguage: z.enum(["ar", "en", "de"]).optional(),
   selectedSlot: z
     .string()
     .trim()
@@ -55,6 +57,7 @@ export type ChatSseEvent =
       label: string;
       label_en: string;
       label_ar: string;
+      label_de?: string;
       startsAt: string;
     }
   | { type: "error"; code: string; message: string }
@@ -63,7 +66,7 @@ export type ChatSseEvent =
 export interface ConversationPersistenceAdapter {
   findOrCreateConversation(
     sessionId: string,
-    detectedLanguage: "ar" | "en"
+    detectedLanguage: AgentLanguage
   ): Promise<{
     id: string;
     sessionId: string;
@@ -81,7 +84,7 @@ export interface ConversationPersistenceAdapter {
   ): Promise<void>;
   updateConversationLanguage(
     conversationId: string,
-    language: "ar" | "en"
+    language: AgentLanguage
   ): Promise<void>;
 }
 
@@ -149,35 +152,54 @@ function getDefaultAnthropicClient(): Anthropic {
   return cachedAnthropicClient;
 }
 
+const GERMAN_SIGNAL_REGEX =
+  /[äöüßÄÖÜ]|\b(?:hallo|guten|bitte|danke|möchte|brauche|beratung|termin|projekt|softwareentwicklung|webanwendung|unternehmen|angebot|kosten|preis|können|ich|wir|ihre|ihnen|über|für|nicht|wähle)\b/i;
+
 /**
- * Detects message language ("ar" or "en") using Arabic vs Latin script character ratio.
+ * Detects message language ("ar", "de", or "en") using script ratio, German lexical/diacritic
+ * cues, and client UI language fallback.
  */
 export function detectMessageLanguage(
   text: string,
-  fallback?: "ar" | "en"
-): "ar" | "en" {
+  fallback?: AgentLanguage
+): AgentLanguage {
   const arabicMatches = text.match(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/g);
-  const latinMatches = text.match(/[A-Za-z]/g);
+  const latinMatches = text.match(/[A-Za-zÄÖÜäöüß]/g);
   const arCount = arabicMatches?.length ?? 0;
-  const enCount = latinMatches?.length ?? 0;
-  const total = arCount + enCount;
+  const latinCount = latinMatches?.length ?? 0;
+  const total = arCount + latinCount;
 
   if (total === 0) {
     return fallback ?? "en";
   }
-  return arCount / total >= 0.2 ? "ar" : "en";
+  if (arCount / total >= 0.2) {
+    return "ar";
+  }
+  if (GERMAN_SIGNAL_REGEX.test(text)) {
+    return "de";
+  }
+  if (fallback === "de") {
+    return "de";
+  }
+  return "en";
 }
 
-export function getFriendlyErrorMessage(lang: "ar" | "en"): string {
+export function getFriendlyErrorMessage(lang: AgentLanguage): string {
   if (lang === "ar") {
     return "نعتذر، يواجه المساعد الذكي ضغطاً مؤقتاً حالياً. يرجى المحاولة مرة أخرى بعد قليل أو التواصل معنا مباشرة عبر صفحة اتصل بنا أو واتساب.";
+  }
+  if (lang === "de") {
+    return "Entschuldigung, der KI-Assistent ist vorübergehend nicht erreichbar. Bitte versuchen Sie es in Kürze erneut oder kontaktieren Sie unser Team direkt über die Kontaktseite oder WhatsApp.";
   }
   return "Sorry, the assistant is temporarily unavailable right now. Please try again in a moment or reach our team directly via the Contact page or WhatsApp.";
 }
 
-function getLoopCapFallbackMessage(lang: "ar" | "en"): string {
+function getLoopCapFallbackMessage(lang: AgentLanguage): string {
   if (lang === "ar") {
     return "شكراً لك. لقد سجّلنا تفاصيل طلبك، وسيتابع فريق كورلوجيك سيستمز معك مباشرة لتأكيد الخطوة التالية.";
+  }
+  if (lang === "de") {
+    return "Vielen Dank. Wir haben Ihre Angaben erfasst – unser Team bei CoreLogic Systems meldet sich direkt bei Ihnen für den nächsten Schritt.";
   }
   return "Thank you. I have recorded the details so far, and our team at Core Logic Systems can assist you directly with the next step.";
 }
@@ -511,9 +533,12 @@ export async function runChatTurn(options: RunChatTurnOptions): Promise<void> {
             label:
               detectedLanguage === "ar"
                 ? rawResult.label_ar
-                : rawResult.label_en,
+                : detectedLanguage === "de"
+                  ? rawResult.label_de ?? rawResult.label_en
+                  : rawResult.label_en,
             label_en: rawResult.label_en,
             label_ar: rawResult.label_ar,
+            label_de: rawResult.label_de,
             startsAt: rawResult.startsAt,
           });
         } else if (

@@ -16,6 +16,7 @@ interface BookingStatusCardProps {
   initialStatus: PolledBookingStatus;
   labelEn: string;
   labelAr: string;
+  labelDe?: string;
   uiLang: UiLanguage;
   onStatusChange?: (bookingId: string, newStatus: PolledBookingStatus) => void;
 }
@@ -29,12 +30,18 @@ export function BookingStatusCard({
   initialStatus,
   labelEn,
   labelAr,
+  labelDe,
   uiLang,
   onStatusChange,
 }: BookingStatusCardProps) {
   const [status, setStatus] = useState<PolledBookingStatus>(initialStatus);
   const strings = CHAT_STRINGS[uiLang];
-  const displayLabel = uiLang === "ar" ? labelAr || labelEn : labelEn || labelAr;
+  const displayLabel =
+    uiLang === "ar"
+      ? labelAr || labelEn
+      : uiLang === "de"
+        ? labelDe || labelEn
+        : labelEn || labelAr;
 
   useEffect(() => {
     if (status !== "PENDING" || !bookingId || !sessionId) {
@@ -130,11 +137,7 @@ export function BookingStatusCard({
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 px-3 py-1 text-[11px] font-semibold text-indigo-700">
                   <span className="h-2 w-2 animate-pulse rounded-full bg-indigo-600" />
-                  <span>
-                    {uiLang === "ar"
-                      ? "بانتظار تأكيد الإدارة"
-                      : "Pending team confirmation"}
-                  </span>
+                  <span>{strings.bookingPendingBadge}</span>
                 </span>
                 <p className="text-[11px] leading-snug text-slate-500">
                   {strings.bookingPendingSubtitle}

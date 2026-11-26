@@ -1,8 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    globalNotFound: true,
+  },
   outputFileTracingIncludes: {
     "/api/chat": ["./knowledge/**/*"],
+    "/admin/api/invoices/**/*": ["./public/corelogic_logo.png"],
   },
   async headers() {
     return [

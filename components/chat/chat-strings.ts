@@ -1,4 +1,4 @@
-export type UiLanguage = "en" | "ar";
+export type UiLanguage = "en" | "de" | "ar";
 
 export interface ChatStrings {
   companyName: string;
@@ -16,6 +16,7 @@ export interface ChatStrings {
   availableSlotsTitle: string;
   slotChosenPrefix: string;
   bookingPendingTitle: string;
+  bookingPendingBadge: string;
   bookingPendingSubtitle: string;
   bookingConfirmedBadge: string;
   bookingRejectedBadge: string;
@@ -32,8 +33,8 @@ export const CHAT_STRINGS: Record<UiLanguage, ChatStrings> = {
     subtitle: "AI Assistant",
     launcherLabel: "Open Core Logic Systems AI chat assistant",
     closeLabel: "Close chat panel",
-    langToggleLabel: "Switch chat interface to Arabic",
-    langToggleShort: "عربي",
+    langToggleLabel: "Switch chat interface to German",
+    langToggleShort: "DE",
     welcomeMessage:
       "Welcome to **Core Logic Systems**! Tell me briefly about what you'd like to build, or select a topic below to get started.",
     quickReplies: [
@@ -49,6 +50,7 @@ export const CHAT_STRINGS: Record<UiLanguage, ChatStrings> = {
     availableSlotsTitle: "Available Consultation Times (MYT)",
     slotChosenPrefix: "I choose",
     bookingPendingTitle: "Booking request received — pending confirmation",
+    bookingPendingBadge: "Pending team confirmation",
     bookingPendingSubtitle:
       "Checking confirmation status automatically. You will also be notified on WhatsApp.",
     bookingConfirmedBadge: "Confirmed ✓",
@@ -61,6 +63,42 @@ export const CHAT_STRINGS: Record<UiLanguage, ChatStrings> = {
       "Connection interrupted. Please check your network and try again.",
     botCheckRequiredText:
       "Please complete the quick security check before sending your first message.",
+  },
+  de: {
+    companyName: "CoreLogic Systems",
+    subtitle: "KI-Assistent",
+    launcherLabel: "KI-Chat-Assistent von CoreLogic Systems öffnen",
+    closeLabel: "Chat-Fenster schließen",
+    langToggleLabel: "Chat-Oberfläche auf Arabisch umschalten",
+    langToggleShort: "AR",
+    welcomeMessage:
+      "Willkommen bei **CoreLogic Systems**! Schildern Sie kurz Ihr Vorhaben oder wählen Sie eines der Themen unten aus.",
+    quickReplies: [
+      "Webanwendung entwickeln",
+      "Individuelle Software / ERP / CRM",
+      "KI-Chatbot oder Automatisierung",
+      "Erstberatung buchen",
+    ],
+    inputPlaceholder: "Ihre Nachricht eingeben …",
+    sendLabel: "Nachricht senden",
+    retryLabel: "Erneut versuchen",
+    typingLabel: "Assistent schreibt",
+    availableSlotsTitle: "Verfügbare Beratungstermine (Europe/Berlin, MEZ/MESZ)",
+    slotChosenPrefix: "Ich wähle den Termin:",
+    bookingPendingTitle: "Terminanfrage eingegangen – wartet auf Bestätigung",
+    bookingPendingBadge: "Wartet auf Bestätigung durch das Team",
+    bookingPendingSubtitle:
+      "Der Bestätigungsstatus wird automatisch aktualisiert. Sie erhalten zusätzlich eine Nachricht per WhatsApp.",
+    bookingConfirmedBadge: "Bestätigt ✓",
+    bookingRejectedBadge: "Unser Team schlägt einen Ausweichtermin vor",
+    privacyText:
+      "Mit dem Start des Chats stimmen Sie zu, dass wir Ihre Nachrichten zur Bearbeitung Ihrer Anfrage verarbeiten. Bitte teilen Sie keine Passwörter oder sensiblen Daten.",
+    privacyLinkLabel: "Datenschutz",
+    privacyHref: "/de/datenschutz",
+    networkErrorText:
+      "Verbindung unterbrochen. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.",
+    botCheckRequiredText:
+      "Bitte schließen Sie die kurze Sicherheitsprüfung ab, bevor Sie Ihre erste Nachricht senden.",
   },
   ar: {
     companyName: "Core Logic Systems",
@@ -84,6 +122,7 @@ export const CHAT_STRINGS: Record<UiLanguage, ChatStrings> = {
     availableSlotsTitle: "المواعيد المتاحة للاستشارة (بتوقيت ماليزيا MYT)",
     slotChosenPrefix: "أختار الموعد:",
     bookingPendingTitle: "تم استلام طلب الحجز — قيد التأكيد",
+    bookingPendingBadge: "بانتظار تأكيد الإدارة",
     bookingPendingSubtitle:
       "يتم تحديث الحالة تلقائياً، كما سيصلك إشعار عبر واتساب فور التأكيد.",
     bookingConfirmedBadge: "تم التأكيد ✓",
@@ -104,9 +143,9 @@ export function detectBubbleDirection(
   fallback: UiLanguage
 ): "rtl" | "ltr" {
   const ar = text.match(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/g)?.length ?? 0;
-  const en = text.match(/[A-Za-z]/g)?.length ?? 0;
-  if (ar + en === 0) {
+  const latin = text.match(/[A-Za-zÄÖÜäöüß]/g)?.length ?? 0;
+  if (ar + latin === 0) {
     return fallback === "ar" ? "rtl" : "ltr";
   }
-  return ar / (ar + en) >= 0.2 ? "rtl" : "ltr";
+  return ar / (ar + latin) >= 0.2 ? "rtl" : "ltr";
 }

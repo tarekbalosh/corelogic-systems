@@ -114,7 +114,11 @@ export async function POST(request: NextRequest) {
 
   if (!rateDecision.allowed) {
     const localizedMessage =
-      lang === "ar" ? rateDecision.message_ar : rateDecision.message_en;
+      lang === "ar"
+        ? rateDecision.message_ar
+        : lang === "de"
+          ? rateDecision.message_de
+          : rateDecision.message_en;
     return Response.json(
       {
         error: rateDecision.reason,
@@ -155,7 +159,9 @@ export async function POST(request: NextRequest) {
             message:
               lang === "ar"
                 ? "يرجى إكمال التحقق الأمني قبل إرسال رسالتك الأولى."
-                : "Please complete the security verification before sending your first message.",
+                : lang === "de"
+                  ? "Bitte schließen Sie die Sicherheitsprüfung ab, bevor Sie Ihre erste Nachricht senden."
+                  : "Please complete the security verification before sending your first message.",
           },
           { status: 403, headers: API_SECURITY_HEADERS }
         );

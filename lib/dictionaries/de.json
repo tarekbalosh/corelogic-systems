@@ -1,0 +1,580 @@
+{
+  "meta": {
+    "homeTitle": "Individualsoftware, Webdesign & KI | CoreLogic Systems",
+    "homeDescription": "Individualsoftware, Webdesign und KI-Automatisierung für Unternehmen in Duisburg, NRW und dem DACH-Raum. Jetzt kostenlose Erstberatung anfragen.",
+    "aboutTitle": "Über uns – Software & KI-Partner",
+    "aboutDescription": "CoreLogic Systems entwickelt Individualsoftware, Webdesign und KI-Automatisierung für Unternehmen in Duisburg, NRW und weltweit. Mehr erfahren.",
+    "contactTitle": "Kontakt & unverbindliche Anfrage",
+    "contactDescription": "Kontaktieren Sie CoreLogic Systems für Individualsoftware, Webdesign oder KI-Automatisierung – für Unternehmen in Duisburg, NRW und dem DACH-Raum.",
+    "servicesTitle": "Leistungen: Software, Webdesign & KI",
+    "servicesDescription": "Individualsoftware, Webdesign, Web- und Mobile-Apps sowie KI-Automatisierung von CoreLogic Systems. Jetzt unverbindliche Erstberatung anfragen.",
+    "projectsTitle": "Projekte & Software-Fallstudien",
+    "projectsDescription": "Fallstudien unserer Individualsoftware: Buchhaltung, POS-Systeme, Klinikverwaltung, CRM, Buchungsplattformen und Webanwendungen aus der Praxis.",
+    "privacyTitle": "Datenschutzhinweise (Allgemein)",
+    "privacyDescription": "Allgemeiner Überblick, wie CoreLogic Systems personenbezogene Angaben bei Website-Besuchen und Kontaktanfragen verarbeitet und schützt.",
+    "termsTitle": "Nutzungsbedingungen",
+    "termsDescription": "Allgemeine Nutzungsbedingungen für die Website von CoreLogic Systems sowie Hinweise zur Zusammenarbeit bei individuellen Softwareprojekten.",
+    "breadcrumbHome": "Startseite",
+    "breadcrumbServices": "Leistungen",
+    "breadcrumbAbout": "Über CoreLogic Systems",
+    "breadcrumbContact": "Kontakt",
+    "breadcrumbProjects": "Projekte",
+    "caseStudySuffix": "Fallstudie",
+    "projectNotFound": "Projekt nicht gefunden"
+  },
+  "home": {
+    "heroTitleStart": "Individualsoftware und",
+    "heroTitleHighlight": "KI-Automatisierung",
+    "heroTitleEnd": "für wachsende Unternehmen",
+    "heroSubtitle": "Wir entwickeln Individualsoftware, modernes Webdesign, Web- und Mobile-Apps sowie KI-Automatisierung für Unternehmen in Duisburg, NRW und dem gesamten DACH-Raum – von der Idee bis zum laufenden Support.",
+    "heroPrimaryCta": "Kostenlose Erstberatung buchen",
+    "heroSecondaryCta": "Projekte ansehen",
+    "servicesTitle": "Unsere Leistungen",
+    "servicesSubtitle": "Durchdachte Softwarelösungen, die sich an Ihren Geschäftsprozessen orientieren.",
+    "learnMore": "Mehr erfahren",
+    "servicesItems": [
+      {
+        "title": "Individuelle Unternehmenssoftware",
+        "description": "ERP, Buchhaltung, POS, Warenwirtschaft und maßgeschneiderte Dashboards – mehrwährungsfähig inkl. EUR umsetzbar.",
+        "href": "/services/software-dev",
+        "icon": "monitor",
+        "glow": "purple"
+      },
+      {
+        "title": "Webanwendungen",
+        "description": "Unternehmenswebsites, Kundenportale, SaaS-Plattformen und skalierbare E-Commerce-Lösungen.",
+        "href": "/services/web-dev",
+        "icon": "globe",
+        "glow": "cyan"
+      },
+      {
+        "title": "Mobile-Apps",
+        "description": "Native und plattformübergreifende Apps für iOS und Android – vom Prototyp bis zum Store-Release.",
+        "href": "/services/mobile-dev",
+        "icon": "smartphone",
+        "glow": "purple"
+      },
+      {
+        "title": "KI-Automatisierung",
+        "description": "Workflow-Automatisierung, mehrsprachige KI-Chatbots und strukturierte Dokumentenverarbeitung.",
+        "href": "/services/ai-automation",
+        "icon": "bot",
+        "glow": "cyan"
+      },
+      {
+        "title": "Daten & Analytik",
+        "description": "Maßgeschneiderte Dashboards, Berichtswesen und saubere Datenintegrationen.",
+        "href": "/services/ai-automation",
+        "icon": "chart",
+        "glow": "purple"
+      },
+      {
+        "title": "Wartung & technischer Support",
+        "description": "Verlässliche laufende Betreuung, Sicherheitsupdates und Weiterentwicklung nach dem Go-live.",
+        "href": "/contact",
+        "icon": "wrench",
+        "glow": "cyan"
+      }
+    ],
+    "portfolioTitle": "Ausgewählte Projekte",
+    "portfolioSubtitle": "Ein Einblick in individuelle Softwarelösungen und Systeme aus realen Projekten.",
+    "portfolioCta": "Projekt ansehen"
+  },
+  "about": {
+    "heroTitle1": "Über unser",
+    "heroTitle2": "Unternehmen",
+    "heroSubtitle": "Wir entwickeln Individualsoftware, Webdesign und praxisnahe KI-Automatisierung.",
+    "heroDescription": "CoreLogic Systems ist ein Softwareunternehmen mit Sitz in Kuala Lumpur, Malaysia, das Unternehmen in Duisburg, NRW, dem DACH-Raum und international mit Individualsoftware, Webdesign, Web- und Mobile-Apps sowie KI-Automatisierung unterstützt.",
+    "imageAlt": "KI-Dashboard-Oberfläche",
+    "whoWeAre": "Wer wir sind",
+    "whoWeAreP1": "Wir sind auf die Entwicklung von Webanwendungen, individueller Unternehmenssoftware, Mobile-Apps und KI-Automatisierung spezialisiert – mit Fokus auf Geschwindigkeit, Sicherheit, Skalierbarkeit sowie datenschutzfreundlicher Architektur. Auch nach dem Go-live begleiten wir Sie mit Wartung und technischem Support.",
+    "whoWeAreP2": "Unser Ziel ist es, Unternehmen durch sauber entwickelte Software und praxisnahe Automatisierung spürbar zu entlasten.",
+    "mission": "Unsere Mission",
+    "missionDesc": "Durchdachte, skalierbare und moderne digitale Lösungen zu liefern, die konkrete betriebliche Herausforderungen lösen.",
+    "vision": "Unsere Vision",
+    "visionDesc": "Ein verlässlicher Softwarepartner für wachsende Unternehmen zu sein – bekannt für termingerechte Umsetzung, transparente Kommunikation und verantwortungsvollen Einsatz von KI.",
+    "coreValues": "Unsere Grundwerte",
+    "coreValuesSubtitle": "Die Prinzipien, die unsere Entwicklung und Zusammenarbeit prägen.",
+    "values": [
+      {
+        "title": "Innovation",
+        "description": "Praxisnahe Nutzung moderner Software- und KI-Architekturen für echte Geschäftsprozesse."
+      },
+      {
+        "title": "Qualität",
+        "description": "Hohe Entwicklungsstandards für stabile, wartbare Unternehmenssysteme."
+      },
+      {
+        "title": "Performance",
+        "description": "Schnelle, reaktionsstarke Anwendungen, die mit Ihrem Wachstum skalieren."
+      },
+      {
+        "title": "Kundenerfolg",
+        "description": "Klarer Fokus auf Effizienz, Transparenz und nachhaltige Entlastung Ihres Teams."
+      }
+    ],
+    "whyChooseUs": "Warum CoreLogic Systems",
+    "whyChooseUsSubtitle": "Wir entwickeln verlässliche Lösungen, die Ihr Unternehmen Schritt für Schritt voranbringen.",
+    "reasons": [
+      {
+        "title": "Strukturierte Umsetzung",
+        "description": "Iterative Entwicklungszyklen mit klaren Meilensteinen, Tests und planbaren Releases."
+      },
+      {
+        "title": "Skalierbare Systeme",
+        "description": "Architekturen, die flexibel mit Ihrem Team, neuen Standorten und steigendem Datenvolumen mitwachsen."
+      },
+      {
+        "title": "Praxisnahe KI",
+        "description": "KI-Automatisierung dort, wo sie manuelle Routinen messbar reduziert – mit klaren Leitplanken."
+      }
+    ],
+    "ctaTitle1": "Starten Sie Ihr Projekt",
+    "ctaTitle2": "mit uns",
+    "ctaButton": "Kontakt aufnehmen"
+  },
+  "contact": {
+    "badge": "Kontakt aufnehmen",
+    "heroTitle1": "Sprechen wir über Ihr",
+    "heroTitle2": "nächstes Projekt",
+    "heroSubtitle": "Ob Sie bereits ein konkretes Vorhaben planen oder die Möglichkeiten von KI-Automatisierung, Webdesign und Individualsoftware für Ihr Unternehmen in Duisburg, NRW oder dem DACH-Raum ausloten möchten – unser Team berät Sie unverbindlich.",
+    "formTitle": "Nachricht senden",
+    "formSubtitle": "Füllen Sie das Formular aus – wir melden uns zeitnah bei Ihnen.",
+    "fullName": "Vollständiger Name",
+    "fullNamePlaceholder": "Max Mustermann",
+    "email": "E-Mail-Adresse",
+    "emailPlaceholder": "name@unternehmen.de",
+    "phone": "Telefonnummer",
+    "phonePlaceholder": "+49 ...",
+    "optional": "Optional",
+    "service": "Gewünschte Leistung",
+    "selectService": "Leistung auswählen",
+    "message": "Nachricht",
+    "messagePlaceholder": "Schildern Sie kurz Ihre Ziele und Anforderungen ...",
+    "sendMessage": "Nachricht senden",
+    "processing": "Wird gesendet ...",
+    "errorPrefix": "Fehler beim Senden:",
+    "successTitle": "Nachricht gesendet!",
+    "successMessage": "Vielen Dank für Ihre Anfrage. Ein Ansprechpartner von CoreLogic Systems meldet sich innerhalb von 24 Werktagsstunden bei Ihnen.",
+    "sendAnother": "Weitere Nachricht senden",
+    "emailUs": "E-Mail schreiben",
+    "callUs": "Telefonisch erreichen",
+    "location": "Unser Standort",
+    "locationValue": "Lot C7, Menara IQ, TRX, Kuala Lumpur",
+    "workingHours": "Geschäftszeiten",
+    "workingHoursValue": "Mo – Fr: 09:00 – 18:00 Uhr MYT (Beratungstermine auch in MEZ/MESZ buchbar)",
+    "instantConnect": "Direktkontakt",
+    "whatsapp": "WhatsApp",
+    "callDirect": "Direkt anrufen",
+    "mapConsentNotice": "Zum Schutz Ihrer Privatsphäre wird die externe Karte von Google Maps erst nach Ihrer ausdrücklichen Freigabe geladen.",
+    "loadMapButton": "Google Maps laden",
+    "openInMaps": "In Google Maps öffnen",
+    "whyPartner": "Warum mit uns zusammenarbeiten?",
+    "whyPartnerSubtitle": "Wir gestalten den gesamten Projektablauf transparent und planbar.",
+    "partnerReasons": [
+      {
+        "title": "Schnelle Rückmeldung",
+        "description": "Sie erhalten innerhalb von 24 Werktagsstunden eine qualifizierte Antwort aus unserem Technikteam."
+      },
+      {
+        "title": "Fachliche Beratung",
+        "description": "Direkter Austausch mit erfahrenen Entwicklern und KI-Architekten zu Ihren konkreten Anforderungen."
+      },
+      {
+        "title": "Unverbindliches Erstgespräch",
+        "description": "Starten Sie mit einem kostenlosen Kennenlerngespräch, um Umfang und Optionen strukturiert zu prüfen."
+      }
+    ],
+    "ctaTitle": "Bereit für den nächsten Schritt?",
+    "ctaSubtitle": "Lassen Sie uns gemeinsam prüfen, welche Software- oder Automatisierungslösung am besten zu Ihren Abläufen passt.",
+    "ctaButton": "Kostenlose Erstberatung anfragen",
+    "servicesList": [
+      "Webanwendungen",
+      "KI-Lösungen & Automatisierung",
+      "Mobile-App-Entwicklung",
+      "Individuelle Softwareentwicklung",
+      "UI/UX-Design"
+    ]
+  },
+  "servicesPage": {
+    "badge": "Leistungsspektrum",
+    "heroTitle1": "Unsere",
+    "heroTitle2": "Leistungen",
+    "heroSubtitle": "Individualsoftware, modernes Webdesign, Web- und Mobile-Apps, KI-Automatisierung sowie UI/UX-Design – passgenau für Unternehmen in Duisburg, NRW und dem gesamten DACH-Raum.",
+    "projectInquiry": "Projekt anfragen",
+    "viewDetails": "Details ansehen",
+    "ctaTitle": "Unsicher, welche Lösung am besten passt?",
+    "ctaSubtitle": "Buchen Sie eine kostenlose Erstberatung mit unserem Team, um Ihre Anforderungen und den passenden technischen Ansatz zu besprechen.",
+    "ctaButton": "Erstberatung vereinbaren",
+    "items": [
+      {
+        "slug": "web-dev",
+        "title": "Webanwendungen",
+        "description": "Maßgeschneiderte Web-Apps, Kundenportale und Dashboards auf Basis moderner Frameworks.",
+        "details": ["Progressive Web Apps", "E-Commerce-Lösungen", "Unternehmens-Dashboards"]
+      },
+      {
+        "slug": "ai-automation",
+        "title": "KI-Lösungen & Automatisierung",
+        "description": "Workflow-Automatisierung, KI-Chatbots und Dokumentenverarbeitung zur Reduktion manueller Routinearbeiten.",
+        "details": ["Prozessautomatisierung", "KI-Assistenten", "Dokumentenverarbeitung"]
+      },
+      {
+        "slug": "mobile-dev",
+        "title": "Mobile-App-Entwicklung",
+        "description": "Performante native und plattformübergreifende Apps für iOS und Android.",
+        "details": ["iOS & Android", "Echtzeit-Synchronisation", "Offline-fähige Apps"]
+      },
+      {
+        "slug": "software-dev",
+        "title": "Individuelle Softwareentwicklung",
+        "description": "Geschäftssysteme wie ERP, Buchhaltung, POS und Warenwirtschaft – exakt entlang Ihrer Abläufe.",
+        "details": ["Legacy-Migration", "API-Integration", "Mehrere Währungen inkl. EUR"]
+      },
+      {
+        "slug": "design",
+        "title": "UI/UX-Design",
+        "description": "Nutzerzentrierte Oberflächen für klare Bedienung, hohe Akzeptanz und saubere Abläufe.",
+        "details": ["Interaktive Prototypen", "Designsysteme", "UX-Analyse"]
+      }
+    ]
+  },
+  "projectsPage": {
+    "heroTitle1": "Ausgewählte",
+    "heroTitle2": "Projekte",
+    "heroSubtitle": "Einblick in individuelle Geschäftssysteme und Anwendungen, die wir für reale Einsatzszenarien umgesetzt haben.",
+    "viewCaseStudy": "Fallstudie ansehen",
+    "backToAll": "Zurück zu allen Projekten",
+    "challengeHeading": "Die Ausgangssituation",
+    "solutionHeading": "Unsere Lösung",
+    "featuresHeading": "Wichtige Funktionen",
+    "technologiesHeading": "Eingesetzte Technologien",
+    "resultHeading": "Projektumfang & Ergebnis",
+    "demoAvailable": "Live-Demo verfügbar",
+    "viewLiveDemo": "Live-Demo öffnen"
+  },
+  "serviceDetails": {
+    "software-dev": {
+      "metaTitle": "Individualsoftware & ERP-Systeme",
+      "metaDescription": "Maßgeschneiderte Individualsoftware: ERP, Buchhaltung, POS, Warenwirtschaft und Dashboards – sicher, skalierbar und auf Wunsch DSGVO-konform.",
+      "badge": "Maßgeschneiderte Systemarchitektur",
+      "heroTitle1": "Individuelle",
+      "heroTitle2": "Softwareentwicklung",
+      "heroDescription": "Wir entwickeln skalierbare, wartbare und passgenaue Geschäftssysteme für Ihre Abläufe – datenschutzfreundlich konzipiert, auf Wunsch DSGVO-konform umsetzbar und mehrwährungsfähig inkl. EUR.",
+      "primaryCta": "Erstberatung anfragen",
+      "secondaryCta": "Lösungen entdecken",
+      "aboutBadge": "Keine starren Standardvorlagen",
+      "aboutTitle": "Ihr Unternehmen ist individuell – Ihre Software sollte es auch sein.",
+      "aboutDescription": "Standardsoftware stößt bei gewachsenen Prozessen schnell an Grenzen. Bei CoreLogic Systems entwickeln wir Unternehmenssoftware von Grund auf entlang Ihrer tatsächlichen Abläufe, automatisieren wiederkehrende Schritte und schaffen klare Transparenz im Tagesgeschäft.",
+      "solutionsTitle": "Unternehmenslösungen",
+      "solutionsSubtitle": "Passgenaue Systeme zur strukturierten Abbildung Ihrer Geschäftsprozesse.",
+      "solutions": [
+        { "title": "Geschäftsverwaltungssysteme", "desc": "Bündeln Sie zentrale Betriebsabläufe in einer einheitlichen, maßgeschneiderten Anwendung." },
+        { "title": "ERP-Systeme", "desc": "Verknüpfen Sie Ressourcen, Planung und Finanzprozesse – auf Wunsch für mehrere Währungen inkl. EUR." },
+        { "title": "CRM-Systeme", "desc": "Strukturieren Sie Kontakte, Leads und Vertriebsphasen in einer klaren Pipeline." },
+        { "title": "Workflow-Automatisierung", "desc": "Reduzieren Sie manuelle Routineaufgaben, damit sich Ihr Team auf Wertschöpfung konzentriert." },
+        { "title": "Interne Dashboards", "desc": "Echtzeit-Übersichten und Auswertungen exakt für Ihre Kennzahlen." },
+        { "title": "Branchenspezifische Lösungen", "desc": "Individuelle Architekturen für die konkreten Anforderungen Ihrer Branche." }
+      ],
+      "featuresTitle": "Warum CoreLogic Systems",
+      "featuresSubtitle": "Wir begleiten Ihre Digitalisierung langfristig mit stabilen und erweiterbaren Systemen.",
+      "features": [
+        { "title": "Vollständig maßgeschneidert", "desc": "Exakt auf Ihre Prozesse zugeschnitten – ohne unnötigen Funktionsballast." },
+        { "title": "Hohe Betriebsstabilität", "desc": "Saubere Architektur für zuverlässigen Einsatz im Arbeitsalltag." },
+        { "title": "Saubere Integration", "desc": "Anbindung an bestehende Werkzeuge, Schnittstellen (APIs) und Datenbanken." },
+        { "title": "Datenschutzfreundlich konzipiert", "desc": "Rollenbasierte Zugriffsrechte und Datensparsamkeit – auf Wunsch DSGVO-konform umsetzbar." }
+      ],
+      "whyPoints": [
+        "Vollständig individuelle Umsetzung",
+        "Klarer Fokus auf Ihre Geschäftsziele",
+        "Skalierbare, wartbare Architektur",
+        "Langfristige Wartung und Support",
+        "Transparente Meilensteine ohne versteckte Abhängigkeiten"
+      ],
+      "processTitle": "Unser Vorgehen",
+      "processSubtitle": "Ein strukturierter Ablauf von der ersten Anforderungsanalyse bis zum laufenden Betrieb.",
+      "processSteps": [
+        { "num": "01", "title": "Anforderungsanalyse", "desc": "Gemeinsame Aufnahme Ihrer Abläufe, Ziele und betrieblichen Engpässe." },
+        { "num": "02", "title": "Systemarchitektur", "desc": "Ausarbeitung von Datenmodell, Schnittstellen und technischem Konzept." },
+        { "num": "03", "title": "UI/UX-Konzept", "desc": "Klare Benutzeroberflächen für geringe Einarbeitungszeit im Team." },
+        { "num": "04", "title": "Entwicklung", "desc": "Iterative Umsetzung in sauberem, wartbarem Code mit regelmäßigen Zwischenständen." },
+        { "num": "05", "title": "Tests & Qualitätssicherung", "desc": "Automatisierte und manuelle Prüfungen vor der Produktivsetzung." },
+        { "num": "06", "title": "Go-live & Betreuung", "desc": "Begleiteter Rollout inklusive laufender Wartung und technischem Support." }
+      ],
+      "industriesTitle": "Branchen & Einsatzbereiche",
+      "industries": ["Gastronomie & Hotellerie", "Einzelhandel", "Logistik", "Gesundheitswesen", "Bildung", "Mittelstand & B2B"],
+      "ctaTitle1": "Entwickeln wir ein System, das",
+      "ctaTitle2": "exakt zu Ihrem Unternehmen passt.",
+      "ctaDescription": "Schildern Sie uns Ihre Anforderungen in einem unverbindlichen Erstgespräch.",
+      "ctaButton": "Projekt unverbindlich anfragen"
+    },
+    "web-dev": {
+      "metaTitle": "Webdesign & Webanwendungen",
+      "metaDescription": "Modernes Webdesign, individuelle Webanwendungen, SaaS-Plattformen und API-Integrationen – schnell, sicher, skalierbar und DSGVO-freundlich.",
+      "badge": "Moderne Webentwicklung",
+      "heroTitle1": "Individuelle",
+      "heroTitle2": "Webanwendungen",
+      "heroDescription": "CoreLogic Systems konzipiert und entwickelt Webanwendungen, SaaS-Plattformen, Admin-Dashboards und Unternehmensportale – von der Konzeption bis zum Go-live und laufenden Support.",
+      "primaryCta": "Angebot anfragen",
+      "secondaryCta": "Lösungen entdecken",
+      "aboutBadge": "Über diese Leistung",
+      "aboutTitle": "Mehr als Code – verlässliche Web-Plattformen für Ihr Tagesgeschäft.",
+      "aboutDescription": "Bei individueller Webentwicklung stehen konkrete geschäftliche Abläufe im Mittelpunkt. Wir setzen auf wartbare Architekturen: skalierbare SaaS-Lösungen, interne Werkzeuge und performante Portale für Desktop und Mobilgeräte.",
+      "solutionsTitle": "Unsere Web-Lösungen",
+      "solutionsSubtitle": "Moderne Web-Architekturen für anspruchsvolle betriebliche Anforderungen.",
+      "solutions": [
+        { "title": "Maßgeschneiderte Web-Apps", "desc": "Individuell entwickelte Webanwendungen für Ihre konkreten Arbeitsabläufe." },
+        { "title": "SaaS-Plattformen", "desc": "Mandantenfähige Cloud-Architekturen mit Rollenverwaltung und Unterstützung mehrerer Währungen inkl. EUR." },
+        { "title": "Admin-Dashboards", "desc": "Übersichtliche Steuerungsoberflächen mit Echtzeit-Auswertungen und klarer Benutzerführung." },
+        { "title": "Interne Prozessportale", "desc": "Browserbasierte Werkzeuge, die fehleranfällige Tabellen und Insellösungen ablösen." },
+        { "title": "API-Integrationen", "desc": "Verbindung bestehender ERP-, CRM-, Zahlungs- oder Messaging-Dienste in einem System." },
+        { "title": "E-Commerce & Bestellportale", "desc": "Schnelle, mobilfreundliche Produktkataloge und Bestellprozesse." }
+      ],
+      "featuresTitle": "Zentrale Qualitätsmerkmale",
+      "featuresSubtitle": "Das technische Fundament für Stabilität, Sicherheit und hohe Nutzerakzeptanz.",
+      "features": [
+        { "title": "Hohe Performance", "desc": "Optimierte Ladezeiten und saubere Server-/Client-Architektur für flüssige Bedienung." },
+        { "title": "Sicherheit & Datenschutz", "desc": "Verschlüsselte Übertragung, sichere Authentifizierung und datenschutzfreundliche Architektur – auf Wunsch DSGVO-konform umsetzbar." },
+        { "title": "Vollständig responsiv", "desc": "Durchgängige Bedienbarkeit vom großen Monitor über Tablets bis zum Smartphone." },
+        { "title": "Skalierbare Architektur", "desc": "Moderne Datenbanken und Cloud-Deployments, die mit steigenden Nutzerzahlen mitwachsen." }
+      ],
+      "whyPoints": [
+        "Erfahrenes Full-Stack-Entwicklungsteam",
+        "Sauberer, wartbarer TypeScript- & React-Code",
+        "Iterative Umsetzung mit klaren Abstimmungen",
+        "Wartung und technischer Support nach dem Launch",
+        "Auf Wunsch DSGVO-konform umsetzbar"
+      ],
+      "processTitle": "Unser Entwicklungsprozess",
+      "processSubtitle": "Ein planbarer Ablauf von der Idee bis zur produktiven Web-Plattform.",
+      "processSteps": [
+        { "num": "01", "title": "Planung & Analyse", "desc": "Klärung von Zielen, Nutzerrollen, technischen Anforderungen und Meilensteinen." },
+        { "num": "02", "title": "UI/UX-Design", "desc": "Wireframes, interaktive Prototypen und ein konsistentes Oberflächenkonzept." },
+        { "num": "03", "title": "Entwicklung", "desc": "Agile Frontend- und Backend-Implementierung mit modernen Frameworks." },
+        { "num": "04", "title": "Testing & QA", "desc": "Automatisierte und manuelle Tests für Funktion, Sicherheit und Darstellung." },
+        { "num": "05", "title": "Deployment", "desc": "Kontrollierte Bereitstellung in Ihrer Cloud- oder Serverumgebung." },
+        { "num": "06", "title": "Support & Wartung", "desc": "Laufende Updates, Monitoring und zuverlässige technische Unterstützung." }
+      ],
+      "industriesTitle": "Typische Anwendungsfälle",
+      "industries": ["B2B-Kundenportale", "SaaS-Produkte", "Buchungssysteme", "E-Commerce", "Interne Abläufe", "Reporting-Dashboards"],
+      "ctaTitle1": "Planen Sie Ihre nächste",
+      "ctaTitle2": "Web-Plattform?",
+      "ctaDescription": "Besprechen Sie Ihre Anforderungen unverbindlich in einer kostenlosen Erstberatung mit unserem Team.",
+      "ctaButton": "Projekt starten"
+    },
+    "mobile-dev": {
+      "metaTitle": "Mobile-App-Entwicklung (iOS/Android)",
+      "metaDescription": "Individuelle Mobile-Apps für iOS und Android – nativ oder plattformübergreifend, vom Prototyp bis zur Store-Veröffentlichung und Wartung.",
+      "badge": "Mobile-App-Entwicklung",
+      "heroTitle1": "Individuelle",
+      "heroTitle2": "Mobile-Apps",
+      "heroDescription": "Wir konzipieren und entwickeln zuverlässige, nutzerfreundliche Apps für iOS und Android – für Kundenbindung, Außendienstteams und digitale Geschäftsmodelle.",
+      "primaryCta": "App-Projekt anfragen",
+      "secondaryCta": "Lösungen ansehen",
+      "aboutBadge": "Warum eine Mobile-App?",
+      "aboutTitle": "Ihr Service direkt auf dem Smartphone Ihrer Nutzer",
+      "aboutDescription": "Eine durchdachte Mobile-App verbindet Kunden und Mitarbeitende unmittelbar mit Ihren Prozessen. Wir achten auf intuitive Bedienung, stabile Synchronisation und saubere Umsetzung bis zur Veröffentlichung im Apple App Store und bei Google Play.",
+      "solutionsTitle": "Unsere Mobile-Lösungen",
+      "solutionsSubtitle": "App-Entwicklung abgestimmt auf Ihre betrieblichen und geschäftlichen Ziele.",
+      "solutions": [
+        { "title": "Android-App-Entwicklung", "desc": "Performante Anwendungen für die vielfältige Android-Gerätelandschaft." },
+        { "title": "iOS-App-Entwicklung", "desc": "Flüssige, durchdachte Nutzererlebnisse für iPhone und iPad." },
+        { "title": "Cross-Platform-Apps", "desc": "Gemeinsame Codebasis für iOS und Android für effiziente Entwicklung und Wartung." },
+        { "title": "Interne Business-Apps", "desc": "Mobile Werkzeuge für Außendienst, Freigaben, Bestandsprüfung und Einsatzplanung." },
+        { "title": "E-Commerce-Apps", "desc": "Schnelle mobile Produktkataloge, Warenkörbe und Statusbenachrichtigungen." },
+        { "title": "API- & Backend-Anbindung", "desc": "Echtzeit-Synchronisation mit bestehender Web-Plattform, ERP oder CRM." }
+      ],
+      "featuresTitle": "Entwickelt für den Alltag",
+      "featuresSubtitle": "Klare Nutzerführung, sichere Architektur und verlässliche Weiterentwicklung.",
+      "features": [
+        { "title": "Hohe Geschwindigkeit", "desc": "Flüssige Übergänge, kurze Ladezeiten und schlanke App-Pakete." },
+        { "title": "Sichere Architektur", "desc": "Verschlüsselte Kommunikation, sichere Anmeldung und datenschutzfreundliche Umsetzung." },
+        { "title": "Offline-Unterstützung", "desc": "Lokale Zwischenspeicherung und Synchronisation auch bei schwacher Verbindung." },
+        { "title": "Push-Benachrichtigungen", "desc": "Gezielte Statusmeldungen für Termine, Bestellungen und interne Hinweise." }
+      ],
+      "whyPoints": [
+        "iOS & Android aus einer koordinierten Hand",
+        "Nutzerzentriertes Oberflächendesign",
+        "Begleitung bei App Store & Google Play",
+        "Langfristige Updates und technische Pflege"
+      ],
+      "processTitle": "Unser Ablauf",
+      "processSubtitle": "Ein transparenter Prozess vom ersten Konzept bis zur Veröffentlichung.",
+      "processSteps": [
+        { "num": "01", "title": "Idee & Beratung", "desc": "Abstimmung von Zielen, Zielgruppe, Plattformwahl und Funktionsumfang." },
+        { "num": "02", "title": "UI/UX-Design", "desc": "Entwurf mobiler Nutzerflüsse und klickbarer Prototypen." },
+        { "num": "03", "title": "App-Entwicklung", "desc": "Umsetzung in sauberem Code inklusive stabiler Backend-Schnittstellen." },
+        { "num": "04", "title": "Tests & Qualitätssicherung", "desc": "Gründliche Prüfung auf realen Geräten für Stabilität und Bedienbarkeit." },
+        { "num": "05", "title": "Store-Veröffentlichung", "desc": "Strukturierte Einreichung im Apple App Store und bei Google Play." },
+        { "num": "06", "title": "Wartung & Updates", "desc": "Laufende Anpassung an neue OS-Versionen, Monitoring und Erweiterungen." }
+      ],
+      "industriesTitle": "Branchen & Einsatzgebiete",
+      "industries": ["Gastronomie", "E-Commerce", "Logistik", "Bildung", "Außendienst", "Gesundheitswesen"],
+      "ctaTitle1": "Machen Sie aus Ihrer Idee eine",
+      "ctaTitle2": "zuverlässige Mobile-App.",
+      "ctaDescription": "Besprechen Sie Ihr App-Konzept in einer kostenlosen Erstberatung mit unserem Team.",
+      "ctaButton": "Kostenlose Erstberatung anfragen"
+    },
+    "ai-automation": {
+      "metaTitle": "KI-Automatisierung für Unternehmen",
+      "metaDescription": "Praxisnahe KI-Automatisierung: Workflows, mehrsprachige KI-Chatbots und Dokumentenverarbeitung für Unternehmen in NRW und dem DACH-Raum.",
+      "badge": "Praxisnahe KI-Lösungen",
+      "heroTitle1": "KI-Lösungen &",
+      "heroTitle2": "Prozessautomatisierung",
+      "heroDescription": "Wir entwickeln praxisnahe KI-Automatisierung, mehrsprachige Assistenten und Dokumenten-Workflows, die wiederkehrende Routinearbeit reduzieren und sich sauber in Ihre bestehenden Systeme einfügen – datenschutzfreundlich konzipiert und auf Wunsch DSGVO-konform umsetzbar.",
+      "primaryCta": "KI-Beratung anfragen",
+      "secondaryCta": "Lösungen entdecken",
+      "aboutBadge": "Konkreter Nutzen",
+      "aboutTitle": "Manuellen Aufwand senken – Fokus auf das Wesentliche.",
+      "aboutDescription": "Der Einsatz von KI soll Ihr Team entlasten, nicht zusätzliche Komplexität schaffen. Durch die Automatisierung wiederkehrender Anfragen, Datenerfassungen und Dokumentenweiterleitungen gewinnt Ihr Team Zeit für anspruchsvolle Aufgaben.",
+      "solutionsTitle": "Unsere KI-Leistungen",
+      "solutionsSubtitle": "Durchdachte KI-Architekturen, umgesetzt als zuverlässige Werkzeuge im Betrieb.",
+      "solutions": [
+        { "title": "Geschäftsprozessautomatisierung", "desc": "Automatisierung wiederkehrender Arbeitsschritte über Abteilungsgrenzen hinweg." },
+        { "title": "KI-Chatbots & Assistenten", "desc": "Mehrsprachige Assistenten für Kundenanfragen, Lead-Qualifizierung und Terminvorbereitung." },
+        { "title": "Datenanalyse & Berichte", "desc": "Strukturierte Dashboards und automatisierte Zusammenfassungen Ihrer Betriebsdaten." },
+        { "title": "Dokumentenverarbeitung", "desc": "Strukturierte Erfassung, Klassifizierung und Weiterleitung von Formularen und Belegen." },
+        { "title": "Workflow-Orchestrierung", "desc": "Manuelle Freigabeschritte (Human-in-the-Loop), Benachrichtigungen und Protokollierung." },
+        { "title": "API- & Systemintegration", "desc": "Saubere Einbindung in bestehende CRM-, ERP- oder Web-Plattformen." }
+      ],
+      "featuresTitle": "Ihre Vorteile",
+      "featuresSubtitle": "Kontrollierte KI-Anwendungen mit klaren Grenzen und menschlicher Kontrolle.",
+      "features": [
+        { "title": "Weniger Routinearbeit", "desc": "Entlastung Ihres Teams bei Dateneingabe, Vorsortierung und Standardantworten." },
+        { "title": "Schnellere Reaktionszeiten", "desc": "Direkte Beantwortung wiederkehrender Kundenfragen rund um die Uhr." },
+        { "title": "Menschliche Kontrolle", "desc": "Definierte Eskalationspfade und manuelle Freigaben bei sensiblen Entscheidungen." },
+        { "title": "Datenschutzfreundlich konzipiert", "desc": "Datensparsamkeit, klare Systemgrenzen und auf Wunsch DSGVO-konform umsetzbar." }
+      ],
+      "whyPoints": [
+        "Praxisnahe, geschäftsorientierte KI-Entwicklung",
+        "Klare Wissensgrenzen und Sicherheitsleitplanken",
+        "Saubere Integration in vorhandene Systeme",
+        "Mehrsprachige Unterstützung (DE, EN, AR)",
+        "Laufendes Monitoring und Feintuning"
+      ],
+      "processTitle": "So gehen wir vor",
+      "processSubtitle": "Ein strukturierter Weg von der Prozessanalyse bis zum sicheren Produktiveinsatz.",
+      "processSteps": [
+        { "num": "01", "title": "Beratung & Prozessanalyse", "desc": "Identifikation wiederkehrender Aufgaben mit klarem Entlastungspotenzial." },
+        { "num": "02", "title": "Architektur & Leitplanken", "desc": "Definition von Datenflüssen, Datenschutzanforderungen und Freigabeschritten." },
+        { "num": "03", "title": "Aufbau & Konfiguration", "desc": "Einrichtung von Prompts, Tools und strukturierten Ausgaben auf Basis verifizierter Daten." },
+        { "num": "04", "title": "Systemintegration", "desc": "Anbindung an APIs, Datenbanken, CRM oder Kommunikationskanäle." },
+        { "num": "05", "title": "Tests & Bewertung", "desc": "Prüfung von Grenzfällen, Sicherheitsregeln und Antwortqualität vor dem Start." },
+        { "num": "06", "title": "Laufende Betreuung", "desc": "Begleitung im Betrieb, Qualitätskontrolle und gezielte Weiterentwicklung." }
+      ],
+      "industriesTitle": "Typische Einsatzfelder",
+      "industries": ["E-Commerce", "Beratungsunternehmen", "Gesundheitswesen", "Logistik", "Kundenservice", "Immobilien", "B2B-Vertrieb"],
+      "ctaTitle1": "Wiederkehrende Abläufe",
+      "ctaTitle2": "sinnvoll automatisieren?",
+      "ctaDescription": "Lassen Sie uns gemeinsam prüfen, wo KI-Automatisierung Ihr Team sicher und praxisnah unterstützt.",
+      "ctaButton": "Kostenlose Erstberatung anfragen"
+    },
+    "design": {
+      "metaTitle": "Webdesign & UI/UX-Design",
+      "metaDescription": "Nutzerzentriertes Webdesign und UI/UX-Design für Web- und Mobile-Apps: UX-Analyse, Wireframes, Prototypen und Designsysteme. Beratung anfragen.",
+      "badge": "Webdesign & Produktdesign",
+      "heroTitle1": "Nutzerzentriertes",
+      "heroTitle2": "UI/UX-Design",
+      "heroDescription": "Wir gestalten klare, intuitive Oberflächen und konsistente Designsysteme für Webanwendungen, Dashboards und Mobile-Apps – damit komplexe Abläufe einfach bedienbar bleiben.",
+      "primaryCta": "Projekt anfragen",
+      "secondaryCta": "Leistungen entdecken",
+      "aboutBadge": "Design-Ansatz",
+      "aboutTitle": "Design, das komplexe Abläufe verständlich macht",
+      "aboutDescription": "Gutes Produktdesign ist weit mehr als Optik: Es reduziert Bedienhürden, verkürzt Einarbeitungszeiten und führt Nutzer auf Desktop und Smartphone zielgerichtet durch jeden Schritt.",
+      "solutionsTitle": "Unsere Design-Leistungen",
+      "solutionsSubtitle": "Von ersten Wireframes bis zu entwicklungsreifen Komponentenbibliotheken.",
+      "solutions": [
+        { "title": "Mobile-App UI-Design", "desc": "Ergonomische mobile Oberflächen für den täglichen Einsatz." },
+        { "title": "Web-App UI-Design", "desc": "Strukturierte Layouts, die anspruchsvolle Geschäftsanwendungen übersichtlich machen." },
+        { "title": "Dashboards & Admin-Panels", "desc": "Klare Informationshierarchie für operative Teams und Entscheider." },
+        { "title": "Wireframing & Prototyping", "desc": "Interaktive Prototypen zur frühen Prüfung von Abläufen vor der Entwicklung." },
+        { "title": "UX-Analyse & Reviews", "desc": "Bewertung bestehender Anwendungen zur Beseitigung typischer Reibungspunkte." },
+        { "title": "Designsysteme", "desc": "Wiederverwendbare Komponenten, Typografie- und Farbrichtlinien für konsistente Produkte." }
+      ],
+      "featuresTitle": "Warum CoreLogic Systems",
+      "featuresSubtitle": "Design und Entwicklung arbeiten Hand in Hand, sodass jeder Entwurf sauber umgesetzt wird.",
+      "features": [
+        { "title": "Hohe Benutzerfreundlichkeit", "desc": "Klare Navigation und weniger Rückfragen bei Kunden und internen Teams." },
+        { "title": "Übersicht & Abschlussstärke", "desc": "Fokussierte Benutzerführung entlang der wichtigsten Handlungsziele." },
+        { "title": "Responsiv & mehrsprachig", "desc": "Gedacht für Smartphone, Tablet und Desktop – inklusive langer Texte und RTL-Layouts." },
+        { "title": "Entwicklungsreife Übergabe", "desc": "Strukturierte Vorgaben und Komponenten für eine reibungslose Implementierung." }
+      ],
+      "whyPoints": [
+        "Produktorientiertes UX-Denken",
+        "Enge Abstimmung mit der Frontend-Entwicklung",
+        "Erfahrung mit Mehrsprachigkeit (DE, EN, AR/RTL)",
+        "Klare, moderne Formensprache",
+        "Iterative Feedbackschleifen"
+      ],
+      "processTitle": "Unser Designprozess",
+      "processSubtitle": "Ein strukturierter Ablauf von der Analyse bis zur Übergabe an die Entwicklung.",
+      "processSteps": [
+        { "num": "01", "title": "Nutzer- & Prozessanalyse", "desc": "Verständnis Ihrer Zielgruppen, Arbeitsabläufe und Anforderungen." },
+        { "num": "02", "title": "Informationsarchitektur", "desc": "Strukturierung von Nutzerwegen, Ansichten und zentralen Wireframes." },
+        { "num": "03", "title": "Visuelles Design", "desc": "Ausarbeitung von Typografie, Farbhierarchie und Markenwirkung." },
+        { "num": "04", "title": "Interaktive Prototypen", "desc": "Klickbare Abläufe zur frühzeitigen Prüfung im Team." },
+        { "num": "05", "title": "Feedback & Feinschliff", "desc": "Gezielte Überarbeitung auf Basis realer Rückmeldungen." },
+        { "num": "06", "title": "Übergabe an die Entwicklung", "desc": "Bereitstellung sauber dokumentierter Komponenten und Design-Tokens." }
+      ],
+      "industriesTitle": "Design-Schwerpunkte",
+      "industries": ["SaaS-Produkte", "ERP- & CRM-Dashboards", "Buchungsportale", "Mobile-Apps", "E-Commerce", "Unternehmenswebsites"],
+      "ctaTitle1": "Gestalten wir eine Oberfläche, die",
+      "ctaTitle2": "Ihre Nutzer gerne bedienen.",
+      "ctaDescription": "Vereinbaren Sie eine kostenlose Erstberatung zur Bewertung Ihres Produkts oder zur Planung einer neuen Oberfläche.",
+      "ctaButton": "Kostenlose UI/UX-Beratung anfragen"
+    }
+  },
+  "privacy": {
+    "title": "Allgemeine Datenschutzhinweise",
+    "intro": "Der Schutz Ihrer personenbezogenen Daten ist für CoreLogic Systems ein zentrales Anliegen. Diese Seite bietet einen allgemeinen Überblick. Für Besucherinnen und Besucher aus Deutschland und der EU steht zudem unsere ausführliche Datenschutzerklärung mit Übersicht aller eingesetzten Drittanbieter bereit.",
+    "datenschutzLinkLabel": "Zur Datenschutzerklärung (DSGVO-Übersicht / Datenschutz)",
+    "sections": [
+      {
+        "heading": "1. Welche Angaben wir verarbeiten",
+        "body": "Wir verarbeiten Angaben, die Sie uns freiwillig über das Kontaktformular, per E-Mail, im KI-Chat-Assistenten oder im Rahmen einer Beratungsanfrage übermitteln – beispielsweise Ihren Namen, Ihre E-Mail-Adresse, Ihre Telefon- oder WhatsApp-Nummer sowie eine kurze Projektbeschreibung."
+      },
+      {
+        "heading": "2. Zweck der Verarbeitung",
+        "body": "Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage, zur Terminabstimmung, zur Angebotserstellung sowie für den angeforderten technischen Support genutzt. Eine Weitergabe zu Werbezwecken oder ein Verkauf Ihrer Daten findet nicht statt."
+      },
+      {
+        "heading": "3. Datensicherheit & technische Dienstleister",
+        "body": "Wir setzen verschlüsselte Datenübertragung (HTTPS) und Zugriffsbeschränkungen ein. Eine vollständige Auflistung aller auf dieser Website eingebundenen Infrastruktur- und Drittanbieterdienste finden Sie auf unserer Datenschutz-Seite."
+      },
+      {
+        "heading": "4. Änderungen dieser Hinweise",
+        "body": "Wir passen diese Hinweise an, sobald Änderungen unserer Dienste oder rechtlicher Vorgaben dies erfordern."
+      },
+      {
+        "heading": "5. Kontakt",
+        "body": "Bei Fragen zum Datenschutz oder zur Löschung Ihrer Anfrage wenden Sie sich bitte über unsere Kontaktseite oder per E-Mail an contact@corelogic-system.my an uns."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "intro": "Willkommen bei CoreLogic Systems. Für die Nutzung dieser Website gelten die folgenden allgemeinen Hinweise:",
+    "sections": [
+      {
+        "heading": "1. Geltungsbereich",
+        "body": "Diese Hinweise regeln die allgemeine Nutzung der Website von CoreLogic Systems. Für individuelle Software-, Design- oder KI-Projekte gelten ausschließlich gesondert geschlossene schriftliche Projektverträge (z. B. Werk- oder Dienstverträge), die Leistungsumfang, Zeitplan und Vergütung (im B2B-Bereich regelmäßig zzgl. MwSt.) verbindlich festlegen."
+      },
+      {
+        "heading": "2. Leistungsbeschreibung",
+        "body": "Wir bieten individuelle Softwareentwicklung, Web- und Mobile-Anwendungen, UI/UX-Design sowie KI-Prozessautomatisierung an. Erste Einschätzungen oder Richtwerte vor einer technischen Anforderungsprüfung sind unverbindlich."
+      },
+      {
+        "heading": "3. Urheber- und Nutzungsrechte",
+        "body": "Sämtliche Inhalte dieser Website (Texte, Grafiken, Logos) unterliegen dem Schutz von CoreLogic Systems und dürfen ohne vorherige Zustimmung nicht vervielfältigt werden. Nutzungs- und Rechteübertragungen an kundenspezifischer Software richten sich nach dem jeweiligen Projektvertrag."
+      },
+      {
+        "heading": "4. Haftungshinweis",
+        "body": "Wir pflegen die Inhalte dieser Website mit größter Sorgfalt, können jedoch keine Gewähr für eine ununterbrochene Verfügbarkeit oder Fehlerfreiheit übernehmen. Gesetzliche Haftungsansprüche bleiben unberührt."
+      },
+      {
+        "heading": "5. Anpassungen",
+        "body": "Wir behalten uns vor, diese Nutzungsbedingungen bei Bedarf zu aktualisieren. Es gilt jeweils die auf dieser Seite veröffentlichte Fassung."
+      }
+    ]
+  }
+}

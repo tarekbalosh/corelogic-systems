@@ -31,6 +31,7 @@ import {
 } from "@/components/chat/chat-strings";
 import { SafeMarkdown } from "@/components/chat/safe-markdown";
 import { SlotsPicker } from "@/components/chat/slots-picker";
+import { getLocaleFromPathname } from "@/lib/i18n-config";
 
 const LOCAL_SESSION_ID_KEY = "corelogic_chat_session_id";
 const SESSION_MESSAGES_KEY = "corelogic_chat_messages_v1";
@@ -42,6 +43,7 @@ interface StoredBookingCard {
   status: PolledBookingStatus;
   label_en: string;
   label_ar: string;
+  label_de?: string;
   startsAt: string;
 }
 
@@ -147,12 +149,11 @@ export default function ChatWidget({
 }: ChatWidgetProps) {
   const pathname = usePathname();
   const dialogTitleId = useId();
-  const pageIsArabic = pathname.startsWith("/ar");
+  const pageLocale: UiLanguage = getLocaleFromPathname(pathname);
+  const pageIsArabic = pageLocale === "ar";
 
   const [isOpen, setIsOpen] = useState(false);
-  const [uiLang, setUiLang] = useState<UiLanguage>(() =>
-    pageIsArabic ? "ar" : "en"
-  );
+  const [uiLang, setUiLang] = useState<UiLanguage>(() => pageLocale);
   const [sessionId] = useState<string>(() =>
     typeof window !== "undefined" ? getOrCreateSessionId() : ""
   );
@@ -171,15 +172,15 @@ export default function ChatWidget({
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
-  const prevPageArabicRef = useRef(pageIsArabic);
+  const prevPageLocaleRef = useRef<UiLanguage>(pageLocale);
 
-  // Sync UI language when visitor switches site locale (/ <-> /ar) if they haven't started chatting
+  // Sync UI language when visitor switches site locale (/en <-> /de <-> /ar)
   useEffect(() => {
-    if (prevPageArabicRef.current !== pageIsArabic) {
-      prevPageArabicRef.current = pageIsArabic;
-      setUiLang(pageIsArabic ? "ar" : "en");
+    if (prevPageLocaleRef.current !== pageLocale) {
+      prevPageLocaleRef.current = pageLocale;
+      setUiLang(pageLocale);
     }
-  }, [pageIsArabic]);
+  }, [pageLocale]);
 
   // Persist visible messages in sessionStorage
   useEffect(() => {
@@ -467,6 +468,7 @@ export default function ChatWidget({
                             status: event.status,
                             label_en: event.label_en,
                             label_ar: event.label_ar,
+                            label_de: event.label_de,
                             startsAt: event.startsAt,
                           },
                         }
@@ -602,7 +604,9 @@ export default function ChatWidget({
               <button
                 type="button"
                 onClick={() =>
-                  setUiLang((prev) => (prev === "en" ? "ar" : "en"))
+                  setUiLang((prev) =>
+                    prev === "en" ? "de" : prev === "de" ? "ar" : "en"
+                  )
                 }
                 aria-label={strings.langToggleLabel}
                 className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
@@ -716,7 +720,11 @@ export default function ChatWidget({
                         chosenStartsAt={msg.chosenSlotIso}
                         onSelectSlot={(slot) => {
                           const label =
-                            uiLang === "ar" ? slot.label_ar : slot.label_en;
+                            uiLang === "ar"
+                              ? slot.label_ar
+                              : uiLang === "de"
+                                ? slot.label_de || slot.label_en
+                                : slot.label_en;
                           const text = `${strings.slotChosenPrefix} ${label}`;
                           void sendMessage(text, {
                             selectedSlot: slot.startsAt,
@@ -736,6 +744,7 @@ export default function ChatWidget({
                         initialStatus={msg.booking.status}
                         labelEn={msg.booking.label_en}
                         labelAr={msg.booking.label_ar}
+                        labelDe={msg.booking.label_de}
                         uiLang={uiLang}
                         onStatusChange={handleBookingStatusUpdate}
                       />

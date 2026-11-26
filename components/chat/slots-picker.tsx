@@ -36,11 +36,16 @@ export function SlotsPicker({
     const indexByKey = new Map<string, number>();
 
     for (const slot of slots) {
-      const key = slot.dayKey || slot.startsAt.slice(0, 10);
+      const key =
+        uiLang === "de"
+          ? slot.dayKey_de || slot.dayKey || slot.startsAt.slice(0, 10)
+          : slot.dayKey || slot.startsAt.slice(0, 10);
       const dayHeader =
         uiLang === "ar"
           ? slot.dayLabel_ar || slot.label_ar
-          : slot.dayLabel_en || slot.label_en;
+          : uiLang === "de"
+            ? slot.dayLabel_de || slot.label_de || slot.dayLabel_en
+            : slot.dayLabel_en || slot.label_en;
 
       const existingIdx = indexByKey.get(key);
       if (existingIdx === undefined) {
@@ -77,7 +82,9 @@ export function SlotsPicker({
                 const timeText =
                   uiLang === "ar"
                     ? slot.timeRange_ar || slot.label_ar
-                    : slot.timeRange_en || slot.label_en;
+                    : uiLang === "de"
+                      ? slot.timeRange_de || slot.label_de || slot.timeRange_en
+                      : slot.timeRange_en || slot.label_en;
 
                 return (
                   <button
@@ -101,7 +108,10 @@ export function SlotsPicker({
                     {isSelected ? (
                       <Check className="h-3 w-3 shrink-0" aria-hidden="true" />
                     ) : (
-                      <Clock className="h-3 w-3 shrink-0 opacity-70" aria-hidden="true" />
+                      <Clock
+                        className="h-3 w-3 shrink-0 opacity-70"
+                        aria-hidden="true"
+                      />
                     )}
                     <span dir="auto">{timeText}</span>
                   </button>

@@ -177,6 +177,7 @@ export type ChatRateLimitDecision =
       retryAfterSeconds: number;
       message_en: string;
       message_ar: string;
+      message_de: string;
     };
 
 export async function checkChatRateLimits(params: {
@@ -202,6 +203,8 @@ export async function checkChatRateLimits(params: {
         "Our AI assistant has reached today's usage limit. Please contact our team directly via WhatsApp or the Contact page and we will respond promptly.",
       message_ar:
         "وصل المساعد الذكي إلى الحد اليومي للاستخدام. يرجى التواصل مع فريقنا مباشرة عبر واتساب أو صفحة تواصل معنا وسنرد عليك في أقرب وقت.",
+      message_de:
+        "Unser KI-Assistent hat das heutige Nutzungslimit erreicht. Bitte kontaktieren Sie unser Team direkt per WhatsApp oder über die Kontaktseite – wir melden uns zeitnah bei Ihnen.",
     };
   }
 
@@ -224,6 +227,8 @@ export async function checkChatRateLimits(params: {
         "You have sent many messages in a short period. Please wait a few minutes and try again.",
       message_ar:
         "لقد أرسلت عدداً كبيراً من الرسائل خلال وقت قصير. يرجى الانتظار بضع دقائق ثم المحاولة مرة أخرى.",
+      message_de:
+        "Sie haben in kurzer Zeit sehr viele Nachrichten gesendet. Bitte warten Sie einige Minuten und versuchen Sie es erneut.",
     };
   }
 
@@ -247,6 +252,8 @@ export async function checkChatRateLimits(params: {
         "Hourly message limit reached from this network. Please try again later or message us on WhatsApp.",
       message_ar:
         "تم الوصول إلى الحد المسموح للرسائل خلال الساعة من هذه الشبكة. يرجى المحاولة لاحقاً أو مراسلتنا عبر واتساب.",
+      message_de:
+        "Das stündliche Nachrichtenlimit für dieses Netzwerk wurde erreicht. Bitte versuchen Sie es später erneut oder schreiben Sie uns auf WhatsApp.",
     };
   }
 

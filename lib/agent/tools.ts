@@ -130,7 +130,7 @@ export const toolDefinitions: Anthropic.Messages.Tool[] = [
   {
     name: "get_available_slots",
     description:
-      "Retrieve available 30-minute consultation time slots (in UTC with English and Arabic MYT labels) for up to 14 days ahead.",
+      "Retrieve available 30-minute consultation time slots (in UTC with English/Arabic MYT labels and German Europe/Berlin MEZ/MESZ labels) for up to 14 days ahead.",
     input_schema: {
       type: "object",
       properties: {
@@ -305,17 +305,7 @@ export type ToolExecutionResult =
     }
   | {
       ok: true;
-      slots: Array<{
-        startsAt: string;
-        endsAt: string;
-        label_en: string;
-        label_ar: string;
-        dayKey: string;
-        dayLabel_en: string;
-        dayLabel_ar: string;
-        timeRange_en: string;
-        timeRange_ar: string;
-      }>;
+      slots: AvailableSlot[];
       moreAvailable: boolean;
       timezone: string;
     }
@@ -327,6 +317,7 @@ export type ToolExecutionResult =
       endsAt: string;
       label_en: string;
       label_ar: string;
+      label_de?: string;
     }
   | {
       ok: true;
@@ -628,6 +619,7 @@ export async function executeTool(
             endsAt: booking.endsAt.toISOString(),
             label_en: labels.label_en,
             label_ar: labels.label_ar,
+            label_de: labels.label_de,
           };
         } catch (err) {
           if (err instanceof SlotUnavailableError) {

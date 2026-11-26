@@ -5,50 +5,99 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  hasLocale,
+  LOCALE_COOKIE_NAME,
+  localeMetadata,
+  locales,
+  localizedPath,
+  stripLocalePrefix,
+  type Locale,
+} from "@/lib/i18n-config";
 
 interface LanguageSwitcherProps {
-  currentLocale: "en" | "ar";
+  currentLocale: Locale;
   className?: string;
+}
+
+const NON_LOCALIZED_PREFIXES = [
+  "/blog",
+  "/careers",
+  "/news",
+  "/technology",
+  "/portal",
+  "/admin",
+];
+
+function persistLocaleCookie(locale: Locale) {
+  if (typeof document === "undefined") return;
+  const maxAge = 60 * 60 * 24 * 365; // 1 year
+  document.cookie = `${LOCALE_COOKIE_NAME}=${locale}; Path=/; Max-Age=${maxAge}; SameSite=Lax`;
 }
 
 export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   currentLocale,
   className,
 }) => {
-  const pathname = usePathname();
+  const pathname = usePathname() || `/${currentLocale}`;
 
-  // Build the alternate path
-  const getAlternatePath = () => {
-    if (currentLocale === "en") {
-      // English -> Arabic: prepend /ar
-      return `/ar${pathname}`;
-    } else {
-      // Arabic -> English: remove /ar prefix
-      return pathname.replace(/^\/ar/, "") || "/";
-    }
+  const buildTargetHref = (targetLocale: Locale): string => {
+    const firstSeg = pathname.split("/")[1] ?? "";
+    const isPrefixed = hasLocale(firstSeg);
+    const isNonLocalized =
+      !isPrefixed &&
+      NON_LOCALIZED_PREFIXES.some(
+        (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`)
+      );
+
+    return isNonLocalized
+      ? localizedPath("/", targetLocale)
+      : localizedPath(stripLocalePrefix(pathname), targetLocale);
   };
 
-  const alternateLocale = currentLocale === "en" ? "ar" : "en";
-  const label = currentLocale === "en" ? "العربية" : "English";
-
   return (
-    <Link
-      href={getAlternatePath()}
-      hrefLang={alternateLocale}
+    <div
+      role="group"
+      aria-label={
+        currentLocale === "de"
+          ? "Sprache wählen"
+          : currentLocale === "ar"
+            ? "اختر اللغة"
+            : "Select language"
+      }
       className={cn(
-        "group inline-flex items-center gap-2 px-4 py-2 rounded-full",
-        "bg-foreground/5 border border-foreground/10",
-        "hover:bg-primary/10 hover:border-primary/30 hover:text-primary",
-        "transition-all duration-300 text-sm font-semibold text-foreground/70",
-        "shadow-sm hover:shadow-md hover:shadow-primary/5",
+        "inline-flex items-center gap-1 rounded-full bg-foreground/5 border border-foreground/10 p-1 shadow-sm",
         className
       )}
     >
       <Globe
-        size={16}
-        className="text-foreground/40 group-hover:text-primary transition-colors duration-300"
+        size={14}
+        aria-hidden="true"
+        className="mx-1.5 shrink-0 text-foreground/45"
       />
-      <span className="tracking-wide">{label}</span>
-    </Link>
+      {locales.map((loc) => {
+        const meta = localeMetadata[loc];
+        const isActive = loc === currentLocale;
+        return (
+          <Link
+            key={loc}
+            href={buildTargetHref(loc)}
+            hrefLang={loc}
+            lang={loc}
+            aria-current={isActive ? "true" : undefined}
+            title={meta.nativeLabel}
+            onClick={() => persistLocaleCookie(loc)}
+            className={cn(
+              "px-2.5 py-1 rounded-full text-xs font-bold tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+              isActive
+                ? "bg-primary text-white shadow-sm"
+                : "text-foreground/70 hover:text-primary hover:bg-primary/10"
+            )}
+          >
+            {meta.shortLabel}
+          </Link>
+        );
+      })}
+    </div>
   );
 };

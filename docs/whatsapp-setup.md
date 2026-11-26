@@ -43,7 +43,7 @@ Temporary tokens shown in **API Setup** expire after 24 hours. For production, c
 
 Open [WhatsApp Manager → Message Templates](https://business.facebook.com/latest/whatsapp_manager/message_templates) and create the 5 **Utility** templates below.
 
-> **Important:** Template names and variable numbers (`{{1}}`, `{{2}}`, ...) must match the table below. Centralized names/locales live in `lib/whatsapp/config.ts` so you can also override them with env vars (`WHATSAPP_TPL_*`, `WHATSAPP_OWNER_TEMPLATE_LANG`, `WHATSAPP_CUSTOMER_LANG_AR`, `WHATSAPP_CUSTOMER_LANG_EN`) without changing logic.
+> **Important:** Template names and variable numbers (`{{1}}`, `{{2}}`, ...) must match the table below. Centralized names/locales live in `lib/whatsapp/config.ts` so you can also override them with env vars (`WHATSAPP_TPL_*`, `WHATSAPP_OWNER_TEMPLATE_LANG`, `WHATSAPP_CUSTOMER_LANG_AR`, `WHATSAPP_CUSTOMER_LANG_EN`, `WHATSAPP_CUSTOMER_LANG_DE`) without changing logic.
 
 ### 3.1 Owner Templates (Language: Arabic `ar` — or match `WHATSAPP_OWNER_TEMPLATE_LANG`)
 
@@ -98,9 +98,9 @@ Open [WhatsApp Manager → Message Templates](https://business.facebook.com/late
 
 ---
 
-### 3.2 Customer Templates (Create in **both** Arabic `ar` and English `en` under the same template name)
+### 3.2 Customer Templates (Create in **Arabic `ar`**, **English `en`**, and **German `de`** under the same template name)
 
-Meta WhatsApp Manager allows adding multiple translations (`ar` and `en`) inside the **same** template name. Add both languages for each template below:
+Meta WhatsApp Manager allows adding multiple translations (`ar`, `en`, and `de`) inside the **same** template name. Add all three languages for each template below (do **not** change template names or variable order):
 
 #### 4) `booking_confirmed_customer`
 - **Category:** Utility
@@ -112,9 +112,13 @@ Meta WhatsApp Manager allows adding multiple translations (`ar` and `en`) inside
   ```text
   Hello {{1}}, your consultation appointment with CoreLogic Systems is confirmed for: {{2}}. Our team looks forward to speaking with you.
   ```
-- **Variables order:**
+- **German (`de`) Body (Formal „Sie“):**
+  ```text
+  Guten Tag {{1}}, Ihr Beratungstermin bei CoreLogic Systems wurde für {{2}} bestätigt. Unser Team freut sich auf das Gespräch mit Ihnen.
+  ```
+- **Variables order (unchanged across all languages):**
   - `{{1}}` = Customer Name
-  - `{{2}}` = Confirmed Date & Time (with MYT timezone label)
+  - `{{2}}` = Confirmed Date & Time (for `de`: formatted in `Europe/Berlin` with `MEZ`/`MESZ` DST label; for `en`/`ar`: with `MYT` timezone label)
 
 #### 5) `booking_rejected_customer`
 - **Category:** Utility
@@ -126,9 +130,13 @@ Meta WhatsApp Manager allows adding multiple translations (`ar` and `en`) inside
   ```text
   Hello {{1}}, regarding your requested consultation slot ({{2}}), that time is unfortunately unavailable. Our team at CoreLogic Systems will follow up shortly to propose an alternative time.
   ```
-- **Variables order:**
+- **German (`de`) Body (Formal „Sie“):**
+  ```text
+  Guten Tag {{1}}, bezüglich Ihrer Terminanfrage ({{2}}) ist dieser Zeitpunkt leider nicht mehr verfügbar. Unser Team von CoreLogic Systems meldet sich in Kürze bei Ihnen, um einen passenden Ausweichtermin vorzuschlagen.
+  ```
+- **Variables order (unchanged across all languages):**
   - `{{1}}` = Customer Name
-  - `{{2}}` = Requested Date & Time (with MYT timezone label)
+  - `{{2}}` = Requested Date & Time (for `de`: formatted in `Europe/Berlin` with `MEZ`/`MESZ` DST label; for `en`/`ar`: with `MYT` timezone label)
 
 ---
 

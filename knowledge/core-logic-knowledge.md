@@ -8,8 +8,8 @@
 - **Brand Name:** CoreLogic Systems (also written as Core Logic Systems; Arabic: كورلوجيك سيستمز)
 - **Website:** https://www.corelogic-system.my (canonical domain: `corelogic-system.my`)
 - **Location:** Menara IQ (Lot C7), Tun Razak Exchange (TRX), 55188 Kuala Lumpur, Malaysia *(Note: exact office/unit details and registered legal entity name are pending owner confirmation — do not make contractual representations about legal registration).*
-- **Languages Supported:** English and Arabic
-- **Timezone:** Malaysia Time (`Asia/Kuala_Lumpur`, MYT, UTC+8)
+- **Languages Supported:** English (`en`), German (`de`), and Arabic (`ar`)
+- **Timezone:** Malaysia Time (`Asia/Kuala_Lumpur`, MYT, UTC+8); for German visitors, consultation slots are converted and displayed in `Europe/Berlin` (MEZ/MESZ with automatic DST handling)
 - **What We Do:** CoreLogic Systems is a software development company in Kuala Lumpur that designs, builds, deploys, and maintains custom business software, web applications, mobile apps (iOS & Android), UI/UX design systems, and AI-powered workflow automation for growing businesses.
 
 ---
@@ -77,7 +77,7 @@
 ---
 
 ## 6. Published Portfolio / Reference Projects
- Visitors can browse case studies on `/our-projects` (`/ar/our-projects` in Arabic):
+ Visitors can browse case studies on `/en/our-projects`, `/de/our-projects`, and `/ar/our-projects`:
 1. **Accounting Pro** — Centralized restaurant/financial accounting & inventory dashboard (`https://account-systems.vercel.app/`).
 2. **POS System** — Tablet-optimized restaurant POS with kitchen display and offline mode (`https://system-pos-resturant.vercel.app/pos`).
 3. **Student Visa Management** — Agency platform for student study-abroad applications, visa status tracking, and document archiving (`https://management-students.vercel.app/dashboard`).
@@ -94,7 +94,8 @@
 ---
 
 ## 7. Pricing, Timelines & Commercial Policy
-- **Currency:** Malaysian Ringgit (MYR) is the primary local currency for quotes unless the team prepares a custom international proposal.
+- **Currency:** Multi-currency proposals are possible including EUR (for German/European B2B projects, prices are quoted excl. VAT / *zzgl. MwSt.*); Malaysian Ringgit (MYR) is used for local Malaysian quotes.
+- **Data Protection:** New software and AI projects are designed to be privacy-friendly (*datenschutzfreundlich konzipiert*) and can be implemented to GDPR requirements on request (*auf Wunsch DSGVO-konform umsetzbar*). Never claim existing reference projects are already GDPR-certified.
 - **Indicative Pricing Status:** `[OWNER_TODO: Specific indicative MYR price ranges per project tier have not yet been entered into this file.]`
   - Until exact MYR ranges are added by management, **do not invent numbers**. Explain that pricing depends on scope, integrations, user roles, and platforms, and offer to collect brief project details so the technical team can share an accurate **indicative estimate** or formal quote.
   - Whenever any indicative range is discussed (once configured), always label it clearly as an **indicative estimate** (*تقدير مبدئي استرشادي*) and state that the final price and timeline are determined only after the engineering team reviews the full requirements.
@@ -107,4 +108,5 @@
 ## 8. Standard Escalation Wording
 When a question falls outside this knowledge base, involves contracts/legal terms, requests custom pricing/discounts, requires deep architectural review, or when the visitor asks to speak with a human:
 - **English:** *"To give you an accurate answer on this, I will pass your request directly to our technical team at CoreLogic Systems so a specialist can follow up with you on WhatsApp."*
+- **German (Formal „Sie“):** *"Um Ihnen hierzu eine verlässliche Auskunft zu geben, leite ich Ihre Anfrage direkt an unser Technikteam bei CoreLogic Systems weiter, damit sich ein Ansprechpartner über WhatsApp bei Ihnen meldet."*
 - **Arabic:** *"لإعطائك إجابة دقيقة ومعتمدة بخصوص هذه النقطة، سأقوم بتحويل طلبك مباشرة إلى الفريق المختص في كورلوجيك سيستمز ليتواصل معك عبر واتساب."*

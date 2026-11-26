@@ -25,6 +25,7 @@ export const WHATSAPP_CONFIG = {
       languages: {
         ar: process.env.WHATSAPP_CUSTOMER_LANG_AR ?? "ar",
         en: process.env.WHATSAPP_CUSTOMER_LANG_EN ?? "en",
+        de: process.env.WHATSAPP_CUSTOMER_LANG_DE ?? "de",
       },
     },
     bookingRejectedCustomer: {
@@ -34,6 +35,7 @@ export const WHATSAPP_CONFIG = {
       languages: {
         ar: process.env.WHATSAPP_CUSTOMER_LANG_AR ?? "ar",
         en: process.env.WHATSAPP_CUSTOMER_LANG_EN ?? "en",
+        de: process.env.WHATSAPP_CUSTOMER_LANG_DE ?? "de",
       },
     },
     escalationAlert: {

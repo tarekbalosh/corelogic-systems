@@ -162,3 +162,22 @@ h1, h2, h3, h4, .font-heading {
   padding-left: 2.5rem;
   padding-right: 1.25rem;
 }
+
+/* ===== German Typography & Long Compound Word Wrapping ===== */
+html[lang="de"] h1,
+html[lang="de"] h2,
+html[lang="de"] h3,
+html[lang="de"] h4,
+html[lang="de"] p,
+html[lang="de"] li {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+html[lang="de"] h1,
+html[lang="de"] h2,
+html[lang="de"] h3,
+html[lang="de"] h4 {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}

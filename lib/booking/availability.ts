@@ -3,6 +3,7 @@ import { formatInTimeZone, fromZonedTime } from "date-fns-tz";
 import prisma from "@/lib/db";
 
 export const DEFAULT_BUSINESS_TIMEZONE = "Asia/Kuala_Lumpur";
+export const GERMAN_VISITOR_TIMEZONE = "Europe/Berlin";
 export const DEFAULT_MEETING_DURATION_MINUTES = 30;
 export const DEFAULT_BOOKING_WINDOW_DAYS = 14;
 export const MIN_ADVANCE_NOTICE_MS = 2 * 60 * 60 * 1000; // 2 hours
@@ -30,6 +31,16 @@ const EN_SHORT_MONTHS = [
   "Oct",
   "Nov",
   "Dec",
+] as const;
+
+const DE_WEEKDAYS = [
+  "Sonntag",
+  "Montag",
+  "Dienstag",
+  "Mittwoch",
+  "Donnerstag",
+  "Freitag",
+  "Samstag",
 ] as const;
 
 const AR_WEEKDAYS = [
@@ -62,11 +73,16 @@ export interface AvailableSlot {
   endsAt: string;
   label_en: string;
   label_ar: string;
+  label_de?: string;
   dayKey: string;
+  dayKey_de?: string;
   dayLabel_en: string;
   dayLabel_ar: string;
+  dayLabel_de?: string;
   timeRange_en: string;
   timeRange_ar: string;
+  timeRange_de?: string;
+  timezone_de?: string;
 }
 
 export interface GetAvailableSlotsOptions {
@@ -131,6 +147,35 @@ export function getBusinessTimezone(): string {
   return raw && raw.length > 0 ? raw : DEFAULT_BUSINESS_TIMEZONE;
 }
 
+/**
+ * Returns the display/input timezone for a visitor's language.
+ * German visitors always see and interact in `Europe/Berlin` (with automatic CET/MEZ & CEST/MESZ DST).
+ */
+export function getVisitorTimezone(lang?: string | null): string {
+  return lang === "de" ? GERMAN_VISITOR_TIMEZONE : getBusinessTimezone();
+}
+
+/**
+ * Converts a local wall-clock date/time string (e.g. "2026-07-15T10:00:00") in the given
+ * IANA timezone (such as "Europe/Berlin") into an exact UTC Date instant for storage,
+ * accounting automatically for DST (MEZ UTC+1 / MESZ UTC+2).
+ */
+export function parseVisitorLocalTimeToUtc(
+  localDateTimeIso: string,
+  timeZone: string = GERMAN_VISITOR_TIMEZONE
+): Date {
+  return fromZonedTime(localDateTimeIso, timeZone);
+}
+
+/**
+ * Determines the German timezone abbreviation (MEZ for CET UTC+1, MESZ for CEST UTC+2)
+ * for an exact UTC instant in `Europe/Berlin`.
+ */
+export function getBerlinTimezoneLabel(dateUtc: Date): "MEZ" | "MESZ" {
+  const offset = formatInTimeZone(dateUtc, GERMAN_VISITOR_TIMEZONE, "XXX");
+  return offset === "+02:00" ? "MESZ" : "MEZ";
+}
+
 export function getMeetingDurationMinutes(): number {
   const parsed = Number.parseInt(
     process.env.MEETING_DURATION_MINUTES ?? "",
@@ -176,14 +221,29 @@ function format12HourAr(hour24: number, minute: number): string {
   return `${hour12}:${mm} ${period}`;
 }
 
+function format24HourDe(hour24: number, minute: number): string {
+  const hh = String(hour24).padStart(2, "0");
+  const mm = String(minute).padStart(2, "0");
+  return `${hh}:${mm}`;
+}
+
 /**
- * Formats localized English and Arabic slot labels in the configured business timezone.
+ * Formats localized English, Arabic (business timezone MYT) and German
+ * (`Europe/Berlin` with automatic MEZ/MESZ DST handling and `Intl` de-DE date format)
+ * slot labels from exact UTC timestamps.
  */
 export function formatSlotLabels(
   startsAtUtc: Date,
   endsAtUtc: Date,
   timeZone: string = getBusinessTimezone()
-): Omit<AvailableSlot, "startsAt" | "endsAt"> {
+): Omit<AvailableSlot, "startsAt" | "endsAt"> & {
+  label_de: string;
+  dayKey_de: string;
+  dayLabel_de: string;
+  timeRange_de: string;
+  timezone_de: string;
+} {
+  // Business timezone (MYT) labels for EN / AR
   const isoDow = Number.parseInt(
     formatInTimeZone(startsAtUtc, timeZone, "i"),
     10
@@ -236,14 +296,57 @@ export function formatSlotLabels(
       ? "بتوقيت ماليزيا — MYT (Malaysia time)"
       : `${timeZone}`;
 
+  // German labels in Europe/Berlin (automatic CET/MEZ & CEST/MESZ DST + Intl de-DE date)
+  const deIsoDow = Number.parseInt(
+    formatInTimeZone(startsAtUtc, GERMAN_VISITOR_TIMEZONE, "i"),
+    10
+  );
+  const deDow = deIsoDow % 7;
+  const dayKey_de = formatInTimeZone(
+    startsAtUtc,
+    GERMAN_VISITOR_TIMEZONE,
+    "yyyy-MM-dd"
+  );
+  const deDateFormatted = new Intl.DateTimeFormat("de-DE", {
+    timeZone: GERMAN_VISITOR_TIMEZONE,
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).format(startsAtUtc);
+  const deStartHour = Number.parseInt(
+    formatInTimeZone(startsAtUtc, GERMAN_VISITOR_TIMEZONE, "H"),
+    10
+  );
+  const deStartMin = Number.parseInt(
+    formatInTimeZone(startsAtUtc, GERMAN_VISITOR_TIMEZONE, "m"),
+    10
+  );
+  const deEndHour = Number.parseInt(
+    formatInTimeZone(endsAtUtc, GERMAN_VISITOR_TIMEZONE, "H"),
+    10
+  );
+  const deEndMin = Number.parseInt(
+    formatInTimeZone(endsAtUtc, GERMAN_VISITOR_TIMEZONE, "m"),
+    10
+  );
+  const deTzAbbr = getBerlinTimezoneLabel(startsAtUtc);
+  const dayLabel_de = `${DE_WEEKDAYS[deDow]}, ${deDateFormatted}`;
+  const timeRange_de = `${format24HourDe(deStartHour, deStartMin)} – ${format24HourDe(deEndHour, deEndMin)} Uhr`;
+  const label_de = `${dayLabel_de} · ${timeRange_de} ${deTzAbbr} (${GERMAN_VISITOR_TIMEZONE})`;
+
   return {
     dayKey,
+    dayKey_de,
     dayLabel_en,
     dayLabel_ar,
+    dayLabel_de,
     timeRange_en,
     timeRange_ar,
+    timeRange_de,
+    timezone_de: GERMAN_VISITOR_TIMEZONE,
     label_en: `${dayLabel_en} · ${timeRange_en} ${tzSuffixEn}`,
     label_ar: `${dayLabel_ar} · ${timeRange_ar} ${tzSuffixAr}`,
+    label_de,
   };
 }
 
@@ -317,7 +420,9 @@ export function isSlotAlignedWithSchedule(params: {
   }
 
   const slotDayKey = formatInTimeZone(startsAtUtc, timeZone, "yyyy-MM-dd");
-  const blockedSet = new Set(blockedDates.map((b) => normalizeBlockedDateKey(b.date)));
+  const blockedSet = new Set(
+    blockedDates.map((b) => normalizeBlockedDateKey(b.date))
+  );
   if (blockedSet.has(slotDayKey)) {
     return false;
   }
@@ -356,9 +461,8 @@ export function isSlotAlignedWithSchedule(params: {
 }
 
 /**
- * Generates available consultation slots in UTC with bilingual English/Arabic MYT labels.
- * Caps output per day and total days returned so the chat UI remains concise, setting
- * `moreAvailable: true` whenever additional valid slots exist within the window.
+ * Generates available consultation slots in UTC with English, Arabic (MYT)
+ * and German (`Europe/Berlin` DST-aware) labels.
  */
 export async function getAvailableSlots(
   options: GetAvailableSlotsOptions = {},
@@ -386,7 +490,11 @@ export async function getAvailableSlots(
 
   const effectiveStartDate =
     options.fromDate && options.fromDate > now ? options.fromDate : now;
-  const startDayKey = formatInTimeZone(effectiveStartDate, timeZone, "yyyy-MM-dd");
+  const startDayKey = formatInTimeZone(
+    effectiveStartDate,
+    timeZone,
+    "yyyy-MM-dd"
+  );
 
   const [rules, blockedDates, activeBookings] = await Promise.all([
     dbClient.availabilityRule.findMany({

@@ -1,140 +1,133 @@
 {
-  "nav": {
-    "home": "Home",
-    "about": "About Us",
-    "services": "Our Services",
-    "contact": "Contact Us",
-    "switchLang": "العربية"
+  "meta": {
+    "homeTitle": "CoreLogic Systems | Custom Software, Web & Mobile Apps, AI Automation",
+    "homeDescription": "We design and build custom business systems, web and mobile apps, and AI-powered automation for growing businesses. Book a free consultation.",
+    "aboutTitle": "About Us",
+    "aboutDescription": "CoreLogic Systems is a software company building custom business systems, web and mobile apps, and AI automation for growing businesses.",
+    "contactTitle": "Contact Us & Request a Quote",
+    "contactDescription": "Contact CoreLogic Systems to discuss custom software, web or mobile apps, or AI automation. Email, call, WhatsApp or send a project inquiry.",
+    "servicesTitle": "Software, Web, Mobile & AI Services",
+    "servicesDescription": "Custom business software, web applications, mobile apps, AI automation and UI/UX design from CoreLogic Systems. Tell us what you need and request a quote.",
+    "projectsTitle": "Our Projects & Case Studies",
+    "projectsDescription": "Examples of custom software we have built: accounting, restaurant POS, student and visa management, healthcare, CRM and booking systems.",
+    "privacyTitle": "Privacy Policy",
+    "privacyDescription": "How CoreLogic Systems collects, uses and protects the personal information you share when you visit our website or contact us.",
+    "termsTitle": "Terms of Service",
+    "termsDescription": "The terms that apply when you use the CoreLogic Systems website and engage us for software development and related services.",
+    "breadcrumbHome": "Home",
+    "breadcrumbServices": "Services",
+    "breadcrumbAbout": "About CoreLogic Systems",
+    "breadcrumbContact": "Contact Us",
+    "breadcrumbProjects": "Our Projects",
+    "caseStudySuffix": "Case Study",
+    "projectNotFound": "Project Not Found"
   },
-  "hero": {
-    "title1": "Build the Future",
-    "title2": "with AI",
-    "subtitle": "Empowered to",
-    "words": ["Automate", "Analyze", "Accelerate"],
-    "description": "CoreLogic Systems provides high-performance infrastructure and neural architectures for the next generation of industrial-scale compute.",
-    "cta": "Get Started Now"
-  },
-  "stats": {
-    "clients": "Active Clients",
-    "uptime": "Target Uptime",
-    "api": "API Calls/sec"
-  },
-  "services": {
-    "sectionTitle": "Intelligent Services",
-    "sectionSubtitle": "Empowering your enterprise with state-of-the-art AI infrastructure and cognitive architectures.",
+  "home": {
+    "heroTitleStart": "Custom software and",
+    "heroTitleHighlight": "AI automation",
+    "heroTitleEnd": "for growing businesses",
+    "heroSubtitle": "We design and build business systems, web and mobile apps, and AI-powered automation, from first idea to production support.",
+    "heroPrimaryCta": "Book a free consultation",
+    "heroSecondaryCta": "View our work",
+    "servicesTitle": "Our Services",
+    "servicesSubtitle": "Comprehensive solutions for your business needs.",
     "learnMore": "Learn More",
-    "items": [
+    "servicesItems": [
       {
-        "title": "AI Analytics",
-        "description": "Deep-dive predictive modeling and real-time data stream analysis for enterprise agility."
+        "title": "Custom business software",
+        "description": "ERP, accounting, POS, inventory, and custom dashboards tailored to your needs.",
+        "href": "/services/software-dev",
+        "icon": "monitor",
+        "glow": "purple"
       },
       {
-        "title": "Machine Learning",
-        "description": "Custom neural network architectures trained on industrial-scale datasets for high precision."
+        "title": "Web development",
+        "description": "Company sites, portals, and scalable e-commerce platforms.",
+        "href": "/services/web-dev",
+        "icon": "globe",
+        "glow": "cyan"
       },
       {
-        "title": "NLP Processing",
-        "description": "Advanced semantic understanding and multi-lingual processing for human-like intelligence."
+        "title": "Mobile apps",
+        "description": "Native and cross-platform mobile applications for iOS and Android.",
+        "href": "/services/mobile-dev",
+        "icon": "smartphone",
+        "glow": "purple"
       },
       {
-        "title": "Computer Vision",
-        "description": "Object detection, spatial analysis, and sensory perception for autonomous robotics."
+        "title": "AI Automation",
+        "description": "Workflow automation, intelligent chatbots, and document processing.",
+        "href": "/services/ai-automation",
+        "icon": "bot",
+        "glow": "cyan"
       },
       {
-        "title": "IA Automation",
-        "description": "Intelligent agent orchestration to streamline complex cross-departmental workflows."
+        "title": "Data and analytics",
+        "description": "Custom dashboards, reporting systems, and data integrations.",
+        "href": "/services/ai-automation",
+        "icon": "chart",
+        "glow": "purple"
       },
       {
-        "title": "Data Intelligence",
-        "description": "Secure data lake integration with automated governance and ethical AI guardrails."
+        "title": "Maintenance and technical support",
+        "description": "Ongoing support, updates, and maintenance for your digital assets.",
+        "href": "/contact",
+        "icon": "wrench",
+        "glow": "cyan"
       }
-    ]
-  },
-  "portfolio": {
-    "sectionTitle": "Featured Projects",
-    "sectionSubtitle": "A showcase of high-impact AI systems developed for our global enterprise partners.",
-    "viewCase": "View Case Study",
-    "items": [
-      {
-        "title": "Accounting Pro",
-        "category": "Financial System"
-      },
-      {
-        "title": "POS System project",
-        "category": "Restaurant POS"
-      },
-      {
-        "title": "Management Student Systems",
-        "category": "Education"
-      },
-      {
-        "title": "BookEase Platform",
-        "category": "Scheduling Platform"
-      },
-      {
-        "title": "Hospital Management System",
-        "category": "Healthcare"
-      },
-      {
-        "title": "Car Rental Platform",
-        "category": "Automotive"
-      },
-      {
-        "title": "Corelogic CRM",
-        "category": "Enterprise SaaS"
-      },
-      {
-        "title": "Al Rayees Trading Platform",
-        "category": "Global Trading"
-      },
-      {
-        "title": "Consultation Booking Platform",
-        "category": "Booking & Scheduling"
-      },
-      {
-        "title": "ShopLink WhatsApp Storefront",
-        "category": "E-Commerce"
-      }
-    ]
-  },
-  "footer": {
-    "description": "Empowering global industries with advanced multi-modal AI tools to improve automation, insight, and strategic growth outcomes.",
-    "contactUs": "Contact Us",
-    "siteMap": "Site Map",
-    "legal": "Legal",
-    "privacyPolicy": "Privacy Policy",
-    "terms": "Terms of Services",
-    "backToTop": "Back to Top",
-    "copyright": "Copyright",
-    "designedWith": "Designed with",
-    "allRights": "All Rights Reserved."
+    ],
+    "portfolioTitle": "Featured Projects",
+    "portfolioSubtitle": "A showcase of custom software and systems we have built for our clients.",
+    "portfolioCta": "View Project"
   },
   "about": {
     "heroTitle1": "About Our",
     "heroTitle2": "Company",
-    "heroSubtitle": "We build intelligent software solutions powered by AI.",
-    "heroDescription": "CoreLogic Systems is a frontier technology firm dedicated to bridging the gap between raw compute and cognitive intelligence.",
+    "heroSubtitle": "We build custom business software and AI automation.",
+    "heroDescription": "CoreLogic Systems is a software company based in Kuala Lumpur, Malaysia. We design and build business systems, web and mobile apps, and AI-powered automation for growing businesses.",
+    "imageAlt": "AI Dashboard Interface",
     "whoWeAre": "Who We Are",
-    "whoWeAreP1": "Founded at the intersection of infrastructure and artificial intelligence, CoreLogic Systems operates as a high-performance lab for the future. We specialize in developing **Web Applications**, **Custom AI Architectures**, and **Enterprise Software Solutions** that prioritize speed, security, and scalability.",
-    "whoWeAreP2": "Our mission is to empower global industries through relentless **Innovation**, strategic **Automation**, and sustainable **Growth**.",
+    "whoWeAreP1": "We specialize in developing web applications, custom business software, mobile apps and AI automation that prioritize speed, security, and scalability, and we stay with you after launch for support and maintenance.",
+    "whoWeAreP2": "Our mission is to help businesses work faster and grow through well-built software and practical automation.",
     "mission": "Our Mission",
-    "missionDesc": "Deliver smart, scalable, and modern digital solutions that solve the most complex technical challenges of the 21st century.",
+    "missionDesc": "Deliver smart, scalable, and modern digital solutions that solve real business problems.",
     "vision": "Our Vision",
-    "visionDesc": "Become a leading global AI provider, setting the standard for ethical intelligence and high-performance neural software.",
+    "visionDesc": "Become a trusted software partner for growing businesses, known for dependable delivery, honest communication and responsible use of AI.",
     "coreValues": "Our Core Values",
     "coreValuesSubtitle": "The principles that drive our engineering and creative processes.",
     "values": [
-      { "title": "Innovation", "description": "Pushing the boundaries of what's possible with neural architectures." },
-      { "title": "Quality", "description": "Uncompromising engineering standards for industrial-grade systems." },
-      { "title": "Performance", "description": "Ultra-low latency and massive throughput optimized for scale." },
-      { "title": "Client Success", "description": "Dedicated to driving growth and automation for our global partners." }
+      {
+        "title": "Innovation",
+        "description": "Practical use of modern software and AI architectures tailored to real operational needs."
+      },
+      {
+        "title": "Quality",
+        "description": "High engineering standards for reliable, maintainable business systems."
+      },
+      {
+        "title": "Performance",
+        "description": "Fast, responsive applications designed to scale smoothly with your growth."
+      },
+      {
+        "title": "Client Success",
+        "description": "Dedicated to supporting growth and operational clarity for our partners."
+      }
     ],
     "whyChooseUs": "Why Choose Us",
     "whyChooseUsSubtitle": "We deliver intelligent solutions that push your business forward.",
     "reasons": [
-      { "title": "Fast Delivery", "description": "Rapid deployment cycles powered by automated CI/CD pipelines." },
-      { "title": "Scalable Systems", "description": "Architectures designed to grow dynamically with your data needs." },
-      { "title": "AI-Powered", "description": "Intelligence-first approach to solving complex business problems." }
+      {
+        "title": "Fast Delivery",
+        "description": "Iterative delivery cycles supported by structured testing and deployment pipelines."
+      },
+      {
+        "title": "Scalable Systems",
+        "description": "Architectures designed to grow dynamically with your team and data needs."
+      },
+      {
+        "title": "AI-Powered",
+        "description": "Practical AI automation where it genuinely reduces manual effort."
+      }
     ],
     "ctaTitle1": "Start Your Project",
     "ctaTitle2": "With Us",
@@ -144,12 +137,15 @@
     "badge": "Get in Touch",
     "heroTitle1": "Let's Discuss Your Next",
     "heroTitle2": "Big Project",
-    "heroSubtitle": "Whether you have a specific project in mind or just want to explore the possibilities of AI and modern software, our experts are ready to guide you.",
+    "heroSubtitle": "Whether you have a specific project in mind or want to explore the possibilities of AI and modern software, our experts are ready to guide you.",
     "formTitle": "Send us a Message",
-    "formSubtitle": "Fill out the form below and we'll get back to you shortly.",
+    "formSubtitle": "Fill out the form below and we will get back to you shortly.",
     "fullName": "Full Name",
+    "fullNamePlaceholder": "Alex Morgan",
     "email": "Email Address",
+    "emailPlaceholder": "alex@company.com",
     "phone": "Phone Number",
+    "phonePlaceholder": "+60...",
     "optional": "Optional",
     "service": "Service of Interest",
     "selectService": "Select a service",
@@ -157,28 +153,40 @@
     "messagePlaceholder": "Tell us a little bit about your project goals...",
     "sendMessage": "Send Message",
     "processing": "Processing...",
+    "errorPrefix": "Error sending message:",
     "successTitle": "Message Sent!",
-    "successMessage": "Thank you for reaching out. A specialist from CoreLogic Systems will contact you within 24 hours.",
+    "successMessage": "Thank you for reaching out. A specialist from CoreLogic Systems will contact you within 24 business hours.",
     "sendAnother": "Send Another Message",
     "emailUs": "Email Us",
     "callUs": "Call Us",
     "location": "Our Location",
-    "locationValue": "Lot C7, TRX, Kuala Lumpur",
+    "locationValue": "Lot C7, Menara IQ, TRX, Kuala Lumpur",
     "workingHours": "Working Hours",
-    "workingHoursValue": "Mon - Fri: 9:00 AM - 6:00 PM",
+    "workingHoursValue": "Mon – Fri: 9:00 AM – 6:00 PM MYT",
     "instantConnect": "Instant Connect",
     "whatsapp": "WhatsApp",
     "callDirect": "Call Direct",
+    "mapConsentNotice": "External content from Google Maps is not loaded automatically to protect your privacy.",
+    "loadMapButton": "Load Google Maps",
     "openInMaps": "Open in Maps",
     "whyPartner": "Why Partner With Us?",
-    "whyPartnerSubtitle": "We make the collaboration process seamless and completely transparent.",
+    "whyPartnerSubtitle": "We make the collaboration process seamless and transparent.",
     "partnerReasons": [
-      { "title": "Fast Response Time", "description": "Receive a response within 24 business hours from our technical team." },
-      { "title": "Professional Consultation", "description": "Direct access to senior developers and AI architects for your queries." },
-      { "title": "Free Initial Discussion", "description": "Start with a 15-minute discovery call to explore your project's potential." }
+      {
+        "title": "Fast Response Time",
+        "description": "Receive a response within 24 business hours from our technical team."
+      },
+      {
+        "title": "Professional Consultation",
+        "description": "Direct access to senior developers and AI architects for your queries."
+      },
+      {
+        "title": "Free Initial Discussion",
+        "description": "Start with a free discovery call to explore your project's requirements."
+      }
     ],
     "ctaTitle": "Ready to start your project?",
-    "ctaSubtitle": "Stop waiting for the right moment. Let's start the conversation today and build something extraordinary together.",
+    "ctaSubtitle": "Let's start the conversation today and plan the right digital solution for your business.",
     "ctaButton": "Get Your Free Consultation",
     "servicesList": [
       "Web Application Development",
@@ -192,36 +200,380 @@
     "badge": "What We Do",
     "heroTitle1": "Our",
     "heroTitle2": "Services",
-    "heroSubtitle": "We deliver industrial-grade digital solutions powered by state-of-the-art AI, crafted with precision to elevate your business.",
+    "heroSubtitle": "Custom business software, web and mobile apps, AI automation and UI/UX design, built around how your business works.",
     "projectInquiry": "Project Inquiry",
+    "viewDetails": "Learn More",
     "ctaTitle": "Not sure which service you need?",
-    "ctaSubtitle": "Book a free consultation with our experts to discuss your requirements and find the perfect technological fit for your business.",
+    "ctaSubtitle": "Book a free consultation with our experts to discuss your requirements and find the right technological fit for your business.",
     "ctaButton": "Schedule a Consultation",
     "items": [
       {
+        "slug": "web-dev",
         "title": "Web Application Development",
-        "description": "High-performance, scalable web systems built with modern frameworks and robust cloud architectures.",
+        "description": "Custom web applications, portals and dashboards built with modern frameworks.",
         "details": ["Progressive Web Apps", "E-commerce Solutions", "Enterprise Dashboards"]
       },
       {
+        "slug": "ai-automation",
         "title": "AI Solutions & Automation",
-        "description": "Intelligent agent orchestration and custom neural models designed for industrial efficiency.",
-        "details": ["Predictive Analytics", "Process Automation", "Neural Search"]
+        "description": "Workflow automation, chatbots and document processing that remove repetitive manual work.",
+        "details": ["Predictive Analytics", "Process Automation", "AI Assistants"]
       },
       {
+        "slug": "mobile-dev",
         "title": "Mobile App Development",
         "description": "Native-quality cross-platform mobile experiences for iOS and Android.",
         "details": ["iOS & Android", "Real-time Sync", "Offline-first Apps"]
       },
       {
+        "slug": "software-dev",
         "title": "Custom Software Development",
-        "description": "Tailored software ecosystems that solve unique business challenges with precision code.",
-        "details": ["Legacy Migration", "API Integration", "Microservices"]
+        "description": "Business software such as ERP, accounting, POS and inventory, built around your processes.",
+        "details": ["Legacy Migration", "API Integration", "Multi-currency capable (incl. EUR)"]
       },
       {
+        "slug": "design",
         "title": "UI/UX Design",
-        "description": "Cinematic, user-centric interfaces designed for modern engagement and conversion.",
-        "details": ["Interactive Mockups", "Design Systems", "User Research"]
+        "description": "User-centric interfaces designed for clarity, usability and conversion.",
+        "details": ["Interactive Prototypes", "Design Systems", "User Research"]
+      }
+    ]
+  },
+  "projectsPage": {
+    "heroTitle1": "Our",
+    "heroTitle2": "Featured Work",
+    "heroSubtitle": "Explore a showcase of custom software and systems we have built for real operational use cases.",
+    "viewCaseStudy": "View Case Study",
+    "backToAll": "Back to all work",
+    "challengeHeading": "The Challenge",
+    "solutionHeading": "Our Solution",
+    "featuresHeading": "Key Features",
+    "technologiesHeading": "Technologies Used",
+    "resultHeading": "Overview & Scope",
+    "demoAvailable": "Live Demo Available",
+    "viewLiveDemo": "View Live Demo"
+  },
+  "serviceDetails": {
+    "software-dev": {
+      "metaTitle": "Custom Business Software Development",
+      "metaDescription": "Tailored business software: ERP, accounting, POS, inventory and dashboards built around your processes. Talk to CoreLogic Systems about your project.",
+      "badge": "Enterprise-Grade Architecture",
+      "heroTitle1": "Custom Software",
+      "heroTitle2": "Development",
+      "heroDescription": "We engineer scalable, secure, and bespoke software systems designed to streamline your workflows and support business growth — privacy-friendly by design and multi-currency capable including EUR.",
+      "primaryCta": "Request Consultation",
+      "secondaryCta": "Explore Solutions",
+      "aboutBadge": "Not Another Template",
+      "aboutTitle": "Your Business Is Unique. Your Software Should Be Too.",
+      "aboutDescription": "Off-the-shelf software comes with limits. At CoreLogic Systems, we build custom business software from the ground up around your actual workflows — automating repetitive work and giving your team clear visibility across operations.",
+      "solutionsTitle": "Enterprise Solutions",
+      "solutionsSubtitle": "Tailor-made infrastructure focused on streamlining your business goals.",
+      "solutions": [
+        { "title": "Business Management Systems", "desc": "Centralize your operations with comprehensive, tailored management software." },
+        { "title": "ERP Systems", "desc": "Unify resources, planning, and financial workflows with multi-currency capability including EUR." },
+        { "title": "CRM Systems", "desc": "Build stronger customer relationships with tailored lead tracking and visual sales pipelines." },
+        { "title": "Workflow Automation", "desc": "Automate repetitive tasks so your team can focus on high-impact work." },
+        { "title": "Internal Dashboards", "desc": "Real-time reporting and monitoring tools customized to your exact KPIs." },
+        { "title": "Industry-Specific Solutions", "desc": "Bespoke architectures designed around the concrete requirements of your sector." }
+      ],
+      "featuresTitle": "Why Choose CoreLogic",
+      "featuresSubtitle": "We are partners in your digitalization journey, building maintainable systems that grow with you.",
+      "features": [
+        { "title": "Fully Customized", "desc": "Built around your exact operational requirements without bloated templates." },
+        { "title": "High Stability", "desc": "Engineered for dependable day-to-day performance and maintainability." },
+        { "title": "Easy Integration", "desc": "Clean integration with your existing tools, APIs, and databases." },
+        { "title": "Privacy-Friendly Architecture", "desc": "Role-based access control and data-protection-friendly design, implementable to GDPR requirements on request." }
+      ],
+      "whyPoints": [
+        "Fully tailored solutions",
+        "Focus on business goals",
+        "Scalable architecture",
+        "Long-term maintenance",
+        "Structured, transparent delivery"
+      ],
+      "processTitle": "Our Strategy",
+      "processSubtitle": "A clear blueprint to take your software from initial concept to production.",
+      "processSteps": [
+        { "num": "01", "title": "Business Analysis", "desc": "We gather requirements and identify your operational bottlenecks." },
+        { "num": "02", "title": "System Design", "desc": "Mapping out the technical architecture, data model and integration plan." },
+        { "num": "03", "title": "UI/UX Design", "desc": "Creating user-centric interfaces focused on clarity and daily efficiency." },
+        { "num": "04", "title": "Development Phase", "desc": "Writing clean, robust code in transparent, iterative milestones." },
+        { "num": "05", "title": "Testing & QA", "desc": "Automated and manual quality checks before go-live." },
+        { "num": "06", "title": "Deployment & Support", "desc": "Smooth rollout followed by ongoing maintenance and technical support." }
+      ],
+      "industriesTitle": "Industries We Empower",
+      "industries": ["Restaurants & Hospitality", "Retail Businesses", "Logistics", "Healthcare", "Education", "Corporate & B2B"],
+      "ctaTitle1": "Let's build a system that",
+      "ctaTitle2": "fits your business perfectly.",
+      "ctaDescription": "Stop working around rigid tools. Start the conversation today to plan a digital solution built specifically for your processes.",
+      "ctaButton": "Start Your Project Today"
+    },
+    "web-dev": {
+      "metaTitle": "Custom Web Application Development",
+      "metaDescription": "We build custom web applications, SaaS platforms, admin dashboards and API integrations for businesses. Request a free consultation and quote.",
+      "badge": "Modern Web Engineering",
+      "heroTitle1": "Custom Web Development",
+      "heroTitle2": "for Enterprise Growth",
+      "heroDescription": "CoreLogic Systems designs and builds web applications, SaaS platforms, admin dashboards and business portals that fit how your company works — from requirements workshop to launch and ongoing support.",
+      "primaryCta": "Request a Quote",
+      "secondaryCta": "Explore Solutions",
+      "aboutBadge": "About the Service",
+      "aboutTitle": "More than code. We build reliable web platforms.",
+      "aboutDescription": "Custom web application development is about solving tangible operational bottlenecks. We focus on maintainable architectures: scalable SaaS platforms, internal portals, and fast web storefronts engineered for everyday business use.",
+      "solutionsTitle": "Our Web Solutions",
+      "solutionsSubtitle": "Modern web architectures tailored to your operational demands.",
+      "solutions": [
+        { "title": "Custom Web Applications", "desc": "Tailor-made web systems engineered from scratch for your business workflows." },
+        { "title": "SaaS Platforms", "desc": "Multi-tenant cloud architectures with role management and flexible billing capability (incl. EUR)." },
+        { "title": "Admin Dashboards", "desc": "Clear, data-rich control panels with real-time reporting and administrative oversight." },
+        { "title": "Business Automation Portals", "desc": "Browser-based internal tools that eliminate manual spreadsheets and reduce errors." },
+        { "title": "API Integrations", "desc": "Connect existing ERP, CRM, payment, or messaging services into a unified workflow." },
+        { "title": "E-Commerce & Storefronts", "desc": "Fast, mobile-first product catalogs and ordering portals tailored to your sales channel." }
+      ],
+      "featuresTitle": "Key Features",
+      "featuresSubtitle": "The technical foundation for long-term stability and user adoption.",
+      "features": [
+        { "title": "High Performance", "desc": "Optimized assets and clean server/client architecture keep pages fast and responsive." },
+        { "title": "Security & Data Protection", "desc": "Encrypted transport, secure authentication and privacy-friendly design from the start." },
+        { "title": "Fully Responsive Design", "desc": "Consistent usability from desktop monitors down to tablets and smartphones." },
+        { "title": "Scalable Architecture", "desc": "Modern databases and cloud deployments structured to grow alongside your user base." }
+      ],
+      "whyPoints": [
+        "Experienced full-stack engineering team",
+        "Clean, maintainable TypeScript & React code",
+        "Iterative delivery & transparent communication",
+        "Post-launch maintenance & support",
+        "GDPR-friendly implementation on request"
+      ],
+      "processTitle": "Our Development Process",
+      "processSubtitle": "A systematic methodology delivering production-ready web platforms.",
+      "processSteps": [
+        { "num": "01", "title": "Planning & Analysis", "desc": "Defining business goals, user roles, technical requirements and milestones." },
+        { "num": "02", "title": "UI/UX Design", "desc": "Wireframes, interactive prototypes and a cohesive interface system." },
+        { "num": "03", "title": "Development", "desc": "Agile front-end and back-end engineering with modern frameworks." },
+        { "num": "04", "title": "Testing & QA", "desc": "Automated and manual testing for functionality, security and responsiveness." },
+        { "num": "05", "title": "Deployment", "desc": "Safe cloud provisioning and rollout to your production environment." },
+        { "num": "06", "title": "Support & Maintenance", "desc": "Proactive updates, monitoring and ongoing technical assistance." }
+      ],
+      "industriesTitle": "Typical Applications",
+      "industries": ["B2B Customer Portals", "SaaS Products", "Booking Systems", "E-Commerce", "Internal Operations", "Reporting Dashboards"],
+      "ctaTitle1": "Ready to build your",
+      "ctaTitle2": "next web platform?",
+      "ctaDescription": "Share your requirements with our engineering team for a free initial consultation.",
+      "ctaButton": "Start Your Project"
+    },
+    "mobile-dev": {
+      "metaTitle": "Mobile App Development (iOS & Android)",
+      "metaDescription": "We design and build custom iOS and Android apps, native or cross-platform, from first prototype to store release and support. Request a quote.",
+      "badge": "Mobile App Development",
+      "heroTitle1": "Custom Mobile App",
+      "heroTitle2": "Development",
+      "heroDescription": "We design and build reliable, user-friendly mobile applications for iOS and Android — tailored for growing businesses, field teams and customer engagement.",
+      "primaryCta": "Start Your App Project",
+      "secondaryCta": "View Solutions",
+      "aboutBadge": "Why Go Mobile?",
+      "aboutTitle": "Your Business, Directly in Your Users' Hands",
+      "aboutDescription": "A well-crafted mobile app connects your customers and teams directly to your services. We focus on intuitive flows, dependable synchronization and clean engineering from initial prototype to App Store and Google Play release.",
+      "solutionsTitle": "Our Mobile Solutions",
+      "solutionsSubtitle": "Application development tailored to your operational and customer needs.",
+      "solutions": [
+        { "title": "Android App Development", "desc": "High-performance applications built for the broad Android device ecosystem." },
+        { "title": "iOS App Development", "desc": "Smooth, intuitive experiences designed for iPhone and iPad users." },
+        { "title": "Cross-Platform Apps", "desc": "Shared codebase for iOS and Android to accelerate delivery without compromising UX." },
+        { "title": "Internal Business Apps", "desc": "Mobile tools for field staff, approvals, inventory checks and daily operations." },
+        { "title": "E-Commerce Mobile Apps", "desc": "Fast mobile catalogs, cart flows and order notifications." },
+        { "title": "API & Backend Integration", "desc": "Real-time synchronization with your existing web platform, ERP or CRM." }
+      ],
+      "featuresTitle": "Built for Scale",
+      "featuresSubtitle": "Our team combines clean UX, dependable architecture and long-term maintenance.",
+      "features": [
+        { "title": "Fast Performance", "desc": "Responsive interactions, smooth navigation and lightweight builds." },
+        { "title": "Secure Architecture", "desc": "Encrypted communication, secure authentication and privacy-friendly data handling." },
+        { "title": "Offline Support", "desc": "Local caching and sync patterns so workflows stay usable even on weak connections." },
+        { "title": "Push Notifications", "desc": "Timely, relevant status updates for bookings, orders and internal alerts." }
+      ],
+      "whyPoints": [
+        "iOS & Android from one coordinated team",
+        "User-centered interface design",
+        "App Store & Google Play release support",
+        "Long-term updates and maintenance"
+      ],
+      "processTitle": "Our Process",
+      "processSubtitle": "A transparent lifecycle from initial concept to App Store release.",
+      "processSteps": [
+        { "num": "01", "title": "Idea & Consultation", "desc": "Clarifying goals, target users, platform choice and scope." },
+        { "num": "02", "title": "UI/UX Design", "desc": "Designing intuitive mobile flows and interactive prototypes." },
+        { "num": "03", "title": "App Development", "desc": "Building clean, maintainable mobile code and backend APIs." },
+        { "num": "04", "title": "Testing & QA", "desc": "Device testing for stability, usability and edge cases." },
+        { "num": "05", "title": "Store Deployment", "desc": "Structured submission to the Apple App Store and Google Play." },
+        { "num": "06", "title": "Maintenance", "desc": "Ongoing OS compatibility updates, monitoring and enhancements." }
+      ],
+      "industriesTitle": "Industries We Empower",
+      "industries": ["Restaurants", "E-Commerce", "Logistics", "Education", "Field Services", "Healthcare"],
+      "ctaTitle1": "Turn your idea into a",
+      "ctaTitle2": "reliable mobile app.",
+      "ctaDescription": "Discuss your app concept with our team in a free initial consultation.",
+      "ctaButton": "Get Free Consultation"
+    },
+    "ai-automation": {
+      "metaTitle": "AI Automation for Business Workflows",
+      "metaDescription": "Automate repetitive work with AI: workflow automation, chatbots and document processing, built around how your business actually runs. Get a free consultation.",
+      "badge": "Practical AI Engineering",
+      "heroTitle1": "Enterprise AI Solutions &",
+      "heroTitle2": "Workflow Automation",
+      "heroDescription": "We build practical AI automation, multilingual assistants and intelligent document workflows that reduce repetitive manual work and integrate cleanly into your existing systems — privacy-friendly by design and implementable to GDPR requirements on request.",
+      "primaryCta": "Start Your AI Journey",
+      "secondaryCta": "Explore Solutions",
+      "aboutBadge": "Value Proposition",
+      "aboutTitle": "Reduce Manual Overhead. Focus on Core Work.",
+      "aboutDescription": "Integrating AI is about supporting your team, not adding complexity. By automating recurring inquiries, data entry and document routing, your staff can focus on high-value customer and operational decisions.",
+      "solutionsTitle": "Our AI Services",
+      "solutionsSubtitle": "Practical AI architectures turned into dependable business tools.",
+      "solutions": [
+        { "title": "Business Process Automation", "desc": "Eliminate repetitive manual steps and connect cross-department workflows." },
+        { "title": "AI Chatbots & Virtual Assistants", "desc": "Multilingual customer support, lead qualification and appointment scheduling assistants." },
+        { "title": "Data Analysis & Reporting", "desc": "Structured dashboards and automated summaries built on your operational data." },
+        { "title": "Document Processing", "desc": "Automated extraction, classification and routing of forms, inquiries and invoices." },
+        { "title": "Workflow Orchestration", "desc": "Human-in-the-loop approvals, notifications (e.g. WhatsApp / Email) and audit trails." },
+        { "title": "API & Legacy Integration", "desc": "Embed AI capabilities cleanly into your existing CRM, ERP or web portal." }
+      ],
+      "featuresTitle": "Key Benefits",
+      "featuresSubtitle": "Grounded AI implementations with clear guardrails and human oversight.",
+      "features": [
+        { "title": "Less Manual Work", "desc": "Free your team from repetitive data entry, triage and routine follow-ups." },
+        { "title": "Faster Response Times", "desc": "Answer recurring customer inquiries immediately around the clock." },
+        { "title": "Human-in-the-Loop Control", "desc": "Clear escalation paths and manual approval gates for sensitive decisions." },
+        { "title": "Privacy-Friendly Design", "desc": "Data minimization, transparent prompts and GDPR-aligned implementation on request." }
+      ],
+      "whyPoints": [
+        "Practical, business-oriented AI engineering",
+        "Strict knowledge boundaries & safety guardrails",
+        "Clean integration into existing tools",
+        "Multilingual support (DE, EN, AR)",
+        "Ongoing monitoring and refinement"
+      ],
+      "processTitle": "How It Works",
+      "processSubtitle": "A structured path from workflow audit to safe production deployment.",
+      "processSteps": [
+        { "num": "01", "title": "Consultation & Audit", "desc": "Identifying repetitive tasks with clear operational leverage." },
+        { "num": "02", "title": "Architecture & Guardrails", "desc": "Defining data flows, privacy requirements and human approval gates." },
+        { "num": "03", "title": "Assistant & Model Setup", "desc": "Configuring prompts, tools and structured outputs grounded in your facts." },
+        { "num": "04", "title": "System Integration", "desc": "Connecting APIs, databases, CRM or messaging channels." },
+        { "num": "05", "title": "Testing & Evaluation", "desc": "Testing edge cases, safety boundaries and answer accuracy before launch." },
+        { "num": "06", "title": "Ongoing Support", "desc": "Monitoring usage, refining workflows and adapting as your needs evolve." }
+      ],
+      "industriesTitle": "Targeted Use Cases",
+      "industries": ["E-Commerce", "Consultancies", "Healthcare", "Logistics", "Customer Support", "Real Estate", "B2B Sales"],
+      "ctaTitle1": "Ready to automate",
+      "ctaTitle2": "repetitive workflows?",
+      "ctaDescription": "Let's discuss where practical AI automation can save your team time without unnecessary risk.",
+      "ctaButton": "Get Free Consultation"
+    },
+    "design": {
+      "metaTitle": "UI/UX Design for Web & Mobile Apps",
+      "metaDescription": "User-centered UI/UX design for web and mobile products: research, wireframes, prototypes and design systems. Request a free design consultation.",
+      "badge": "Product & Interface Design",
+      "heroTitle1": "User-Centered UI/UX",
+      "heroTitle2": "Experiences",
+      "heroDescription": "We design clear, intuitive interfaces and scalable design systems for web applications, dashboards and mobile apps — making complex workflows effortless to use.",
+      "primaryCta": "Start Your Project",
+      "secondaryCta": "Explore Services",
+      "aboutBadge": "Design Philosophy",
+      "aboutTitle": "Design That Simplifies Complex Workflows",
+      "aboutDescription": "Good product design goes far beyond visuals. It reduces friction, shortens onboarding time and guides users clearly to their goal across desktop and mobile viewports.",
+      "solutionsTitle": "Our Design Services",
+      "solutionsSubtitle": "From early wireframes to developer-ready component libraries.",
+      "solutions": [
+        { "title": "Mobile App UI Design", "desc": "Thumb-friendly mobile layouts designed for clarity and everyday usability." },
+        { "title": "Web App UI Design", "desc": "Structured interfaces that make complex business tools easy to navigate." },
+        { "title": "Dashboards & Admin Panels", "desc": "Clear data hierarchy and actionable layouts for operational teams." },
+        { "title": "Wireframing & Prototyping", "desc": "Interactive prototypes to validate user flows before development begins." },
+        { "title": "UX Research & Audits", "desc": "Reviewing existing products to uncover usability bottlenecks." },
+        { "title": "Design Systems", "desc": "Reusable components, typography and color tokens for consistent brand execution." }
+      ],
+      "featuresTitle": "Why Choose CoreLogic",
+      "featuresSubtitle": "Design and engineering working hand-in-hand so every screen translates cleanly into code.",
+      "features": [
+        { "title": "Better Usability", "desc": "Clear navigation and reduced friction for both customers and internal teams." },
+        { "title": "Higher Clarity & Conversion", "desc": "Focused layouts that guide visitors naturally toward key actions." },
+        { "title": "Responsive by Default", "desc": "Designed for mobile, tablet and desktop — including multilingual & RTL layouts." },
+        { "title": "Developer-Ready Handoff", "desc": "Consistent specs and component systems that speed up implementation." }
+      ],
+      "whyPoints": [
+        "Product-focused UX thinking",
+        "Close alignment with frontend engineering",
+        "Multilingual & RTL layout experience",
+        "Clean, modern visual language",
+        "Iterative feedback loops"
+      ],
+      "processTitle": "Our Design Process",
+      "processSubtitle": "A structured workflow from user research to developer handoff.",
+      "processSteps": [
+        { "num": "01", "title": "User Research", "desc": "Understanding your users, workflows and operational goals." },
+        { "num": "02", "title": "Information Architecture", "desc": "Mapping user journeys, screens and core wireframes." },
+        { "num": "03", "title": "Visual Design", "desc": "Applying typography, color hierarchy and brand consistency." },
+        { "num": "04", "title": "Interactive Prototyping", "desc": "Clickable flows to validate interactions early." },
+        { "num": "05", "title": "Review & Refinement", "desc": "Iterating directly on stakeholder and user feedback." },
+        { "num": "06", "title": "Engineering Handoff", "desc": "Delivering structured components and tokens ready for build." }
+      ],
+      "industriesTitle": "Design Focus Areas",
+      "industries": ["SaaS Products", "ERP & CRM Dashboards", "Booking Portals", "Mobile Apps", "E-Commerce", "Corporate Websites"],
+      "ctaTitle1": "Let's design an interface",
+      "ctaTitle2": "your users enjoy using.",
+      "ctaDescription": "Book a free initial consultation to review your product or plan a new interface from scratch.",
+      "ctaButton": "Get a Free UI/UX Consultation"
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "At CoreLogic Systems, we are committed to protecting the privacy of our clients and website visitors. This policy provides a general overview of how we handle personal information. Visitors in Germany and the EU can also consult our dedicated Datenschutz notice.",
+    "datenschutzLinkLabel": "View German GDPR Privacy Notice (Datenschutz)",
+    "sections": [
+      {
+        "heading": "1. Information We Collect",
+        "body": "We collect information you voluntarily provide when you contact us, submit an inquiry form, use our AI chat assistant, or request a consultation — such as your name, email address, WhatsApp/phone number, and project summary."
+      },
+      {
+        "heading": "2. How We Use Your Information",
+        "body": "We use this information solely to respond to your inquiry, schedule consultations, prepare project proposals, and provide requested technical support. We do not sell or rent your personal information to third parties."
+      },
+      {
+        "heading": "3. Data Security & Third-Party Infrastructure",
+        "body": "We use modern encrypted transport (HTTPS) and access controls to safeguard stored data. Details on all infrastructure and service providers used by this website are documented on our Datenschutz page."
+      },
+      {
+        "heading": "4. Changes to This Policy",
+        "body": "We may update this Privacy Policy as our services evolve. Any updates will be published on this page."
+      },
+      {
+        "heading": "5. Contact Us",
+        "body": "If you have questions regarding privacy or wish to request deletion of your contact inquiry, please reach out via our Contact page or email contact@corelogic-system.my."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "intro": "Welcome to CoreLogic Systems. By using this website and engaging our software development services, the following general terms apply:",
+    "sections": [
+      {
+        "heading": "1. Scope",
+        "body": "These terms govern general use of the CoreLogic Systems website. Individual software development, design, or AI automation engagements are governed by separate written project agreements defining scope, milestones, pricing, and deliverables."
+      },
+      {
+        "heading": "2. Services Provided",
+        "body": "We provide custom software development, web and mobile application engineering, UI/UX design, and AI workflow automation. Any indicative estimates discussed prior to technical review are non-binding."
+      },
+      {
+        "heading": "3. Intellectual Property",
+        "body": "All content displayed on this website, including text, designs, and brand assets, is owned by CoreLogic Systems and may not be copied without permission. Intellectual property rights for custom client deliverables are defined in the respective client contract."
+      },
+      {
+        "heading": "4. Disclaimer of Liability",
+        "body": "We take care to keep website information accurate and available, but cannot guarantee uninterrupted availability or absence of occasional technical errors. Statutory liability rules remain unaffected."
+      },
+      {
+        "heading": "5. Modifications",
+        "body": "We reserve the right to update these Terms of Service when necessary. The current version published on this page applies."
       }
     ]
   }
