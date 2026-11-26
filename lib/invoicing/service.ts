@@ -65,6 +65,15 @@ export type PdfRenderFn = (data: InvoicePdfDocumentData) => Promise<Uint8Array>;
 
 type DbClient = PrismaClient | Prisma.TransactionClient;
 
+/**
+ * Interactive transaction timeouts tuned for cross-region Neon PostgreSQL
+ * (multiple sequential round-trips + server-side PDF rendering inside issue/storno transactions).
+ */
+const INVOICING_TX_OPTIONS = {
+  maxWait: 10_000,
+  timeout: 25_000,
+} as const;
+
 // ============================================================================
 // Company Settings (Single Source of Truth)
 // ============================================================================
@@ -970,7 +979,7 @@ export async function createInvoiceDraft(
       select: { id: true },
     });
     return inv.id;
-  });
+  }, INVOICING_TX_OPTIONS);
 
   const detail = await getInvoiceDetail(createdId, db);
   if (!detail) {
@@ -1111,7 +1120,7 @@ export async function updateInvoiceDraft(
         },
       },
     });
-  });
+  }, INVOICING_TX_OPTIONS);
 
   const detail = await getInvoiceDetail(id, db);
   if (!detail) {
@@ -1332,7 +1341,7 @@ export async function issueInvoice(
     });
 
     return invoice.id;
-  });
+  }, INVOICING_TX_OPTIONS);
 
   const detail = await getInvoiceDetail(issuedId, db);
   if (!detail) {
@@ -1429,7 +1438,7 @@ export async function recordInvoicePayment(
         },
       },
     });
-  });
+  }, INVOICING_TX_OPTIONS);
 
   const detail = await getInvoiceDetail(invoiceId, db);
   if (!detail) {
@@ -1702,7 +1711,7 @@ export async function createStornoInvoice(
     });
 
     return createdStorno.id;
-  });
+  }, INVOICING_TX_OPTIONS);
 
   const [originalDetail, stornoDetail] = await Promise.all([
     getInvoiceDetail(originalInvoiceId, db),
