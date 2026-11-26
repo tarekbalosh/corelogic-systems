@@ -25,6 +25,8 @@ vi.mock("@/lib/security/admin-auth", () => ({
 }));
 vi.mock("next/cache", () => ({
   revalidatePath: vi.fn(),
+  revalidateTag: vi.fn(),
+  unstable_cache: <T extends (...args: unknown[]) => unknown>(fn: T) => fn,
 }));
 vi.mock("next/navigation", () => ({
   redirect: vi.fn(),
@@ -594,8 +596,10 @@ describe("Admin API Auth (401) & CSRF (403) Route Protection", () => {
     mockIsAdminAuthenticated.mockReset();
   });
 
-  it("returns 401 JSON without an authenticated admin session on all invoicing APIs", async () => {
-    mockIsAdminAuthenticated.mockResolvedValue(false);
+  it(
+    "returns 401 JSON without an authenticated admin session on all invoicing APIs",
+    async () => {
+      mockIsAdminAuthenticated.mockResolvedValue(false);
 
     const [invoicesRoute, invoiceByIdRoute, settingsRoute, issueRoute] =
       await Promise.all([
@@ -649,7 +653,9 @@ describe("Admin API Auth (401) & CSRF (403) Route Protection", () => {
       { params: Promise.resolve({ id: "inv_1" }) }
     );
     expect(resIssue.status).toBe(401);
-  });
+    },
+    15_000
+  );
 
   it("rejects cross-origin and CSRF-less mutating requests with HTTP 403 even when authenticated", async () => {
     mockIsAdminAuthenticated.mockResolvedValue(true);

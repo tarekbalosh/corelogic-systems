@@ -1,6 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import prisma from "@/lib/db";
+import { getCachedCompanySettings } from "@/lib/admin/cache";
 import {
   ADMIN_API_HEADERS,
   adminJsonResponse,
@@ -19,10 +20,7 @@ import {
   toIsoDateOnly,
 } from "@/lib/invoicing/money";
 import { generateInvoicePdf } from "@/lib/invoicing/pdf";
-import {
-  getOrInitCompanySettings,
-  resolveDefaultTaxLegalNotice,
-} from "@/lib/invoicing/service";
+import { resolveDefaultTaxLegalNotice } from "@/lib/invoicing/service";
 import type { InvoiceItemSnapshot, InvoicePdfDocumentData } from "@/lib/invoicing/types";
 import { InvoiceDraftInputSchema } from "@/lib/invoicing/validators";
 
@@ -48,7 +46,7 @@ export async function POST(request: NextRequest) {
 
     const input = parsed.data;
     const [company, customer] = await Promise.all([
-      getOrInitCompanySettings(),
+      getCachedCompanySettings(),
       prisma.billingCustomer.findUnique({ where: { id: input.customerId } }),
     ]);
 

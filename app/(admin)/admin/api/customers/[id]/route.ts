@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { ADMIN_CACHE_TAGS, invalidateAdminTags } from "@/lib/admin/cache";
 import {
   adminJsonResponse,
   requireAdminApiRequest,
@@ -20,6 +21,7 @@ export async function PUT(
     const { id } = await context.params;
     const body = await request.json();
     const customer = await updateBillingCustomer(id, body);
+    invalidateAdminTags(ADMIN_CACHE_TAGS.CUSTOMERS, ADMIN_CACHE_TAGS.INVOICES);
     return adminJsonResponse({ customer });
   } catch (err) {
     return handleInvoicingApiError(err);

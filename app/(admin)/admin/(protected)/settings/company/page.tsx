@@ -1,6 +1,6 @@
 import React from "react";
 import { AlertTriangle } from "lucide-react";
-import { getOrInitCompanySettings } from "@/lib/invoicing/service";
+import { getCachedCompanySettings } from "@/lib/admin/cache";
 import { requireAdminSession } from "@/lib/security/admin-auth";
 import { CompanySettingsForm } from "@/components/admin/invoicing/company-settings-form";
 
@@ -13,7 +13,7 @@ export default async function AdminCompanySettingsPage() {
   let dbError: string | null = null;
 
   const settings = dbConfigured
-    ? await getOrInitCompanySettings().catch((err: unknown) => {
+    ? await getCachedCompanySettings().catch((err: unknown) => {
         dbError =
           err instanceof Error ? err.message : "Database query failed.";
         return null;

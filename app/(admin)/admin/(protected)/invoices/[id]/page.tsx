@@ -2,10 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { AlertTriangle, ArrowLeft } from "lucide-react";
 import {
-  getInvoiceDetail,
-  getOrInitCompanySettings,
-  listBillingCustomers,
-} from "@/lib/invoicing/service";
+  getCachedBillingCustomers,
+  getCachedCompanySettings,
+  getCachedInvoiceDetail,
+} from "@/lib/admin/cache";
 import { requireAdminSession } from "@/lib/security/admin-auth";
 import { InvoiceDetailView } from "@/components/admin/invoicing/invoice-detail-view";
 import { InvoiceEditor } from "@/components/admin/invoicing/invoice-editor";
@@ -22,13 +22,9 @@ export default async function AdminInvoiceDetailPage({
   await requireAdminSession();
   const { id } = await params;
 
-  const [invoice, company, customers] = await Promise.all([
-    getInvoiceDetail(id).catch(() => null),
-    getOrInitCompanySettings().catch(() => null),
-    listBillingCustomers().catch(() => []),
-  ]);
+  const invoice = await getCachedInvoiceDetail(id).catch(() => null);
 
-  if (!invoice || !company) {
+  if (!invoice) {
     return (
       <div className="space-y-4 rounded-2xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">
         <div className="flex items-start gap-3">
@@ -51,7 +47,17 @@ export default async function AdminInvoiceDetailPage({
     );
   }
 
+  // Only load company settings & customers list when editing a DRAFT (skipped for ISSUED/PAID/CANCELLED!)
   if (invoice.status === "DRAFT") {
+    const [company, customers] = await Promise.all([
+      getCachedCompanySettings().catch(() => null),
+      getCachedBillingCustomers().catch(() => []),
+    ]);
+
+    if (!company) {
+      return null;
+    }
+
     return (
       <InvoiceEditor
         mode="edit"

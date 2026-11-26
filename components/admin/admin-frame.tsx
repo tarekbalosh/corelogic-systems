@@ -137,6 +137,9 @@ function AdminFrameInner({ widgetState, children }: AdminFrameProps) {
           <Link
             key={item.id}
             href={item.href}
+            prefetch={true}
+            onMouseEnter={() => router.prefetch(item.href)}
+            onFocus={() => router.prefetch(item.href)}
             onClick={onNavigate}
             aria-current={isActive ? "page" : undefined}
             title={isCollapsed ? item.label : undefined}

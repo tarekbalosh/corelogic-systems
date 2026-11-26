@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import prisma from "@/lib/db";
+import { ADMIN_CACHE_TAGS, invalidateAdminTags } from "@/lib/admin/cache";
 import { setWidgetRuntimePaused } from "@/lib/agent/runtime-flags";
 import { parseTimeToMinutes } from "@/lib/booking/availability";
 import { decideBooking } from "@/lib/booking/booking";
@@ -92,6 +93,7 @@ export async function updateLeadStatusAction(formData: FormData): Promise<void> 
     data: { status: parsed.data.status },
   });
 
+  invalidateAdminTags(ADMIN_CACHE_TAGS.LEADS);
   revalidatePath("/admin/leads");
 }
 
@@ -167,6 +169,11 @@ export async function deleteLeadAdminAction(
   ]);
 
   safeLogInfo("admin.lead.deleted", { leadId });
+  invalidateAdminTags(
+    ADMIN_CACHE_TAGS.LEADS,
+    ADMIN_CACHE_TAGS.BOOKINGS,
+    ADMIN_CACHE_TAGS.CUSTOMERS
+  );
   revalidatePath("/admin/leads");
   revalidatePath("/admin/bookings");
   redirect("/admin/leads");
@@ -207,6 +214,7 @@ export async function decideBookingAdminAction(formData: FormData): Promise<void
     });
   }
 
+  invalidateAdminTags(ADMIN_CACHE_TAGS.BOOKINGS);
   revalidatePath("/admin/bookings");
 }
 
@@ -228,6 +236,7 @@ export async function saveAlternativeProposalAction(
     },
   });
 
+  invalidateAdminTags(ADMIN_CACHE_TAGS.BOOKINGS);
   revalidatePath("/admin/bookings");
 }
 
@@ -266,6 +275,7 @@ export async function createAvailabilityRuleAction(
     },
   });
 
+  invalidateAdminTags(ADMIN_CACHE_TAGS.AVAILABILITY);
   revalidatePath("/admin/availability");
 }
 
@@ -283,6 +293,7 @@ export async function toggleAvailabilityRuleAction(
     data: { active: nextActive },
   });
 
+  invalidateAdminTags(ADMIN_CACHE_TAGS.AVAILABILITY);
   revalidatePath("/admin/availability");
 }
 
@@ -295,6 +306,7 @@ export async function deleteAvailabilityRuleAction(
   if (!ruleId) return;
 
   await prisma.availabilityRule.deleteMany({ where: { id: ruleId } });
+  invalidateAdminTags(ADMIN_CACHE_TAGS.AVAILABILITY);
   revalidatePath("/admin/availability");
 }
 
@@ -321,6 +333,7 @@ export async function createBlockedDateAction(
     },
   });
 
+  invalidateAdminTags(ADMIN_CACHE_TAGS.AVAILABILITY);
   revalidatePath("/admin/availability");
 }
 
@@ -333,6 +346,7 @@ export async function deleteBlockedDateAction(
   if (!blockedId) return;
 
   await prisma.blockedDate.deleteMany({ where: { id: blockedId } });
+  invalidateAdminTags(ADMIN_CACHE_TAGS.AVAILABILITY);
   revalidatePath("/admin/availability");
 }
 
@@ -344,7 +358,6 @@ export async function toggleWidgetPauseAdminAction(
   const paused = formData.get("paused") === "true";
   await setWidgetRuntimePaused(paused);
 
-  revalidatePath("/admin/leads");
-  revalidatePath("/admin/bookings");
-  revalidatePath("/admin/availability");
+  invalidateAdminTags(ADMIN_CACHE_TAGS.WIDGET_STATE);
+  revalidatePath("/admin", "layout");
 }

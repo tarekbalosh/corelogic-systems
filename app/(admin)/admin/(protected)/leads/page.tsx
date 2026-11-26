@@ -1,15 +1,12 @@
 import React from "react";
 import type { LeadStatus } from "@prisma/client";
-import { formatInTimeZone } from "date-fns-tz";
 import { AlertTriangle } from "lucide-react";
-import prisma from "@/lib/db";
-import { getBusinessTimezone } from "@/lib/booking/availability";
-import { requireAdminSession } from "@/lib/security/admin-auth";
 import {
-  LeadsWorkspace,
-  type SerializedLeadDetail,
-  type SerializedLeadRow,
-} from "@/components/admin/leads-workspace";
+  getCachedAdminLeadDetail,
+  getCachedAdminLeadsList,
+} from "@/lib/admin/cache";
+import { requireAdminSession } from "@/lib/security/admin-auth";
+import { LeadsWorkspace } from "@/components/admin/leads-workspace";
 
 export const dynamic = "force-dynamic";
 
@@ -29,23 +26,23 @@ export default async function AdminLeadsPage({
     ? (params.status as LeadStatus)
     : "ALL";
   const selectedIdParam = params.id?.trim() || undefined;
-  const tz = getBusinessTimezone();
 
   const dbConfigured = Boolean(process.env.DATABASE_URL?.trim());
   let dbError: string | null = null;
 
-  const rawLeads = dbConfigured
-    ? await prisma.lead
-        .findMany({
-          orderBy: { createdAt: "desc" },
-          take: 100,
-        })
-        .catch((err: unknown) => {
+  // When an explicit lead ID is selected, fetch list + detail in parallel instead of sequentially.
+  const [leads, preloadedDetail] = dbConfigured
+    ? await Promise.all([
+        getCachedAdminLeadsList().catch((err: unknown) => {
           dbError =
             err instanceof Error ? err.message : "Database query failed.";
           return [];
-        })
-    : [];
+        }),
+        selectedIdParam
+          ? getCachedAdminLeadDetail(selectedIdParam).catch(() => null)
+          : Promise.resolve(null),
+      ])
+    : [[], null];
 
   if (!dbConfigured || dbError) {
     return (
@@ -66,71 +63,11 @@ export default async function AdminLeadsPage({
     );
   }
 
-  const leads: SerializedLeadRow[] = rawLeads.map((lead) => ({
-    id: lead.id,
-    name: lead.name,
-    companyName: lead.companyName,
-    requestType: lead.requestType,
-    status: lead.status,
-    whatsappNumber: lead.whatsappNumber,
-    email: lead.email,
-    createdAtIso: lead.createdAt.toISOString(),
-    createdAtMyt: formatInTimeZone(lead.createdAt, tz, "MMM dd, yyyy · HH:mm"),
-  }));
-
-  const targetLeadId = selectedIdParam ?? rawLeads[0]?.id;
-  const rawSelected = targetLeadId
-    ? await prisma.lead
-        .findUnique({
-          where: { id: targetLeadId },
-          include: {
-            conversations: {
-              orderBy: { updatedAt: "desc" },
-              include: {
-                messages: {
-                  orderBy: { createdAt: "asc" },
-                },
-              },
-            },
-            bookings: {
-              orderBy: { startsAt: "desc" },
-            },
-          },
-        })
-        .catch(() => null)
-    : null;
-
-  const selectedLead: SerializedLeadDetail | null = rawSelected
-    ? {
-        id: rawSelected.id,
-        name: rawSelected.name,
-        companyName: rawSelected.companyName,
-        requestType: rawSelected.requestType,
-        status: rawSelected.status,
-        whatsappNumber: rawSelected.whatsappNumber,
-        email: rawSelected.email,
-        projectType: rawSelected.projectType,
-        budgetRange: rawSelected.budgetRange,
-        expectedStart: rawSelected.expectedStart,
-        existingSystem: rawSelected.existingSystem,
-        projectDescription: rawSelected.projectDescription,
-        requirements: rawSelected.requirements,
-        createdAtMyt: formatInTimeZone(
-          rawSelected.createdAt,
-          tz,
-          "MMM dd, yyyy · HH:mm"
-        ),
-        messages: rawSelected.conversations.flatMap((conv) =>
-          conv.messages.map((m) => ({
-            id: m.id,
-            role: m.role,
-            content: m.content,
-            timeMyt: formatInTimeZone(m.createdAt, tz, "HH:mm:ss"),
-            dateMyt: formatInTimeZone(m.createdAt, tz, "MMM dd"),
-          }))
-        ),
-      }
-    : null;
+  const selectedLead = selectedIdParam
+    ? preloadedDetail
+    : leads[0]?.id
+      ? await getCachedAdminLeadDetail(leads[0].id).catch(() => null)
+      : null;
 
   return (
     <LeadsWorkspace

@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { ADMIN_CACHE_TAGS, invalidateAdminTags } from "@/lib/admin/cache";
 import {
   adminJsonResponse,
   requireAdminApiRequest,
@@ -22,6 +23,9 @@ export async function POST(request: NextRequest) {
       leadId: body.leadId,
       bookingId: body.bookingId,
     });
+    if (!result.alreadyExisted) {
+      invalidateAdminTags(ADMIN_CACHE_TAGS.CUSTOMERS);
+    }
     return adminJsonResponse(result, result.alreadyExisted ? 200 : 201);
   } catch (err) {
     return handleInvoicingApiError(err);

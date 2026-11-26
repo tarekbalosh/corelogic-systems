@@ -1,10 +1,10 @@
 import React from "react";
 import { AlertTriangle } from "lucide-react";
-import { toIsoDateOnly } from "@/lib/invoicing/money";
 import {
-  getOrInitCompanySettings,
-  listInvoices,
-} from "@/lib/invoicing/service";
+  getCachedCompanySettings,
+  getCachedInvoicesList,
+} from "@/lib/admin/cache";
+import { toIsoDateOnly } from "@/lib/invoicing/money";
 import { validateCompanySettingsForIssuance } from "@/lib/invoicing/validators";
 import { requireAdminSession } from "@/lib/security/admin-auth";
 import { InvoicesWorkspace } from "@/components/admin/invoicing/invoices-workspace";
@@ -19,12 +19,12 @@ export default async function AdminInvoicesPage() {
 
   const [invoices, company] = dbConfigured
     ? await Promise.all([
-        listInvoices().catch((err: unknown) => {
+        getCachedInvoicesList().catch((err: unknown) => {
           dbError =
             err instanceof Error ? err.message : "Database query failed.";
           return [];
         }),
-        getOrInitCompanySettings().catch((err: unknown) => {
+        getCachedCompanySettings().catch((err: unknown) => {
           dbError =
             dbError ??
             (err instanceof Error ? err.message : "Database query failed.");

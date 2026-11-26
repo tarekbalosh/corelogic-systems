@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { ADMIN_CACHE_TAGS, invalidateAdminTags } from "@/lib/admin/cache";
 import {
   adminJsonResponse,
   requireAdminApiRequest,
@@ -34,6 +35,7 @@ export async function POST(
       actor: guard.actor,
       issueDateOverride,
     });
+    invalidateAdminTags(ADMIN_CACHE_TAGS.INVOICES);
     return adminJsonResponse({ invoice });
   } catch (err) {
     return handleInvoicingApiError(err);

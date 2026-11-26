@@ -1,13 +1,8 @@
 import React from "react";
 import { AlertTriangle } from "lucide-react";
-import prisma from "@/lib/db";
-import { normalizeBlockedDateKey } from "@/lib/booking/availability";
+import { getCachedAdminAvailability } from "@/lib/admin/cache";
 import { requireAdminSession } from "@/lib/security/admin-auth";
-import {
-  AvailabilityWorkspace,
-  type SerializedAvailabilityRule,
-  type SerializedBlockedDate,
-} from "@/components/admin/availability-workspace";
+import { AvailabilityWorkspace } from "@/components/admin/availability-workspace";
 
 export const dynamic = "force-dynamic";
 
@@ -17,20 +12,13 @@ export default async function AdminAvailabilityPage() {
   const dbConfigured = Boolean(process.env.DATABASE_URL?.trim());
   let dbError: string | null = null;
 
-  const [rawRules, rawBlockedDates] = dbConfigured
-    ? await Promise.all([
-        prisma.availabilityRule.findMany({
-          orderBy: [{ dayOfWeek: "asc" }, { startTime: "asc" }],
-        }),
-        prisma.blockedDate.findMany({
-          orderBy: { date: "asc" },
-        }),
-      ]).catch((err: unknown) => {
+  const data = dbConfigured
+    ? await getCachedAdminAvailability().catch((err: unknown) => {
         dbError =
           err instanceof Error ? err.message : "Database query failed.";
-        return [[], []] as const;
+        return { rules: [], blockedDates: [] };
       })
-    : ([[], []] as const);
+    : { rules: [], blockedDates: [] };
 
   if (!dbConfigured || dbError) {
     return (
@@ -51,19 +39,10 @@ export default async function AdminAvailabilityPage() {
     );
   }
 
-  const rules: SerializedAvailabilityRule[] = rawRules.map((r) => ({
-    id: r.id,
-    dayOfWeek: r.dayOfWeek,
-    startTime: r.startTime,
-    endTime: r.endTime,
-    active: r.active,
-  }));
-
-  const blockedDates: SerializedBlockedDate[] = rawBlockedDates.map((bd) => ({
-    id: bd.id,
-    dateKey: normalizeBlockedDateKey(bd.date),
-    reason: bd.reason,
-  }));
-
-  return <AvailabilityWorkspace rules={rules} blockedDates={blockedDates} />;
+  return (
+    <AvailabilityWorkspace
+      rules={data.rules}
+      blockedDates={data.blockedDates}
+    />
+  );
 }

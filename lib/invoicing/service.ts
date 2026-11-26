@@ -687,9 +687,25 @@ export function buildPdfDocumentDataFromInvoice(params: {
 export async function listInvoices(
   db: DbClient = prisma
 ): Promise<SerializedInvoiceListItem[]> {
+  // Lean select: explicitly exclude `pdfBytes` (80KB+ BYTEA per invoice) and heavy snapshot blobs
   const rows = await db.invoice.findMany({
     orderBy: [{ createdAt: "desc" }],
-    include: {
+    select: {
+      id: true,
+      invoiceNumber: true,
+      type: true,
+      status: true,
+      currency: true,
+      taxTreatment: true,
+      issueDate: true,
+      dueDate: true,
+      subtotalNetCents: true,
+      totalVatCents: true,
+      totalGrossCents: true,
+      paidAmountCents: true,
+      createdAt: true,
+      issuedAt: true,
+      customerSnapshotJson: true,
       customer: {
         select: { name: true, companyName: true },
       },
@@ -738,9 +754,47 @@ export async function getInvoiceDetail(
   id: string,
   db: DbClient = prisma
 ): Promise<SerializedInvoiceDetail | null> {
+  // Lean select: omit `pdfBytes` (80KB+ BYTEA); check `pdfSha256` to know if PDF is archived
   const inv = await db.invoice.findUnique({
     where: { id },
-    include: {
+    select: {
+      id: true,
+      invoiceNumber: true,
+      type: true,
+      status: true,
+      currency: true,
+      taxTreatment: true,
+      issueDate: true,
+      serviceDate: true,
+      servicePeriodStart: true,
+      servicePeriodEnd: true,
+      dueDate: true,
+      paymentTermsDays: true,
+      customerReference: true,
+      buyerReference: true,
+      paymentReference: true,
+      paymentMeansCode: true,
+      en16931Profile: true,
+      notes: true,
+      introText: true,
+      outroText: true,
+      taxLegalNotice: true,
+      subtotalNetCents: true,
+      totalDiscountCents: true,
+      totalVatCents: true,
+      totalGrossCents: true,
+      paidAmountCents: true,
+      taxBreakdownJson: true,
+      customerId: true,
+      correctedInvoiceId: true,
+      issuerSnapshotJson: true,
+      customerSnapshotJson: true,
+      itemsSnapshotJson: true,
+      pdfSha256: true,
+      createdAt: true,
+      issuedAt: true,
+      paidAt: true,
+      cancelledAt: true,
       customer: true,
       items: { orderBy: { position: "asc" } },
       payments: { orderBy: { paidAt: "desc" } },
@@ -857,7 +911,7 @@ export async function getInvoiceDetail(
       createdAtIso: a.createdAt.toISOString(),
     })),
     pdfSha256: inv.pdfSha256,
-    hasStoredPdf: Boolean(inv.pdfBytes && inv.pdfBytes.length > 0),
+    hasStoredPdf: Boolean(inv.pdfSha256),
     createdAtIso: inv.createdAt.toISOString(),
     issuedAtIso: inv.issuedAt?.toISOString() ?? null,
     paidAtIso: inv.paidAt?.toISOString() ?? null,

@@ -151,11 +151,19 @@ export function InvoicesWorkspace({
       key: "number",
       header: "Rechnungsnr.",
       render: (inv) => (
-        <div className="min-w-0">
+        <div
+          className="min-w-0"
+          onMouseEnter={() => router.prefetch(`/admin/invoices/${inv.id}`)}
+        >
           <div className="flex items-center gap-1.5">
-            <span className="font-mono text-xs font-bold text-slate-900">
+            <Link
+              href={`/admin/invoices/${inv.id}`}
+              prefetch={true}
+              onClick={(e) => e.stopPropagation()}
+              className="font-mono text-xs font-bold text-slate-900 hover:text-indigo-700 hover:underline"
+            >
               {inv.invoiceNumber ?? "Draft (unnumbered)"}
-            </span>
+            </Link>
             {inv.type === "CANCELLATION" && (
               <span className="rounded bg-rose-50 px-1.5 py-0.5 text-[10px] font-bold uppercase text-rose-700 ring-1 ring-inset ring-rose-200">
                 Storno

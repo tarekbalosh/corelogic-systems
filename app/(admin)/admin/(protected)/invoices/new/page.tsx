@@ -1,9 +1,9 @@
 import React from "react";
 import { AlertTriangle } from "lucide-react";
 import {
-  getOrInitCompanySettings,
-  listBillingCustomers,
-} from "@/lib/invoicing/service";
+  getCachedBillingCustomers,
+  getCachedCompanySettings,
+} from "@/lib/admin/cache";
 import { requireAdminSession } from "@/lib/security/admin-auth";
 import { InvoiceEditor } from "@/components/admin/invoicing/invoice-editor";
 
@@ -24,12 +24,12 @@ export default async function AdminNewInvoicePage({
 
   const [company, customers] = dbConfigured
     ? await Promise.all([
-        getOrInitCompanySettings().catch((err: unknown) => {
+        getCachedCompanySettings().catch((err: unknown) => {
           dbError =
             err instanceof Error ? err.message : "Database query failed.";
           return null;
         }),
-        listBillingCustomers().catch(() => []),
+        getCachedBillingCustomers().catch(() => []),
       ])
     : [null, []];
 

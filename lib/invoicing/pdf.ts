@@ -170,6 +170,8 @@ function resolveCountryNameDe(isoCode: string | null | undefined): string {
   return map[code] ?? code;
 }
 
+const logoBytesCache = new Map<string, Buffer | null>();
+
 async function tryEmbedLogo(
   pdfDoc: PDFDocument,
   logoPath: string
@@ -179,10 +181,17 @@ async function tryEmbedLogo(
     const cleaned = logoPath.replace(/^\/+/, "");
     const absPath = path.resolve(process.cwd(), "public", cleaned);
     const publicDir = path.resolve(process.cwd(), "public");
-    if (!absPath.startsWith(publicDir) || !fs.existsSync(absPath)) {
+    if (!absPath.startsWith(publicDir)) {
       return null;
     }
-    const bytes = fs.readFileSync(absPath);
+
+    let bytes = logoBytesCache.get(absPath);
+    if (bytes === undefined) {
+      bytes = fs.existsSync(absPath) ? fs.readFileSync(absPath) : null;
+      logoBytesCache.set(absPath, bytes);
+    }
+    if (!bytes) return null;
+
     if (absPath.toLowerCase().endsWith(".png")) {
       return await pdfDoc.embedPng(bytes);
     }
